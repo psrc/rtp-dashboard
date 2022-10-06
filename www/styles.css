@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 12pt;
+  color: black;
+  background-color: #F8F8F8;
+  padding-top: 70px;
+}
+
+h1 {
+  color: #34343c;
+  font-size: 1.75em;
+  font-weight: 300;
+}
+
+h2 {
+  font-weight: 16pt;
+  font-family: "Poppins";
+  color: #2F3030;
+}
+
+h3 {
+  color: #8CC63E;
+  font-size: 1.25em;
+  font-weight: 300;
+}
+
+h4 {
+  color: #34343c;
+  font-size: 1.00em;
+  font-weight: 300;
+}
+
+i {
+  color: #76787A;
+  font-size: 20pt;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+#mainpanel {
+  background-color: white;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.jumbotron.bg-success{
+  background-color: #005753;
+  padding-top: 50px;
+  padding-bottom: 10px;
+  border-radius: 0px;
+}
+
+.card.bg-success{
+  background-color: #005753;
+  padding-top: 50px;
+  padding-bottom: 10px;
+  border-radius: 0px;
+}
+
+.source_url {
+  color: #00716C;
+  font-family: "Poppins";
+  font-size: 14pt;
+}
+
+.logo_url {
+  color: #00716C;
+  font-family: "Poppins";
+  font-size: 24pt;
+}
+
+.plan_source_url {
+  color: #00716C;
+  font-family: "Poppins";
+  font-size: 10pt;
+}
+
+.mainpage_title {
+  color: #FFFFFF;
+  font-family: "Poppins";
+  font-size: 22pt;
+}
+
+.mainpage_subtitle {
+  color: #EC9B21;
+  font-family: "Poppins";
+  font-size: 12pt;
+}
+
+.sidebar_headings {
+  font-weight: 16pt;
+  font-size: 14pt;
+  font-family: "Poppins";
+  color: #2F3030;
+}
+
+.sidebar_notes {
+  font-size: 12pt;
+  color: #76787A;
+}
+
+.sidebar_data {
+  font-size: 12pt;
+  color: #91268F;
+}
+
+.sidebar_label {
+  font-size: 12pt;
+  color: #8CC63E;
+}
+
+.datatables {
+  font-size: 10pt; 
+}
+
+.footer {
+  position: absolute;
+  color: #FFFFFF;
+  font-family: "Poppins";
+  font-size: 12pt;
+  bottom: 0;
+  width: 100%;
+  height: 50px; 
+  background-color: #4A0048;
+  z-index: 1000;
+  padding: 10px;
+}
+
+nav {
+  font-size: 12pt;
+  background-color: white;
+  text-align: center;
+  width: 100%;
+  margin: auto;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 0px;
+}
+
+head {
+  background-image: url("psrc-logo.png");
+  background-color : #4A0048; 
+}
+
+.navbar {
+  background-color: white;
+}
+
+.col-sm-3 {
+  width: 18%;
+}
+
+.fa:hover {color: #91268F;}
+
+.navbar-default .navbar-nav > .active > a:focus {background-color: #E3C9E3;}
+
+#sidebar {
+    background-color: white;
+    position: fixed;
+    width: 30%;
+    overflow-y: scroll;
+    top: 70px;
+    bottom: 0px;
+}

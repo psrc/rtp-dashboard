@@ -1,0 +1,1460 @@
+year,estimate,label,geography,concept,data_source,geography_type,share
+1990,2748867,Observed Population,Region,Population,ofm_intercensal,PSRC Region,1
+1991,2833057,Observed Population,Region,Population,ofm_intercensal,PSRC Region,1
+1992,2880190,Observed Population,Region,Population,ofm_intercensal,PSRC Region,1
+1993,2929612,Observed Population,Region,Population,ofm_intercensal,PSRC Region,1
+1994,2978720,Observed Population,Region,Population,ofm_intercensal,PSRC Region,1
+1995,3024537,Observed Population,Region,Population,ofm_intercensal,PSRC Region,1
+1996,3058048,Observed Population,Region,Population,ofm_intercensal,PSRC Region,1
+1997,3103012,Observed Population,Region,Population,ofm_intercensal,PSRC Region,1
+1998,3159992,Observed Population,Region,Population,ofm_intercensal,PSRC Region,1
+1999,3219841,Observed Population,Region,Population,ofm_intercensal,PSRC Region,1
+2000,3275857,Observed Population,Region,Population,ofm_intercensal,PSRC Region,1
+2001,3316557,Observed Population,Region,Population,ofm_intercensal,PSRC Region,1
+2002,3364581,Observed Population,Region,Population,ofm_intercensal,PSRC Region,1
+2003,3399436,Observed Population,Region,Population,ofm_intercensal,PSRC Region,1
+2004,3434039,Observed Population,Region,Population,ofm_intercensal,PSRC Region,1
+2005,3473083,Observed Population,Region,Population,ofm_intercensal,PSRC Region,1
+2006,3539434,Observed Population,Region,Population,ofm_intercensal,PSRC Region,1
+2007,3594799,Observed Population,Region,Population,ofm_intercensal,PSRC Region,1
+2008,3634690,Observed Population,Region,Population,ofm_intercensal,PSRC Region,1
+2009,3663248,Observed Population,Region,Population,ofm_intercensal,PSRC Region,1
+2010,3690942,Observed Population,Region,Population,ofm_intercensal,PSRC Region,1
+2011,3721172,Observed Population,Region,Population,ofm_intercensal,PSRC Region,1
+2012,3749421,Observed Population,Region,Population,ofm_intercensal,PSRC Region,1
+2013,3795087,Observed Population,Region,Population,ofm_intercensal,PSRC Region,1
+2014,3857726,Observed Population,Region,Population,ofm_intercensal,PSRC Region,1
+2015,3926769,Observed Population,Region,Population,ofm_intercensal,PSRC Region,1
+2016,4018936,Observed Population,Region,Population,ofm_intercensal,PSRC Region,1
+2017,4080194,Observed Population,Region,Population,ofm_intercensal,PSRC Region,1
+2018,4149624,Observed Population,Region,Population,ofm_intercensal,PSRC Region,1
+2019,4220357,Observed Population,Region,Population,ofm_intercensal,PSRC Region,1
+2020,4293636,Observed Population,Region,Population,ofm_intercensal,PSRC Region,1
+2021,4330750,Observed Population,Region,Population,ofm_intercensal,PSRC Region,1
+2022,4383300,Observed Population,Region,Population,ofm_intercensal,PSRC Region,1
+1990,2748867,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+1991,2833057,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+1992,2880190,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+1993,2929612,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+1994,2978720,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+1995,3024537,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+1996,3058048,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+1997,3103012,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+1998,3159992,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+1999,3219841,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2000,3275857,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2001,3316557,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2002,3364581,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2003,3399436,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2004,3434039,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2005,3473083,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2006,3539434,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2007,3594799,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2008,3634690,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2009,3663248,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2010,3690942,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2011,3721172,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2012,3749421,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2013,3795087,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2014,3857726,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2015,3926769,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2016,4018936,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2017,4080194,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2018,4149624,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2019,4180280,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2020,4240910,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2021,4300285,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2022,4357228,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2023,4416836,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2024,4477439,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2025,4536475,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2026,4595981,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2027,4655103,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2028,4710639,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2029,4766561,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2030,4823243,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2031,4876182,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2032,4924105,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2033,4974711,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2034,5026349,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2035,5080466,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2036,5135689,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2037,5190095,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2038,5238443,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2039,5283709,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2040,5328033,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2041,5374982,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2042,5424064,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2043,5474229,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2044,5525074,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2045,5577099,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2046,5627506,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2047,5677500,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2048,5726303,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2049,5774225,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+2050,5823165,Forecast Population,Region,Population,macroforecast,PSRC Region,1
+1990,1134163,Observed Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+1991,1172751,Observed Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+1992,1193977,Observed Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+1993,1216374,Observed Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+1994,1238813,Observed Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+1995,1260163,Observed Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+1996,1277436,Observed Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+1997,1297719,Observed Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+1998,1322836,Observed Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+1999,1348834,Observed Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2000,1348148,Observed Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2001,1369777,Observed Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2002,1393434,Observed Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2003,1414884,Observed Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2004,1437330,Observed Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2005,1460116,Observed Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2006,1484245,Observed Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2007,1508165,Observed Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2008,1527882,Observed Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2009,1545049,Observed Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2010,1570662,Observed Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2011,1580517,Observed Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2012,1589950,Observed Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2013,1603995,Observed Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2014,1622027,Observed Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2015,1642530,Observed Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2016,1663537,Observed Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2017,1686939,Observed Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2018,1711735,Observed Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2019,1739260,Observed Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2020,1763494,Observed Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2021,1789589,Observed Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2022,1816971,Observed Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+1990,1134163,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+1991,1172751,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+1992,1193977,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+1993,1216374,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+1994,1238813,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+1995,1260163,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+1996,1277436,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+1997,1297719,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+1998,1322836,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+1999,1348834,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2000,1348148,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2001,1369777,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2002,1393434,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2003,1414884,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2004,1437330,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2005,1460116,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2006,1484245,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2007,1508165,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2008,1527882,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2009,1545049,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2010,1570662,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2011,1580517,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2012,1589950,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2013,1603995,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2014,1622027,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2015,1642530,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2016,1663537,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2017,1686939,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2018,1715000,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2019,1743100,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2020,1771200,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2021,1799300,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2022,1827400,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2023,1855500,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2024,1883600,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2025,1911700,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2026,1939800,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2027,1967900,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2028,1996000,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2029,2024100,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2030,2052200,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2031,2080300,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2032,2108400,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2033,2136500,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2034,2164600,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2035,2192700,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2036,2220800,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2037,2248900,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2038,2277000,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2039,2305100,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2040,2333200,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2041,2361300,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2042,2389400,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2043,2417500,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2044,2445600,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2045,2473700,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2046,2501800,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2047,2529900,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2048,2558000,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2049,2586100,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+2050,2614200,Forecast Housing Units,Region,Housing,ofm_postcensal,PSRC Region,1
+1990,1385200,Observed Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+1991,1381700,Observed Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+1992,1393700,Observed Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+1993,1426300,Observed Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+1994,1435300,Observed Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+1995,1467000,Observed Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+1996,1515300,Observed Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+1997,1600200,Observed Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+1998,1668000,Observed Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+1999,1706500,Observed Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+2000,1744900,Observed Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+2001,1723400,Observed Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+2002,1683900,Observed Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+2003,1674800,Observed Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+2004,1694700,Observed Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+2005,1746600,Observed Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+2006,1799600,Observed Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+2007,1855500,Observed Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+2008,1876000,Observed Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+2009,1753300,Observed Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+2010,1747800,Observed Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+2011,1781700,Observed Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+2012,1821600,Observed Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+2013,1871400,Observed Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+2014,1929400,Observed Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+2015,1986700,Observed Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+2016,2048100,Observed Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+2017,2094500,Observed Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+2018,2145000,Observed Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+2019,2200500,Observed Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+2020,2034100,Observed Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+2021,2115700,Observed Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+2022,2210300,Observed Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+1990,1385200,Forecast Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+1991,1381700,Forecast Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+1992,1393700,Forecast Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+1993,1426300,Forecast Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+1994,1435300,Forecast Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+1995,1467000,Forecast Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+1996,1515300,Forecast Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+1997,1600200,Forecast Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+1998,1668000,Forecast Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+1999,1706500,Forecast Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+2000,1744900,Forecast Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+2001,1723400,Forecast Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+2002,1683900,Forecast Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+2003,1674800,Forecast Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+2004,1694700,Forecast Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+2005,1746600,Forecast Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+2006,1799600,Forecast Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+2007,1855500,Forecast Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+2008,1876000,Forecast Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+2009,1753300,Forecast Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+2010,1747800,Forecast Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+2011,1781700,Forecast Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+2012,1821600,Forecast Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+2013,1871400,Forecast Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+2014,1929400,Forecast Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+2015,1986700,Forecast Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+2016,2048100,Forecast Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+2017,2094500,Forecast Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+2018,2145000,Forecast Employment,Region,Employment,qcew_monthly_msa,PSRC Region,1
+2019,2155919,Forecast Employment,Region,Employment,macroforecast,PSRC Region,1
+2020,2182432,Forecast Employment,Region,Employment,macroforecast,PSRC Region,1
+2021,2217681,Forecast Employment,Region,Employment,macroforecast,PSRC Region,1
+2022,2248017,Forecast Employment,Region,Employment,macroforecast,PSRC Region,1
+2023,2273563,Forecast Employment,Region,Employment,macroforecast,PSRC Region,1
+2024,2303879,Forecast Employment,Region,Employment,macroforecast,PSRC Region,1
+2025,2333470,Forecast Employment,Region,Employment,macroforecast,PSRC Region,1
+2026,2360237,Forecast Employment,Region,Employment,macroforecast,PSRC Region,1
+2027,2391465,Forecast Employment,Region,Employment,macroforecast,PSRC Region,1
+2028,2424425,Forecast Employment,Region,Employment,macroforecast,PSRC Region,1
+2029,2455145,Forecast Employment,Region,Employment,macroforecast,PSRC Region,1
+2030,2488556,Forecast Employment,Region,Employment,macroforecast,PSRC Region,1
+2031,2523686,Forecast Employment,Region,Employment,macroforecast,PSRC Region,1
+2032,2553790,Forecast Employment,Region,Employment,macroforecast,PSRC Region,1
+2033,2584263,Forecast Employment,Region,Employment,macroforecast,PSRC Region,1
+2034,2616901,Forecast Employment,Region,Employment,macroforecast,PSRC Region,1
+2035,2650453,Forecast Employment,Region,Employment,macroforecast,PSRC Region,1
+2036,2685646,Forecast Employment,Region,Employment,macroforecast,PSRC Region,1
+2037,2723512,Forecast Employment,Region,Employment,macroforecast,PSRC Region,1
+2038,2762314,Forecast Employment,Region,Employment,macroforecast,PSRC Region,1
+2039,2796063,Forecast Employment,Region,Employment,macroforecast,PSRC Region,1
+2040,2828304,Forecast Employment,Region,Employment,macroforecast,PSRC Region,1
+2041,2859941,Forecast Employment,Region,Employment,macroforecast,PSRC Region,1
+2042,2893188,Forecast Employment,Region,Employment,macroforecast,PSRC Region,1
+2043,2928359,Forecast Employment,Region,Employment,macroforecast,PSRC Region,1
+2044,2964278,Forecast Employment,Region,Employment,macroforecast,PSRC Region,1
+2045,3000631,Forecast Employment,Region,Employment,macroforecast,PSRC Region,1
+2046,3035595,Forecast Employment,Region,Employment,macroforecast,PSRC Region,1
+2047,3069396,Forecast Employment,Region,Employment,macroforecast,PSRC Region,1
+2048,3102187,Forecast Employment,Region,Employment,macroforecast,PSRC Region,1
+2049,3133487,Forecast Employment,Region,Employment,macroforecast,PSRC Region,1
+2050,3164442,Forecast Employment,Region,Employment,macroforecast,PSRC Region,1
+2010,59177,Biked & Walked,King County,Mode to Work,acs1,PSRC Region,0.06080111950419609
+2011,60210,Biked & Walked,King County,Mode to Work,acs1,PSRC Region,0.06021427521354016
+2012,66404,Biked & Walked,King County,Mode to Work,acs1,PSRC Region,0.06415194593785171
+2013,65684,Biked & Walked,King County,Mode to Work,acs1,PSRC Region,0.06292426747699399
+2014,70445,Biked & Walked,King County,Mode to Work,acs1,PSRC Region,0.06483716846250911
+2015,77104,Biked & Walked,King County,Mode to Work,acs1,PSRC Region,0.06932796721343903
+2016,82458,Biked & Walked,King County,Mode to Work,acs1,PSRC Region,0.07183196870189706
+2017,76483,Biked & Walked,King County,Mode to Work,acs1,PSRC Region,0.06503324660306446
+2018,89124,Biked & Walked,King County,Mode to Work,acs1,PSRC Region,0.0736154360808478
+2019,85875,Biked & Walked,King County,Mode to Work,acs1,PSRC Region,0.06913432951172446
+2021,54250,Biked & Walked,King County,Mode to Work,acs1,PSRC Region,0.04599137481571659
+2020,80903,Biked & Walked,King County,Mode to Work,acs5,PSRC Region,0.06741686325717205
+2010,110316,Carpooled,King County,Mode to Work,acs1,PSRC Region,0.11334363518300852
+2011,110116,Carpooled,King County,Mode to Work,acs1,PSRC Region,0.11012381879113417
+2012,120699,Carpooled,King County,Mode to Work,acs1,PSRC Region,0.1166055617546046
+2013,116214,Carpooled,King County,Mode to Work,acs1,PSRC Region,0.11133123470816912
+2014,110034,Carpooled,King County,Mode to Work,acs1,PSRC Region,0.10127465390877605
+2015,113940,Carpooled,King County,Mode to Work,acs1,PSRC Region,0.10244901152079328
+2016,116801,Carpooled,King County,Mode to Work,acs1,PSRC Region,0.10174932421778698
+2017,137007,Carpooled,King County,Mode to Work,acs1,PSRC Region,0.11649660731595327
+2018,131930,Carpooled,King County,Mode to Work,acs1,PSRC Region,0.10897271758613
+2019,133808,Carpooled,King County,Mode to Work,acs1,PSRC Region,0.10772315998025998
+2021,79104,Carpooled,King County,Mode to Work,acs1,PSRC Region,0.06706178273589761
+2020,126443,Carpooled,King County,Mode to Work,acs5,PSRC Region,0.10536556667647189
+2010,635539,Drove Alone,King County,Mode to Work,acs1,PSRC Region,0.6529814402314629
+2011,670057,Drove Alone,King County,Mode to Work,acs1,PSRC Region,0.6701045774249972
+2012,665828,Drove Alone,King County,Mode to Work,acs1,PSRC Region,0.6432468203708802
+2013,666928,Drove Alone,King County,Mode to Work,acs1,PSRC Region,0.6389068244914539
+2014,692228,Drove Alone,King County,Mode to Work,acs1,PSRC Region,0.6371226268786396
+2015,710575,Drove Alone,King County,Mode to Work,acs1,PSRC Region,0.6389126414023844
+2016,717020,Drove Alone,King County,Mode to Work,acs1,PSRC Region,0.6246205122442242
+2017,719064,Drove Alone,King County,Mode to Work,acs1,PSRC Region,0.6114177848068976
+2018,726855,Drove Alone,King County,Mode to Work,acs1,PSRC Region,0.6003741729785986
+2019,748280,Drove Alone,King County,Mode to Work,acs1,PSRC Region,0.6024085716102845
+2021,546621,Drove Alone,King County,Mode to Work,acs1,PSRC Region,0.4634073971086049
+2020,699921,Drove Alone,King County,Mode to Work,acs5,PSRC Region,0.5832475723746106
+2010,973288,Total Work Trips,King County,Mode to Work,acs1,PSRC Region,1
+2011,999929,Total Work Trips,King County,Mode to Work,acs1,PSRC Region,1
+2012,1035105,Total Work Trips,King County,Mode to Work,acs1,PSRC Region,1
+2013,1043858,Total Work Trips,King County,Mode to Work,acs1,PSRC Region,1
+2014,1086491,Total Work Trips,King County,Mode to Work,acs1,PSRC Region,1
+2015,1112163,Total Work Trips,King County,Mode to Work,acs1,PSRC Region,1
+2016,1147929,Total Work Trips,King County,Mode to Work,acs1,PSRC Region,1
+2017,1176060,Total Work Trips,King County,Mode to Work,acs1,PSRC Region,1
+2018,1210670,Total Work Trips,King County,Mode to Work,acs1,PSRC Region,1
+2019,1242147,Total Work Trips,King County,Mode to Work,acs1,PSRC Region,1
+2021,1179569,Total Work Trips,King County,Mode to Work,acs1,PSRC Region,1
+2020,1200041,Total Work Trips,King County,Mode to Work,acs5,PSRC Region,1
+2010,104822,Transit,King County,Mode to Work,acs1,PSRC Region,0.10769885172734073
+2011,102949,Transit,King County,Mode to Work,acs1,PSRC Region,0.10295630989800275
+2012,118928,Transit,King County,Mode to Work,acs1,PSRC Region,0.11489462421686689
+2013,133585,Transit,King County,Mode to Work,acs1,PSRC Region,0.12797238704881314
+2014,144055,Transit,King County,Mode to Work,acs1,PSRC Region,0.1325873845250444
+2015,140568,Transit,King County,Mode to Work,acs1,PSRC Region,0.1263915451242309
+2016,150159,Transit,King County,Mode to Work,acs1,PSRC Region,0.13080861272779065
+2017,161500,Transit,King County,Mode to Work,acs1,PSRC Region,0.1373229257010697
+2018,176194,Transit,King County,Mode to Work,acs1,PSRC Region,0.14553429092981574
+2019,184969,Transit,King County,Mode to Work,acs1,PSRC Region,0.14891071668651135
+2021,47382,Transit,King County,Mode to Work,acs1,PSRC Region,0.04016890915241075
+2020,149931,Transit,King County,Mode to Work,acs5,PSRC Region,0.12493823127709804
+2010,63434,Worked from Home,King County,Mode to Work,acs1,PSRC Region,0.06517495335399183
+2011,56597,Worked from Home,King County,Mode to Work,acs1,PSRC Region,0.05660101867232573
+2012,63246,Worked from Home,King County,Mode to Work,acs1,PSRC Region,0.06110104771979654
+2013,61447,Worked from Home,King County,Mode to Work,acs1,PSRC Region,0.05886528627456991
+2014,69729,Worked from Home,King County,Mode to Work,acs1,PSRC Region,0.06417816622503085
+2015,69976,Worked from Home,King County,Mode to Work,acs1,PSRC Region,0.06291883473915244
+2016,81491,Worked from Home,King County,Mode to Work,acs1,PSRC Region,0.07098958210830113
+2017,82006,Worked from Home,King County,Mode to Work,acs1,PSRC Region,0.06972943557301499
+2018,86567,Worked from Home,King County,Mode to Work,acs1,PSRC Region,0.07150338242460787
+2019,89215,Worked from Home,King County,Mode to Work,acs1,PSRC Region,0.07182322221121977
+2021,452212,Worked from Home,King County,Mode to Work,acs1,PSRC Region,0.38337053618737016
+2020,142843,Worked from Home,King County,Mode to Work,acs5,PSRC Region,0.1190317664146475
+2010,7806,Biked & Walked,Kitsap County,Mode to Work,acs1,PSRC Region,0.06873112447500726
+2011,3922,Biked & Walked,Kitsap County,Mode to Work,acs1,PSRC Region,0.0335185026920776
+2012,6189,Biked & Walked,Kitsap County,Mode to Work,acs1,PSRC Region,0.053928061064445296
+2013,7270,Biked & Walked,Kitsap County,Mode to Work,acs1,PSRC Region,0.05970958310062749
+2014,7627,Biked & Walked,Kitsap County,Mode to Work,acs1,PSRC Region,0.06438351538890108
+2015,7981,Biked & Walked,Kitsap County,Mode to Work,acs1,PSRC Region,0.06651332183247077
+2016,5691,Biked & Walked,Kitsap County,Mode to Work,acs1,PSRC Region,0.04655900255252307
+2017,7287,Biked & Walked,Kitsap County,Mode to Work,acs1,PSRC Region,0.05717536288740683
+2018,7722,Biked & Walked,Kitsap County,Mode to Work,acs1,PSRC Region,0.05786653677545056
+2019,7878,Biked & Walked,Kitsap County,Mode to Work,acs1,PSRC Region,0.058991351229922495
+2021,7748,Biked & Walked,Kitsap County,Mode to Work,acs1,PSRC Region,0.06191613991065792
+2020,7656,Biked & Walked,Kitsap County,Mode to Work,acs5,PSRC Region,0.059572348968221854
+2010,13837,Carpooled,Kitsap County,Mode to Work,acs1,PSRC Region,0.1218335343787696
+2011,11316,Carpooled,Kitsap County,Mode to Work,acs1,PSRC Region,0.09670968293308264
+2012,11192,Carpooled,Kitsap County,Mode to Work,acs1,PSRC Region,0.09752187096999058
+2013,13062,Carpooled,Kitsap County,Mode to Work,acs1,PSRC Region,0.10728013403856895
+2014,11272,Carpooled,Kitsap County,Mode to Work,acs1,PSRC Region,0.09515287602775574
+2015,10008,Carpooled,Kitsap County,Mode to Work,acs1,PSRC Region,0.08340625546916018
+2016,9921,Carpooled,Kitsap County,Mode to Work,acs1,PSRC Region,0.08116532495582171
+2017,15686,Carpooled,Kitsap County,Mode to Work,acs1,PSRC Region,0.1230757159670459
+2018,13840,Carpooled,Kitsap County,Mode to Work,acs1,PSRC Region,0.10371314024504477
+2019,9500,Carpooled,Kitsap County,Mode to Work,acs1,PSRC Region,0.07113706990153132
+2021,13519,Carpooled,Kitsap County,Mode to Work,acs1,PSRC Region,0.10803359517968306
+2020,12287,Carpooled,Kitsap County,Mode to Work,acs5,PSRC Region,0.09560677269756294
+2010,77090,Drove Alone,Kitsap County,Mode to Work,acs1,PSRC Region,0.6787704824209979
+2011,80315,Drove Alone,Kitsap County,Mode to Work,acs1,PSRC Region,0.6863943252713444
+2012,78589,Drove Alone,Kitsap County,Mode to Work,acs1,PSRC Region,0.6847879125858283
+2013,83752,Drove Alone,Kitsap County,Mode to Work,acs1,PSRC Region,0.6878675383553994
+2014,81062,Drove Alone,Kitsap County,Mode to Work,acs1,PSRC Region,0.6842869443365805
+2015,82562,Drove Alone,Kitsap County,Mode to Work,acs1,PSRC Region,0.6880682717870507
+2016,88350,Drove Alone,Kitsap County,Mode to Work,acs1,PSRC Region,0.7228058118986844
+2017,84112,Drove Alone,Kitsap County,Mode to Work,acs1,PSRC Region,0.6599607689289918
+2018,94296,Drove Alone,Kitsap County,Mode to Work,acs1,PSRC Region,0.7066281988834351
+2019,94661,Drove Alone,Kitsap County,Mode to Work,acs1,PSRC Region,0.7088322288367217
+2021,75924,Drove Alone,Kitsap County,Mode to Work,acs1,PSRC Region,0.6067270271782127
+2020,87516,Drove Alone,Kitsap County,Mode to Work,acs5,PSRC Region,0.680973575274674
+2010,113573,Total Work Trips,Kitsap County,Mode to Work,acs1,PSRC Region,1
+2011,117010,Total Work Trips,Kitsap County,Mode to Work,acs1,PSRC Region,1
+2012,114764,Total Work Trips,Kitsap County,Mode to Work,acs1,PSRC Region,1
+2013,121756,Total Work Trips,Kitsap County,Mode to Work,acs1,PSRC Region,1
+2014,118462,Total Work Trips,Kitsap County,Mode to Work,acs1,PSRC Region,1
+2015,119991,Total Work Trips,Kitsap County,Mode to Work,acs1,PSRC Region,1
+2016,122232,Total Work Trips,Kitsap County,Mode to Work,acs1,PSRC Region,1
+2017,127450,Total Work Trips,Kitsap County,Mode to Work,acs1,PSRC Region,1
+2018,133445,Total Work Trips,Kitsap County,Mode to Work,acs1,PSRC Region,1
+2019,133545,Total Work Trips,Kitsap County,Mode to Work,acs1,PSRC Region,1
+2021,125137,Total Work Trips,Kitsap County,Mode to Work,acs1,PSRC Region,1
+2020,128516,Total Work Trips,Kitsap County,Mode to Work,acs5,PSRC Region,1
+2010,8742,Transit,Kitsap County,Mode to Work,acs1,PSRC Region,0.07697251987708346
+2011,9722,Transit,Kitsap County,Mode to Work,acs1,PSRC Region,0.0830869156482352
+2012,10352,Transit,Kitsap County,Mode to Work,acs1,PSRC Region,0.09020250252692481
+2013,11041,Transit,Kitsap County,Mode to Work,acs1,PSRC Region,0.0906813627254509
+2014,10665,Transit,Kitsap County,Mode to Work,acs1,PSRC Region,0.09002887001738955
+2015,12358,Transit,Kitsap County,Mode to Work,acs1,PSRC Region,0.10299105766265804
+2016,11087,Transit,Kitsap County,Mode to Work,acs1,PSRC Region,0.09070456181687284
+2017,11052,Transit,Kitsap County,Mode to Work,acs1,PSRC Region,0.08671635935661044
+2018,10002,Transit,Kitsap County,Mode to Work,acs1,PSRC Region,0.07495222750946083
+2019,14059,Transit,Kitsap County,Mode to Work,acs1,PSRC Region,0.10527537534164513
+2021,4445,Transit,Kitsap County,Mode to Work,acs1,PSRC Region,0.03552106890847631
+2020,10681,Transit,Kitsap County,Mode to Work,acs5,PSRC Region,0.08311027420710261
+2010,6098,Worked from Home,Kitsap County,Mode to Work,acs1,PSRC Region,0.05369233884814172
+2011,11735,Worked from Home,Kitsap County,Mode to Work,acs1,PSRC Region,0.10029057345526024
+2012,8442,Worked from Home,Kitsap County,Mode to Work,acs1,PSRC Region,0.07355965285281099
+2013,6631,Worked from Home,Kitsap County,Mode to Work,acs1,PSRC Region,0.05446138177995335
+2014,7836,Worked from Home,Kitsap County,Mode to Work,acs1,PSRC Region,0.06614779422937313
+2015,7082,Worked from Home,Kitsap County,Mode to Work,acs1,PSRC Region,0.05902109324866032
+2016,7183,Worked from Home,Kitsap County,Mode to Work,acs1,PSRC Region,0.058765298776097916
+2017,9313,Worked from Home,Kitsap County,Mode to Work,acs1,PSRC Region,0.07307179285994507
+2018,7585,Worked from Home,Kitsap County,Mode to Work,acs1,PSRC Region,0.056839896586608714
+2019,7447,Worked from Home,Kitsap County,Mode to Work,acs1,PSRC Region,0.05576397469017934
+2021,23501,Worked from Home,Kitsap County,Mode to Work,acs1,PSRC Region,0.18780216882297002
+2020,10376,Worked from Home,Kitsap County,Mode to Work,acs5,PSRC Region,0.08073702885243861
+2010,10165,Biked & Walked,Pierce County,Mode to Work,acs1,PSRC Region,0.02877166366165769
+2011,10997,Biked & Walked,Pierce County,Mode to Work,acs1,PSRC Region,0.031101256550721608
+2012,11075,Biked & Walked,Pierce County,Mode to Work,acs1,PSRC Region,0.029849177429440047
+2013,9893,Biked & Walked,Pierce County,Mode to Work,acs1,PSRC Region,0.026713867556678872
+2014,10543,Biked & Walked,Pierce County,Mode to Work,acs1,PSRC Region,0.027668357612800454
+2015,9404,Biked & Walked,Pierce County,Mode to Work,acs1,PSRC Region,0.024381959838732675
+2016,10886,Biked & Walked,Pierce County,Mode to Work,acs1,PSRC Region,0.0273840279122886
+2017,7453,Biked & Walked,Pierce County,Mode to Work,acs1,PSRC Region,0.017973284845094063
+2018,8889,Biked & Walked,Pierce County,Mode to Work,acs1,PSRC Region,0.020554312035221428
+2019,10360,Biked & Walked,Pierce County,Mode to Work,acs1,PSRC Region,0.02352177239733632
+2021,11116,Biked & Walked,Pierce County,Mode to Work,acs1,PSRC Region,0.024648816453240203
+2020,10392,Biked & Walked,Pierce County,Mode to Work,acs5,PSRC Region,0.024235526782216084
+2010,34581,Carpooled,Pierce County,Mode to Work,acs1,PSRC Region,0.09788026572393355
+2011,39620,Carpooled,Pierce County,Mode to Work,acs1,PSRC Region,0.1120516308574693
+2012,42717,Carpooled,Pierce County,Mode to Work,acs1,PSRC Region,0.11513023135470794
+2013,38115,Carpooled,Pierce County,Mode to Work,acs1,PSRC Region,0.10292116263244873
+2014,40111,Carpooled,Pierce County,Mode to Work,acs1,PSRC Region,0.10526467724623342
+2015,40283,Carpooled,Pierce County,Mode to Work,acs1,PSRC Region,0.10444262953888436
+2016,43688,Carpooled,Pierce County,Mode to Work,acs1,PSRC Region,0.10989834755025395
+2017,42009,Carpooled,Pierce County,Mode to Work,acs1,PSRC Region,0.10130681914095753
+2018,46310,Carpooled,Pierce County,Mode to Work,acs1,PSRC Region,0.10708405786377594
+2019,48681,Carpooled,Pierce County,Mode to Work,acs1,PSRC Region,0.11052735541261866
+2021,43051,Carpooled,Pierce County,Mode to Work,acs1,PSRC Region,0.09546205443760741
+2020,49332,Carpooled,Pierce County,Mode to Work,acs5,PSRC Region,0.1150487882236609
+2010,284595,Drove Alone,Pierce County,Mode to Work,acs1,PSRC Region,0.8055358209335436
+2011,273816,Drove Alone,Pierce County,Mode to Work,acs1,PSRC Region,0.77439498624101
+2012,290136,Drove Alone,Pierce County,Mode to Work,acs1,PSRC Region,0.781970288277022
+2013,296856,Drove Alone,Pierce County,Mode to Work,acs1,PSRC Region,0.801594245163799
+2014,301462,Drove Alone,Pierce County,Mode to Work,acs1,PSRC Region,0.7911370978535569
+2015,303079,Drove Alone,Pierce County,Mode to Work,acs1,PSRC Region,0.785799660353388
+2016,311021,Drove Alone,Pierce County,Mode to Work,acs1,PSRC Region,0.7823817513602713
+2017,326899,Drove Alone,Pierce County,Mode to Work,acs1,PSRC Region,0.7883334016605936
+2018,333915,Drove Alone,Pierce County,Mode to Work,acs1,PSRC Region,0.772122072588701
+2019,342869,Drove Alone,Pierce County,Mode to Work,acs1,PSRC Region,0.7784639556083307
+2021,316614,Drove Alone,Pierce County,Mode to Work,acs1,PSRC Region,0.702065524696491
+2020,326077,Drove Alone,Pierce County,Mode to Work,acs5,PSRC Region,0.7604549525177708
+2010,353299,Total Work Trips,Pierce County,Mode to Work,acs1,PSRC Region,1
+2011,353587,Total Work Trips,Pierce County,Mode to Work,acs1,PSRC Region,1
+2012,371032,Total Work Trips,Pierce County,Mode to Work,acs1,PSRC Region,1
+2013,370332,Total Work Trips,Pierce County,Mode to Work,acs1,PSRC Region,1
+2014,381049,Total Work Trips,Pierce County,Mode to Work,acs1,PSRC Region,1
+2015,385695,Total Work Trips,Pierce County,Mode to Work,acs1,PSRC Region,1
+2016,397531,Total Work Trips,Pierce County,Mode to Work,acs1,PSRC Region,1
+2017,414671,Total Work Trips,Pierce County,Mode to Work,acs1,PSRC Region,1
+2018,432464,Total Work Trips,Pierce County,Mode to Work,acs1,PSRC Region,1
+2019,440443,Total Work Trips,Pierce County,Mode to Work,acs1,PSRC Region,1
+2021,450975,Total Work Trips,Pierce County,Mode to Work,acs1,PSRC Region,1
+2020,428792,Total Work Trips,Pierce County,Mode to Work,acs5,PSRC Region,1
+2010,11455,Transit,Pierce County,Mode to Work,acs1,PSRC Region,0.03242296185384051
+2011,14703,Transit,Pierce County,Mode to Work,acs1,PSRC Region,0.04158241111805581
+2012,11216,Transit,Pierce County,Mode to Work,acs1,PSRC Region,0.030229198559692964
+2013,11069,Transit,Pierce County,Mode to Work,acs1,PSRC Region,0.0298893965414817
+2014,12723,Transit,Pierce County,Mode to Work,acs1,PSRC Region,0.03338940661174809
+2015,13083,Transit,Pierce County,Mode to Work,acs1,PSRC Region,0.033920584918134794
+2016,15205,Transit,Pierce County,Mode to Work,acs1,PSRC Region,0.03824858941818374
+2017,17283,Transit,Pierce County,Mode to Work,acs1,PSRC Region,0.04167882489973979
+2018,18587,Transit,Pierce County,Mode to Work,acs1,PSRC Region,0.04297930001109919
+2019,16444,Transit,Pierce County,Mode to Work,acs1,PSRC Region,0.03733513757739367
+2021,8325,Transit,Pierce County,Mode to Work,acs1,PSRC Region,0.018460003326126725
+2020,15652,Transit,Pierce County,Mode to Work,acs5,PSRC Region,0.0365025466893039
+2010,12503,Worked from Home,Pierce County,Mode to Work,acs1,PSRC Region,0.035389287827024704
+2011,14451,Worked from Home,Pierce County,Mode to Work,acs1,PSRC Region,0.040869715232743284
+2012,15888,Worked from Home,Pierce County,Mode to Work,acs1,PSRC Region,0.04282110437913711
+2013,14399,Worked from Home,Pierce County,Mode to Work,acs1,PSRC Region,0.038881328105591736
+2014,16210,Worked from Home,Pierce County,Mode to Work,acs1,PSRC Region,0.04254046067566113
+2015,19846,Worked from Home,Pierce County,Mode to Work,acs1,PSRC Region,0.05145516535086014
+2016,16731,Worked from Home,Pierce County,Mode to Work,acs1,PSRC Region,0.04208728375900244
+2017,21027,Worked from Home,Pierce County,Mode to Work,acs1,PSRC Region,0.05070766945361503
+2018,24763,Worked from Home,Pierce County,Mode to Work,acs1,PSRC Region,0.057260257501202415
+2019,22089,Worked from Home,Pierce County,Mode to Work,acs1,PSRC Region,0.05015177900432065
+2021,71869,Worked from Home,Pierce County,Mode to Work,acs1,PSRC Region,0.15936360108653472
+2020,27339,Worked from Home,Pierce County,Mode to Work,acs5,PSRC Region,0.06375818578704827
+2010,84656,Biked & Walked,Region,Mode to Work,acs1,PSRC Region,0.04766629091887789
+2011,82109,Biked & Walked,Region,Mode to Work,acs1,PSRC Region,0.04527209350281582
+2012,90745,Biked & Walked,Region,Mode to Work,acs1,PSRC Region,0.04837842059610829
+2013,88625,Biked & Walked,Region,Mode to Work,acs1,PSRC Region,0.04662086205327483
+2014,96137,Biked & Walked,Region,Mode to Work,acs1,PSRC Region,0.04903660517772116
+2015,106341,Biked & Walked,Region,Mode to Work,acs1,PSRC Region,0.05308765671170139
+2016,107808,Biked & Walked,Region,Mode to Work,acs1,PSRC Region,0.05223184956793222
+2017,98903,Biked & Walked,Region,Mode to Work,acs1,PSRC Region,0.04654269774752411
+2018,116172,Biked & Walked,Region,Mode to Work,acs1,PSRC Region,0.05297190672326269
+2019,113736,Biked & Walked,Region,Mode to Work,acs1,PSRC Region,0.0509199171749958
+2021,78620,Biked & Walked,Region,Mode to Work,acs1,PSRC Region,0.036291491487055634
+2020,108060,Biked & Walked,Region,Mode to Work,acs5,PSRC Region,0.04986026115038503
+2010,201454,Carpooled,Region,Mode to Work,acs1,PSRC Region,0.11343041214765198
+2011,205029,Carpooled,Region,Mode to Work,acs1,PSRC Region,0.11304597618761433
+2012,216048,Carpooled,Region,Mode to Work,acs1,PSRC Region,0.11518057207502347
+2013,209911,Carpooled,Region,Mode to Work,acs1,PSRC Region,0.11042292552287697
+2014,212873,Carpooled,Region,Mode to Work,acs1,PSRC Region,0.10858014348270735
+2015,210117,Carpooled,Region,Mode to Work,acs1,PSRC Region,0.10489481164642575
+2016,220978,Carpooled,Region,Mode to Work,acs1,PSRC Region,0.1070615321109985
+2017,245883,Carpooled,Region,Mode to Work,acs1,PSRC Region,0.11570991931745721
+2018,245084,Carpooled,Region,Mode to Work,acs1,PSRC Region,0.11175297651210371
+2019,240942,Carpooled,Region,Mode to Work,acs1,PSRC Region,0.1078703900609995
+2021,169086,Carpooled,Region,Mode to Work,acs1,PSRC Region,0.07805117183388818
+2020,236675,Carpooled,Region,Mode to Work,acs5,PSRC Region,0.10920486126010898
+2010,1248870,Drove Alone,Region,Mode to Work,acs1,PSRC Region,0.7031870244266093
+2011,1279386,Drove Alone,Region,Mode to Work,acs1,PSRC Region,0.705409670294286
+2012,1304682,Drove Alone,Region,Mode to Work,acs1,PSRC Region,0.695558483003711
+2013,1323287,Drove Alone,Region,Mode to Work,acs1,PSRC Region,0.6961103603260015
+2014,1351876,Drove Alone,Region,Mode to Work,acs1,PSRC Region,0.68955146989439
+2015,1382666,Drove Alone,Region,Mode to Work,acs1,PSRC Region,0.6902558557371222
+2016,1414822,Drove Alone,Region,Mode to Work,acs1,PSRC Region,0.6854664762299736
+2017,1433482,Drove Alone,Region,Mode to Work,acs1,PSRC Region,0.6745813519561222
+2018,1456193,Drove Alone,Region,Mode to Work,acs1,PSRC Region,0.6639923541564926
+2019,1496010,Drove Alone,Region,Mode to Work,acs1,PSRC Region,0.6697677542112037
+2021,1203396,Drove Alone,Region,Mode to Work,acs1,PSRC Region,0.5554952389920733
+2020,1410160,Drove Alone,Region,Mode to Work,acs5,PSRC Region,0.6506657955194054
+2010,1776014,Total Work Trips,Region,Mode to Work,acs1,PSRC Region,1
+2011,1813678,Total Work Trips,Region,Mode to Work,acs1,PSRC Region,1
+2012,1875733,Total Work Trips,Region,Mode to Work,acs1,PSRC Region,1
+2013,1900973,Total Work Trips,Region,Mode to Work,acs1,PSRC Region,1
+2014,1960515,Total Work Trips,Region,Mode to Work,acs1,PSRC Region,1
+2015,2003121,Total Work Trips,Region,Mode to Work,acs1,PSRC Region,1
+2016,2064028,Total Work Trips,Region,Mode to Work,acs1,PSRC Region,1
+2017,2124995,Total Work Trips,Region,Mode to Work,acs1,PSRC Region,1
+2018,2193087,Total Work Trips,Region,Mode to Work,acs1,PSRC Region,1
+2019,2233625,Total Work Trips,Region,Mode to Work,acs1,PSRC Region,1
+2021,2166348,Total Work Trips,Region,Mode to Work,acs1,PSRC Region,1
+2020,2167257,Total Work Trips,Region,Mode to Work,acs5,PSRC Region,1
+2010,144307,Transit,Region,Mode to Work,acs1,PSRC Region,0.08125330093118635
+2011,147580,Transit,Region,Mode to Work,acs1,PSRC Region,0.08137056302166096
+2012,159445,Transit,Region,Mode to Work,acs1,PSRC Region,0.08500410239623657
+2013,176746,Transit,Region,Mode to Work,acs1,PSRC Region,0.09297659672178406
+2014,186613,Transit,Region,Mode to Work,acs1,PSRC Region,0.09518570375641094
+2015,187783,Transit,Region,Mode to Work,acs1,PSRC Region,0.09374521059886048
+2016,195716,Transit,Region,Mode to Work,acs1,PSRC Region,0.09482235706104762
+2017,211983,Transit,Region,Mode to Work,acs1,PSRC Region,0.09975694060456612
+2018,229482,Transit,Region,Mode to Work,acs1,PSRC Region,0.10463880365895196
+2019,239024,Transit,Region,Mode to Work,acs1,PSRC Region,0.10701169623370083
+2021,66628,Transit,Region,Mode to Work,acs1,PSRC Region,0.030755908099714357
+2020,196353,Transit,Region,Mode to Work,acs5,PSRC Region,0.0905997765839492
+2010,96727,Worked from Home,Region,Mode to Work,acs1,PSRC Region,0.054462971575674514
+2011,99574,Worked from Home,Region,Mode to Work,acs1,PSRC Region,0.054901696993622906
+2012,104813,Worked from Home,Region,Mode to Work,acs1,PSRC Region,0.055878421928920584
+2013,102404,Worked from Home,Region,Mode to Work,acs1,PSRC Region,0.05386925537606268
+2014,113016,Worked from Home,Region,Mode to Work,acs1,PSRC Region,0.05764607768877055
+2015,116214,Worked from Home,Region,Mode to Work,acs1,PSRC Region,0.05801646530589016
+2016,124704,Worked from Home,Region,Mode to Work,acs1,PSRC Region,0.06041778503004804
+2017,134744,Worked from Home,Region,Mode to Work,acs1,PSRC Region,0.06340909037433029
+2018,146156,Worked from Home,Region,Mode to Work,acs1,PSRC Region,0.06664395894918898
+2019,143913,Worked from Home,Region,Mode to Work,acs1,PSRC Region,0.06443024231910012
+2021,648618,Worked from Home,Region,Mode to Work,acs1,PSRC Region,0.2994061895872685
+2020,216009,Worked from Home,Region,Mode to Work,acs5,PSRC Region,0.09966930548615138
+2010,7508,Biked & Walked,Snohomish County,Mode to Work,acs1,PSRC Region,0.02235495185407945
+2011,6980,Biked & Walked,Snohomish County,Mode to Work,acs1,PSRC Region,0.020340840210752085
+2012,7077,Biked & Walked,Snohomish County,Mode to Work,acs1,PSRC Region,0.01994464986247013
+2013,5778,Biked & Walked,Snohomish County,Mode to Work,acs1,PSRC Region,0.015828966076482015
+2014,7522,Biked & Walked,Snohomish County,Mode to Work,acs1,PSRC Region,0.02008475006208062
+2015,11852,Biked & Walked,Snohomish County,Mode to Work,acs1,PSRC Region,0.030762681949376026
+2016,8773,Biked & Walked,Snohomish County,Mode to Work,acs1,PSRC Region,0.022135258972185216
+2017,7680,Biked & Walked,Snohomish County,Mode to Work,acs1,PSRC Region,0.018878406347864134
+2018,10437,Biked & Walked,Snohomish County,Mode to Work,acs1,PSRC Region,0.025058342216716125
+2019,9623,Biked & Walked,Snohomish County,Mode to Work,acs1,PSRC Region,0.023049653883925363
+2021,5506,Biked & Walked,Snohomish County,Mode to Work,acs1,PSRC Region,0.01340745664979168
+2020,9109,Biked & Walked,Snohomish County,Mode to Work,acs5,PSRC Region,0.022222059584101797
+2010,42720,Carpooled,Snohomish County,Mode to Work,acs1,PSRC Region,0.1271981277578948
+2011,43977,Carpooled,Snohomish County,Mode to Work,acs1,PSRC Region,0.1281560358092041
+2012,41440,Carpooled,Snohomish County,Mode to Work,acs1,PSRC Region,0.11678766289398927
+2013,42520,Carpooled,Snohomish County,Mode to Work,acs1,PSRC Region,0.11648453402077107
+2014,51456,Carpooled,Snohomish County,Mode to Work,acs1,PSRC Region,0.13739442956586287
+2015,45886,Carpooled,Snohomish County,Mode to Work,acs1,PSRC Region,0.11910027201561493
+2016,50568,Carpooled,Snohomish County,Mode to Work,acs1,PSRC Region,0.12758871260748456
+2017,51181,Carpooled,Snohomish County,Mode to Work,acs1,PSRC Region,0.12580933792838989
+2018,53004,Carpooled,Snohomish County,Mode to Work,acs1,PSRC Region,0.1272580598691982
+2019,48953,Carpooled,Snohomish County,Mode to Work,acs1,PSRC Region,0.11725550312582338
+2021,33412,Carpooled,Snohomish County,Mode to Work,acs1,PSRC Region,0.08136032357116593
+2020,48613,Carpooled,Snohomish County,Mode to Work,acs5,PSRC Region,0.11859490422241088
+2010,251646,Drove Alone,Snohomish County,Mode to Work,acs1,PSRC Region,0.7492720050974531
+2011,255198,Drove Alone,Snohomish County,Mode to Work,acs1,PSRC Region,0.7436879283815918
+2012,270129,Drove Alone,Snohomish County,Mode to Work,acs1,PSRC Region,0.761287031609325
+2013,275751,Drove Alone,Snohomish County,Mode to Work,acs1,PSRC Region,0.7554263109304243
+2014,277124,Drove Alone,Snohomish County,Mode to Work,acs1,PSRC Region,0.73995829250253
+2015,286450,Drove Alone,Snohomish County,Mode to Work,acs1,PSRC Region,0.7435006956124505
+2016,298431,Drove Alone,Snohomish County,Mode to Work,acs1,PSRC Region,0.7529747486980743
+2017,303407,Drove Alone,Snohomish County,Mode to Work,acs1,PSRC Region,0.7458125826544809
+2018,301127,Drove Alone,Snohomish County,Mode to Work,acs1,PSRC Region,0.7229801108262026
+2019,310200,Drove Alone,Snohomish County,Mode to Work,acs1,PSRC Region,0.7430118086660759
+2021,264237,Drove Alone,Snohomish County,Mode to Work,acs1,PSRC Region,0.6434337309791145
+2020,296646,Drove Alone,Snohomish County,Mode to Work,acs5,PSRC Region,0.7236892180684447
+2010,335854,Total Work Trips,Snohomish County,Mode to Work,acs1,PSRC Region,1
+2011,343152,Total Work Trips,Snohomish County,Mode to Work,acs1,PSRC Region,1
+2012,354832,Total Work Trips,Snohomish County,Mode to Work,acs1,PSRC Region,1
+2013,365027,Total Work Trips,Snohomish County,Mode to Work,acs1,PSRC Region,1
+2014,374513,Total Work Trips,Snohomish County,Mode to Work,acs1,PSRC Region,1
+2015,385272,Total Work Trips,Snohomish County,Mode to Work,acs1,PSRC Region,1
+2016,396336,Total Work Trips,Snohomish County,Mode to Work,acs1,PSRC Region,1
+2017,406814,Total Work Trips,Snohomish County,Mode to Work,acs1,PSRC Region,1
+2018,416508,Total Work Trips,Snohomish County,Mode to Work,acs1,PSRC Region,1
+2019,417490,Total Work Trips,Snohomish County,Mode to Work,acs1,PSRC Region,1
+2021,410667,Total Work Trips,Snohomish County,Mode to Work,acs1,PSRC Region,1
+2020,409908,Total Work Trips,Snohomish County,Mode to Work,acs5,PSRC Region,1
+2010,19288,Transit,Snohomish County,Mode to Work,acs1,PSRC Region,0.05742971648394838
+2011,20206,Transit,Snohomish County,Mode to Work,acs1,PSRC Region,0.05888352683358978
+2012,18949,Transit,Snohomish County,Mode to Work,acs1,PSRC Region,0.053402737069937325
+2013,21051,Transit,Snohomish County,Mode to Work,acs1,PSRC Region,0.05766970662444148
+2014,19170,Transit,Snohomish County,Mode to Work,acs1,PSRC Region,0.0511864741677859
+2015,21774,Transit,Snohomish County,Mode to Work,acs1,PSRC Region,0.05651591602815673
+2016,19265,Transit,Snohomish County,Mode to Work,acs1,PSRC Region,0.04860774696217351
+2017,22148,Transit,Snohomish County,Mode to Work,acs1,PSRC Region,0.054442570806314435
+2018,24699,Transit,Snohomish County,Mode to Work,acs1,PSRC Region,0.05930018150911867
+2019,23552,Transit,Snohomish County,Mode to Work,acs1,PSRC Region,0.05641332726532372
+2021,6476,Transit,Snohomish County,Mode to Work,acs1,PSRC Region,0.01576946771958789
+2020,20089,Transit,Snohomish County,Mode to Work,acs5,PSRC Region,0.0490085580178967
+2010,14692,Worked from Home,Snohomish County,Mode to Work,acs1,PSRC Region,0.04374519880662431
+2011,16791,Worked from Home,Snohomish County,Mode to Work,acs1,PSRC Region,0.04893166876486222
+2012,17237,Worked from Home,Snohomish County,Mode to Work,acs1,PSRC Region,0.04857791856427831
+2013,19927,Worked from Home,Snohomish County,Mode to Work,acs1,PSRC Region,0.054590482347881115
+2014,19241,Worked from Home,Snohomish County,Mode to Work,acs1,PSRC Region,0.051376053701740663
+2015,19310,Worked from Home,Snohomish County,Mode to Work,acs1,PSRC Region,0.05012043439440188
+2016,19299,Worked from Home,Snohomish County,Mode to Work,acs1,PSRC Region,0.048693532760082356
+2017,22398,Worked from Home,Snohomish County,Mode to Work,acs1,PSRC Region,0.05505710226295064
+2018,27241,Worked from Home,Snohomish County,Mode to Work,acs1,PSRC Region,0.06540330557876439
+2019,25162,Worked from Home,Snohomish County,Mode to Work,acs1,PSRC Region,0.06026970705885171
+2021,101036,Worked from Home,Snohomish County,Mode to Work,acs1,PSRC Region,0.24602902108034003
+2020,35451,Worked from Home,Snohomish County,Mode to Work,acs5,PSRC Region,0.086485260107146
+2021,370051,Biked & Walked,Atlanta,Mode to Work,acs1,Metro Regions,0.011234791820219286
+2021,3092023,Carpooled,Atlanta,Mode to Work,acs1,Metro Regions,0.09387418141912844
+2021,21183745,Drove Alone,Atlanta,Mode to Work,acs1,Metro Regions,0.643140986100865
+2021,32937949,Total Work Trips,Atlanta,Mode to Work,acs1,Metro Regions,1
+2021,329912,Transit,Atlanta,Mode to Work,acs1,Metro Regions,0.010016167066140032
+2021,7962218,Worked from Home,Atlanta,Mode to Work,acs1,Metro Regions,0.24173387359364726
+2021,139806,Biked & Walked,Austin,Mode to Work,acs1,Metro Regions,0.018459673681833846
+2021,618804,Carpooled,Austin,Mode to Work,acs1,Metro Regions,0.08170550557925634
+2021,4324518,Drove Alone,Austin,Mode to Work,acs1,Metro Regions,0.5709997504485983
+2021,7573590,Total Work Trips,Austin,Mode to Work,acs1,Metro Regions,1
+2021,52902,Transit,Austin,Mode to Work,acs1,Metro Regions,0.006985062566101413
+2021,2437560,Worked from Home,Austin,Mode to Work,acs1,Metro Regions,0.3218500077242101
+2021,225729,Biked & Walked,Baltimore,Mode to Work,acs1,Metro Regions,0.02286238118431771
+2021,750589,Carpooled,Baltimore,Mode to Work,acs1,Metro Regions,0.07602147633115748
+2021,6447973,Drove Alone,Baltimore,Mode to Work,acs1,Metro Regions,0.6530663609557861
+2021,9873381,Total Work Trips,Baltimore,Mode to Work,acs1,Metro Regions,1
+2021,255941,Transit,Baltimore,Mode to Work,acs1,Metro Regions,0.02592232589829158
+2021,2193149,Worked from Home,Baltimore,Mode to Work,acs1,Metro Regions,0.22212745563044717
+2021,522061,Biked & Walked,Bay Area,Mode to Work,acs1,Metro Regions,0.04024708514478662
+2021,1136323,Carpooled,Bay Area,Mode to Work,acs1,Metro Regions,0.087602193101916
+2021,6273452,Drove Alone,Bay Area,Mode to Work,acs1,Metro Regions,0.48363726996602296
+2021,12971399,Total Work Trips,Bay Area,Mode to Work,acs1,Metro Regions,1
+2021,581275,Transit,Bay Area,Mode to Work,acs1,Metro Regions,0.04481205149883987
+2021,4458288,Worked from Home,Bay Area,Mode to Work,acs1,Metro Regions,0.3437014002884346
+2021,637555,Biked & Walked,Boston,Mode to Work,acs1,Metro Regions,0.04965424158618181
+2021,945045,Carpooled,Boston,Mode to Work,acs1,Metro Regions,0.07360226606302701
+2021,7080070,Drove Alone,Boston,Mode to Work,acs1,Metro Regions,0.5514120448072375
+2021,12839890,Total Work Trips,Boston,Mode to Work,acs1,Metro Regions,1
+2021,721745,Transit,Boston,Mode to Work,acs1,Metro Regions,0.05621115134163922
+2021,3455475,Worked from Home,Boston,Mode to Work,acs1,Metro Regions,0.2691202962019145
+2021,45588,Biked & Walked,Charlotte,Mode to Work,acs1,Metro Regions,0.011411886806338868
+2021,308343,Carpooled,Charlotte,Mode to Work,acs1,Metro Regions,0.07718643971060248
+2021,2606073,Drove Alone,Charlotte,Mode to Work,acs1,Metro Regions,0.652369265707115
+2021,3994782,Total Work Trips,Charlotte,Mode to Work,acs1,Metro Regions,1
+2021,26016,Transit,Charlotte,Mode to Work,acs1,Metro Regions,0.006512495550445556
+2021,1008762,Worked from Home,Charlotte,Mode to Work,acs1,Metro Regions,0.2525199122254982
+2021,1039304,Biked & Walked,Chicago,Mode to Work,acs1,Metro Regions,0.03240634437263018
+2021,2909746,Carpooled,Chicago,Mode to Work,acs1,Metro Regions,0.09072824785903179
+2021,19676356,Drove Alone,Chicago,Mode to Work,acs1,Metro Regions,0.6135247901811868
+2021,32071004,Total Work Trips,Chicago,Mode to Work,acs1,Metro Regions,1
+2021,1541267,Transit,Chicago,Mode to Work,acs1,Metro Regions,0.04805795914590014
+2021,6904331,Worked from Home,Chicago,Mode to Work,acs1,Metro Regions,0.21528265844125116
+2021,729280,Biked & Walked,Dallas,Mode to Work,acs1,Metro Regions,0.011909586433209508
+2021,6085296,Carpooled,Dallas,Mode to Work,acs1,Metro Regions,0.0993765888049365
+2021,41405456,Drove Alone,Dallas,Mode to Work,acs1,Metro Regions,0.6761763068210471
+2021,61234704,Total Work Trips,Dallas,Mode to Work,acs1,Metro Regions,1
+2021,360000,Transit,Dallas,Mode to Work,acs1,Metro Regions,0.005879019191470249
+2021,12654672,Worked from Home,Dallas,Mode to Work,acs1,Metro Regions,0.20665849874933664
+2021,295423,Biked & Walked,Denver,Mode to Work,acs1,Metro Regions,0.022699039092477936
+2021,1011645,Carpooled,Denver,Mode to Work,acs1,Metro Regions,0.07773047258578324
+2021,7887009,Drove Alone,Denver,Mode to Work,acs1,Metro Regions,0.6060040200449028
+2021,13014780,Total Work Trips,Denver,Mode to Work,acs1,Metro Regions,1
+2021,223899,Transit,Denver,Mode to Work,acs1,Metro Regions,0.01720344101091221
+2021,3596804,Worked from Home,Denver,Mode to Work,acs1,Metro Regions,0.2763630272659238
+2021,147782,Biked & Walked,Detroit,Mode to Work,acs1,Metro Regions,0.014673367592571632
+2021,790534,Carpooled,Detroit,Mode to Work,acs1,Metro Regions,0.07849261734464294
+2021,7022012,Drove Alone,Detroit,Mode to Work,acs1,Metro Regions,0.6972199815637162
+2021,10071444,Total Work Trips,Detroit,Mode to Work,acs1,Metro Regions,1
+2021,94910,Transit,Detroit,Mode to Work,acs1,Metro Regions,0.009423673506996614
+2021,2016206,Worked from Home,Detroit,Mode to Work,acs1,Metro Regions,0.20019035999207263
+2021,657033,Biked & Walked,Houston,Mode to Work,acs1,Metro Regions,0.01533484150265123
+2021,4743973,Carpooled,Houston,Mode to Work,acs1,Metro Regions,0.11072210078924022
+2021,30261452,Drove Alone,Houston,Mode to Work,acs1,Metro Regions,0.7062880708580667
+2021,42845764,Total Work Trips,Houston,Mode to Work,acs1,Metro Regions,1
+2021,560976,Transit,Houston,Mode to Work,acs1,Metro Regions,0.013092916256552223
+2021,6622330,Worked from Home,Houston,Mode to Work,acs1,Metro Regions,0.1545620705934897
+2021,365372,Biked & Walked,Los Angeles,Mode to Work,acs1,Metro Regions,0.022234834151573835
+2021,1723633,Carpooled,Los Angeles,Mode to Work,acs1,Metro Regions,0.10489225746138091
+2021,10798240,Drove Alone,Los Angeles,Mode to Work,acs1,Metro Regions,0.6571304739522751
+2021,16432414,Total Work Trips,Los Angeles,Mode to Work,acs1,Metro Regions,1
+2021,365546,Transit,Los Angeles,Mode to Work,acs1,Metro Regions,0.022245422979240908
+2021,3179623,Worked from Home,Los Angeles,Mode to Work,acs1,Metro Regions,0.1934970114555293
+2021,158952,Biked & Walked,Miami,Mode to Work,acs1,Metro Regions,0.01821168436425981
+2021,957090,Carpooled,Miami,Mode to Work,acs1,Metro Regions,0.10965713541313996
+2021,6033090,Drove Alone,Miami,Mode to Work,acs1,Metro Regions,0.6912321381371245
+2021,8728023,Total Work Trips,Miami,Mode to Work,acs1,Metro Regions,1
+2021,172830,Transit,Miami,Mode to Work,acs1,Metro Regions,0.01980173516957964
+2021,1406061,Worked from Home,Miami,Mode to Work,acs1,Metro Regions,0.16109730691589608
+2021,305459,Biked & Walked,Minneapolis,Mode to Work,acs1,Metro Regions,0.02255404375185745
+2021,1071105,Carpooled,Minneapolis,Mode to Work,acs1,Metro Regions,0.07908671550955537
+2021,8414798,Drove Alone,Minneapolis,Mode to Work,acs1,Metro Regions,0.621319791707046
+2021,13543425,Total Work Trips,Minneapolis,Mode to Work,acs1,Metro Regions,1
+2021,224462,Transit,Minneapolis,Mode to Work,acs1,Metro Regions,0.01657350337894587
+2021,3527601,Worked from Home,Minneapolis,Mode to Work,acs1,Metro Regions,0.2604659456525953
+2021,5302670,Biked & Walked,New York City,Mode to Work,acs1,Metro Regions,0.058015200862919045
+2021,7666960,Carpooled,New York City,Mode to Work,acs1,Metro Regions,0.08388231294950767
+2021,40226260,Drove Alone,New York City,Mode to Work,acs1,Metro Regions,0.44010556075788343
+2021,91401390,Total Work Trips,New York City,Mode to Work,acs1,Metro Regions,1
+2021,17375090,Transit,New York City,Mode to Work,acs1,Metro Regions,0.19009656198882752
+2021,20830410,Worked from Home,New York City,Mode to Work,acs1,Metro Regions,0.22790036344086234
+2021,6371685,Biked & Walked,Newark,Mode to Work,acs1,Metro Regions,0.057877234935183465
+2021,9230836,Carpooled,Newark,Mode to Work,acs1,Metro Regions,0.08384834840707744
+2021,48568882,Drove Alone,Newark,Mode to Work,acs1,Metro Regions,0.44117570062757394
+2021,110089658,Total Work Trips,Newark,Mode to Work,acs1,Metro Regions,1
+2021,20853650,Transit,Newark,Mode to Work,acs1,Metro Regions,0.18942424183023623
+2021,25064605,Worked from Home,Newark,Mode to Work,acs1,Metro Regions,0.22767447419992892
+2021,53916,Biked & Walked,Orlando,Mode to Work,acs1,Metro Regions,0.014104115557690165
+2021,375759,Carpooled,Orlando,Mode to Work,acs1,Metro Regions,0.09829639360935712
+2021,2634780,Drove Alone,Orlando,Mode to Work,acs1,Metro Regions,0.6892432967781529
+2021,3822714,Total Work Trips,Orlando,Mode to Work,acs1,Metro Regions,1
+2021,31233,Transit,Orlando,Mode to Work,acs1,Metro Regions,0.008170373195588266
+2021,727026,Worked from Home,Orlando,Mode to Work,acs1,Metro Regions,0.19018582085921154
+2021,778135,Biked & Walked,Philadelphia,Mode to Work,acs1,Metro Regions,0.03223723115478668
+2021,1869448,Carpooled,Philadelphia,Mode to Work,acs1,Metro Regions,0.07744906386148118
+2021,14639606,Drove Alone,Philadelphia,Mode to Work,acs1,Metro Regions,0.6065019085852739
+2021,24137774,Total Work Trips,Philadelphia,Mode to Work,acs1,Metro Regions,1
+2021,1137708,Transit,Philadelphia,Mode to Work,acs1,Metro Regions,0.047133923782698435
+2021,5712877,Worked from Home,Philadelphia,Mode to Work,acs1,Metro Regions,0.23667787261575984
+2021,79582,Biked & Walked,Phoenix,Mode to Work,acs1,Metro Regions,0.01705965627735843
+2021,487622,Carpooled,Phoenix,Mode to Work,acs1,Metro Regions,0.10452946285941636
+2021,2964254,Drove Alone,Phoenix,Mode to Work,acs1,Metro Regions,0.6354345751399165
+2021,4664924,Total Work Trips,Phoenix,Mode to Work,acs1,Metro Regions,1
+2021,42874,Transit,Phoenix,Mode to Work,acs1,Metro Regions,0.009190717790900773
+2021,1090592,Worked from Home,Phoenix,Mode to Work,acs1,Metro Regions,0.2337855879324079
+2021,132825,Biked & Walked,Portland,Mode to Work,acs1,Metro Regions,0.0357019597976983
+2021,287937,Carpooled,Portland,Mode to Work,acs1,Metro Regions,0.07739443025236105
+2021,2192526,Drove Alone,Portland,Mode to Work,acs1,Metro Regions,0.5893278758321722
+2021,3720384,Total Work Trips,Portland,Mode to Work,acs1,Metro Regions,1
+2021,84762,Transit,Portland,Mode to Work,acs1,Metro Regions,0.022783132063786963
+2021,1022334,Worked from Home,Portland,Mode to Work,acs1,Metro Regions,0.27479260205398154
+2021,108422,Biked & Walked,Sacramento,Mode to Work,acs1,Metro Regions,0.02413302343678008
+2021,417932,Carpooled,Sacramento,Mode to Work,acs1,Metro Regions,0.09302505719300855
+2021,2905932,Drove Alone,Sacramento,Mode to Work,acs1,Metro Regions,0.6468145308303592
+2021,4492682,Total Work Trips,Sacramento,Mode to Work,acs1,Metro Regions,1
+2021,37554,Transit,Sacramento,Mode to Work,acs1,Metro Regions,0.00835892680585895
+2021,1022842,Worked from Home,Sacramento,Mode to Work,acs1,Metro Regions,0.2276684617339932
+2021,134890,Biked & Walked,San Antonio,Mode to Work,acs1,Metro Regions,0.015907490554153574
+2021,1065722,Carpooled,San Antonio,Mode to Work,acs1,Metro Regions,0.12567990694902256
+2021,5841122,Drove Alone,San Antonio,Mode to Work,acs1,Metro Regions,0.68883974379612
+2021,8479653,Total Work Trips,San Antonio,Mode to Work,acs1,Metro Regions,1
+2021,97321,Transit,San Antonio,Mode to Work,acs1,Metro Regions,0.011477002655651122
+2021,1340598,Worked from Home,San Antonio,Mode to Work,acs1,Metro Regions,0.15809585604505277
+2021,56636,Biked & Walked,San Diego,Mode to Work,acs1,Metro Regions,0.03559612638522958
+2021,143170,Carpooled,San Diego,Mode to Work,acs1,Metro Regions,0.08998335713280103
+2021,1011792,Drove Alone,San Diego,Mode to Work,acs1,Metro Regions,0.6359184248104423
+2021,1591072,Total Work Trips,San Diego,Mode to Work,acs1,Metro Regions,1
+2021,27527,Transit,San Diego,Mode to Work,acs1,Metro Regions,0.017300914100681804
+2021,351947,Worked from Home,San Diego,Mode to Work,acs1,Metro Regions,0.22120117757084531
+2021,220364,Biked & Walked,Seattle,Mode to Work,acs1,Metro Regions,0.035265180187460894
+2021,480220,Carpooled,Seattle,Mode to Work,acs1,Metro Regions,0.0768503241437915
+2021,3458340,Drove Alone,Seattle,Mode to Work,acs1,Metro Regions,0.5534433176449125
+2021,6248770,Total Work Trips,Seattle,Mode to Work,acs1,Metro Regions,1
+2021,190994,Transit,Seattle,Mode to Work,acs1,Metro Regions,0.030565055202863924
+2021,1898852,Worked from Home,Seattle,Mode to Work,acs1,Metro Regions,0.30387612282097115
+2021,162336,Biked & Walked,St Louis,Mode to Work,acs1,Metro Regions,0.01487396491732166
+2021,740592,Carpooled,St Louis,Mode to Work,acs1,Metro Regions,0.06785641771417975
+2021,7836608,Drove Alone,St Louis,Mode to Work,acs1,Metro Regions,0.7180257765548138
+2021,10914104,Total Work Trips,St Louis,Mode to Work,acs1,Metro Regions,1
+2021,134480,Transit,St Louis,Mode to Work,acs1,Metro Regions,0.012321671114733743
+2021,2040088,Worked from Home,St Louis,Mode to Work,acs1,Metro Regions,0.186922169698951
+2021,108910,Biked & Walked,Tampa,Mode to Work,acs1,Metro Regions,0.015338043234100564
+2021,634801,Carpooled,Tampa,Mode to Work,acs1,Metro Regions,0.08940046995730669
+2021,4867259,Drove Alone,Tampa,Mode to Work,acs1,Metro Regions,0.6854671653068137
+2021,7100645,Total Work Trips,Tampa,Mode to Work,acs1,Metro Regions,1
+2021,44184,Transit,Tampa,Mode to Work,acs1,Metro Regions,0.00622253330507299
+2021,1445491,Worked from Home,Tampa,Mode to Work,acs1,Metro Regions,0.20357178819670607
+2021,1215648,Biked & Walked,Washington DC,Mode to Work,acs1,Metro Regions,0.026208734192268615
+2021,4112122,Carpooled,Washington DC,Mode to Work,acs1,Metro Regions,0.08865519662285465
+2021,23825704,Drove Alone,Washington DC,Mode to Work,acs1,Metro Regions,0.5136696996825324
+2021,46383316,Total Work Trips,Washington DC,Mode to Work,acs1,Metro Regions,1
+2021,1896230,Transit,Washington DC,Mode to Work,acs1,Metro Regions,0.040881725661873765
+2021,15333612,Worked from Home,Washington DC,Mode to Work,acs1,Metro Regions,0.3305846438404706
+2018,202337,Biked & Walked,King,Mode to Work,SoundCast,PSRC Region,0.13505006217307408
+2018,209422,Carpooled,King,Mode to Work,SoundCast,PSRC Region,0.139778953530049
+2018,919185,Drove Alone,King,Mode to Work,SoundCast,PSRC Region,0.61351108002272
+2018,109936,Transit,King,Mode to Work,SoundCast,PSRC Region,0.07337690899370393
+2018,12316,Biked & Walked,Kitsap,Mode to Work,SoundCast,PSRC Region,0.08597076603051837
+2018,19999,Carpooled,Kitsap,Mode to Work,SoundCast,PSRC Region,0.1396012788116545
+2018,90043,Drove Alone,Kitsap,Mode to Work,SoundCast,PSRC Region,0.6285373242681037
+2018,8274,Transit,Kitsap,Mode to Work,SoundCast,PSRC Region,0.05775593684122353
+2018,27696,Biked & Walked,Pierce,Mode to Work,SoundCast,PSRC Region,0.0630266730081719
+2018,66904,Carpooled,Pierce,Mode to Work,SoundCast,PSRC Region,0.1522507412961703
+2018,299543,Drove Alone,Pierce,Mode to Work,SoundCast,PSRC Region,0.6816579546825113
+2018,18384,Transit,Pierce,Mode to Work,SoundCast,PSRC Region,0.04183572922379521
+2018,27214,Biked & Walked,Snohomish,Mode to Work,SoundCast,PSRC Region,0.05769552856473521
+2018,72685,Carpooled,Snohomish,Mode to Work,SoundCast,PSRC Region,0.1540971372722782
+2018,329535,Drove Alone,Snohomish,Mode to Work,SoundCast,PSRC Region,0.6986365843161615
+2018,15815,Transit,Snohomish,Mode to Work,SoundCast,PSRC Region,0.03352887426513145
+2018,57357,Worked from Home,King,Mode to Work,SoundCast,PSRC Region,0.03828299528045296
+2018,12626,Worked from Home,Kitsap,Mode to Work,SoundCast,PSRC Region,0.08813469404849991
+2018,26906,Worked from Home,Pierce,Mode to Work,SoundCast,PSRC Region,0.06122890178935128
+2018,26434,Worked from Home,Snohomish,Mode to Work,SoundCast,PSRC Region,0.056041875581693636
+2018,1498237,Total Work Trips,King,Mode to Work,SoundCast,PSRC Region,1
+2018,143258,Total Work Trips,Kitsap,Mode to Work,SoundCast,PSRC Region,1
+2018,439433,Total Work Trips,Pierce,Mode to Work,SoundCast,PSRC Region,1
+2018,471683,Total Work Trips,Snohomish,Mode to Work,SoundCast,PSRC Region,1
+2018,269563,Biked & Walked,Region,Mode to Work,SoundCast,PSRC Region,0.10560285135494597
+2018,369010,Carpooled,Region,Mode to Work,SoundCast,PSRC Region,0.144561783992939
+2018,1638306,Drove Alone,Region,Mode to Work,SoundCast,PSRC Region,0.6418157721642663
+2018,2552611,Total Work Trips,Region,Mode to Work,SoundCast,PSRC Region,1
+2018,152409,Transit,Region,Mode to Work,SoundCast,PSRC Region,0.05970709990672296
+2018,123323,Worked from Home,Region,Mode to Work,SoundCast,PSRC Region,0.04831249258112576
+2030,314229,Biked & Walked,King,Mode to Work,SoundCast,PSRC Region,0.1752697270406413
+2030,252464,Carpooled,King,Mode to Work,SoundCast,PSRC Region,0.1408186270763948
+2030,965123,Drove Alone,King,Mode to Work,SoundCast,PSRC Region,0.5383234671868123
+2030,196044,Transit,King,Mode to Work,SoundCast,PSRC Region,0.10934884548515728
+2030,18695,Biked & Walked,Kitsap,Mode to Work,SoundCast,PSRC Region,0.10861671285564058
+2030,24342,Carpooled,Kitsap,Mode to Work,SoundCast,PSRC Region,0.14142540916458962
+2030,100685,Drove Alone,Kitsap,Mode to Work,SoundCast,PSRC Region,0.5849731871553983
+2030,15094,Transit,Kitsap,Mode to Work,SoundCast,PSRC Region,0.08769514115234227
+2030,51877,Biked & Walked,Pierce,Mode to Work,SoundCast,PSRC Region,0.09768428901760226
+2030,83917,Carpooled,Pierce,Mode to Work,SoundCast,PSRC Region,0.15801554603176995
+2030,340383,Drove Alone,Pierce,Mode to Work,SoundCast,PSRC Region,0.6409405198580973
+2030,22287,Transit,Pierce,Mode to Work,SoundCast,PSRC Region,0.041966377187102215
+2030,52126,Biked & Walked,Snohomish,Mode to Work,SoundCast,PSRC Region,0.08688694828888086
+2030,94494,Carpooled,Snohomish,Mode to Work,SoundCast,PSRC Region,0.15750863852222513
+2030,370735,Drove Alone,Snohomish,Mode to Work,SoundCast,PSRC Region,0.6179647925004459
+2030,52076,Transit,Snohomish,Mode to Work,SoundCast,PSRC Region,0.08680360509326937
+2030,64971,Worked from Home,King,Mode to Work,SoundCast,PSRC Region,0.036239333210994235
+2030,13303,Worked from Home,Kitsap,Mode to Work,SoundCast,PSRC Region,0.07728954967202924
+2030,32604,Worked from Home,Pierce,Mode to Work,SoundCast,PSRC Region,0.06139326790542831
+2030,30498,Worked from Home,Snohomish,Mode to Work,SoundCast,PSRC Region,0.050836015595178766
+2030,1792831,Total Work Trips,King,Mode to Work,SoundCast,PSRC Region,1
+2030,172119,Total Work Trips,Kitsap,Mode to Work,SoundCast,PSRC Region,1
+2030,531068,Total Work Trips,Pierce,Mode to Work,SoundCast,PSRC Region,1
+2030,599929,Total Work Trips,Snohomish,Mode to Work,SoundCast,PSRC Region,1
+2030,436927,Biked & Walked,Region,Mode to Work,SoundCast,PSRC Region,0.1411287079526878
+2030,455217,Carpooled,Region,Mode to Work,SoundCast,PSRC Region,0.1470364318252218
+2030,1776926,Drove Alone,Region,Mode to Work,SoundCast,PSRC Region,0.5739523318713143
+2030,3095947,Total Work Trips,Region,Mode to Work,SoundCast,PSRC Region,1
+2030,285501,Transit,Region,Mode to Work,SoundCast,PSRC Region,0.0922176639328774
+2030,141376,Worked from Home,Region,Mode to Work,SoundCast,PSRC Region,0.045664864417898625
+2040,404619,Biked & Walked,King,Mode to Work,SoundCast,PSRC Region,0.1985176150352124
+2040,272104,Carpooled,King,Mode to Work,SoundCast,PSRC Region,0.13350197870476038
+2040,1006652,Drove Alone,King,Mode to Work,SoundCast,PSRC Region,0.493892165742159
+2040,290453,Transit,King,Mode to Work,SoundCast,PSRC Region,0.14250452114167292
+2040,21304,Biked & Walked,Kitsap,Mode to Work,SoundCast,PSRC Region,0.11244233793926087
+2040,26251,Carpooled,Kitsap,Mode to Work,SoundCast,PSRC Region,0.13855256352063167
+2040,112353,Drove Alone,Kitsap,Mode to Work,SoundCast,PSRC Region,0.5929982160387616
+2040,15167,Transit,Kitsap,Mode to Work,SoundCast,PSRC Region,0.08005130208058438
+2040,70702,Biked & Walked,Pierce,Mode to Work,SoundCast,PSRC Region,0.11768916291581218
+2040,91405,Carpooled,Pierce,Mode to Work,SoundCast,PSRC Region,0.15215097078328496
+2040,367532,Drove Alone,Pierce,Mode to Work,SoundCast,PSRC Region,0.6117865608437425
+2040,37250,Transit,Pierce,Mode to Work,SoundCast,PSRC Region,0.06200561962340533
+2040,69806,Biked & Walked,Snohomish,Mode to Work,SoundCast,PSRC Region,0.10069034753935674
+2040,106656,Carpooled,Snohomish,Mode to Work,SoundCast,PSRC Region,0.15384393472133673
+2040,413598,Drove Alone,Snohomish,Mode to Work,SoundCast,PSRC Region,0.5965866309713043
+2040,71169,Transit,Snohomish,Mode to Work,SoundCast,PSRC Region,0.10265638117108099
+2040,64374,Worked from Home,King,Mode to Work,SoundCast,PSRC Region,0.03158371937619529
+2040,14391,Worked from Home,Kitsap,Mode to Work,SoundCast,PSRC Region,0.0759555804207615
+2040,33863,Worked from Home,Pierce,Mode to Work,SoundCast,PSRC Region,0.056367685833755024
+2040,32045,Worked from Home,Snohomish,Mode to Work,SoundCast,PSRC Region,0.04622270559692127
+2040,2038202,Total Work Trips,King,Mode to Work,SoundCast,PSRC Region,1
+2040,189466,Total Work Trips,Kitsap,Mode to Work,SoundCast,PSRC Region,1
+2040,600752,Total Work Trips,Pierce,Mode to Work,SoundCast,PSRC Region,1
+2040,693274,Total Work Trips,Snohomish,Mode to Work,SoundCast,PSRC Region,1
+2040,566431,Biked & Walked,Region,Mode to Work,SoundCast,PSRC Region,0.16084049323990102
+2040,496416,Carpooled,Region,Mode to Work,SoundCast,PSRC Region,0.14095943599869834
+2040,1900135,Drove Alone,Region,Mode to Work,SoundCast,PSRC Region,0.5395514204243753
+2040,3521694,Total Work Trips,Region,Mode to Work,SoundCast,PSRC Region,1
+2040,414039,Transit,Region,Mode to Work,SoundCast,PSRC Region,0.11756813624352372
+2040,144673,Worked from Home,Region,Mode to Work,SoundCast,PSRC Region,0.041080514093501594
+2050,496758,Biked & Walked,King,Mode to Work,SoundCast,PSRC Region,0.2201096564882452
+2050,291231,Carpooled,King,Mode to Work,SoundCast,PSRC Region,0.1290422204951468
+2050,1076861,Drove Alone,King,Mode to Work,SoundCast,PSRC Region,0.47714884268715996
+2050,325090,Transit,King,Mode to Work,SoundCast,PSRC Region,0.14404488348001165
+2050,25152,Biked & Walked,Kitsap,Mode to Work,SoundCast,PSRC Region,0.12111289809990658
+2050,28650,Carpooled,Kitsap,Mode to Work,SoundCast,PSRC Region,0.1379566050637056
+2050,121484,Drove Alone,Kitsap,Mode to Work,SoundCast,PSRC Region,0.5849745273842657
+2050,17078,Transit,Kitsap,Mode to Work,SoundCast,PSRC Region,0.08223465624006857
+2050,89355,Biked & Walked,Pierce,Mode to Work,SoundCast,PSRC Region,0.13374855182447665
+2050,100345,Carpooled,Pierce,Mode to Work,SoundCast,PSRC Region,0.15019862831209344
+2050,398416,Drove Alone,Pierce,Mode to Work,SoundCast,PSRC Region,0.5963579321101302
+2050,43632,Transit,Pierce,Mode to Work,SoundCast,PSRC Region,0.06530934825365749
+2050,85542,Biked & Walked,Snohomish,Mode to Work,SoundCast,PSRC Region,0.1104309209677003
+2050,117209,Carpooled,Snohomish,Mode to Work,SoundCast,PSRC Region,0.1513116108543544
+2050,452536,Drove Alone,Snohomish,Mode to Work,SoundCast,PSRC Region,0.5842038677028737
+2050,83959,Transit,Snohomish,Mode to Work,SoundCast,PSRC Region,0.10838733830781544
+2050,66926,Worked from Home,King,Mode to Work,SoundCast,PSRC Region,0.029654396849436344
+2050,15310,Worked from Home,Kitsap,Mode to Work,SoundCast,PSRC Region,0.07372131321205351
+2050,36334,Worked from Home,Pierce,Mode to Work,SoundCast,PSRC Region,0.05438553949964226
+2050,35374,Worked from Home,Snohomish,Mode to Work,SoundCast,PSRC Region,0.0456662621672562
+2050,2256866,Total Work Trips,King,Mode to Work,SoundCast,PSRC Region,1
+2050,207674,Total Work Trips,Kitsap,Mode to Work,SoundCast,PSRC Region,1
+2050,668082,Total Work Trips,Pierce,Mode to Work,SoundCast,PSRC Region,1
+2050,774620,Total Work Trips,Snohomish,Mode to Work,SoundCast,PSRC Region,1
+2050,696807,Biked & Walked,Region,Mode to Work,SoundCast,PSRC Region,0.17833730288525768
+2050,537435,Carpooled,Region,Mode to Work,SoundCast,PSRC Region,0.13754842930128208
+2050,2049297,Drove Alone,Region,Mode to Work,SoundCast,PSRC Region,0.5244868375186384
+2050,3907242,Total Work Trips,Region,Mode to Work,SoundCast,PSRC Region,1
+2050,469759,Transit,Region,Mode to Work,SoundCast,PSRC Region,0.12022777191686616
+2050,153944,Worked from Home,Region,Mode to Work,SoundCast,PSRC Region,0.0393996583779556
+2010,46870,0 vehicles available,King County,Vehicle Availability,acs1,PSRC Region,0.0484782664908334
+2011,40930,0 vehicles available,King County,Vehicle Availability,acs1,PSRC Region,0.04118190974189115
+2012,49694,0 vehicles available,King County,Vehicle Availability,acs1,PSRC Region,0.04828663765879671
+2013,52665,0 vehicles available,King County,Vehicle Availability,acs1,PSRC Region,0.050746918713389995
+2014,59792,0 vehicles available,King County,Vehicle Availability,acs1,PSRC Region,0.05535968238919175
+2015,52370,0 vehicles available,King County,Vehicle Availability,acs1,PSRC Region,0.0473887332992494
+2016,58687,0 vehicles available,King County,Vehicle Availability,acs1,PSRC Region,0.05138462777731081
+2017,59280,0 vehicles available,King County,Vehicle Availability,acs1,PSRC Region,0.050640177958196225
+2018,75071,0 vehicles available,King County,Vehicle Availability,acs1,PSRC Region,0.06235536853716437
+2019,81022,0 vehicles available,King County,Vehicle Availability,acs1,PSRC Region,0.06554976465124858
+2021,70312,0 vehicles available,King County,Vehicle Availability,acs1,PSRC Region,0.05985686180532559
+2020,73432,0 vehicles available,King County,Vehicle Availability,acs5,PSRC Region,0.061507276724950266
+2010,245874,1 vehicle available,King County,Vehicle Availability,acs1,PSRC Region,0.2543107594445737
+2011,249258,1 vehicle available,King County,Vehicle Availability,acs1,PSRC Region,0.2507920952466236
+2012,261839,1 vehicle available,King County,Vehicle Availability,acs1,PSRC Region,0.2544235706109726
+2013,266953,1 vehicle available,King County,Vehicle Availability,acs1,PSRC Region,0.25723046029233076
+2014,261167,1 vehicle available,King County,Vehicle Availability,acs1,PSRC Region,0.24180696699454848
+2015,272992,1 vehicle available,King County,Vehicle Availability,acs1,PSRC Region,0.24702587513516694
+2016,277933,1 vehicle available,King County,Vehicle Availability,acs1,PSRC Region,0.24335003922557508
+2017,300305,1 vehicle available,King County,Vehicle Availability,acs1,PSRC Region,0.25653675171619633
+2018,307298,1 vehicle available,King County,Vehicle Availability,acs1,PSRC Region,0.2552474329732325
+2019,304019,1 vehicle available,King County,Vehicle Availability,acs1,PSRC Region,0.24596250277095041
+2021,327659,1 vehicle available,King County,Vehicle Availability,acs1,PSRC Region,0.2789373006353279
+2020,304690,1 vehicle available,King County,Vehicle Availability,acs5,PSRC Region,0.2552109726730185
+2010,400685,2 vehicles available,King County,Vehicle Availability,acs1,PSRC Region,0.4144338427326559
+2011,412517,2 vehicles available,King County,Vehicle Availability,acs1,PSRC Region,0.4150558969214686
+2012,409486,2 vehicles available,King County,Vehicle Availability,acs1,PSRC Region,0.39788912360345374
+2013,432358,2 vehicles available,King County,Vehicle Availability,acs1,PSRC Region,0.41661134113897036
+2014,445718,2 vehicles available,King County,Vehicle Availability,acs1,PSRC Region,0.4126773968949988
+2015,451593,2 vehicles available,King County,Vehicle Availability,acs1,PSRC Region,0.4086389199314098
+2016,469243,2 vehicles available,King County,Vehicle Availability,acs1,PSRC Region,0.4108555027878177
+2017,462689,2 vehicles available,King County,Vehicle Availability,acs1,PSRC Region,0.3952539355482431
+2018,467708,2 vehicles available,King County,Vehicle Availability,acs1,PSRC Region,0.388486961779916
+2019,493423,2 vehicles available,King County,Vehicle Availability,acs1,PSRC Region,0.3991972738702208
+2021,445972,2 vehicles available,King County,Vehicle Availability,acs1,PSRC Region,0.3796575886483767
+2020,468019,2 vehicles available,King County,Vehicle Availability,acs5,PSRC Region,0.3920167521725474
+2010,273396,3 or more vehicles available,King County,Vehicle Availability,acs1,PSRC Region,0.282777131331937
+2011,291178,3 or more vehicles available,King County,Vehicle Availability,acs1,PSRC Region,0.2929700980900166
+2012,308127,3 or more vehicles available,King County,Vehicle Availability,acs1,PSRC Region,0.29940066812677696
+2013,285821,3 or more vehicles available,King County,Vehicle Availability,acs1,PSRC Region,0.2754112798553089
+2014,313387,3 or more vehicles available,King County,Vehicle Availability,acs1,PSRC Region,0.29015595372126096
+2015,328160,3 or more vehicles available,King County,Vehicle Availability,acs1,PSRC Region,0.2969464716341738
+2016,336249,3 or more vehicles available,King County,Vehicle Availability,acs1,PSRC Region,0.29440983020929645
+2017,348338,3 or more vehicles available,King County,Vehicle Availability,acs1,PSRC Region,0.2975691347773643
+2018,353845,3 or more vehicles available,King County,Vehicle Availability,acs1,PSRC Region,0.2939102367096872
+2019,357574,3 or more vehicles available,King County,Vehicle Availability,acs1,PSRC Region,0.2892904587075802
+2021,330726,3 or more vehicles available,King County,Vehicle Availability,acs1,PSRC Region,0.2815482489109698
+2020,347734,3 or more vehicles available,King County,Vehicle Availability,acs5,PSRC Region,0.29126499842948383
+2010,966825,Total Households,King County,Vehicle Availability,acs1,PSRC Region,1
+2011,993883,Total Households,King County,Vehicle Availability,acs1,PSRC Region,1
+2012,1029146,Total Households,King County,Vehicle Availability,acs1,PSRC Region,1
+2013,1037797,Total Households,King County,Vehicle Availability,acs1,PSRC Region,1
+2014,1080064,Total Households,King County,Vehicle Availability,acs1,PSRC Region,1
+2015,1105115,Total Households,King County,Vehicle Availability,acs1,PSRC Region,1
+2016,1142112,Total Households,King County,Vehicle Availability,acs1,PSRC Region,1
+2017,1170612,Total Households,King County,Vehicle Availability,acs1,PSRC Region,1
+2018,1203922,Total Households,King County,Vehicle Availability,acs1,PSRC Region,1
+2019,1236038,Total Households,King County,Vehicle Availability,acs1,PSRC Region,1
+2021,1174669,Total Households,King County,Vehicle Availability,acs1,PSRC Region,1
+2020,1193875,Total Households,King County,Vehicle Availability,acs5,PSRC Region,1
+2010,2635,0 vehicles available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.02401436304977854
+2011,1935,0 vehicles available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.01778639777187451
+2012,1977,0 vehicles available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.018168451040757247
+2013,2397,0 vehicles available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.02042712026179438
+2014,3225,0 vehicles available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.02825427975679417
+2015,2374,0 vehicles available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.020544329540045866
+2016,2805,0 vehicles available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.023821656050955414
+2017,1761,0 vehicles available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.014398901071945447
+2018,2272,0 vehicles available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.017658122580946015
+2019,1208,0 vehicles available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.009479491183602364
+2021,1230,0 vehicles available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.010166045408336157
+2020,1903,0 vehicles available,Kitsap County,Vehicle Availability,acs5,PSRC Region,0.015572958862183815
+2010,20868,1 vehicle available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.19018281902192735
+2011,21095,1 vehicle available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.1939039074923477
+2012,18110,1 vehicle available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.16642926067178238
+2013,18304,1 vehicle available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.1559858194709572
+2014,21307,1 vehicle available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.18667098876837623
+2015,20404,1 vehicle available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.1765739258361819
+2016,18978,1 vehicle available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.16117197452229298
+2017,22642,1 vehicle available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.18513340038102713
+2018,18328,1 vehicle available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.1424463339188286
+2019,20209,1 vehicle available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.15858529580250014
+2021,19823,1 vehicle available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.1638386326255672
+2020,18714,1 vehicle available,Kitsap County,Vehicle Availability,acs5,PSRC Region,0.1531436427466673
+2010,44583,2 vehicles available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.4063120864699342
+2011,43149,2 vehicles available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.3966228824075521
+2012,48558,2 vehicles available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.4462436245002987
+2013,51722,2 vehicles available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.44077242977911096
+2014,43895,2 vehicles available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.3845648402866605
+2015,47772,2 vehicles available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.41341352602656745
+2016,48271,2 vehicles available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.4099447983014862
+2017,52785,2 vehicles available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.4315990874972404
+2018,50444,2 vehicles available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.3920538448385743
+2019,50092,2 vehicles available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.39308499368295496
+2021,45940,2 vehicles available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.3796976634625716
+2020,50697,2 vehicles available,Kitsap County,Vehicle Availability,acs5,PSRC Region,0.41487246213144136
+2010,41640,3 or more vehicles available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.3794907314583599
+2011,42612,3 or more vehicles available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.39168681232822566
+2012,40170,3 or more vehicles available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.36915866378716167
+2013,44921,3 or more vehicles available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.3828146304881374
+2014,45715,3 or more vehicles available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.40050989118816915
+2015,45005,3 or more vehicles available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.38946821859720476
+2016,47696,3 or more vehicles available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.4050615711252654
+2017,45113,3 or more vehicles available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.368868611049787
+2018,57622,3 or more vehicles available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.44784169866165113
+2019,55924,3 or more vehicles available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.43885021933094254
+2021,53998,3 or more vehicles available,Kitsap County,Vehicle Availability,acs1,PSRC Region,0.44629765850352504
+2020,50885,3 or more vehicles available,Kitsap County,Vehicle Availability,acs5,PSRC Region,0.4164109362597075
+2010,109726,Total Households,Kitsap County,Vehicle Availability,acs1,PSRC Region,1
+2011,108791,Total Households,Kitsap County,Vehicle Availability,acs1,PSRC Region,1
+2012,108815,Total Households,Kitsap County,Vehicle Availability,acs1,PSRC Region,1
+2013,117344,Total Households,Kitsap County,Vehicle Availability,acs1,PSRC Region,1
+2014,114142,Total Households,Kitsap County,Vehicle Availability,acs1,PSRC Region,1
+2015,115555,Total Households,Kitsap County,Vehicle Availability,acs1,PSRC Region,1
+2016,117750,Total Households,Kitsap County,Vehicle Availability,acs1,PSRC Region,1
+2017,122301,Total Households,Kitsap County,Vehicle Availability,acs1,PSRC Region,1
+2018,128666,Total Households,Kitsap County,Vehicle Availability,acs1,PSRC Region,1
+2019,127433,Total Households,Kitsap County,Vehicle Availability,acs1,PSRC Region,1
+2021,120991,Total Households,Kitsap County,Vehicle Availability,acs1,PSRC Region,1
+2020,122199,Total Households,Kitsap County,Vehicle Availability,acs5,PSRC Region,1
+2010,5297,0 vehicles available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.015220870724607698
+2011,5559,0 vehicles available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.01600642675742446
+2012,6837,0 vehicles available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.018700561263005875
+2013,9296,0 vehicles available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.02551729059955751
+2014,8792,0 vehicles available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.023475945966874138
+2015,8131,0 vehicles available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.021442793285776446
+2016,8972,0 vehicles available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.022979614940335475
+2017,8014,0 vehicles available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.01966707813577499
+2018,6396,0 vehicles available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.015022759621753408
+2019,7645,0 vehicles available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.01764749334035078
+2021,7095,0 vehicles available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.016075458360144644
+2020,9122,0 vehicles available,Pierce County,Vehicle Availability,acs5,PSRC Region,0.021680487323736116
+2010,66289,1 vehicle available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.19048070595875394
+2011,69050,1 vehicle available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.19882060939020668
+2012,64982,1 vehicle available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.17773875559348365
+2013,67294,1 vehicle available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.18472036936387942
+2014,69552,1 vehicle available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.18571417127934828
+2015,69046,1 vehicle available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.18208573425282507
+2016,72337,1 vehicle available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.18527378577118225
+2017,68175,1 vehicle available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.16730759320020713
+2018,65885,1 vehicle available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.1547489865039436
+2019,74228,1 vehicle available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.17134573390026916
+2021,71708,1 vehicle available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.16247201805345346
+2020,67402,1 vehicle available,Pierce County,Vehicle Availability,acs5,PSRC Region,0.1601960322949421
+2010,147516,2 vehicles available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.42388558916579744
+2011,145278,2 vehicles available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.41830934816785587
+2012,164144,2 vehicles available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.4489666415028282
+2013,148514,2 vehicles available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.40766726507128703
+2014,151818,2 vehicles available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.40537661110087553
+2015,154545,2 vehicles available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.4075607537019212
+2016,153029,2 vehicles available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.39194688973524267
+2017,159764,2 vehicles available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.392075252219111
+2018,172045,2 vehicles available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.40409485289627345
+2019,168515,2 vehicles available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.38899507393711075
+2021,173490,2 vehicles available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.3930840410009154
+2020,169341,2 vehicles available,Pierce County,Vehicle Availability,acs5,PSRC Region,0.40247702300907673
+2010,128907,3 or more vehicles available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.3704128341508409
+2011,127411,3 or more vehicles available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.366863615684513
+2012,129641,3 or more vehicles available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.35459404164068226
+2013,139198,3 or more vehicles available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.38209507496527606
+2014,144349,3 or more vehicles available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.38543327165290203
+2015,147473,3 or more vehicles available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.38891071875947736
+2016,156095,3 or more vehicles available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.3997997095532396
+2017,171530,3 or more vehicles available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.4209500764449069
+2018,181428,3 or more vehicles available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.4261334009780296
+2019,182818,3 or more vehicles available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.4220116988222693
+2021,189063,3 or more vehicles available,Pierce County,Vehicle Availability,acs1,PSRC Region,0.42836848258548654
+2020,174882,3 or more vehicles available,Pierce County,Vehicle Availability,acs5,PSRC Region,0.4156464573722451
+2010,348009,Total Households,Pierce County,Vehicle Availability,acs1,PSRC Region,1
+2011,347298,Total Households,Pierce County,Vehicle Availability,acs1,PSRC Region,1
+2012,365604,Total Households,Pierce County,Vehicle Availability,acs1,PSRC Region,1
+2013,364302,Total Households,Pierce County,Vehicle Availability,acs1,PSRC Region,1
+2014,374511,Total Households,Pierce County,Vehicle Availability,acs1,PSRC Region,1
+2015,379195,Total Households,Pierce County,Vehicle Availability,acs1,PSRC Region,1
+2016,390433,Total Households,Pierce County,Vehicle Availability,acs1,PSRC Region,1
+2017,407483,Total Households,Pierce County,Vehicle Availability,acs1,PSRC Region,1
+2018,425754,Total Households,Pierce County,Vehicle Availability,acs1,PSRC Region,1
+2019,433206,Total Households,Pierce County,Vehicle Availability,acs1,PSRC Region,1
+2021,441356,Total Households,Pierce County,Vehicle Availability,acs1,PSRC Region,1
+2020,420747,Total Households,Pierce County,Vehicle Availability,acs5,PSRC Region,1
+2010,62353,0 vehicles available,Region,Vehicle Availability,acs1,PSRC Region,0.03543363914095034
+2011,55519,0 vehicles available,Region,Vehicle Availability,acs1,PSRC Region,0.031005011599165886
+2012,64036,0 vehicles available,Region,Vehicle Availability,acs1,PSRC Region,0.03450953679208322
+2013,71571,0 vehicles available,Region,Vehicle Availability,acs1,PSRC Region,0.03801609433511274
+2014,79620,0 vehicles available,Region,Vehicle Availability,acs1,PSRC Region,0.0410201984033962
+2015,70312,0 vehicles available,Region,Vehicle Availability,acs1,PSRC Region,0.035447323830904286
+2016,76950,0 vehicles available,Region,Vehicle Availability,acs1,PSRC Region,0.03765229730390957
+2017,74852,0 vehicles available,Region,Vehicle Availability,acs1,PSRC Region,0.03555154480039897
+2018,91086,0 vehicles available,Region,Vehicle Availability,acs1,PSRC Region,0.041917608884033286
+2019,97030,0 vehicles available,Region,Vehicle Availability,acs1,PSRC Region,0.04387109142395444
+2021,86252,0 vehicles available,Region,Vehicle Availability,acs1,PSRC Region,0.040186498301955975
+2020,91473,0 vehicles available,Region,Vehicle Availability,acs5,PSRC Region,0.042653365457922275
+2010,392981,1 vehicle available,Region,Vehicle Availability,acs1,PSRC Region,0.22332120256041899
+2011,397664,1 vehicle available,Region,Vehicle Availability,acs1,PSRC Region,0.2220785124474631
+2012,405608,1 vehicle available,Region,Vehicle Availability,acs1,PSRC Region,0.21858554874075975
+2013,415211,1 vehicle available,Region,Vehicle Availability,acs1,PSRC Region,0.22054603882824741
+2014,407039,1 vehicle available,Region,Vehicle Availability,acs1,PSRC Region,0.20970636194323014
+2015,425862,1 vehicle available,Region,Vehicle Availability,acs1,PSRC Region,0.2146954747593094
+2016,426986,1 vehicle available,Region,Vehicle Availability,acs1,PSRC Region,0.20892792484219797
+2017,453736,1 vehicle available,Region,Vehicle Availability,acs1,PSRC Region,0.21550547388919233
+2018,454557,1 vehicle available,Region,Vehicle Availability,acs1,PSRC Region,0.20918629143336537
+2019,458749,1 vehicle available,Region,Vehicle Availability,acs1,PSRC Region,0.2074185233396648
+2021,487756,1 vehicle available,Region,Vehicle Availability,acs1,PSRC Region,0.22725508586199555
+2020,450421,1 vehicle available,Region,Vehicle Availability,acs5,PSRC Region,0.21002887762424768
+2010,729100,2 vehicles available,Region,Vehicle Availability,acs1,PSRC Region,0.4143291629539379
+2011,741045,2 vehicles available,Region,Vehicle Availability,acs1,PSRC Region,0.4138422669807433
+2012,767731,2 vehicles available,Region,Vehicle Availability,acs1,PSRC Region,0.41373666673313203
+2013,783763,2 vehicles available,Region,Vehicle Availability,acs1,PSRC Region,0.4163083950814012
+2014,793647,2 vehicles available,Region,Vehicle Availability,acs1,PSRC Region,0.40888667925471217
+2015,805886,2 vehicles available,Region,Vehicle Availability,acs1,PSRC Region,0.4062820288541377
+2016,826303,2 vehicles available,Region,Vehicle Availability,acs1,PSRC Region,0.40431716983901744
+2017,843491,2 vehicles available,Region,Vehicle Availability,acs1,PSRC Region,0.40062266973806077
+2018,853444,2 vehicles available,Region,Vehicle Availability,acs1,PSRC Region,0.3927533517381914
+2019,885842,2 vehicles available,Region,Vehicle Availability,acs1,PSRC Region,0.40052412005749405
+2021,829540,2 vehicles available,Region,Vehicle Availability,acs1,PSRC Region,0.3864989542434327
+2020,852916,2 vehicles available,Region,Vehicle Availability,acs5,PSRC Region,0.3977101205045121
+2010,575278,3 or more vehicles available,Region,Vehicle Availability,acs1,PSRC Region,0.32691599534469273
+2011,596418,3 or more vehicles available,Region,Vehicle Availability,acs1,PSRC Region,0.33307420897262774
+2012,618228,3 or more vehicles available,Region,Vehicle Availability,acs1,PSRC Region,0.333168247734025
+2013,612105,3 or more vehicles available,Region,Vehicle Availability,acs1,PSRC Region,0.32512947175523865
+2014,660689,3 or more vehicles available,Region,Vehicle Availability,acs1,PSRC Region,0.3403867603986615
+2015,681503,3 or more vehicles available,Region,Vehicle Availability,acs1,PSRC Region,0.3435751725556486
+2016,713461,3 or more vehicles available,Region,Vehicle Availability,acs1,PSRC Region,0.34910260801487497
+2017,733371,3 or more vehicles available,Region,Vehicle Availability,acs1,PSRC Region,0.348320311572348
+2018,773890,3 or more vehicles available,Region,Vehicle Availability,acs1,PSRC Region,0.3561427479444099
+2019,770086,3 or more vehicles available,Region,Vehicle Availability,acs1,PSRC Region,0.34818626517888673
+2021,742745,3 or more vehicles available,Region,Vehicle Availability,acs1,PSRC Region,0.34605946159261575
+2020,749757,3 or more vehicles available,Region,Vehicle Availability,acs5,PSRC Region,0.34960763641331793
+2010,1759712,Total Households,Region,Vehicle Availability,acs1,PSRC Region,1
+2011,1790646,Total Households,Region,Vehicle Availability,acs1,PSRC Region,1
+2012,1855603,Total Households,Region,Vehicle Availability,acs1,PSRC Region,1
+2013,1882650,Total Households,Region,Vehicle Availability,acs1,PSRC Region,1
+2014,1940995,Total Households,Region,Vehicle Availability,acs1,PSRC Region,1
+2015,1983563,Total Households,Region,Vehicle Availability,acs1,PSRC Region,1
+2016,2043700,Total Households,Region,Vehicle Availability,acs1,PSRC Region,1
+2017,2105450,Total Households,Region,Vehicle Availability,acs1,PSRC Region,1
+2018,2172977,Total Households,Region,Vehicle Availability,acs1,PSRC Region,1
+2019,2211707,Total Households,Region,Vehicle Availability,acs1,PSRC Region,1
+2021,2146293,Total Households,Region,Vehicle Availability,acs1,PSRC Region,1
+2020,2144567,Total Households,Region,Vehicle Availability,acs5,PSRC Region,1
+2010,7551,0 vehicles available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.02253007590585764
+2011,7095,0 vehicles available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.02082636185913806
+2012,5528,0 vehicles available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.015702850260483243
+2013,7213,0 vehicles available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.01985919874892279
+2014,7811,0 vehicles available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.020981632006188924
+2015,7437,0 vehicles available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.019382430974360043
+2016,6486,0 vehicles available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.01648682655278911
+2017,5797,0 vehicles available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.01431167202397705
+2018,7347,0 vehicles available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.017719198813414206
+2019,7155,0 vehicles available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.017239717610775123
+2021,7615,0 vehicles available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.01860598079051596
+2020,7016,0 vehicles available,Snohomish County,Vehicle Availability,acs5,PSRC Region,0.017206790501930122
+2010,59950,1 vehicle available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.17887406311166276
+2011,58261,1 vehicle available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.17101686656451623
+2012,60677,1 vehicle available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.17235923394633534
+2013,62660,1 vehicle available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.17251870145674505
+2014,55013,1 vehicle available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.14777397536249792
+2015,63420,1 vehicle available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.16528624074141643
+2016,57738,1 vehicle available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.14676478438250656
+2017,62614,1 vehicle available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.15458185822137296
+2018,63046,1 vehicle available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.15205180459922582
+2019,60293,1 vehicle available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.14527383562634028
+2021,68566,1 vehicle available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.16752957043762537
+2020,59615,1 vehicle available,Snohomish County,Vehicle Availability,acs5,PSRC Region,0.14620621661524577
+2010,136316,2 vehicles available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.40672888719148326
+2011,140101,2 vehicles available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.41124652893969016
+2012,145543,2 vehicles available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.41342980019202474
+2013,151169,2 vehicles available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.4162061854534742
+2014,152216,2 vehicles available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.4088772369036043
+2015,151976,2 vehicles available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.39608233558684175
+2016,155760,2 vehicles available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.39592786060167
+2017,168253,2 vehicles available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.41538412162328975
+2018,163247,2 vehicles available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.3937125423565304
+2019,173812,2 vehicles available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.41879382213333977
+2021,164138,2 vehicles available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.40104379185734845
+2020,164859,2 vehicles available,Snohomish County,Vehicle Availability,acs5,PSRC Region,0.40431788417299
+2010,131335,3 or more vehicles available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.39186697379099633
+2011,135217,3 or more vehicles available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.3969102426366556
+2012,140290,3 or more vehicles available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.3985081156011567
+2013,142165,3 or more vehicles available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.391415914340858
+2014,157238,3 or more vehicles available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.4223671557277089
+2015,160865,3 or more vehicles available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.4192489926973818
+2016,173421,3 or more vehicles available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.44082052846303427
+2017,168390,3 or more vehicles available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.4157223481313603
+2018,180995,3 or more vehicles available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.4365164542308295
+2019,173770,3 or more vehicles available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.4186926246295449
+2021,168958,3 or more vehicles available,Snohomish County,Vehicle Availability,acs1,PSRC Region,0.4128206569145102
+2020,176256,3 or more vehicles available,Snohomish County,Vehicle Availability,acs5,PSRC Region,0.43226910870983404
+2010,335152,Total Households,Snohomish County,Vehicle Availability,acs1,PSRC Region,1
+2011,340674,Total Households,Snohomish County,Vehicle Availability,acs1,PSRC Region,1
+2012,352038,Total Households,Snohomish County,Vehicle Availability,acs1,PSRC Region,1
+2013,363207,Total Households,Snohomish County,Vehicle Availability,acs1,PSRC Region,1
+2014,372278,Total Households,Snohomish County,Vehicle Availability,acs1,PSRC Region,1
+2015,383698,Total Households,Snohomish County,Vehicle Availability,acs1,PSRC Region,1
+2016,393405,Total Households,Snohomish County,Vehicle Availability,acs1,PSRC Region,1
+2017,405054,Total Households,Snohomish County,Vehicle Availability,acs1,PSRC Region,1
+2018,414635,Total Households,Snohomish County,Vehicle Availability,acs1,PSRC Region,1
+2019,415030,Total Households,Snohomish County,Vehicle Availability,acs1,PSRC Region,1
+2021,409277,Total Households,Snohomish County,Vehicle Availability,acs1,PSRC Region,1
+2020,407746,Total Households,Snohomish County,Vehicle Availability,acs5,PSRC Region,1
+2021,821821,0 vehicles available,Atlanta,Vehicle Availability,acs1,Metro Regions,0.025042611422375145
+2021,6797373,1 vehicle available,Atlanta,Vehicle Availability,acs1,Metro Regions,0.20713022754583346
+2021,13621311,2 vehicles available,Atlanta,Vehicle Availability,acs1,Metro Regions,0.41506994641938355
+2021,11576400,3 or more vehicles available,Atlanta,Vehicle Availability,acs1,Metro Regions,0.35275721461240783
+2021,32816905,Total Households,Atlanta,Vehicle Availability,acs1,Metro Regions,1
+2021,146328,0 vehicles available,Austin,Vehicle Availability,acs1,Metro Regions,0.019424899362963977
+2021,1871076,1 vehicle available,Austin,Vehicle Availability,acs1,Metro Regions,0.24838351511984846
+2021,3414456,2 vehicles available,Austin,Vehicle Availability,acs1,Metro Regions,0.45326570566992325
+2021,2101152,3 or more vehicles available,Austin,Vehicle Availability,acs1,Metro Regions,0.2789258798472643
+2021,7533012,Total Households,Austin,Vehicle Availability,acs1,Metro Regions,1
+2021,360899,0 vehicles available,Baltimore,Vehicle Availability,acs1,Metro Regions,0.037096731253943915
+2021,2124325,1 vehicle available,Baltimore,Vehicle Availability,acs1,Metro Regions,0.21835891377098415
+2021,4038041,2 vehicles available,Baltimore,Vehicle Availability,acs1,Metro Regions,0.4150693733410371
+2021,3205328,3 or more vehicles available,Baltimore,Vehicle Availability,acs1,Metro Regions,0.3294749816340348
+2021,9728593,Total Households,Baltimore,Vehicle Availability,acs1,Metro Regions,1
+2021,754708,0 vehicles available,Bay Area,Vehicle Availability,acs1,Metro Regions,0.05854008758968728
+2021,3087767,1 vehicle available,Bay Area,Vehicle Availability,acs1,Metro Regions,0.23950739973148016
+2021,4801109,2 vehicles available,Bay Area,Vehicle Availability,acs1,Metro Regions,0.37240540896298424
+2021,4248573,3 or more vehicles available,Bay Area,Vehicle Availability,acs1,Metro Regions,0.32954710371584833
+2021,12892157,Total Households,Bay Area,Vehicle Availability,acs1,Metro Regions,1
+2021,845225,0 vehicles available,Boston,Vehicle Availability,acs1,Metro Regions,0.06698820370405595
+2021,3145100,1 vehicle available,Boston,Vehicle Availability,acs1,Metro Regions,0.249264514738237
+2021,5147190,2 vehicles available,Boston,Vehicle Availability,acs1,Metro Regions,0.407939912122192
+2021,3480005,3 or more vehicles available,Boston,Vehicle Availability,acs1,Metro Regions,0.27580736943551504
+2021,12617520,Total Households,Boston,Vehicle Availability,acs1,Metro Regions,1
+2021,76356,0 vehicles available,Charlotte,Vehicle Availability,acs1,Metro Regions,0.01919604675472774
+2021,821355,1 vehicle available,Charlotte,Vehicle Availability,acs1,Metro Regions,0.20649024283919276
+2021,1649898,2 vehicles available,Charlotte,Vehicle Availability,acs1,Metro Regions,0.4147875628442007
+2021,1430085,3 or more vehicles available,Charlotte,Vehicle Availability,acs1,Metro Regions,0.35952614756187884
+2021,3977694,Total Households,Charlotte,Vehicle Availability,acs1,Metro Regions,1
+2021,1906240,0 vehicles available,Chicago,Vehicle Availability,acs1,Metro Regions,0.059824765633976214
+2021,7830844,1 vehicle available,Chicago,Vehicle Availability,acs1,Metro Regions,0.2457604535715486
+2021,12704111,2 vehicles available,Chicago,Vehicle Availability,acs1,Metro Regions,0.39870135091227715
+2021,9422532,3 or more vehicles available,Chicago,Vehicle Availability,acs1,Metro Regions,0.295713429882198
+2021,31863727,Total Households,Chicago,Vehicle Availability,acs1,Metro Regions,1
+2021,1276848,0 vehicles available,Dallas,Vehicle Availability,acs1,Metro Regions,0.02090164964913788
+2021,12511328,1 vehicle available,Dallas,Vehicle Availability,acs1,Metro Regions,0.20480698916507598
+2021,26051024,2 vehicles available,Dallas,Vehicle Availability,acs1,Metro Regions,0.42644807890154696
+2021,21249184,3 or more vehicles available,Dallas,Vehicle Availability,acs1,Metro Regions,0.34784328228423916
+2021,61088384,Total Households,Dallas,Vehicle Availability,acs1,Metro Regions,1
+2021,339767,0 vehicles available,Denver,Vehicle Availability,acs1,Metro Regions,0.02618579896678589
+2021,2620612,1 vehicle available,Denver,Vehicle Availability,acs1,Metro Regions,0.2019702296042485
+2021,5503431,2 vehicles available,Denver,Vehicle Availability,acs1,Metro Regions,0.4241487189561595
+2021,4511429,3 or more vehicles available,Denver,Vehicle Availability,acs1,Metro Regions,0.3476952524728061
+2021,12975239,Total Households,Denver,Vehicle Availability,acs1,Metro Regions,1
+2021,266026,0 vehicles available,Detroit,Vehicle Availability,acs1,Metro Regions,0.02630902547740528
+2021,2194059,1 vehicle available,Detroit,Vehicle Availability,acs1,Metro Regions,0.21698463356938927
+2021,4398017,2 vehicles available,Detroit,Vehicle Availability,acs1,Metro Regions,0.43494824304038526
+2021,3253485,3 or more vehicles available,Detroit,Vehicle Availability,acs1,Metro Regions,0.32175809791282023
+2021,10111587,Total Households,Detroit,Vehicle Availability,acs1,Metro Regions,1
+2021,1422200,0 vehicles available,Houston,Vehicle Availability,acs1,Metro Regions,0.03324651959994773
+2021,9011678,1 vehicle available,Houston,Vehicle Availability,acs1,Metro Regions,0.21066441376418069
+2021,18425290,2 vehicles available,Houston,Vehicle Availability,acs1,Metro Regions,0.43072476804930454
+2021,13918242,3 or more vehicles available,Houston,Vehicle Availability,acs1,Metro Regions,0.32536429858656707
+2021,42777410,Total Households,Houston,Vehicle Availability,acs1,Metro Regions,1
+2021,512596,0 vehicles available,Los Angeles,Vehicle Availability,acs1,Metro Regions,0.03129849212872805
+2021,3031681,1 vehicle available,Los Angeles,Vehicle Availability,acs1,Metro Regions,0.18511077713309193
+2021,6054513,2 vehicles available,Los Angeles,Vehicle Availability,acs1,Metro Regions,0.3696812450229453
+2021,6778868,3 or more vehicles available,Los Angeles,Vehicle Availability,acs1,Metro Regions,0.4139094857152347
+2021,16377658,Total Households,Los Angeles,Vehicle Availability,acs1,Metro Regions,1
+2021,290346,0 vehicles available,Miami,Vehicle Availability,acs1,Metro Regions,0.033343829865228665
+2021,2192571,1 vehicle available,Miami,Vehicle Availability,acs1,Metro Regions,0.25179859337285265
+2021,3721455,2 vehicles available,Miami,Vehicle Availability,acs1,Metro Regions,0.4273782396558056
+2021,2503266,3 or more vehicles available,Miami,Vehicle Availability,acs1,Metro Regions,0.28747933710611306
+2021,8707638,Total Households,Miami,Vehicle Availability,acs1,Metro Regions,1
+2021,381738,0 vehicles available,Minneapolis,Vehicle Availability,acs1,Metro Regions,0.028344531538709822
+2021,2417303,1 vehicle available,Minneapolis,Vehicle Availability,acs1,Metro Regions,0.17948781919043394
+2021,6004026,2 vehicles available,Minneapolis,Vehicle Availability,acs1,Metro Regions,0.4458065592532936
+2021,4664716,3 or more vehicles available,Minneapolis,Vehicle Availability,acs1,Metro Regions,0.34636109001756266
+2021,13467783,Total Households,Minneapolis,Vehicle Availability,acs1,Metro Regions,1
+2021,19290780,0 vehicles available,New York City,Vehicle Availability,acs1,Metro Regions,0.2125144700087999
+2021,25132610,1 vehicle available,New York City,Vehicle Availability,acs1,Metro Regions,0.27687026103080664
+2021,26330920,2 vehicles available,New York City,Vehicle Availability,acs1,Metro Regions,0.29007129357361955
+2021,20019650,3 or more vehicles available,New York City,Vehicle Availability,acs1,Metro Regions,0.22054397538677392
+2021,90773960,Total Households,New York City,Vehicle Availability,acs1,Metro Regions,1
+2021,23160422,0 vehicles available,Newark,Vehicle Availability,acs1,Metro Regions,0.21183508752334007
+2021,30234539,1 vehicle available,Newark,Vehicle Availability,acs1,Metro Regions,0.2765379756592017
+2021,31771536,2 vehicles available,Newark,Vehicle Availability,acs1,Metro Regions,0.2905960050862178
+2021,24165825,3 or more vehicles available,Newark,Vehicle Availability,acs1,Metro Regions,0.22103093173124047
+2021,109332322,Total Households,Newark,Vehicle Availability,acs1,Metro Regions,1
+2021,94470,0 vehicles available,Orlando,Vehicle Availability,acs1,Metro Regions,0.02473583168637259
+2021,861654,1 vehicle available,Orlando,Vehicle Availability,acs1,Metro Regions,0.2256137219846479
+2021,1683057,2 vehicles available,Orlando,Vehicle Availability,acs1,Metro Regions,0.44068820440956064
+2021,1179975,3 or more vehicles available,Orlando,Vehicle Availability,acs1,Metro Regions,0.30896224191941885
+2021,3819156,Total Households,Orlando,Vehicle Availability,acs1,Metro Regions,1
+2021,1417707,0 vehicles available,Philadelphia,Vehicle Availability,acs1,Metro Regions,0.05926734683801675
+2021,5608450,1 vehicle available,Philadelphia,Vehicle Availability,acs1,Metro Regions,0.23446167041121688
+2021,9817446,2 vehicles available,Philadelphia,Vehicle Availability,acs1,Metro Regions,0.410419062010345
+2021,7076938,3 or more vehicles available,Philadelphia,Vehicle Availability,acs1,Metro Regions,0.2958519207404214
+2021,23920541,Total Households,Philadelphia,Vehicle Availability,acs1,Metro Regions,1
+2021,104432,0 vehicles available,Phoenix,Vehicle Availability,acs1,Metro Regions,0.022485438465188825
+2021,910786,1 vehicle available,Phoenix,Vehicle Availability,acs1,Metro Regions,0.1961029431396073
+2021,1971612,2 vehicles available,Phoenix,Vehicle Availability,acs1,Metro Regions,0.42451126381978577
+2021,1657598,3 or more vehicles available,Phoenix,Vehicle Availability,acs1,Metro Regions,0.35690035457541813
+2021,4644428,Total Households,Phoenix,Vehicle Availability,acs1,Metro Regions,1
+2021,128436,0 vehicles available,Portland,Vehicle Availability,acs1,Metro Regions,0.034648080645892275
+2021,810753,1 vehicle available,Portland,Vehicle Availability,acs1,Metro Regions,0.21871621140411646
+2021,1486476,2 vehicles available,Portland,Vehicle Availability,acs1,Metro Regions,0.4010054838688792
+2021,1281207,3 or more vehicles available,Portland,Vehicle Availability,acs1,Metro Regions,0.34563022408111205
+2021,3706872,Total Households,Portland,Vehicle Availability,acs1,Metro Regions,1
+2021,110092,0 vehicles available,Sacramento,Vehicle Availability,acs1,Metro Regions,0.0246175064880005
+2021,778552,1 vehicle available,Sacramento,Vehicle Availability,acs1,Metro Regions,0.17409084139851908
+2021,1728164,2 vehicles available,Sacramento,Vehicle Availability,acs1,Metro Regions,0.386432152039466
+2021,1855294,3 or more vehicles available,Sacramento,Vehicle Availability,acs1,Metro Regions,0.4148595000740144
+2021,4472102,Total Households,Sacramento,Vehicle Availability,acs1,Metro Regions,1
+2021,192143,0 vehicles available,San Antonio,Vehicle Availability,acs1,Metro Regions,0.02293063335129423
+2021,1713663,1 vehicle available,San Antonio,Vehicle Availability,acs1,Metro Regions,0.20451110860493965
+2021,3413557,2 vehicles available,San Antonio,Vehicle Availability,acs1,Metro Regions,0.4073790041310059
+2021,3059952,3 or more vehicles available,San Antonio,Vehicle Availability,acs1,Metro Regions,0.3651792539127602
+2021,8379315,Total Households,San Antonio,Vehicle Availability,acs1,Metro Regions,1
+2021,45179,0 vehicles available,San Diego,Vehicle Availability,acs1,Metro Regions,0.029261882154520146
+2021,289211,1 vehicle available,San Diego,Vehicle Availability,acs1,Metro Regions,0.18731840456386653
+2021,631675,2 vehicles available,San Diego,Vehicle Availability,acs1,Metro Regions,0.4091281216927447
+2021,577889,3 or more vehicles available,San Diego,Vehicle Availability,acs1,Metro Regions,0.3742915915888686
+2021,1543954,Total Households,San Diego,Vehicle Availability,acs1,Metro Regions,1
+2021,256296,0 vehicles available,Seattle,Vehicle Availability,acs1,Metro Regions,0.04135876391038935
+2021,1423622,1 vehicle available,Seattle,Vehicle Availability,acs1,Metro Regions,0.2297314284875156
+2021,2396740,2 vehicles available,Seattle,Vehicle Availability,acs1,Metro Regions,0.3867645371546437
+2021,2120239,3 or more vehicles available,Seattle,Vehicle Availability,acs1,Metro Regions,0.34214527044745136
+2021,6196897,Total Households,Seattle,Vehicle Availability,acs1,Metro Regions,1
+2021,269144,0 vehicles available,St Louis,Vehicle Availability,acs1,Metro Regions,0.024835032284877597
+2021,2244944,1 vehicle available,St Louis,Vehicle Availability,acs1,Metro Regions,0.2071502865296728
+2021,4641592,2 vehicles available,St Louis,Vehicle Availability,acs1,Metro Regions,0.42829892984138446
+2021,3681592,3 or more vehicles available,St Louis,Vehicle Availability,acs1,Metro Regions,0.3397157513440652
+2021,10837272,Total Households,St Louis,Vehicle Availability,acs1,Metro Regions,1
+2021,172799,0 vehicles available,Tampa,Vehicle Availability,acs1,Metro Regions,0.024296330333019128
+2021,1652357,1 vehicle available,Tampa,Vehicle Availability,acs1,Metro Regions,0.2323289573439458
+2021,3196745,2 vehicles available,Tampa,Vehicle Availability,acs1,Metro Regions,0.44947697909378664
+2021,2090243,3 or more vehicles available,Tampa,Vehicle Availability,acs1,Metro Regions,0.29389773322924845
+2021,7112144,Total Households,Tampa,Vehicle Availability,acs1,Metro Regions,1
+2021,2630684,0 vehicles available,Washington DC,Vehicle Availability,acs1,Metro Regions,0.05715210338269426
+2021,11155298,1 vehicle available,Washington DC,Vehicle Availability,acs1,Metro Regions,0.24235094164132315
+2021,17566724,2 vehicles available,Washington DC,Vehicle Availability,acs1,Metro Regions,0.381640374192893
+2021,14676816,3 or more vehicles available,Washington DC,Vehicle Availability,acs1,Metro Regions,0.3188565807830896
+2021,46029522,Total Households,Washington DC,Vehicle Availability,acs1,Metro Regions,1
+2018,74217,0 vehicles available,King,Vehicle Availability,SoundCast,PSRC Region,0.08389419544452609
+2018,283340,1 vehicle available,King,Vehicle Availability,SoundCast,PSRC Region,0.3202848584185836
+2018,310047,2 vehicles available,King,Vehicle Availability,SoundCast,PSRC Region,0.35047419883569775
+2018,217046,3 or more vehicles available,King,Vehicle Availability,SoundCast,PSRC Region,0.24534674730119257
+2018,3966,0 vehicles available,Kitsap,Vehicle Availability,SoundCast,PSRC Region,0.03893617647925073
+2018,29001,1 vehicle available,Kitsap,Vehicle Availability,SoundCast,PSRC Region,0.2847171089447177
+2018,39238,2 vehicles available,Kitsap,Vehicle Availability,SoundCast,PSRC Region,0.3852187828272416
+2018,29654,3 or more vehicles available,Kitsap,Vehicle Availability,SoundCast,PSRC Region,0.29112793174879
+2018,16042,0 vehicles available,Pierce,Vehicle Availability,SoundCast,PSRC Region,0.04954231572185643
+2018,94394,1 vehicle available,Pierce,Vehicle Availability,SoundCast,PSRC Region,0.29151585527047225
+2018,122640,2 vehicles available,Pierce,Vehicle Availability,SoundCast,PSRC Region,0.37874763745969786
+2018,90728,3 or more vehicles available,Pierce,Vehicle Availability,SoundCast,PSRC Region,0.2801941915479735
+2018,12340,0 vehicles available,Snohomish,Vehicle Availability,SoundCast,PSRC Region,0.04183759959315138
+2018,80003,1 vehicle available,Snohomish,Vehicle Availability,SoundCast,PSRC Region,0.27124258348872693
+2018,112262,2 vehicles available,Snohomish,Vehicle Availability,SoundCast,PSRC Region,0.38061366333276825
+2018,90345,3 or more vehicles available,Snohomish,Vehicle Availability,SoundCast,PSRC Region,0.30630615358535346
+2018,884650,Total Households,King,Vehicle Availability,SoundCast,PSRC Region,1
+2018,101859,Total Households,Kitsap,Vehicle Availability,SoundCast,PSRC Region,1
+2018,323804,Total Households,Pierce,Vehicle Availability,SoundCast,PSRC Region,1
+2018,294950,Total Households,Snohomish,Vehicle Availability,SoundCast,PSRC Region,1
+2018,106565,0 vehicles available,Region,Vehicle Availability,SoundCast,PSRC Region,0.06638476062800924
+2018,486738,1 vehicle available,Region,Vehicle Availability,SoundCast,PSRC Region,0.30321386588988847
+2018,584187,2 vehicles available,Region,Vehicle Availability,SoundCast,PSRC Region,0.36391980628719406
+2018,427773,3 or more vehicles available,Region,Vehicle Availability,SoundCast,PSRC Region,0.26648156719490823
+2018,1605263,Total Households,Region,Vehicle Availability,SoundCast,PSRC Region,1
+2030,107645,0 vehicles available,King,Vehicle Availability,SoundCast,PSRC Region,0.10296710160689707
+2030,336230,1 vehicle available,King,Vehicle Availability,SoundCast,PSRC Region,0.32161854775685816
+2030,359694,2 vehicles available,King,Vehicle Availability,SoundCast,PSRC Region,0.3440628793291953
+2030,241862,3 or more vehicles available,King,Vehicle Availability,SoundCast,PSRC Region,0.23135147130704944
+2030,5710,0 vehicles available,Kitsap,Vehicle Availability,SoundCast,PSRC Region,0.04791916682751617
+2030,34251,1 vehicle available,Kitsap,Vehicle Availability,SoundCast,PSRC Region,0.28743947163034267
+2030,45750,2 vehicles available,Kitsap,Vehicle Availability,SoundCast,PSRC Region,0.38394078500155254
+2030,33448,3 or more vehicles available,Kitsap,Vehicle Availability,SoundCast,PSRC Region,0.2807005765405886
+2030,25290,0 vehicles available,Pierce,Vehicle Availability,SoundCast,PSRC Region,0.0655181347150259
+2030,113796,1 vehicle available,Pierce,Vehicle Availability,SoundCast,PSRC Region,0.2948082901554404
+2030,143520,2 vehicles available,Pierce,Vehicle Availability,SoundCast,PSRC Region,0.3718134715025907
+2030,103394,3 or more vehicles available,Pierce,Vehicle Availability,SoundCast,PSRC Region,0.267860103626943
+2030,20948,0 vehicles available,Snohomish,Vehicle Availability,SoundCast,PSRC Region,0.05747665731038438
+2030,99112,1 vehicle available,Snohomish,Vehicle Availability,SoundCast,PSRC Region,0.27194130510534736
+2030,138604,2 vehicles available,Snohomish,Vehicle Availability,SoundCast,PSRC Region,0.38029857789996735
+2030,105797,3 or more vehicles available,Snohomish,Vehicle Availability,SoundCast,PSRC Region,0.2902834596843009
+2030,1045431,Total Households,King,Vehicle Availability,SoundCast,PSRC Region,1
+2030,119159,Total Households,Kitsap,Vehicle Availability,SoundCast,PSRC Region,1
+2030,386000,Total Households,Pierce,Vehicle Availability,SoundCast,PSRC Region,1
+2030,364461,Total Households,Snohomish,Vehicle Availability,SoundCast,PSRC Region,1
+2030,159593,0 vehicles available,Region,Vehicle Availability,SoundCast,PSRC Region,0.08333616180456813
+2030,583389,1 vehicle available,Region,Vehicle Availability,SoundCast,PSRC Region,0.30463366249776114
+2030,687568,2 vehicles available,Region,Vehicle Availability,SoundCast,PSRC Region,0.35903378030141236
+2030,484501,3 or more vehicles available,Region,Vehicle Availability,SoundCast,PSRC Region,0.2529963953962584
+2030,1915051,Total Households,Region,Vehicle Availability,SoundCast,PSRC Region,1
+2040,140833,0 vehicles available,King,Vehicle Availability,SoundCast,PSRC Region,0.11921815280558365
+2040,392582,1 vehicle available,King,Vehicle Availability,SoundCast,PSRC Region,0.3323290767414004
+2040,393922,2 vehicles available,King,Vehicle Availability,SoundCast,PSRC Region,0.3334634154600209
+2040,253968,3 or more vehicles available,King,Vehicle Availability,SoundCast,PSRC Region,0.21498935499299504
+2040,7491,0 vehicles available,Kitsap,Vehicle Availability,SoundCast,PSRC Region,0.056052318490306265
+2040,39277,1 vehicle available,Kitsap,Vehicle Availability,SoundCast,PSRC Region,0.293894929027334
+2040,50723,2 vehicles available,Kitsap,Vehicle Availability,SoundCast,PSRC Region,0.3795410159903624
+2040,36152,3 or more vehicles available,Kitsap,Vehicle Availability,SoundCast,PSRC Region,0.27051173649199733
+2040,34744,0 vehicles available,Pierce,Vehicle Availability,SoundCast,PSRC Region,0.07933180807292023
+2040,132741,1 vehicle available,Pierce,Vehicle Availability,SoundCast,PSRC Region,0.30309070732809995
+2040,159287,2 vehicles available,Pierce,Vehicle Availability,SoundCast,PSRC Region,0.3637038254809822
+2040,111186,3 or more vehicles available,Pierce,Vehicle Availability,SoundCast,PSRC Region,0.25387365911799764
+2040,29730,0 vehicles available,Snohomish,Vehicle Availability,SoundCast,PSRC Region,0.07036320002272071
+2040,120187,1 vehicle available,Snohomish,Vehicle Availability,SoundCast,PSRC Region,0.28445146051566544
+2040,157703,2 vehicles available,Snohomish,Vehicle Availability,SoundCast,PSRC Region,0.3732421033697654
+2040,114902,3 or more vehicles available,Snohomish,Vehicle Availability,SoundCast,PSRC Region,0.27194323609184845
+2040,1181305,Total Households,King,Vehicle Availability,SoundCast,PSRC Region,1
+2040,133643,Total Households,Kitsap,Vehicle Availability,SoundCast,PSRC Region,1
+2040,437958,Total Households,Pierce,Vehicle Availability,SoundCast,PSRC Region,1
+2040,422522,Total Households,Snohomish,Vehicle Availability,SoundCast,PSRC Region,1
+2040,212798,0 vehicles available,Region,Vehicle Availability,SoundCast,PSRC Region,0.09781891195663565
+2040,684787,1 vehicle available,Region,Vehicle Availability,SoundCast,PSRC Region,0.31478265426389657
+2040,761635,2 vehicles available,Region,Vehicle Availability,SoundCast,PSRC Region,0.350108116655665
+2040,516208,3 or more vehicles available,Region,Vehicle Availability,SoundCast,PSRC Region,0.23729031712380277
+2040,2175428,Total Households,Region,Vehicle Availability,SoundCast,PSRC Region,1
+2050,169423,0 vehicles available,King,Vehicle Availability,SoundCast,PSRC Region,0.12930260104114913
+2050,451170,1 vehicle available,King,Vehicle Availability,SoundCast,PSRC Region,0.3443301943168003
+2050,424848,2 vehicles available,King,Vehicle Availability,SoundCast,PSRC Region,0.32424140433784154
+2050,264842,3 or more vehicles available,King,Vehicle Availability,SoundCast,PSRC Region,0.2021258003042091
+2050,9075,0 vehicles available,Kitsap,Vehicle Availability,SoundCast,PSRC Region,0.06157217683936277
+2050,44610,1 vehicle available,Kitsap,Vehicle Availability,SoundCast,PSRC Region,0.3026705023475453
+2050,55126,2 vehicles available,Kitsap,Vehicle Availability,SoundCast,PSRC Region,0.3740195945395826
+2050,38577,3 or more vehicles available,Kitsap,Vehicle Availability,SoundCast,PSRC Region,0.2617377262735094
+2050,43542,0 vehicles available,Pierce,Vehicle Availability,SoundCast,PSRC Region,0.08935596475998744
+2050,150920,1 vehicle available,Pierce,Vehicle Availability,SoundCast,PSRC Region,0.30971480872668466
+2050,173740,2 vehicles available,Pierce,Vehicle Availability,SoundCast,PSRC Region,0.3565455265582706
+2050,119085,3 or more vehicles available,Pierce,Vehicle Availability,SoundCast,PSRC Region,0.2443836999550573
+2050,38815,0 vehicles available,Snohomish,Vehicle Availability,SoundCast,PSRC Region,0.08126328130724701
+2050,140125,1 vehicle available,Snohomish,Vehicle Availability,SoundCast,PSRC Region,0.29336641229364907
+2050,174768,2 vehicles available,Snohomish,Vehicle Availability,SoundCast,PSRC Region,0.3658951731934805
+2050,123937,3 or more vehicles available,Snohomish,Vehicle Availability,SoundCast,PSRC Region,0.25947513320562343
+2050,1310283,Total Households,King,Vehicle Availability,SoundCast,PSRC Region,1
+2050,147388,Total Households,Kitsap,Vehicle Availability,SoundCast,PSRC Region,1
+2050,487287,Total Households,Pierce,Vehicle Availability,SoundCast,PSRC Region,1
+2050,477645,Total Households,Snohomish,Vehicle Availability,SoundCast,PSRC Region,1
+2050,260855,0 vehicles available,Region,Vehicle Availability,SoundCast,PSRC Region,0.10767550440579822
+2050,786825,1 vehicle available,Region,Vehicle Availability,SoundCast,PSRC Region,0.3247849523838615
+2050,828482,2 vehicles available,Region,Vehicle Availability,SoundCast,PSRC Region,0.341980093312854
+2050,546441,3 or more vehicles available,Region,Vehicle Availability,SoundCast,PSRC Region,0.2255594498974863
+2050,2422603,Total Households,Region,Vehicle Availability,SoundCast,PSRC Region,1

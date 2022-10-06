@@ -1,0 +1,5 @@
+Images for the dashboard must be copied from a local source to folder on the shiny server for the dashboard to work. We don't want to store the image files on GitHub. 
+The following can be run from the host machine to copy to the server (check the folder locations):
+
+scp -r X:/DSA/shiny-uploads/equity-dashboard/www/*  shiny@aws-linux:~/apps/equity-dashboard/shiny/www/
+
