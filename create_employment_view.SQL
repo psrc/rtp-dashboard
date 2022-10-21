@@ -12,7 +12,7 @@ SELECT wf.data_year,
 FROM employment.workplace_facts AS wf
   INNER JOIN employment.industry_dims AS i ON wf.industry_id = i.industry_id
   INNER JOIN employment.workplace_location_dims AS wl ON wf.workplace_location_id = wl.workplace_location_id
-  INNER JOIN ElmerGeo.dbo.HCT_STATION_AREAS_DISSOLVE AS hct ON wl.Shape.STIntersects(hct.Shape) = 1
+  INNER JOIN ElmerGeo.dbo.HCT_STATION_AREAS AS hct ON wl.Shape.STIntersects(hct.Shape) = 1
 WHERE wf.source_id < (8 - 1)
 GROUP BY wf.data_year
 ;
