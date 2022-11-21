@@ -209,6 +209,8 @@ process_pums_data <- function() {
     
   }
   
+  processed <- processed[, c("geography", "variable", "metric", "data_year", "estimate", "moe")]
+  
   return(processed)
   
 }
