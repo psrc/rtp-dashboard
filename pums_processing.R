@@ -29,7 +29,7 @@ process_pums_data <- function() {
     pums <- psrccensus::get_psrc_pums(span = 5,
                                       dyear = i,
                                       level = "p",
-                                      vars = ifelse(i == pums_years[1], pums_metrics15, pums_metrics20)) %>% 
+                                      vars = if(i == pums_years[1]) pums_metrics15 else pums_metrics20) %>% 
       dplyr::rename(travel_mode = tidyselect::starts_with("JWTR"),
                     vehicle_occ = .data$JWRIP,
                     travel_time = .data$JWMNP,
