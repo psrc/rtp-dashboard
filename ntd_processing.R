@@ -103,6 +103,8 @@ process_ntd_data <- function() {
   
   file.remove(data_file)
   
+  processed <- processed[, c("geography", "variable", "metric", "data_year", "estimate")]
+  
   return(processed)
   
 }
