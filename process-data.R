@@ -3,6 +3,7 @@ library(tidyverse)
 library(psrccensus)
 library(psrctrends)
 library(tidycensus)
+library(openxlsx)
 
 # Basic Inputs ------------------------------------------------------------
 census_yrs <- c(seq(2010,2019,by=1),2021)
@@ -72,7 +73,7 @@ t2 <- t1 %>%
   select(year, estimate, label) %>%
   mutate(geography="Region", concept="Housing", data_source="ofm_postcensal", geography_type="PSRC Region", share=1)
 
-t3 <- as_tibble(read_csv('X:/DSA/shiny-uploads/data/regional-housing.csv')) %>% 
+t3 <- as_tibble(read_csv('data/regional-housing.csv')) %>% 
   filter(Year>=2018) %>%
   select(Year, Forecast) %>%
   rename(year=Year, estimate=Forecast) %>%
@@ -158,7 +159,7 @@ rm(t1,t2,t3, mpo.file, mpo)
 # Mode Share Forecast -------------------------------------------
 for (y in forecast_years) {
   
-  t1 <- as_tibble(read_csv(paste0('X:/DSA/shiny-uploads/data/mode_share_county_',y,'.csv'))) %>%
+  t1 <- as_tibble(read_csv(paste0('data/mode_share_county_',y,'.csv'))) %>%
     filter(dpurp=="Work") %>%
     drop_na() %>%
     mutate(label = case_when(
@@ -175,7 +176,7 @@ for (y in forecast_years) {
     as_tibble() %>%
     rename(geography=hh_county)
   
-  t2 <- as_tibble(read_csv(paste0('X:/DSA/shiny-uploads/data/wfh_county_',y,'.csv'))) %>%
+  t2 <- as_tibble(read_csv(paste0('data/wfh_county_',y,'.csv'))) %>%
     drop_na() %>%
     rename(geography=person_county, estimate=psexpfac) %>%
     mutate(label="Worked from Home")
@@ -272,7 +273,7 @@ rm(t1,t2,t3, mpo.file, mpo)
 # Vehicle Availability Forecast -------------------------------------------
 for (y in forecast_years) {
   
-  t1 <- as_tibble(read_csv(paste0('X:/DSA/shiny-uploads/data/auto_ownership_',y,'.csv'))) %>%
+  t1 <- as_tibble(read_csv(paste0('data/auto_ownership_',y,'.csv'))) %>%
     drop_na() %>%
     mutate(label = case_when(
       hhvehs==0 ~ "0 vehicles available",
@@ -284,7 +285,7 @@ for (y in forecast_years) {
     as_tibble() %>%
     rename(geography=hh_county)
   
-  t2 <- as_tibble(read_csv(paste0('X:/DSA/shiny-uploads/data/auto_ownership_',y,'.csv'))) %>%
+  t2 <- as_tibble(read_csv(paste0('data/auto_ownership_',y,'.csv'))) %>%
     drop_na() %>%
     mutate(label="Total Households") %>%
     group_by(hh_county, label) %>%
@@ -316,6 +317,15 @@ for (y in forecast_years) {
   rm(t1,t2,t3,t4)
   
 }
+
+# Safety Data -------------------------------------------------------------
+t <- as_tibble(read.xlsx('data/FARS_ WSDOT_Summaries PSRC.xlsx', sheet = 'PSRCBoundaries', skipEmptyRows = TRUE, startRow = 4, colNames = TRUE)) %>%
+  select(`Jurisdiction.boundary`, `Name.of.City,.County,.or.MPO`, `Year`,`Fatal.Crashes.(TZ.definition,.FARS)`,`Fatalities.(FARS)`
+         ,`Suspected.Serious.Injury.Crashes.(TZ.definition)`,`Suspected.Serious.Injuries.(TZ.definition)`) %>%
+  set_names("geography_type","geography","year","fatal_collisions","fatalities","serious_injury_collisions", "serious_injuries") %>%
+  pivot_longer(values_to="estimate", names_to="label", cols=c("fatal_collisions","fatalities","serious_injury_collisions", "serious_injuries")) %>%
+  mutate(concept="Safety Data", data_source="WSDOT/FARS", share=1)
+
 
 # Final Data Output --------------------------------------------------------
 rtp_data <- bind_rows(population, housing, employment, modes, vehicles)

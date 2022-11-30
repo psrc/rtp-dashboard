@@ -57,7 +57,7 @@ shinyUI(
                                fluidRow(column(1, style='padding-left:0px; padding-right:5px;',
                                                icon("tree"), br(),br(),
                                                icon("users"), br(),br(),
-                                               icon("skull"), br(),br(), 
+                                               icon("child"), br(),br(), 
                                                icon("bicycle"), br(),br(), 
                                                icon("bus"), br(),br(), 
                                                icon("car"), br(),br(), 

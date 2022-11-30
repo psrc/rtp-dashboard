@@ -152,9 +152,14 @@ head {
   width: 18%;
 }
 
-.fa:hover {color: #91268F;}
+.fa:hover {color: #F05A28;}
 
-.navbar-default .navbar-nav > .active > a:focus {background-color: #E3C9E3;}
+.navbar-default .navbar-nav > .active > a:focus {
+  background-color: white; 
+  text-decoration: underline;
+  text-decoration-color: #005753;
+  text-decoration-thickness: 2px;
+}
 
 #sidebar {
     background-color: white;

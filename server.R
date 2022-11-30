@@ -10,7 +10,7 @@ shinyServer(function(input, output) {
                                                                       x.type= "Continuous",
                                                                       w.lwidth = 3,
                                                                       w.breaks = c("2000","2010","2020","2030","2040","2050"),
-                                                                      w.color = "DkPrLtPr",
+                                                                      w.color = "pgnobgy_5",
                                                                       w.interactive = 'no') +
         scale_y_continuous(labels = scales::comma, limits = c(2000000,6000000))})
     
@@ -20,7 +20,7 @@ shinyServer(function(input, output) {
                                                                       x.type= "Continuous",
                                                                       w.lwidth = 3,
                                                                       w.breaks = c("2000","2010","2020","2030","2040","2050"),
-                                                                      w.color = "DkOrLtOr",
+                                                                      w.color = "pognbgy_5",
                                                                       w.interactive = 'no') +
         scale_y_continuous(labels = scales::comma, limits = c(1000000,3500000))})
     
@@ -30,7 +30,7 @@ shinyServer(function(input, output) {
                                                                    x.type= "Continuous",
                                                                    w.lwidth = 3,
                                                                    w.breaks = c("2000","2010","2020","2030","2040","2050"),
-                                                                   w.color = "psrc_light",
+                                                                   w.color = "gnbopgy_5",
                                                                    w.interactive = 'no') +
         scale_y_continuous(labels = scales::comma, limits = c(1000000,3000000))})
     

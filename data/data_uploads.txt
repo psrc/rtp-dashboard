@@ -1,7 +1,0 @@
-Data for the dashboard must be copied from a local source to folder on the shiny server for the dashboard to work. 
-We do not store the input files on GitHub. 
-
-The following can be run from the host machine to copy to the internal server (check the folder locations):
-
-scp -r X:/DSA/shiny-uploads/rtp-dashboard/data/*  shiny@aws-linux:~/apps/rtp-dashboard/data/
-
