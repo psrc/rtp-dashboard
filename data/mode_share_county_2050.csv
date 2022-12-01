@@ -1,0 +1,274 @@
+dpurp,mode,hh_county,trexpfac
+None/Home,,King,28.0
+None/Home,,Kitsap,5.0
+None/Home,,Pierce,4.0
+None/Home,,Snohomish,7.0
+None/Home,Walk,King,960076.0
+None/Home,Walk,Kitsap,73713.0
+None/Home,Walk,Pierce,255767.0
+None/Home,Walk,Snohomish,240616.0
+None/Home,Bike,King,87903.0
+None/Home,Bike,Kitsap,7361.0
+None/Home,Bike,Pierce,29460.0
+None/Home,Bike,Snohomish,27801.0
+None/Home,SOV,King,1501392.0
+None/Home,SOV,Kitsap,203816.0
+None/Home,SOV,Pierce,635558.0
+None/Home,SOV,Snohomish,672306.0
+None/Home,HOV2,King,965322.0
+None/Home,HOV2,Kitsap,122328.0
+None/Home,HOV2,Pierce,417515.0
+None/Home,HOV2,Snohomish,430643.0
+None/Home,HOV3+,King,712678.0
+None/Home,HOV3+,Kitsap,82120.0
+None/Home,HOV3+,Pierce,313580.0
+None/Home,HOV3+,Snohomish,329758.0
+None/Home,Transit,King,386399.0
+None/Home,Transit,Kitsap,12940.0
+None/Home,Transit,Pierce,35665.0
+None/Home,Transit,Snohomish,75392.0
+None/Home,School Bus,King,101980.0
+None/Home,School Bus,Kitsap,10785.0
+None/Home,School Bus,Pierce,44341.0
+None/Home,School Bus,Snohomish,45477.0
+None/Home,TNC,King,41869.0
+None/Home,TNC,Kitsap,2504.0
+None/Home,TNC,Pierce,10408.0
+None/Home,TNC,Snohomish,9998.0
+Work,,King,1.0
+Work,Walk,King,467435.0
+Work,Walk,Kitsap,22629.0
+Work,Walk,Pierce,80652.0
+Work,Walk,Snohomish,76520.0
+Work,Bike,King,29323.0
+Work,Bike,Kitsap,2523.0
+Work,Bike,Pierce,8703.0
+Work,Bike,Snohomish,9022.0
+Work,SOV,King,994291.0
+Work,SOV,Kitsap,117280.0
+Work,SOV,Pierce,383711.0
+Work,SOV,Snohomish,432362.0
+Work,HOV2,King,197434.0
+Work,HOV2,Kitsap,19566.0
+Work,HOV2,Pierce,68338.0
+Work,HOV2,Snohomish,79212.0
+Work,HOV3+,King,93797.0
+Work,HOV3+,Kitsap,9084.0
+Work,HOV3+,Pierce,32007.0
+Work,HOV3+,Snohomish,37997.0
+Work,Transit,King,325037.0
+Work,Transit,Kitsap,17069.0
+Work,Transit,Pierce,43609.0
+Work,Transit,Snohomish,83919.0
+Work,School Bus,King,53.0
+Work,School Bus,Kitsap,9.0
+Work,School Bus,Pierce,23.0
+Work,School Bus,Snohomish,40.0
+Work,TNC,King,82570.0
+Work,TNC,Kitsap,4204.0
+Work,TNC,Pierce,14705.0
+Work,TNC,Snohomish,20174.0
+School,Walk,King,90389.0
+School,Walk,Kitsap,7218.0
+School,Walk,Pierce,29574.0
+School,Walk,Snohomish,29117.0
+School,Bike,King,22190.0
+School,Bike,Kitsap,1973.0
+School,Bike,Pierce,8502.0
+School,Bike,Snohomish,7950.0
+School,SOV,King,34777.0
+School,SOV,Kitsap,4083.0
+School,SOV,Pierce,20036.0
+School,SOV,Snohomish,15509.0
+School,HOV2,King,113276.0
+School,HOV2,Kitsap,13849.0
+School,HOV2,Pierce,51940.0
+School,HOV2,Snohomish,55547.0
+School,HOV3+,King,130331.0
+School,HOV3+,Kitsap,14616.0
+School,HOV3+,Pierce,57660.0
+School,HOV3+,Snohomish,61394.0
+School,Transit,King,49523.0
+School,Transit,Kitsap,1888.0
+School,Transit,Pierce,7597.0
+School,Transit,Snohomish,13072.0
+School,School Bus,King,103326.0
+School,School Bus,Kitsap,10820.0
+School,School Bus,Pierce,44608.0
+School,School Bus,Snohomish,46093.0
+School,TNC,King,11333.0
+School,TNC,Kitsap,1130.0
+School,TNC,Pierce,4562.0
+School,TNC,Snohomish,4737.0
+Escort,Walk,King,131902.0
+Escort,Walk,Kitsap,11188.0
+Escort,Walk,Pierce,37891.0
+Escort,Walk,Snohomish,37259.0
+Escort,Bike,King,26618.0
+Escort,Bike,Kitsap,2374.0
+Escort,Bike,Pierce,10132.0
+Escort,Bike,Snohomish,9386.0
+Escort,SOV,King,237672.0
+Escort,SOV,Kitsap,33552.0
+Escort,SOV,Pierce,106534.0
+Escort,SOV,Snohomish,117805.0
+Escort,HOV2,King,274811.0
+Escort,HOV2,Kitsap,33992.0
+Escort,HOV2,Pierce,114099.0
+Escort,HOV2,Snohomish,120808.0
+Escort,HOV3+,King,212376.0
+Escort,HOV3+,Kitsap,24079.0
+Escort,HOV3+,Pierce,92390.0
+Escort,HOV3+,Snohomish,100106.0
+Escort,Transit,King,19121.0
+Escort,Transit,Kitsap,1304.0
+Escort,Transit,Pierce,2001.0
+Escort,Transit,Snohomish,5199.0
+Escort,School Bus,King,2873.0
+Escort,School Bus,Kitsap,287.0
+Escort,School Bus,Pierce,1235.0
+Escort,School Bus,Snohomish,1244.0
+Escort,TNC,King,2179.0
+Escort,TNC,Kitsap,135.0
+Escort,TNC,Pierce,469.0
+Escort,TNC,Snohomish,532.0
+Personal Business,Walk,King,222997.0
+Personal Business,Walk,Kitsap,18987.0
+Personal Business,Walk,Pierce,61150.0
+Personal Business,Walk,Snohomish,57585.0
+Personal Business,Bike,King,16584.0
+Personal Business,Bike,Kitsap,1378.0
+Personal Business,Bike,Pierce,5723.0
+Personal Business,Bike,Snohomish,5222.0
+Personal Business,SOV,King,397515.0
+Personal Business,SOV,Kitsap,63982.0
+Personal Business,SOV,Pierce,181640.0
+Personal Business,SOV,Snohomish,186402.0
+Personal Business,HOV2,King,287340.0
+Personal Business,HOV2,Kitsap,41143.0
+Personal Business,HOV2,Pierce,136505.0
+Personal Business,HOV2,Snohomish,133653.0
+Personal Business,HOV3+,King,172388.0
+Personal Business,HOV3+,Kitsap,21515.0
+Personal Business,HOV3+,Pierce,81617.0
+Personal Business,HOV3+,Snohomish,81678.0
+Personal Business,Transit,King,83674.0
+Personal Business,Transit,Kitsap,2082.0
+Personal Business,Transit,Pierce,5871.0
+Personal Business,Transit,Snohomish,12801.0
+Personal Business,School Bus,King,5954.0
+Personal Business,School Bus,Kitsap,570.0
+Personal Business,School Bus,Pierce,2657.0
+Personal Business,School Bus,Snohomish,2534.0
+Personal Business,TNC,King,14079.0
+Personal Business,TNC,Kitsap,806.0
+Personal Business,TNC,Pierce,3429.0
+Personal Business,TNC,Snohomish,3200.0
+Shop,Walk,King,274874.0
+Shop,Walk,Kitsap,20225.0
+Shop,Walk,Pierce,68662.0
+Shop,Walk,Snohomish,67267.0
+Shop,Bike,King,17741.0
+Shop,Bike,Kitsap,1424.0
+Shop,Bike,Pierce,5613.0
+Shop,Bike,Snohomish,5148.0
+Shop,SOV,King,439219.0
+Shop,SOV,Kitsap,68970.0
+Shop,SOV,Pierce,201324.0
+Shop,SOV,Snohomish,206419.0
+Shop,HOV2,King,283562.0
+Shop,HOV2,Kitsap,38866.0
+Shop,HOV2,Pierce,129919.0
+Shop,HOV2,Snohomish,130067.0
+Shop,HOV3+,King,160835.0
+Shop,HOV3+,Kitsap,19508.0
+Shop,HOV3+,Pierce,73685.0
+Shop,HOV3+,Snohomish,74595.0
+Shop,Transit,King,83199.0
+Shop,Transit,Kitsap,2188.0
+Shop,Transit,Pierce,5696.0
+Shop,Transit,Snohomish,12274.0
+Shop,School Bus,King,3849.0
+Shop,School Bus,Kitsap,388.0
+Shop,School Bus,Pierce,1643.0
+Shop,School Bus,Snohomish,1625.0
+Shop,TNC,King,9573.0
+Shop,TNC,Kitsap,541.0
+Shop,TNC,Pierce,2113.0
+Shop,TNC,Snohomish,2109.0
+Meal,Walk,King,227079.0
+Meal,Walk,Kitsap,12942.0
+Meal,Walk,Pierce,45184.0
+Meal,Walk,Snohomish,46963.0
+Meal,Bike,King,8864.0
+Meal,Bike,Kitsap,623.0
+Meal,Bike,Pierce,2305.0
+Meal,Bike,Snohomish,2442.0
+Meal,SOV,King,206831.0
+Meal,SOV,Kitsap,22621.0
+Meal,SOV,Pierce,77024.0
+Meal,SOV,Snohomish,86836.0
+Meal,HOV2,King,142743.0
+Meal,HOV2,Kitsap,14379.0
+Meal,HOV2,Pierce,53758.0
+Meal,HOV2,Snohomish,56997.0
+Meal,HOV3+,King,84143.0
+Meal,HOV3+,Kitsap,7329.0
+Meal,HOV3+,Pierce,30988.0
+Meal,HOV3+,Snohomish,34031.0
+Meal,Transit,King,54463.0
+Meal,Transit,Kitsap,1266.0
+Meal,Transit,Pierce,4696.0
+Meal,Transit,Snohomish,10369.0
+Meal,School Bus,King,2762.0
+Meal,School Bus,Kitsap,194.0
+Meal,School Bus,Pierce,1045.0
+Meal,School Bus,Snohomish,1104.0
+Meal,TNC,King,44854.0
+Meal,TNC,Kitsap,2197.0
+Meal,TNC,Pierce,8256.0
+Meal,TNC,Snohomish,11297.0
+Social,Walk,King,402752.0
+Social,Walk,Kitsap,38284.0
+Social,Walk,Pierce,122471.0
+Social,Walk,Snohomish,120546.0
+Social,Bike,King,22740.0
+Social,Bike,Kitsap,1651.0
+Social,Bike,Pierce,6515.0
+Social,Bike,Snohomish,6138.0
+Social,SOV,King,342401.0
+Social,SOV,Kitsap,46005.0
+Social,SOV,Pierce,140654.0
+Social,SOV,Snohomish,149544.0
+Social,HOV2,King,293091.0
+Social,HOV2,Kitsap,34336.0
+Social,HOV2,Pierce,122942.0
+Social,HOV2,Snohomish,126272.0
+Social,HOV3+,King,195447.0
+Social,HOV3+,Kitsap,20899.0
+Social,HOV3+,Pierce,82333.0
+Social,HOV3+,Snohomish,86417.0
+Social,Transit,King,46165.0
+Social,Transit,Kitsap,1098.0
+Social,Transit,Pierce,3163.0
+Social,Transit,Snohomish,6750.0
+Social,School Bus,King,4379.0
+Social,School Bus,Kitsap,442.0
+Social,School Bus,Pierce,1827.0
+Social,School Bus,Snohomish,1932.0
+Social,TNC,King,10474.0
+Social,TNC,Kitsap,540.0
+Social,TNC,Pierce,2104.0
+Social,TNC,Snohomish,2274.0
+Change Mode Inserted Purpose,SOV,King,38435.0
+Change Mode Inserted Purpose,SOV,Kitsap,2695.0
+Change Mode Inserted Purpose,SOV,Pierce,13396.0
+Change Mode Inserted Purpose,SOV,Snohomish,14833.0
+Change Mode Inserted Purpose,HOV2,King,1030.0
+Change Mode Inserted Purpose,HOV2,Kitsap,77.0
+Change Mode Inserted Purpose,HOV2,Pierce,467.0
+Change Mode Inserted Purpose,HOV2,Snohomish,312.0
+Change Mode Inserted Purpose,Transit,King,39465.0
+Change Mode Inserted Purpose,Transit,Kitsap,2772.0
+Change Mode Inserted Purpose,Transit,Pierce,13863.0
+Change Mode Inserted Purpose,Transit,Snohomish,15145.0

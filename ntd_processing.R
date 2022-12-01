@@ -34,7 +34,7 @@ process_ntd_data <- function() {
     
   }
   
-  data_url <- paste0("https://www.transit.dot.gov/sites/fta.dot.gov/files/",c_yr,"-",c_mo,"/",d_mo,"%20",c_yr,"%20Raw%20Database.xlsx")
+  data_url <- paste0("https://www.transit.dot.gov/sites/fta.dot.gov/files/",c_yr,"-",c_mo,"/",d_mo,"%20",c_yr,"%20Raw%20Database_0.xlsx")
   
   utils::download.file(data_url, "working.xlsx", quiet = TRUE, mode = "wb")
   data_file <- paste0(getwd(),"/working.xlsx")
