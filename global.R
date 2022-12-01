@@ -27,11 +27,11 @@ base_year <- "2018"
 pre_covid <- "2019"
 current_population_year <- "2022"
 
-data <- read_csv("data/rtp-dashboard-data.csv") %>% mutate(year=as.character(year))
+data <- read_csv("data/rtp-dashboard-data.csv") %>% mutate(data_year=as.character(data_year))
 
 # Population Data for Text ---------------------------------------------------------
-vision_pop_today <- data %>% filter(year==current_population_year & label=="Forecast Population") %>% select(estimate) %>% pull()
-actual_pop_today <- data %>% filter(year==current_population_year & label=="Observed Population") %>% select(estimate) %>% pull()
+vision_pop_today <- data %>% filter(data_year==current_population_year & variable=="Forecast Population") %>% select(estimate) %>% pull()
+actual_pop_today <- data %>% filter(data_year==current_population_year & variable=="Observed Population") %>% select(estimate) %>% pull()
 population_delta <- actual_pop_today - vision_pop_today
 
 pop_vision_caption <- paste0("Between ",base_year," and ", current_population_year,
@@ -46,9 +46,3 @@ pop_vision_caption <- paste0("Between ",base_year," and ", current_population_ye
                              " people.")
 
 
-
-#test <- create_column_chart(t=data %>% filter(concept=="Mode to Work" & geography=="Region" & label!="Total Work Trips" & year >= 2019),
-#                            x="year", y="share", f="label",pos="stack", interactive = "yes",
-#                            title = "Commute Mode Share",
-#                            subtitle = "People over 16 who work",
-#                            source="Source: U.S. Census Bureau, American Community Survey\n1-Year Estimates, table B08006 & SoundCast Output")

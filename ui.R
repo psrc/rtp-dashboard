@@ -138,5 +138,60 @@ shinyUI(
                                           )) # End of Main Panel Fluid Row for Population Tab
                                  ), # End of Tab Panel for Population
                         ),# End of Nav Bar Menu for People, Housing and Jobs
+             
+             navbarMenu(icon("child"), 
+                        tabPanel("Fatal Collisions",
+                                 fluidRow(column(12, style='padding-left:50px; padding-right:50px;',
+                                                 bs4Jumbotron(
+                                                   title = strong(tags$div(class="mainpage_title","Safety")),
+                                                   status = "success",
+                                                   btnName = strong(tags$div(class="mainpage_subtitle","Regional Transportation Plan")),
+                                                   href = "https://www.psrc.org/planning-2050/regional-transportation-plan"))
+                                 ), # End of First Fluid Row for Fatal Collisions Tab
+                                 
+                                 fluidRow(column(4, style='padding-left:50px; padding-right:50px;',
+                                                 hr(),
+                                                 strong(tags$div(class="sidebar_heading","Regional Transportation Plan")),
+                                                 br(),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-transportation-plan/projects-and-approval", "Projects and Approval", target="_blank"),
+                                                 br(),br(),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/coordinated-mobility-plan", "Coordinated Mobility Plan", target="_blank"),
+                                                 br(),br(),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-transportation-plan/data-research-and-policy-briefs", "Data, Research and Policy Briefs", target="_blank"),
+                                                 br(),br(),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-transportation-plan/transportation-system-visualization-tool", "Transportation System Visualization Tool", target="_blank"),
+                                                 hr(),
+                                                 div(img(src="canyon_road.png", width = "100%", height = "100%", style = "padding-top: 0px; border-radius:30px 0 30px 0;", alt = "Glass and steel building in the background")),
+                                                 hr(),
+                                                 strong(tags$div(class="sidebar_heading","Connect With Us")),
+                                                 hr(),
+                                                 tags$div(class="sidebar_notes","Kelly McGourty:"),
+                                                 tags$div(class="sidebar_notes","Director of Transportation Planning"),
+                                                 br(),
+                                                 icon("envelope"), 
+                                                 tags$a(class = "source_url", href="mailto:kmcgourty@psrc.org?", "Email"),
+                                                 br(), br(),
+                                                 icon("phone-volume"), "206-971-3601",
+                                                 hr()                                 ),
+                                 column(8, style='padding-left:0px; padding-right:50px;',
+                                        "Safety was one of the key policy focus areas identified by PSRC's Transportation Policy Board early in the development of the RTP and is a cross-cutting issue addressed throughout all relevant sections of the",
+                                        tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-transportation-plan", " Regional Transportation Plan.", target="_blank"),
+                                        h1("Fatal Collisions in the PSRC Region"),
+                                        #textOutput("population_vision_text"),
+                                        hr(),
+                                        fluidRow(column(12,plotOutput("fatal_collisions_chart"))),
+                                        hr(),
+                                        h1("Fatal Collisions by County in the PSRC Region"),
+                                        fluidRow(column(8,plotOutput("county_fatal_collisions_chart")),
+                                                 column(4,"Text about collision data by county")),
+                                        br(), br(),
+                                        br(), br(),
+                                        hr()
+                                        
+                                        
+                                 )) # End of Main Panel Fluid Row for Fatal Collisions Tab
+                        ), # End of Tab Panel for Safety
+             ),# End of Nav Bar Menu for Safety
+             
              ) # End of NavBar Page
   ) # End of Shiny App
