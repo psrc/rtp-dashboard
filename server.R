@@ -2,6 +2,10 @@
 shinyServer(function(input, output) {
   
   output$population_vision_text <- renderText({pop_vision_caption})
+  
+  output$safety_text <- renderText({safety_caption})
+  
+  output$region_fatal_text <- renderText({fatal_trends_caption})
 
     # Charts
     output$chart_population_growth <- renderPlot({create.line.chart(t=data %>% filter(metric=="Population" & data_year>=2000), 
@@ -35,6 +39,16 @@ shinyServer(function(input, output) {
                                                                         w.facet=2, w.scales="fixed") +
         ggplot2::theme(axis.title = ggplot2::element_blank(), 
                        legend.position = "none")})
+    
+    output$mpo_fatal_rate_min_yr_chart <- renderPlot({static_bar_chart(t=mpo_safety_tbl_min,
+                                                                       y='geography', x='estimate', fill='plot_id',
+                                                                       est="number", dec=1, color='pgnobgy_5',
+                                                                       title=paste0('Average Annual Fatalities per 100,000 people by MPO: ',safety_min_year))})
+    
+    output$mpo_fatal_rate_max_yr_chart <- renderPlot({static_bar_chart(t=mpo_safety_tbl_max,
+                                                                       y='geography', x='estimate', fill='plot_id',
+                                                                       est="number", dec=1, color='pgnobgy_5',
+                                                                       title=paste0('Average Annual Fatalities per 100,000 people by MPO: ',safety_max_year))})
     
     
 })    
