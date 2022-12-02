@@ -24,7 +24,9 @@ base_year <- "2018"
 pre_covid <- "2019"
 current_population_year <- "2022"
 
-data <- read_csv("data/rtp-dashboard-data.csv") %>% mutate(data_year=as.character(data_year))
+data <- read_csv("data/rtp-dashboard-data.csv", col_types = cols(data_year = col_character()))
+
+
 
 # Create MPO Data for Charts ----------------------------------------------
 metros <- c("Portland", "Bay Area", "San Diego", "Denver", "Atlanta","Washington DC", "Boston", "Miami" ,"Phoenix", "Austin", "Dallas")
