@@ -94,7 +94,7 @@ process_pums_data <- function() {
                        estimate = .data$count,
                        estimate_moe = .data$count_moe,
                        share = .data$share,
-                       shore_moe = .data$share_moe)
+                       share_moe = .data$share_moe)
 
     class_region <- psrccensus::psrc_pums_count(pums,
                                                 group_vars = "commute_class",
@@ -106,7 +106,7 @@ process_pums_data <- function() {
                        estimate = .data$count,
                        estimate_moe = .data$count_moe,
                        share = .data$share,
-                       shore_moe = .data$share_moe)
+                       share_moe = .data$share_moe)
     
     class_race <- psrccensus::psrc_pums_count(pums,
                                               group_vars = c("race_condensed", "commute_class"),
@@ -120,7 +120,7 @@ process_pums_data <- function() {
                        estimate = .data$count,
                        estimate_moe = .data$count_moe,
                        share = .data$share,
-                       shore_moe = .data$share_moe)
+                       share_moe = .data$share_moe)
     
     mode_county <- psrccensus::psrc_pums_count(pums,
                                                group_vars = c("COUNTY", "travel_mode"),
@@ -133,7 +133,7 @@ process_pums_data <- function() {
                        estimate = .data$count,
                        estimate_moe = .data$count_moe,
                        share = .data$share,
-                       shore_moe = .data$share_moe)
+                       share_moe = .data$share_moe)
     
     mode_region <- psrccensus::psrc_pums_count(pums,
                                                group_vars = "travel_mode",
@@ -145,7 +145,7 @@ process_pums_data <- function() {
                        estimate = .data$count,
                        estimate_moe = .data$count_moe,
                        share = .data$share,
-                       shore_moe = .data$share_moe)
+                       share_moe = .data$share_moe)
     
     mode_race <- psrccensus::psrc_pums_count(pums,
                                              group_vars = c("race_condensed", "travel_mode"),
@@ -159,7 +159,7 @@ process_pums_data <- function() {
                        estimate = .data$count,
                        estimate_moe = .data$count_moe,
                        share = .data$share,
-                       shore_moe = .data$share_moe)
+                       share_moe = .data$share_moe)
     
     counts <- dplyr::bind_rows(class_county, class_region, class_race,
                                mode_county, mode_region, mode_race) %>% 
