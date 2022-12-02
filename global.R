@@ -20,9 +20,6 @@ library(psrcplot)
 install_psrc_fonts()
 
 # Inputs ---------------------------------------------------------------
-setwd("C:/Users/chelmann/OneDrive - Puget Sound Regional Council/coding/rtp-dashboard")
-#setwd("/home/shiny/apps/rtp-dashboard")
-
 base_year <- "2018"
 pre_covid <- "2019"
 current_population_year <- "2022"
