@@ -86,137 +86,83 @@ process_pums_data <- function() {
     class_county <- psrccensus::psrc_pums_count(pums,
                                                 group_vars = c("COUNTY", "commute_class"),
                                                 incl_na = FALSE) %>% 
-      dplyr::filter(.data$COUNTY != "Region")
-    
-    count_class_county <- class_county %>% 
+      dplyr::filter(.data$COUNTY != "Region") %>% 
       dplyr::transmute(geography = .data$COUNTY,
                        variable = .data$commute_class,
-                       metric = "count_commute_class",
+                       metric = "commute_class",
                        data_year = .data$DATA_YEAR,
                        estimate = .data$count,
-                       moe = .data$count_moe)
-    
-    share_class_county <- class_county %>% 
-      dplyr::transmute(geography = .data$COUNTY,
-                       variable = .data$commute_class,
-                       metric = "share_commute_class",
-                       data_year = .data$DATA_YEAR,
-                       estimate = .data$share,
-                       moe = .data$share_moe)
-    
+                       estimate_moe = .data$count_moe,
+                       share = .data$share,
+                       shore_moe = .data$share_moe)
+
     class_region <- psrccensus::psrc_pums_count(pums,
                                                 group_vars = "commute_class",
-                                                incl_na = FALSE)
-    
-    count_class_region <- class_region %>% 
+                                                incl_na = FALSE) %>% 
       dplyr::transmute(geography = .data$COUNTY,
                        variable = .data$commute_class,
-                       metric = "count_commute_class",
+                       metric = "commute_class",
                        data_year = .data$DATA_YEAR,
                        estimate = .data$count,
-                       moe = .data$count_moe)
-    
-    share_class_region <- class_region %>% 
-      dplyr::transmute(geography = .data$COUNTY,
-                       variable = .data$commute_class,
-                       metric = "share_commute_class",
-                       data_year = .data$DATA_YEAR,
-                       estimate = .data$share,
-                       moe = .data$share_moe)
+                       estimate_moe = .data$count_moe,
+                       share = .data$share,
+                       shore_moe = .data$share_moe)
     
     class_race <- psrccensus::psrc_pums_count(pums,
                                               group_vars = c("race_condensed", "commute_class"),
                                               incl_na = FALSE) %>% 
-      dplyr::filter(.data$race_condensed != "Total")
-    
-    count_class_race <- class_race %>% 
+      dplyr::filter(.data$race_condensed != "Total") %>% 
       dplyr::transmute(geography = .data$COUNTY,
                        grouping = .data$race_condensed,
                        variable = .data$commute_class,
-                       metric = "count_commute_class",
+                       metric = "commute_class",
                        data_year = .data$DATA_YEAR,
                        estimate = .data$count,
-                       moe = .data$count_moe)
-    
-    share_class_race <- class_race %>% 
-      dplyr::transmute(geography = .data$COUNTY,
-                       grouping = .data$race_condensed,
-                       variable = .data$commute_class,
-                       metric = "share_commute_class",
-                       data_year = .data$DATA_YEAR,
-                       estimate = .data$share,
-                       moe = .data$share_moe)
+                       estimate_moe = .data$count_moe,
+                       share = .data$share,
+                       shore_moe = .data$share_moe)
     
     mode_county <- psrccensus::psrc_pums_count(pums,
                                                group_vars = c("COUNTY", "travel_mode"),
                                                incl_na = FALSE) %>% 
-      dplyr::filter(.data$COUNTY != "Region")
-    
-    count_mode_county <- mode_county %>% 
+      dplyr::filter(.data$COUNTY != "Region") %>% 
       dplyr::transmute(geography = .data$COUNTY,
                        variable = .data$travel_mode,
-                       metric = "count_travel_mode",
+                       metric = "travel_mode",
                        data_year = .data$DATA_YEAR,
                        estimate = .data$count,
-                       moe = .data$count_moe)
-    
-    share_mode_county <- mode_county %>% 
-      dplyr::transmute(geography = .data$COUNTY,
-                       variable = .data$travel_mode,
-                       metric = "share_travel_mode",
-                       data_year = .data$DATA_YEAR,
-                       estimate = .data$share,
-                       moe = .data$share_moe)
+                       estimate_moe = .data$count_moe,
+                       share = .data$share,
+                       shore_moe = .data$share_moe)
     
     mode_region <- psrccensus::psrc_pums_count(pums,
                                                group_vars = "travel_mode",
-                                               incl_na = FALSE)
-    
-    count_mode_region <- mode_region %>% 
+                                               incl_na = FALSE) %>% 
       dplyr::transmute(geography = .data$COUNTY,
                        variable = .data$travel_mode,
-                       metric = "count_travel_mode",
+                       metric = "travel_mode",
                        data_year = .data$DATA_YEAR,
                        estimate = .data$count,
-                       moe = .data$count_moe)
-    
-    share_mode_region <- mode_region %>% 
-      dplyr::transmute(geography = .data$COUNTY,
-                       variable = .data$travel_mode,
-                       metric = "share_travel_mode",
-                       data_year = .data$DATA_YEAR,
-                       estimate = .data$share,
-                       moe = .data$share_moe)
+                       estimate_moe = .data$count_moe,
+                       share = .data$share,
+                       shore_moe = .data$share_moe)
     
     mode_race <- psrccensus::psrc_pums_count(pums,
                                              group_vars = c("race_condensed", "travel_mode"),
                                              incl_na = FALSE) %>% 
-      dplyr::filter(.data$race_condensed != "Total")
-    
-    count_mode_race <- mode_race %>% 
+      dplyr::filter(.data$race_condensed != "Total") %>% 
       dplyr::transmute(geography = .data$COUNTY,
                        grouping = .data$race_condensed,
                        variable = .data$travel_mode,
-                       metric = "count_travel_mode",
+                       metric = "travel_mode",
                        data_year = .data$DATA_YEAR,
                        estimate = .data$count,
-                       moe = .data$count_moe)
+                       estimate_moe = .data$count_moe,
+                       share = .data$share,
+                       shore_moe = .data$share_moe)
     
-    share_mode_race <- mode_race %>% 
-      dplyr::transmute(geography = .data$COUNTY,
-                       grouping = .data$race_condensed,
-                       variable = .data$travel_mode,
-                       metric = "share_travel_mode",
-                       data_year = .data$DATA_YEAR,
-                       estimate = .data$share,
-                       moe = .data$share_moe)
-    
-    counts <- dplyr::bind_rows(count_class_county, share_class_county,
-                               count_class_region, share_class_region,
-                               count_class_race, share_class_race,
-                               count_mode_county, share_mode_county,
-                               count_mode_region, share_mode_region,
-                               count_mode_race, share_mode_race) %>% 
+    counts <- dplyr::bind_rows(class_county, class_region, class_race,
+                               mode_county, mode_region, mode_race) %>% 
       dplyr::mutate(data_year = as.character(.data$data_year))
     
     # Combine summarized tables
@@ -226,7 +172,7 @@ process_pums_data <- function() {
     
   }
   
-  processed <- processed[, c("geography", "grouping", "variable", "metric", "data_year", "estimate", "moe")]
+  processed <- processed[, c("geography", "grouping", "variable", "metric", "data_year", "estimate", "estimate_moe", "share", "share_moe")]
   
   return(processed)
   
