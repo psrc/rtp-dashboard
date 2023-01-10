@@ -76,6 +76,54 @@ shinyUI(
                       ) # end of second fluid row for main overview page
                       ), # end of tabpanel for Overview
              
+             navbarMenu(icon("tree"), 
+                        tabPanel("Zero Emission Vehicles",
+                                 fluidRow(column(12, style='padding-left:50px; padding-right:50px;',
+                                                 bs4Jumbotron(
+                                                   title = strong(tags$div(class="mainpage_title","Decarbonization: Vehicle Registrations")),
+                                                   status = "success",
+                                                   btnName = strong(tags$div(class="mainpage_subtitle","Regional Transportation Plan")),
+                                                   href = "https://www.psrc.org/planning-2050/regional-transportation-plan"))
+                                 ), # End of First Fluid Row for Fatal Collisions Tab
+                                 
+                                 fluidRow(column(4, style='padding-left:50px; padding-right:50px;',
+                                                 hr(),
+                                                 strong(tags$div(class="sidebar_heading","Regional Transportation Plan")),
+                                                 br(),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-transportation-plan/projects-and-approval", "Projects and Approval", target="_blank"),
+                                                 br(),br(),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/coordinated-mobility-plan", "Coordinated Mobility Plan", target="_blank"),
+                                                 br(),br(),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-transportation-plan/data-research-and-policy-briefs", "Data, Research and Policy Briefs", target="_blank"),
+                                                 br(),br(),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-transportation-plan/transportation-system-visualization-tool", "Transportation System Visualization Tool", target="_blank"),
+                                                 hr(),
+                                                 div(img(src="climate-image.png", width = "100%", height = "100%", style = "padding-top: 0px; border-radius:30px 0 30px 0;", alt = "Glass and steel building in the background")),
+                                                 hr(),
+                                                 strong(tags$div(class="sidebar_heading","Connect With Us")),
+                                                 hr(),
+                                                 tags$div(class="sidebar_notes","Kelly McGourty:"),
+                                                 tags$div(class="sidebar_notes","Director of Transportation Planning"),
+                                                 br(),
+                                                 icon("envelope"), 
+                                                 tags$a(class = "source_url", href="mailto:kmcgourty@psrc.org?", "Email"),
+                                                 br(), br(),
+                                                 icon("phone-volume"), "206-971-3601",
+                                                 hr()                                 ),
+                                          column(8, style='padding-left:0px; padding-right:50px;',
+                                                 textOutput("climate_text"),
+                                                 h1("New Vehicle Registrations in the PSRC Region"),
+                                                 fluidRow(column(4,textOutput("regional_ev_text")),
+                                                          column(8,plotlyOutput("ev_share_new_registrations_chart"))),
+                                                 br(), br(),
+                                                 br(), br(),
+                                                 hr()
+                                                 
+                                                 
+                                          )) # End of Main Panel Fluid Row for Climate Tab
+                        ), # End of Tab Panel for Climate
+             ),# End of Nav Bar Menu for Climate
+             
              navbarMenu(icon("users"), 
                         tabPanel("Population",
                                  fluidRow(column(12, style='padding-left:50px; padding-right:50px;',

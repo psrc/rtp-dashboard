@@ -73,6 +73,13 @@ vision_pop_today <- data %>% filter(lubridate::year(date)==current_population_ye
 actual_pop_today <- data %>% filter(lubridate::year(date)==current_population_year & variable=="Observed Population") %>% select(estimate) %>% pull()
 population_delta <- actual_pop_today - vision_pop_today
 
+# Vehicle Registration Data for Text --------------------------------------
+min_ev_date <- data %>% filter(metric=="New Vehicle Registrations" & geography=="Region") %>% select(date) %>% pull() %>% min()
+max_ev_date <- data %>% filter(metric=="New Vehicle Registrations" & geography=="Region") %>% select(date) %>% pull() %>% max()
+
+evs_previous <- 1 - (data %>% filter(metric=="New Vehicle Registrations" & geography=="Region" & date==min_ev_date & variable=="ICE (Internal Combustion Engine)") %>% select(share) %>% pull())
+evs_today <- 1 - (data %>% filter(metric=="New Vehicle Registrations" & geography=="Region" & date==max_ev_date & variable=="ICE (Internal Combustion Engine)") %>% select(share) %>% pull())
+
 safety_caption <- paste0("Safety impacts every aspect of the transportation system, covering all modes and encompassing a ",
                          "variety of attributes from facility design to security to personal behavior. The Federal Highway ",
                          "Administration (FHWA) refers to the Four E’s of safety: engineering, enforcement, education and ",
@@ -102,3 +109,23 @@ pop_vision_caption <- paste0("Between ",base_year," and ", current_population_ye
                              " people.")
 
 
+climate_caption <- paste0("Climate change is a primary focus of VISION 2050, with a goal for the region to substantially reduce ",
+                          "emissions of greenhouse gases that contribute to climate change in accordance with the goals of the ", 
+                          "Puget Sound Clean Air Agency (50% below 1990 levels by 2030 and 80% below 1990 levels by 2050) ", 
+                          "as well as to prepare for climate change impacts. The challenges to meeting this goal are great. ", 
+                          "In 1990, the region was home to approximately 2.75 million people and almost 1.37 million jobs, ",
+                          "with travel of almost 62 million miles a day (an average of 22.6 miles per capita). ",
+                          "By 2050, the region is expected to grow to more than 5.82 million people (more than double from 1990) ",
+                          "and more than 3.16 million jobs. There are numerous solutions required to reach the regional climate goals ",
+                          "– no one solution will get us there, and all are necessary for success. ",
+                          "The Regional Transportation Plan includes the adopted Four-Part Greenhouse Gas Strategy, ",
+                          "recognizing that decisions and investments in the categories of Land Use, Transportation Choices, ",
+                          "Pricing and Technology/Decarbonization are the primary factors that influence greenhouse gas emissions ",
+                          "from on-road transportation and are factors for which PSRC’s planning efforts have either direct or indirect influence. ",
+                          "The plan identifies ongoing work to advance actions within each category, as well as necessary future steps to ensure full implementation.")
+
+ev_registration_caption <- paste0("Decarbonization of the transporation fleet is an important part of the Four-Part Greenhouse Gas Strategy. ",
+                                  "In ", lubridate::month(min_ev_date, label=TRUE, abbr = FALSE), " of ", lubridate::year(min_ev_date),
+                                  " electric and hybrid vehicles made up approximately ", round(evs_previous*100,0), "% of all new vehicle registrations. ",
+                                  "By ", lubridate::month(max_ev_date, label=TRUE, abbr = FALSE), " of ", lubridate::year(max_ev_date),
+                                  ", electric and hybrid vehicles made up approximately ", round(evs_today*100,0), "% of all new vehicle registrations.")

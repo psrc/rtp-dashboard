@@ -6,6 +6,10 @@ shinyServer(function(input, output) {
   output$safety_text <- renderText({safety_caption})
   
   output$region_fatal_text <- renderText({fatal_trends_caption})
+  
+  output$climate_text <- renderText({climate_caption})
+  
+  output$regional_ev_text <- renderText({ev_registration_caption})
 
     # Charts
     output$chart_population_growth <- renderPlotly({interactive_line_chart(t=data %>% filter(grouping=="Population" & variable=="Total" & geography=="Region" & data_year>=2000), 
@@ -50,6 +54,11 @@ shinyServer(function(input, output) {
                                                                        y='geography', x='estimate', fill='plot_id',
                                                                        est="number", dec=1, color='pgnobgy_5',
                                                                        title=paste0('Annual Fatalities per 100,000 people: ',safety_max_year))})
+    
+    output$ev_share_new_registrations_chart <- renderPlotly({interactive_column_chart(t=data %>% filter(metric=="New Vehicle Registrations" & geography=="Region"),
+                                                                                      y='share', x='date', fill='variable', pos = "stack",
+                                                                                      est="percent", dec=0, color='pgnobgy_5',
+                                                                                      title=(paste0('Share of New Vehicle Registrations')))})
     
     
 })    
