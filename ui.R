@@ -121,7 +121,7 @@ shinyUI(
                                                  h1("Regional Population Growth"),
                                                  textOutput("population_vision_text"),
                                                  hr(),
-                                                 fluidRow(column(12,plotOutput("chart_population_growth"))),
+                                                 fluidRow(column(12,plotlyOutput("chart_population_growth"))),
                                                  hr(),
                                                  h1("Growth Near High Capacity Transit"),
                                                  "The Regional Growth Strategy defines roles for different types of places in accommodating the region's population and employment growth, 
@@ -132,6 +132,7 @@ shinyUI(
                                                  tags$a(class = "source_url", href="https://www.psrc.org/media/5102", "guidance to implement the Regional Growth Strategy (PDF).", target="_blank"),
                                                  br(), br(),
                                                  br(), br(),
+                                                 fluidRow(column(12,plotlyOutput("chart_population_growth_hct"))),
                                                  hr()
                                                  
                                                  
@@ -181,15 +182,15 @@ shinyUI(
                                         br(),
                                         textOutput("region_fatal_text"),
                                         hr(),
-                                        fluidRow(column(12,plotOutput("fatal_collisions_chart"))),
+                                        fluidRow(column(12,plotlyOutput("fatal_collisions_chart"))),
                                         hr(),
                                         h1("Fatal Collisions by County in the PSRC Region"),
                                         fluidRow(column(8,plotOutput("county_fatal_collisions_chart")),
                                                  column(4,"Text about collision data by county")),
                                         hr(),
                                         h1("Fatal Collisions by Metropolitan Region"),
-                                        fluidRow(column(6,plotOutput("mpo_fatal_rate_min_yr_chart")),
-                                                 column(6,plotOutput("mpo_fatal_rate_max_yr_chart"))),
+                                        fluidRow(column(6,plotlyOutput("mpo_fatal_rate_min_yr_chart")),
+                                                 column(6,plotlyOutput("mpo_fatal_rate_max_yr_chart"))),
                                         br(), br(),
                                         br(), br(),
                                         hr()
