@@ -28,13 +28,13 @@ shinyUI(
                                       hr(),
                                       strong(tags$div(class="sidebar_heading","Connect With Us")),
                                       hr(),
-                                      tags$div(class="sidebar_notes","Kelly McGourty:"),
-                                      tags$div(class="sidebar_notes","Director of Transportation Planning"),
+                                      tags$div(class="sidebar_notes","Craig Helmann:"),
+                                      tags$div(class="sidebar_notes","Director of Data"),
                                       br(),
                                       icon("envelope"), 
-                                      tags$a(class = "source_url", href="mailto:kmcgourty@psrc.org?", "Email"),
+                                      tags$a(class = "source_url", href="mailto:chelmann@psrc.org?", "Email"),
                                       br(), br(),
-                                      icon("phone-volume"), "206-971-3601",
+                                      icon("phone-volume"), "206-389-2889",
                                       hr()),
                                column(8, style='padding-left:0px; padding-right:50px;',
                                       hr(),
@@ -77,10 +77,10 @@ shinyUI(
                       ), # end of tabpanel for Overview
              
              navbarMenu(icon("tree"), 
-                        tabPanel("Zero Emission Vehicles",
+                        tabPanel("Overview",
                                  fluidRow(column(12, style='padding-left:50px; padding-right:50px;',
                                                  bs4Jumbotron(
-                                                   title = strong(tags$div(class="mainpage_title","Decarbonization: Vehicle Registrations")),
+                                                   title = strong(tags$div(class="mainpage_title","Addressing Climate Change")),
                                                    status = "success",
                                                    btnName = strong(tags$div(class="mainpage_subtitle","Regional Transportation Plan")),
                                                    href = "https://www.psrc.org/planning-2050/regional-transportation-plan"))
@@ -111,17 +111,126 @@ shinyUI(
                                                  icon("phone-volume"), "206-971-3601",
                                                  hr()                                 ),
                                           column(8, style='padding-left:0px; padding-right:50px;',
-                                                 textOutput("climate_text"),
+                                                 textOutput("climate_text_1"),
+                                                 br(),
+                                                 textOutput("climate_text_2"),
+                                                 br(),
+                                                 textOutput("climate_text_3"),
+                                                 br(), 
+                                                 textOutput("climate_text_4"),
+                                                 br(), 
+                                                 div(img(src="ghg-2050-emissions.png", width = "100%", height = "100%", style = "padding-top: 0px; border-radius:0px 0 0px 0;", alt = "Bar chart of Greenhouse Gas Emissions in 2050")),
+                                                 br(),
+                                                 hr()
+                                                 
+                                                 
+                                          )) # End of Main Panel Fluid Row for Climate Tab
+                        ), # End of Tab Panel for Climate Overview
+                        
+                        tabPanel("Zero Emission Vehicles",
+                                 fluidRow(column(12, style='padding-left:50px; padding-right:50px;',
+                                                 bs4Jumbotron(
+                                                   title = strong(tags$div(class="mainpage_title","Zero Emission Vehicle Registrations")),
+                                                   status = "success",
+                                                   btnName = strong(tags$div(class="mainpage_subtitle","Regional Transportation Plan")),
+                                                   href = "https://www.psrc.org/planning-2050/regional-transportation-plan"))
+                                 ), # End of First Fluid Row for Fatal Collisions Tab
+                                 
+                                 fluidRow(column(4, style='padding-left:50px; padding-right:50px;',
+                                                 hr(),
+                                                 strong(tags$div(class="sidebar_heading","Regional Transportation Plan")),
+                                                 br(),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-transportation-plan/projects-and-approval", "Projects and Approval", target="_blank"),
+                                                 br(),br(),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/coordinated-mobility-plan", "Coordinated Mobility Plan", target="_blank"),
+                                                 br(),br(),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-transportation-plan/data-research-and-policy-briefs", "Data, Research and Policy Briefs", target="_blank"),
+                                                 br(),br(),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-transportation-plan/transportation-system-visualization-tool", "Transportation System Visualization Tool", target="_blank"),
+                                                 hr(),
+                                                 div(img(src="climate-image.png", width = "100%", height = "100%", style = "padding-top: 0px; border-radius:30px 0 30px 0;", alt = "Glass and steel building in the background")),
+                                                 hr(),
+                                                 strong(tags$div(class="sidebar_heading","Connect With Us")),
+                                                 hr(),
+                                                 tags$div(class="sidebar_notes","Kelly McGourty:"),
+                                                 tags$div(class="sidebar_notes","Director of Transportation Planning"),
+                                                 br(),
+                                                 icon("envelope"), 
+                                                 tags$a(class = "source_url", href="mailto:kmcgourty@psrc.org?", "Email"),
+                                                 br(), br(),
+                                                 icon("phone-volume"), "206-971-3601",
+                                                 hr()                                 ),
+                                          column(8, style='padding-left:0px; padding-right:50px;',
                                                  h1("New Vehicle Registrations in the PSRC Region"),
-                                                 fluidRow(column(4,textOutput("regional_ev_text")),
-                                                          column(8,plotlyOutput("ev_share_new_registrations_chart"))),
+                                                 textOutput("regional_ev_text"),
+                                                 fluidRow(column(12,plotlyOutput("ev_share_new_registrations_chart"))),
+                                                 hr(),
+                                                 h1("New Vehicle Registrations by Zipcode"),
+                                                 textOutput("zipcode_ev_text"),
+                                                 fluidRow(column(12,leafletOutput("ev_zipcode_map"))),
                                                  br(), br(),
                                                  br(), br(),
                                                  hr()
                                                  
                                                  
                                           )) # End of Main Panel Fluid Row for Climate Tab
-                        ), # End of Tab Panel for Climate
+                        ), # End of Tab Panel for Climate ZEV
+                        
+                        tabPanel("Vehicle Miles Traveled",
+                                 fluidRow(column(12, style='padding-left:50px; padding-right:50px;',
+                                                 bs4Jumbotron(
+                                                   title = strong(tags$div(class="mainpage_title","Vehicle Miles Traveled")),
+                                                   status = "success",
+                                                   btnName = strong(tags$div(class="mainpage_subtitle","Regional Transportation Plan")),
+                                                   href = "https://www.psrc.org/planning-2050/regional-transportation-plan"))
+                                 ), # End of First Fluid Row for Fatal Collisions Tab
+                                 
+                                 fluidRow(column(4, style='padding-left:50px; padding-right:50px;',
+                                                 hr(),
+                                                 strong(tags$div(class="sidebar_heading","Regional Transportation Plan")),
+                                                 br(),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-transportation-plan/projects-and-approval", "Projects and Approval", target="_blank"),
+                                                 br(),br(),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/coordinated-mobility-plan", "Coordinated Mobility Plan", target="_blank"),
+                                                 br(),br(),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-transportation-plan/data-research-and-policy-briefs", "Data, Research and Policy Briefs", target="_blank"),
+                                                 br(),br(),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-transportation-plan/transportation-system-visualization-tool", "Transportation System Visualization Tool", target="_blank"),
+                                                 hr(),
+                                                 div(img(src="climate-image.png", width = "100%", height = "100%", style = "padding-top: 0px; border-radius:30px 0 30px 0;", alt = "Glass and steel building in the background")),
+                                                 hr(),
+                                                 strong(tags$div(class="sidebar_heading","Connect With Us")),
+                                                 hr(),
+                                                 tags$div(class="sidebar_notes","Kris Overby:"),
+                                                 tags$div(class="sidebar_notes","Senior Modeler"),
+                                                 br(),
+                                                 icon("envelope"), 
+                                                 tags$a(class = "source_url", href="mailto:koverby@psrc.org?", "Email"),
+                                                 br(), br(),
+                                                 icon("phone-volume"), "206-464-6661",
+                                                 hr()                                 ),
+                                          column(8, style='padding-left:0px; padding-right:50px;',
+                                                 h1("Regional Vehicle Miles Traveled"),
+                                                 textOutput("regional_vmt_text"),
+                                                 fluidRow(column(6,plotlyOutput("chart_total_vmt")),
+                                                          column(6,plotlyOutput("chart_per_capita_vmt"))),
+                                                 br(), 
+                                                 h1("Vehicle Miles Traveled by County"),
+                                                 textOutput("county_vmt_text"),
+                                                 br(),
+                                                 fluidRow(column(12,plotOutput("chart_total_vmt_county"))),
+                                                 br(), 
+                                                 h1("Vehicle Kilometers Traveled Comparison"),
+                                                 textOutput("vkt_text"),
+                                                 br(),
+                                                 fluidRow(column(12,plotlyOutput("chart_vkt_per_capita"))),
+                                                 br(),
+                                                 hr()
+                                                 
+                                                 
+                                          )) # End of Main Panel Fluid Row for Climate Tab
+                        ), # End of Tab Panel for Climate VMT
+                        
              ),# End of Nav Bar Menu for Climate
              
              navbarMenu(icon("users"), 
@@ -192,7 +301,7 @@ shinyUI(
                         tabPanel("Fatal Collisions",
                                  fluidRow(column(12, style='padding-left:50px; padding-right:50px;',
                                                  bs4Jumbotron(
-                                                   title = strong(tags$div(class="mainpage_title","Safety Metrics: Fatal Collisions")),
+                                                   title = strong(tags$div(class="mainpage_title","Fatal Collisions")),
                                                    status = "success",
                                                    btnName = strong(tags$div(class="mainpage_subtitle","Regional Transportation Plan")),
                                                    href = "https://www.psrc.org/planning-2050/regional-transportation-plan"))
@@ -214,13 +323,13 @@ shinyUI(
                                                  hr(),
                                                  strong(tags$div(class="sidebar_heading","Connect With Us")),
                                                  hr(),
-                                                 tags$div(class="sidebar_notes","Kelly McGourty:"),
-                                                 tags$div(class="sidebar_notes","Director of Transportation Planning"),
+                                                 tags$div(class="sidebar_notes","Gary Simonson:"),
+                                                 tags$div(class="sidebar_notes","Senior Planner"),
                                                  br(),
                                                  icon("envelope"), 
-                                                 tags$a(class = "source_url", href="mailto:kmcgourty@psrc.org?", "Email"),
+                                                 tags$a(class = "source_url", href="mailto:gsimonson@psrc.org?", "Email"),
                                                  br(), br(),
-                                                 icon("phone-volume"), "206-971-3601",
+                                                 icon("phone-volume"), "206-971-3276",
                                                  hr()                                 ),
                                  column(8, style='padding-left:0px; padding-right:50px;',
                                         "Safety was one of the key policy focus areas identified by PSRC's Transportation Policy Board early in the development of the RTP and is a cross-cutting issue addressed throughout all relevant sections of the",

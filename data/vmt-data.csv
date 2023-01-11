@@ -1,0 +1,451 @@
+﻿date,data_year,geography,geography_type,variable,metric,estimate,moe,share,share_moe,grouping
+12/1/1980,1980,King,County,Total,Observed VMT,"19,797,388",,,,Vehicle Miles Traveled
+12/1/1981,1981,King,County,Total,Observed VMT,"22,952,732",,,,Vehicle Miles Traveled
+12/1/1982,1982,King,County,Total,Observed VMT,"23,837,814",,,,Vehicle Miles Traveled
+12/1/1983,1983,King,County,Total,Observed VMT,"25,858,027",,,,Vehicle Miles Traveled
+12/1/1984,1984,King,County,Total,Observed VMT,"27,878,240",,,,Vehicle Miles Traveled
+12/1/1985,1985,King,County,Total,Observed VMT,"28,349,358",,,,Vehicle Miles Traveled
+12/1/1986,1986,King,County,Total,Observed VMT,"30,170,462",,,,Vehicle Miles Traveled
+12/1/1987,1987,King,County,Total,Observed VMT,"32,255,912",,,,Vehicle Miles Traveled
+12/1/1988,1988,King,County,Total,Observed VMT,"34,300,130",,,,Vehicle Miles Traveled
+12/1/1989,1989,King,County,Total,Observed VMT,"34,842,807",,,,Vehicle Miles Traveled
+12/1/1990,1990,King,County,Total,Observed VMT,"34,915,648",,,,Vehicle Miles Traveled
+12/1/1991,1991,King,County,Total,Observed VMT,"35,792,641",,,,Vehicle Miles Traveled
+12/1/1992,1992,King,County,Total,Observed VMT,"36,298,127",,,,Vehicle Miles Traveled
+12/1/1993,1993,King,County,Total,Observed VMT,"37,929,322",,,,Vehicle Miles Traveled
+12/1/1994,1994,King,County,Total,Observed VMT,"38,436,193",,,,Vehicle Miles Traveled
+12/1/1995,1995,King,County,Total,Observed VMT,"41,191,711",,,,Vehicle Miles Traveled
+12/1/1996,1996,King,County,Total,Observed VMT,"40,493,106",,,,Vehicle Miles Traveled
+12/1/1997,1997,King,County,Total,Observed VMT,"42,202,682",,,,Vehicle Miles Traveled
+12/1/1998,1998,King,County,Total,Observed VMT,"42,998,846",,,,Vehicle Miles Traveled
+12/1/1999,1999,King,County,Total,Observed VMT,"43,956,669",,,,Vehicle Miles Traveled
+12/1/2000,2000,King,County,Total,Observed VMT,"44,361,146",,,,Vehicle Miles Traveled
+12/1/2001,2001,King,County,Total,Observed VMT,"44,102,351",,,,Vehicle Miles Traveled
+12/1/2002,2002,King,County,Total,Observed VMT,"44,597,204",,,,Vehicle Miles Traveled
+12/1/2003,2003,King,County,Total,Observed VMT,"44,476,954",,,,Vehicle Miles Traveled
+12/1/2004,2004,King,County,Total,Observed VMT,"44,958,449",,,,Vehicle Miles Traveled
+12/1/2005,2005,King,County,Total,Observed VMT,"45,206,254",,,,Vehicle Miles Traveled
+12/1/2006,2006,King,County,Total,Observed VMT,"45,196,533",,,,Vehicle Miles Traveled
+12/1/2007,2007,King,County,Total,Observed VMT,"45,123,736",,,,Vehicle Miles Traveled
+12/1/2008,2008,King,County,Total,Observed VMT,"44,007,596",,,,Vehicle Miles Traveled
+12/1/2009,2009,King,County,Total,Observed VMT,"44,299,005",,,,Vehicle Miles Traveled
+12/1/2010,2010,King,County,Total,Observed VMT,"45,563,286",,,,Vehicle Miles Traveled
+12/1/2011,2011,King,County,Total,Observed VMT,"45,386,055",,,,Vehicle Miles Traveled
+12/1/2012,2012,King,County,Total,Observed VMT,"43,704,316",,,,Vehicle Miles Traveled
+12/1/2013,2013,King,County,Total,Observed VMT,"43,725,957",,,,Vehicle Miles Traveled
+12/1/2014,2014,King,County,Total,Observed VMT,"44,417,914",,,,Vehicle Miles Traveled
+12/1/2015,2015,King,County,Total,Observed VMT,"45,225,840",,,,Vehicle Miles Traveled
+12/1/2016,2016,King,County,Total,Observed VMT,"47,049,154",,,,Vehicle Miles Traveled
+12/1/2017,2017,King,County,Total,Observed VMT,"47,248,000",,,,Vehicle Miles Traveled
+12/1/2018,2018,King,County,Total,Observed VMT,"47,809,411",,,,Vehicle Miles Traveled
+12/1/2019,2019,King,County,Total,Observed VMT,"47,773,645",,,,Vehicle Miles Traveled
+12/1/2020,2020,King,County,Total,Observed VMT,"39,367,765",,,,Vehicle Miles Traveled
+12/1/2021,2021,King,County,Total,Observed VMT,"42,153,003",,,,Vehicle Miles Traveled
+12/1/2018,2018,King,County,Total,Forecast VMT,"47,809,411",,,,Vehicle Miles Traveled
+12/1/2019,2019,King,County,Total,Forecast VMT,"47,773,645",,,,Vehicle Miles Traveled
+12/1/2020,2020,King,County,Total,Forecast VMT,"47,973,942",,,,Vehicle Miles Traveled
+12/1/2021,2021,King,County,Total,Forecast VMT,"47,938,176",,,,Vehicle Miles Traveled
+12/1/2022,2022,King,County,Total,Forecast VMT,"48,102,707",,,,Vehicle Miles Traveled
+12/1/2023,2023,King,County,Total,Forecast VMT,"48,267,237",,,,Vehicle Miles Traveled
+12/1/2024,2024,King,County,Total,Forecast VMT,"48,431,768",,,,Vehicle Miles Traveled
+12/1/2025,2025,King,County,Total,Forecast VMT,"48,596,299",,,,Vehicle Miles Traveled
+12/1/2026,2026,King,County,Total,Forecast VMT,"48,760,830",,,,Vehicle Miles Traveled
+12/1/2027,2027,King,County,Total,Forecast VMT,"48,925,361",,,,Vehicle Miles Traveled
+12/1/2028,2028,King,County,Total,Forecast VMT,"49,089,892",,,,Vehicle Miles Traveled
+12/1/2029,2029,King,County,Total,Forecast VMT,"49,254,422",,,,Vehicle Miles Traveled
+12/1/2030,2030,King,County,Total,Forecast VMT,"49,583,484",,,,Vehicle Miles Traveled
+12/1/2031,2031,King,County,Total,Forecast VMT,"49,846,170",,,,Vehicle Miles Traveled
+12/1/2032,2032,King,County,Total,Forecast VMT,"50,108,856",,,,Vehicle Miles Traveled
+12/1/2033,2033,King,County,Total,Forecast VMT,"50,371,541",,,,Vehicle Miles Traveled
+12/1/2034,2034,King,County,Total,Forecast VMT,"50,634,227",,,,Vehicle Miles Traveled
+12/1/2035,2035,King,County,Total,Forecast VMT,"50,896,913",,,,Vehicle Miles Traveled
+12/1/2036,2036,King,County,Total,Forecast VMT,"51,159,599",,,,Vehicle Miles Traveled
+12/1/2037,2037,King,County,Total,Forecast VMT,"51,422,285",,,,Vehicle Miles Traveled
+12/1/2038,2038,King,County,Total,Forecast VMT,"51,684,970",,,,Vehicle Miles Traveled
+12/1/2039,2039,King,County,Total,Forecast VMT,"51,947,656",,,,Vehicle Miles Traveled
+12/1/2040,2040,King,County,Total,Forecast VMT,"52,210,342",,,,Vehicle Miles Traveled
+12/1/2041,2041,King,County,Total,Forecast VMT,"52,479,308",,,,Vehicle Miles Traveled
+12/1/2042,2042,King,County,Total,Forecast VMT,"52,748,274",,,,Vehicle Miles Traveled
+12/1/2043,2043,King,County,Total,Forecast VMT,"53,017,239",,,,Vehicle Miles Traveled
+12/1/2044,2044,King,County,Total,Forecast VMT,"53,286,205",,,,Vehicle Miles Traveled
+12/1/2045,2045,King,County,Total,Forecast VMT,"53,555,171",,,,Vehicle Miles Traveled
+12/1/2046,2046,King,County,Total,Forecast VMT,"53,824,137",,,,Vehicle Miles Traveled
+12/1/2047,2047,King,County,Total,Forecast VMT,"54,093,103",,,,Vehicle Miles Traveled
+12/1/2048,2048,King,County,Total,Forecast VMT,"54,362,068",,,,Vehicle Miles Traveled
+12/1/2049,2049,King,County,Total,Forecast VMT,"54,631,034",,,,Vehicle Miles Traveled
+12/1/2050,2050,King,County,Total,Forecast VMT,"54,900,000",,,,Vehicle Miles Traveled
+12/1/1980,1980,Kitsap,County,Total,Observed VMT,"1,804,326",,,,Vehicle Miles Traveled
+12/1/1981,1981,Kitsap,County,Total,Observed VMT,"2,062,016",,,,Vehicle Miles Traveled
+12/1/1982,1982,Kitsap,County,Total,Observed VMT,"1,961,526",,,,Vehicle Miles Traveled
+12/1/1983,1983,Kitsap,County,Total,Observed VMT,"2,040,126",,,,Vehicle Miles Traveled
+12/1/1984,1984,Kitsap,County,Total,Observed VMT,"2,118,726",,,,Vehicle Miles Traveled
+12/1/1985,1985,Kitsap,County,Total,Observed VMT,"1,990,739",,,,Vehicle Miles Traveled
+12/1/1986,1986,Kitsap,County,Total,Observed VMT,"2,031,834",,,,Vehicle Miles Traveled
+12/1/1987,1987,Kitsap,County,Total,Observed VMT,"2,441,231",,,,Vehicle Miles Traveled
+12/1/1988,1988,Kitsap,County,Total,Observed VMT,"1,257,530",,,,Vehicle Miles Traveled
+12/1/1989,1989,Kitsap,County,Total,Observed VMT,"3,675,187",,,,Vehicle Miles Traveled
+12/1/1990,1990,Kitsap,County,Total,Observed VMT,"3,627,148",,,,Vehicle Miles Traveled
+12/1/1991,1991,Kitsap,County,Total,Observed VMT,"3,673,041",,,,Vehicle Miles Traveled
+12/1/1992,1992,Kitsap,County,Total,Observed VMT,"3,763,758",,,,Vehicle Miles Traveled
+12/1/1993,1993,Kitsap,County,Total,Observed VMT,"3,828,291",,,,Vehicle Miles Traveled
+12/1/1994,1994,Kitsap,County,Total,Observed VMT,"3,856,572",,,,Vehicle Miles Traveled
+12/1/1995,1995,Kitsap,County,Total,Observed VMT,"3,957,355",,,,Vehicle Miles Traveled
+12/1/1996,1996,Kitsap,County,Total,Observed VMT,"3,997,963",,,,Vehicle Miles Traveled
+12/1/1997,1997,Kitsap,County,Total,Observed VMT,"4,138,789",,,,Vehicle Miles Traveled
+12/1/1998,1998,Kitsap,County,Total,Observed VMT,"4,154,968",,,,Vehicle Miles Traveled
+12/1/1999,1999,Kitsap,County,Total,Observed VMT,"4,230,576",,,,Vehicle Miles Traveled
+12/1/2000,2000,Kitsap,County,Total,Observed VMT,"4,187,003",,,,Vehicle Miles Traveled
+12/1/2001,2001,Kitsap,County,Total,Observed VMT,"4,134,497",,,,Vehicle Miles Traveled
+12/1/2002,2002,Kitsap,County,Total,Observed VMT,"4,285,644",,,,Vehicle Miles Traveled
+12/1/2003,2003,Kitsap,County,Total,Observed VMT,"4,344,546",,,,Vehicle Miles Traveled
+12/1/2004,2004,Kitsap,County,Total,Observed VMT,"4,415,089",,,,Vehicle Miles Traveled
+12/1/2005,2005,Kitsap,County,Total,Observed VMT,"4,394,999",,,,Vehicle Miles Traveled
+12/1/2006,2006,Kitsap,County,Total,Observed VMT,"4,385,564",,,,Vehicle Miles Traveled
+12/1/2007,2007,Kitsap,County,Total,Observed VMT,"4,544,632",,,,Vehicle Miles Traveled
+12/1/2008,2008,Kitsap,County,Total,Observed VMT,"4,424,824",,,,Vehicle Miles Traveled
+12/1/2009,2009,Kitsap,County,Total,Observed VMT,"4,531,509",,,,Vehicle Miles Traveled
+12/1/2010,2010,Kitsap,County,Total,Observed VMT,"4,702,975",,,,Vehicle Miles Traveled
+12/1/2011,2011,Kitsap,County,Total,Observed VMT,"4,677,304",,,,Vehicle Miles Traveled
+12/1/2012,2012,Kitsap,County,Total,Observed VMT,"4,800,959",,,,Vehicle Miles Traveled
+12/1/2013,2013,Kitsap,County,Total,Observed VMT,"4,782,647",,,,Vehicle Miles Traveled
+12/1/2014,2014,Kitsap,County,Total,Observed VMT,"4,870,860",,,,Vehicle Miles Traveled
+12/1/2015,2015,Kitsap,County,Total,Observed VMT,"5,098,105",,,,Vehicle Miles Traveled
+12/1/2016,2016,Kitsap,County,Total,Observed VMT,"4,957,732",,,,Vehicle Miles Traveled
+12/1/2017,2017,Kitsap,County,Total,Observed VMT,"5,019,000",,,,Vehicle Miles Traveled
+12/1/2018,2018,Kitsap,County,Total,Observed VMT,"5,119,890",,,,Vehicle Miles Traveled
+12/1/2019,2019,Kitsap,County,Total,Observed VMT,"5,090,695",,,,Vehicle Miles Traveled
+12/1/2020,2020,Kitsap,County,Total,Observed VMT,"4,382,783",,,,Vehicle Miles Traveled
+12/1/2021,2021,Kitsap,County,Total,Observed VMT,"4,730,000",,,,Vehicle Miles Traveled
+12/1/2018,2018,Kitsap,County,Total,Forecast VMT,"5,119,890",,,,Vehicle Miles Traveled
+12/1/2019,2019,Kitsap,County,Total,Forecast VMT,"5,090,695",,,,Vehicle Miles Traveled
+12/1/2020,2020,Kitsap,County,Total,Forecast VMT,"5,121,433",,,,Vehicle Miles Traveled
+12/1/2021,2021,Kitsap,County,Total,Forecast VMT,"5,092,238",,,,Vehicle Miles Traveled
+12/1/2022,2022,Kitsap,County,Total,Forecast VMT,"5,093,780",,,,Vehicle Miles Traveled
+12/1/2023,2023,Kitsap,County,Total,Forecast VMT,"5,095,323",,,,Vehicle Miles Traveled
+12/1/2024,2024,Kitsap,County,Total,Forecast VMT,"5,096,866",,,,Vehicle Miles Traveled
+12/1/2025,2025,Kitsap,County,Total,Forecast VMT,"5,098,409",,,,Vehicle Miles Traveled
+12/1/2026,2026,Kitsap,County,Total,Forecast VMT,"5,099,951",,,,Vehicle Miles Traveled
+12/1/2027,2027,Kitsap,County,Total,Forecast VMT,"5,101,494",,,,Vehicle Miles Traveled
+12/1/2028,2028,Kitsap,County,Total,Forecast VMT,"5,103,037",,,,Vehicle Miles Traveled
+12/1/2029,2029,Kitsap,County,Total,Forecast VMT,"5,104,580",,,,Vehicle Miles Traveled
+12/1/2030,2030,Kitsap,County,Total,Forecast VMT,"5,107,665",,,,Vehicle Miles Traveled
+12/1/2031,2031,Kitsap,County,Total,Forecast VMT,"5,154,779",,,,Vehicle Miles Traveled
+12/1/2032,2032,Kitsap,County,Total,Forecast VMT,"5,201,892",,,,Vehicle Miles Traveled
+12/1/2033,2033,Kitsap,County,Total,Forecast VMT,"5,249,006",,,,Vehicle Miles Traveled
+12/1/2034,2034,Kitsap,County,Total,Forecast VMT,"5,296,120",,,,Vehicle Miles Traveled
+12/1/2035,2035,Kitsap,County,Total,Forecast VMT,"5,343,234",,,,Vehicle Miles Traveled
+12/1/2036,2036,Kitsap,County,Total,Forecast VMT,"5,390,347",,,,Vehicle Miles Traveled
+12/1/2037,2037,Kitsap,County,Total,Forecast VMT,"5,437,461",,,,Vehicle Miles Traveled
+12/1/2038,2038,Kitsap,County,Total,Forecast VMT,"5,484,575",,,,Vehicle Miles Traveled
+12/1/2039,2039,Kitsap,County,Total,Forecast VMT,"5,531,688",,,,Vehicle Miles Traveled
+12/1/2040,2040,Kitsap,County,Total,Forecast VMT,"5,578,802",,,,Vehicle Miles Traveled
+12/1/2041,2041,Kitsap,County,Total,Forecast VMT,"5,620,922",,,,Vehicle Miles Traveled
+12/1/2042,2042,Kitsap,County,Total,Forecast VMT,"5,663,042",,,,Vehicle Miles Traveled
+12/1/2043,2043,Kitsap,County,Total,Forecast VMT,"5,705,161",,,,Vehicle Miles Traveled
+12/1/2044,2044,Kitsap,County,Total,Forecast VMT,"5,747,281",,,,Vehicle Miles Traveled
+12/1/2045,2045,Kitsap,County,Total,Forecast VMT,"5,789,401",,,,Vehicle Miles Traveled
+12/1/2046,2046,Kitsap,County,Total,Forecast VMT,"5,831,521",,,,Vehicle Miles Traveled
+12/1/2047,2047,Kitsap,County,Total,Forecast VMT,"5,873,641",,,,Vehicle Miles Traveled
+12/1/2048,2048,Kitsap,County,Total,Forecast VMT,"5,915,760",,,,Vehicle Miles Traveled
+12/1/2049,2049,Kitsap,County,Total,Forecast VMT,"5,957,880",,,,Vehicle Miles Traveled
+12/1/2050,2050,Kitsap,County,Total,Forecast VMT,"6,000,000",,,,Vehicle Miles Traveled
+12/1/1980,1980,Pierce,County,Total,Observed VMT,"7,529,159",,,,Vehicle Miles Traveled
+12/1/1981,1981,Pierce,County,Total,Observed VMT,"7,519,894",,,,Vehicle Miles Traveled
+12/1/1982,1982,Pierce,County,Total,Observed VMT,"7,979,846",,,,Vehicle Miles Traveled
+12/1/1983,1983,Pierce,County,Total,Observed VMT,"8,205,190",,,,Vehicle Miles Traveled
+12/1/1984,1984,Pierce,County,Total,Observed VMT,"8,430,533",,,,Vehicle Miles Traveled
+12/1/1985,1985,Pierce,County,Total,Observed VMT,"8,862,288",,,,Vehicle Miles Traveled
+12/1/1986,1986,Pierce,County,Total,Observed VMT,"9,063,798",,,,Vehicle Miles Traveled
+12/1/1987,1987,Pierce,County,Total,Observed VMT,"10,607,484",,,,Vehicle Miles Traveled
+12/1/1988,1988,Pierce,County,Total,Observed VMT,"12,010,468",,,,Vehicle Miles Traveled
+12/1/1989,1989,Pierce,County,Total,Observed VMT,"12,714,865",,,,Vehicle Miles Traveled
+12/1/1990,1990,Pierce,County,Total,Observed VMT,"12,936,828",,,,Vehicle Miles Traveled
+12/1/1991,1991,Pierce,County,Total,Observed VMT,"13,162,882",,,,Vehicle Miles Traveled
+12/1/1992,1992,Pierce,County,Total,Observed VMT,"13,428,518",,,,Vehicle Miles Traveled
+12/1/1993,1993,Pierce,County,Total,Observed VMT,"13,720,265",,,,Vehicle Miles Traveled
+12/1/1994,1994,Pierce,County,Total,Observed VMT,"13,951,057",,,,Vehicle Miles Traveled
+12/1/1995,1995,Pierce,County,Total,Observed VMT,"14,303,758",,,,Vehicle Miles Traveled
+12/1/1996,1996,Pierce,County,Total,Observed VMT,"14,235,140",,,,Vehicle Miles Traveled
+12/1/1997,1997,Pierce,County,Total,Observed VMT,"14,835,031",,,,Vehicle Miles Traveled
+12/1/1998,1998,Pierce,County,Total,Observed VMT,"15,099,825",,,,Vehicle Miles Traveled
+12/1/1999,1999,Pierce,County,Total,Observed VMT,"15,287,139",,,,Vehicle Miles Traveled
+12/1/2000,2000,Pierce,County,Total,Observed VMT,"15,667,338",,,,Vehicle Miles Traveled
+12/1/2001,2001,Pierce,County,Total,Observed VMT,"15,731,064",,,,Vehicle Miles Traveled
+12/1/2002,2002,Pierce,County,Total,Observed VMT,"16,626,231",,,,Vehicle Miles Traveled
+12/1/2003,2003,Pierce,County,Total,Observed VMT,"16,736,583",,,,Vehicle Miles Traveled
+12/1/2004,2004,Pierce,County,Total,Observed VMT,"16,468,511",,,,Vehicle Miles Traveled
+12/1/2005,2005,Pierce,County,Total,Observed VMT,"16,603,243",,,,Vehicle Miles Traveled
+12/1/2006,2006,Pierce,County,Total,Observed VMT,"17,244,241",,,,Vehicle Miles Traveled
+12/1/2007,2007,Pierce,County,Total,Observed VMT,"17,364,623",,,,Vehicle Miles Traveled
+12/1/2008,2008,Pierce,County,Total,Observed VMT,"16,987,692",,,,Vehicle Miles Traveled
+12/1/2009,2009,Pierce,County,Total,Observed VMT,"17,185,111",,,,Vehicle Miles Traveled
+12/1/2010,2010,Pierce,County,Total,Observed VMT,"17,419,712",,,,Vehicle Miles Traveled
+12/1/2011,2011,Pierce,County,Total,Observed VMT,"17,474,811",,,,Vehicle Miles Traveled
+12/1/2012,2012,Pierce,County,Total,Observed VMT,"17,047,176",,,,Vehicle Miles Traveled
+12/1/2013,2013,Pierce,County,Total,Observed VMT,"17,272,923",,,,Vehicle Miles Traveled
+12/1/2014,2014,Pierce,County,Total,Observed VMT,"17,435,404",,,,Vehicle Miles Traveled
+12/1/2015,2015,Pierce,County,Total,Observed VMT,"17,835,715",,,,Vehicle Miles Traveled
+12/1/2016,2016,Pierce,County,Total,Observed VMT,"18,515,796",,,,Vehicle Miles Traveled
+12/1/2017,2017,Pierce,County,Total,Observed VMT,"18,630,000",,,,Vehicle Miles Traveled
+12/1/2018,2018,Pierce,County,Total,Observed VMT,"18,858,479",,,,Vehicle Miles Traveled
+12/1/2019,2019,Pierce,County,Total,Observed VMT,"18,966,366",,,,Vehicle Miles Traveled
+12/1/2020,2020,Pierce,County,Total,Observed VMT,"16,304,353",,,,Vehicle Miles Traveled
+12/1/2021,2021,Pierce,County,Total,Observed VMT,"17,405,000",,,,Vehicle Miles Traveled
+12/1/2018,2018,Pierce,County,Total,Forecast VMT,"18,858,479",,,,Vehicle Miles Traveled
+12/1/2019,2019,Pierce,County,Total,Forecast VMT,"18,966,366",,,,Vehicle Miles Traveled
+12/1/2020,2020,Pierce,County,Total,Forecast VMT,"18,966,356",,,,Vehicle Miles Traveled
+12/1/2021,2021,Pierce,County,Total,Forecast VMT,"19,074,243",,,,Vehicle Miles Traveled
+12/1/2022,2022,Pierce,County,Total,Forecast VMT,"19,182,120",,,,Vehicle Miles Traveled
+12/1/2023,2023,Pierce,County,Total,Forecast VMT,"19,289,996",,,,Vehicle Miles Traveled
+12/1/2024,2024,Pierce,County,Total,Forecast VMT,"19,397,873",,,,Vehicle Miles Traveled
+12/1/2025,2025,Pierce,County,Total,Forecast VMT,"19,505,750",,,,Vehicle Miles Traveled
+12/1/2026,2026,Pierce,County,Total,Forecast VMT,"19,613,627",,,,Vehicle Miles Traveled
+12/1/2027,2027,Pierce,County,Total,Forecast VMT,"19,721,504",,,,Vehicle Miles Traveled
+12/1/2028,2028,Pierce,County,Total,Forecast VMT,"19,829,381",,,,Vehicle Miles Traveled
+12/1/2029,2029,Pierce,County,Total,Forecast VMT,"19,937,257",,,,Vehicle Miles Traveled
+12/1/2030,2030,Pierce,County,Total,Forecast VMT,"20,153,011",,,,Vehicle Miles Traveled
+12/1/2031,2031,Pierce,County,Total,Forecast VMT,"20,295,576",,,,Vehicle Miles Traveled
+12/1/2032,2032,Pierce,County,Total,Forecast VMT,"20,438,140",,,,Vehicle Miles Traveled
+12/1/2033,2033,Pierce,County,Total,Forecast VMT,"20,580,705",,,,Vehicle Miles Traveled
+12/1/2034,2034,Pierce,County,Total,Forecast VMT,"20,723,270",,,,Vehicle Miles Traveled
+12/1/2035,2035,Pierce,County,Total,Forecast VMT,"20,865,835",,,,Vehicle Miles Traveled
+12/1/2036,2036,Pierce,County,Total,Forecast VMT,"21,008,399",,,,Vehicle Miles Traveled
+12/1/2037,2037,Pierce,County,Total,Forecast VMT,"21,150,964",,,,Vehicle Miles Traveled
+12/1/2038,2038,Pierce,County,Total,Forecast VMT,"21,293,529",,,,Vehicle Miles Traveled
+12/1/2039,2039,Pierce,County,Total,Forecast VMT,"21,436,093",,,,Vehicle Miles Traveled
+12/1/2040,2040,Pierce,County,Total,Forecast VMT,"21,578,658",,,,Vehicle Miles Traveled
+12/1/2041,2041,Pierce,County,Total,Forecast VMT,"21,710,792",,,,Vehicle Miles Traveled
+12/1/2042,2042,Pierce,County,Total,Forecast VMT,"21,842,926",,,,Vehicle Miles Traveled
+12/1/2043,2043,Pierce,County,Total,Forecast VMT,"21,975,061",,,,Vehicle Miles Traveled
+12/1/2044,2044,Pierce,County,Total,Forecast VMT,"22,107,195",,,,Vehicle Miles Traveled
+12/1/2045,2045,Pierce,County,Total,Forecast VMT,"22,239,329",,,,Vehicle Miles Traveled
+12/1/2046,2046,Pierce,County,Total,Forecast VMT,"22,371,463",,,,Vehicle Miles Traveled
+12/1/2047,2047,Pierce,County,Total,Forecast VMT,"22,503,597",,,,Vehicle Miles Traveled
+12/1/2048,2048,Pierce,County,Total,Forecast VMT,"22,635,732",,,,Vehicle Miles Traveled
+12/1/2049,2049,Pierce,County,Total,Forecast VMT,"22,767,866",,,,Vehicle Miles Traveled
+12/1/2050,2050,Pierce,County,Total,Forecast VMT,"22,800,000",,,,Vehicle Miles Traveled
+12/1/1980,1980,Snohomish,County,Total,Observed VMT,"7,277,546",,,,Vehicle Miles Traveled
+12/1/1981,1981,Snohomish,County,Total,Observed VMT,"6,895,925",,,,Vehicle Miles Traveled
+12/1/1982,1982,Snohomish,County,Total,Observed VMT,"6,726,404",,,,Vehicle Miles Traveled
+12/1/1983,1983,Snohomish,County,Total,Observed VMT,"6,450,833",,,,Vehicle Miles Traveled
+12/1/1984,1984,Snohomish,County,Total,Observed VMT,"6,175,262",,,,Vehicle Miles Traveled
+12/1/1985,1985,Snohomish,County,Total,Observed VMT,"6,879,278",,,,Vehicle Miles Traveled
+12/1/1986,1986,Snohomish,County,Total,Observed VMT,"6,712,703",,,,Vehicle Miles Traveled
+12/1/1987,1987,Snohomish,County,Total,Observed VMT,"8,374,182",,,,Vehicle Miles Traveled
+12/1/1988,1988,Snohomish,County,Total,Observed VMT,"9,969,957",,,,Vehicle Miles Traveled
+12/1/1989,1989,Snohomish,County,Total,Observed VMT,"10,479,160",,,,Vehicle Miles Traveled
+12/1/1990,1990,Snohomish,County,Total,Observed VMT,"10,665,738",,,,Vehicle Miles Traveled
+12/1/1991,1991,Snohomish,County,Total,Observed VMT,"10,924,535",,,,Vehicle Miles Traveled
+12/1/1992,1992,Snohomish,County,Total,Observed VMT,"11,482,050",,,,Vehicle Miles Traveled
+12/1/1993,1993,Snohomish,County,Total,Observed VMT,"11,737,497",,,,Vehicle Miles Traveled
+12/1/1994,1994,Snohomish,County,Total,Observed VMT,"12,002,289",,,,Vehicle Miles Traveled
+12/1/1995,1995,Snohomish,County,Total,Observed VMT,"12,248,391",,,,Vehicle Miles Traveled
+12/1/1996,1996,Snohomish,County,Total,Observed VMT,"12,774,115",,,,Vehicle Miles Traveled
+12/1/1997,1997,Snohomish,County,Total,Observed VMT,"13,363,422",,,,Vehicle Miles Traveled
+12/1/1998,1998,Snohomish,County,Total,Observed VMT,"13,676,380",,,,Vehicle Miles Traveled
+12/1/1999,1999,Snohomish,County,Total,Observed VMT,"13,881,015",,,,Vehicle Miles Traveled
+12/1/2000,2000,Snohomish,County,Total,Observed VMT,"14,195,181",,,,Vehicle Miles Traveled
+12/1/2001,2001,Snohomish,County,Total,Observed VMT,"14,254,171",,,,Vehicle Miles Traveled
+12/1/2002,2002,Snohomish,County,Total,Observed VMT,"14,415,839",,,,Vehicle Miles Traveled
+12/1/2003,2003,Snohomish,County,Total,Observed VMT,"14,345,802",,,,Vehicle Miles Traveled
+12/1/2004,2004,Snohomish,County,Total,Observed VMT,"14,260,068",,,,Vehicle Miles Traveled
+12/1/2005,2005,Snohomish,County,Total,Observed VMT,"14,429,711",,,,Vehicle Miles Traveled
+12/1/2006,2006,Snohomish,County,Total,Observed VMT,"14,707,824",,,,Vehicle Miles Traveled
+12/1/2007,2007,Snohomish,County,Total,Observed VMT,"14,986,022",,,,Vehicle Miles Traveled
+12/1/2008,2008,Snohomish,County,Total,Observed VMT,"14,613,719",,,,Vehicle Miles Traveled
+12/1/2009,2009,Snohomish,County,Total,Observed VMT,"14,859,408",,,,Vehicle Miles Traveled
+12/1/2010,2010,Snohomish,County,Total,Observed VMT,"15,373,670",,,,Vehicle Miles Traveled
+12/1/2011,2011,Snohomish,County,Total,Observed VMT,"15,346,630",,,,Vehicle Miles Traveled
+12/1/2012,2012,Snohomish,County,Total,Observed VMT,"15,302,540",,,,Vehicle Miles Traveled
+12/1/2013,2013,Snohomish,County,Total,Observed VMT,"15,353,501",,,,Vehicle Miles Traveled
+12/1/2014,2014,Snohomish,County,Total,Observed VMT,"15,523,004",,,,Vehicle Miles Traveled
+12/1/2015,2015,Snohomish,County,Total,Observed VMT,"15,828,094",,,,Vehicle Miles Traveled
+12/1/2016,2016,Snohomish,County,Total,Observed VMT,"16,361,986",,,,Vehicle Miles Traveled
+12/1/2017,2017,Snohomish,County,Total,Observed VMT,"16,449,000",,,,Vehicle Miles Traveled
+12/1/2018,2018,Snohomish,County,Total,Observed VMT,"16,607,806",,,,Vehicle Miles Traveled
+12/1/2019,2019,Snohomish,County,Total,Observed VMT,"16,597,145",,,,Vehicle Miles Traveled
+12/1/2020,2020,Snohomish,County,Total,Observed VMT,"14,141,073",,,,Vehicle Miles Traveled
+12/1/2021,2021,Snohomish,County,Total,Observed VMT,"15,192,000",,,,Vehicle Miles Traveled
+12/1/2018,2018,Snohomish,County,Total,Forecast VMT,"16,607,806",,,,Vehicle Miles Traveled
+12/1/2019,2019,Snohomish,County,Total,Forecast VMT,"16,597,145",,,,Vehicle Miles Traveled
+12/1/2020,2020,Snohomish,County,Total,Forecast VMT,"16,810,353",,,,Vehicle Miles Traveled
+12/1/2021,2021,Snohomish,County,Total,Forecast VMT,"16,799,692",,,,Vehicle Miles Traveled
+12/1/2022,2022,Snohomish,County,Total,Forecast VMT,"17,002,240",,,,Vehicle Miles Traveled
+12/1/2023,2023,Snohomish,County,Total,Forecast VMT,"17,204,787",,,,Vehicle Miles Traveled
+12/1/2024,2024,Snohomish,County,Total,Forecast VMT,"17,407,334",,,,Vehicle Miles Traveled
+12/1/2025,2025,Snohomish,County,Total,Forecast VMT,"17,609,881",,,,Vehicle Miles Traveled
+12/1/2026,2026,Snohomish,County,Total,Forecast VMT,"17,812,429",,,,Vehicle Miles Traveled
+12/1/2027,2027,Snohomish,County,Total,Forecast VMT,"18,014,976",,,,Vehicle Miles Traveled
+12/1/2028,2028,Snohomish,County,Total,Forecast VMT,"18,217,523",,,,Vehicle Miles Traveled
+12/1/2029,2029,Snohomish,County,Total,Forecast VMT,"18,420,070",,,,Vehicle Miles Traveled
+12/1/2030,2030,Snohomish,County,Total,Forecast VMT,"18,825,165",,,,Vehicle Miles Traveled
+12/1/2031,2031,Snohomish,County,Total,Forecast VMT,"18,981,845",,,,Vehicle Miles Traveled
+12/1/2032,2032,Snohomish,County,Total,Forecast VMT,"19,138,525",,,,Vehicle Miles Traveled
+12/1/2033,2033,Snohomish,County,Total,Forecast VMT,"19,295,205",,,,Vehicle Miles Traveled
+12/1/2034,2034,Snohomish,County,Total,Forecast VMT,"19,451,885",,,,Vehicle Miles Traveled
+12/1/2035,2035,Snohomish,County,Total,Forecast VMT,"19,608,566",,,,Vehicle Miles Traveled
+12/1/2036,2036,Snohomish,County,Total,Forecast VMT,"19,765,246",,,,Vehicle Miles Traveled
+12/1/2037,2037,Snohomish,County,Total,Forecast VMT,"19,921,926",,,,Vehicle Miles Traveled
+12/1/2038,2038,Snohomish,County,Total,Forecast VMT,"20,078,606",,,,Vehicle Miles Traveled
+12/1/2039,2039,Snohomish,County,Total,Forecast VMT,"20,235,286",,,,Vehicle Miles Traveled
+12/1/2040,2040,Snohomish,County,Total,Forecast VMT,"20,391,966",,,,Vehicle Miles Traveled
+12/1/2041,2041,Snohomish,County,Total,Forecast VMT,"20,542,769",,,,Vehicle Miles Traveled
+12/1/2042,2042,Snohomish,County,Total,Forecast VMT,"20,693,573",,,,Vehicle Miles Traveled
+12/1/2043,2043,Snohomish,County,Total,Forecast VMT,"20,844,376",,,,Vehicle Miles Traveled
+12/1/2044,2044,Snohomish,County,Total,Forecast VMT,"20,995,180",,,,Vehicle Miles Traveled
+12/1/2045,2045,Snohomish,County,Total,Forecast VMT,"21,145,983",,,,Vehicle Miles Traveled
+12/1/2046,2046,Snohomish,County,Total,Forecast VMT,"21,296,786",,,,Vehicle Miles Traveled
+12/1/2047,2047,Snohomish,County,Total,Forecast VMT,"21,447,590",,,,Vehicle Miles Traveled
+12/1/2048,2048,Snohomish,County,Total,Forecast VMT,"21,598,393",,,,Vehicle Miles Traveled
+12/1/2049,2049,Snohomish,County,Total,Forecast VMT,"21,749,197",,,,Vehicle Miles Traveled
+12/1/2050,2050,Snohomish,County,Total,Forecast VMT,"21,900,000",,,,Vehicle Miles Traveled
+12/1/1980,1980,Region,PSRC Region,Total,Observed VMT,"36,408,000",,,,Vehicle Miles Traveled
+12/1/1981,1981,Region,PSRC Region,Total,Observed VMT,"39,431,000",,,,Vehicle Miles Traveled
+12/1/1982,1982,Region,PSRC Region,Total,Observed VMT,"40,506,000",,,,Vehicle Miles Traveled
+12/1/1983,1983,Region,PSRC Region,Total,Observed VMT,"42,554,000",,,,Vehicle Miles Traveled
+12/1/1984,1984,Region,PSRC Region,Total,Observed VMT,"44,603,000",,,,Vehicle Miles Traveled
+12/1/1985,1985,Region,PSRC Region,Total,Observed VMT,"46,082,000",,,,Vehicle Miles Traveled
+12/1/1986,1986,Region,PSRC Region,Total,Observed VMT,"47,979,000",,,,Vehicle Miles Traveled
+12/1/1987,1987,Region,PSRC Region,Total,Observed VMT,"53,679,000",,,,Vehicle Miles Traveled
+12/1/1988,1988,Region,PSRC Region,Total,Observed VMT,"57,538,000",,,,Vehicle Miles Traveled
+12/1/1989,1989,Region,PSRC Region,Total,Observed VMT,"61,712,000",,,,Vehicle Miles Traveled
+12/1/1990,1990,Region,PSRC Region,Total,Observed VMT,"62,145,000",,,,Vehicle Miles Traveled
+12/1/1991,1991,Region,PSRC Region,Total,Observed VMT,"63,553,000",,,,Vehicle Miles Traveled
+12/1/1992,1992,Region,PSRC Region,Total,Observed VMT,"64,972,000",,,,Vehicle Miles Traveled
+12/1/1993,1993,Region,PSRC Region,Total,Observed VMT,"67,215,000",,,,Vehicle Miles Traveled
+12/1/1994,1994,Region,PSRC Region,Total,Observed VMT,"68,246,000",,,,Vehicle Miles Traveled
+12/1/1995,1995,Region,PSRC Region,Total,Observed VMT,"71,701,000",,,,Vehicle Miles Traveled
+12/1/1996,1996,Region,PSRC Region,Total,Observed VMT,"71,500,000",,,,Vehicle Miles Traveled
+12/1/1997,1997,Region,PSRC Region,Total,Observed VMT,"74,540,000",,,,Vehicle Miles Traveled
+12/1/1998,1998,Region,PSRC Region,Total,Observed VMT,"75,930,000",,,,Vehicle Miles Traveled
+12/1/1999,1999,Region,PSRC Region,Total,Observed VMT,"77,355,000",,,,Vehicle Miles Traveled
+12/1/2000,2000,Region,PSRC Region,Total,Observed VMT,"78,411,000",,,,Vehicle Miles Traveled
+12/1/2001,2001,Region,PSRC Region,Total,Observed VMT,"78,222,000",,,,Vehicle Miles Traveled
+12/1/2002,2002,Region,PSRC Region,Total,Observed VMT,"79,925,000",,,,Vehicle Miles Traveled
+12/1/2003,2003,Region,PSRC Region,Total,Observed VMT,"79,904,000",,,,Vehicle Miles Traveled
+12/1/2004,2004,Region,PSRC Region,Total,Observed VMT,"80,102,000",,,,Vehicle Miles Traveled
+12/1/2005,2005,Region,PSRC Region,Total,Observed VMT,"80,634,000",,,,Vehicle Miles Traveled
+12/1/2006,2006,Region,PSRC Region,Total,Observed VMT,"81,534,000",,,,Vehicle Miles Traveled
+12/1/2007,2007,Region,PSRC Region,Total,Observed VMT,"82,019,000",,,,Vehicle Miles Traveled
+12/1/2008,2008,Region,PSRC Region,Total,Observed VMT,"80,034,000",,,,Vehicle Miles Traveled
+12/1/2009,2009,Region,PSRC Region,Total,Observed VMT,"80,875,000",,,,Vehicle Miles Traveled
+12/1/2010,2010,Region,PSRC Region,Total,Observed VMT,"83,060,000",,,,Vehicle Miles Traveled
+12/1/2011,2011,Region,PSRC Region,Total,Observed VMT,"82,885,000",,,,Vehicle Miles Traveled
+12/1/2012,2012,Region,PSRC Region,Total,Observed VMT,"80,855,000",,,,Vehicle Miles Traveled
+12/1/2013,2013,Region,PSRC Region,Total,Observed VMT,"81,135,000",,,,Vehicle Miles Traveled
+12/1/2014,2014,Region,PSRC Region,Total,Observed VMT,"82,247,000",,,,Vehicle Miles Traveled
+12/1/2015,2015,Region,PSRC Region,Total,Observed VMT,"83,988,000",,,,Vehicle Miles Traveled
+12/1/2016,2016,Region,PSRC Region,Total,Observed VMT,"86,885,000",,,,Vehicle Miles Traveled
+12/1/2017,2017,Region,PSRC Region,Total,Observed VMT,"87,346,000",,,,Vehicle Miles Traveled
+12/1/2018,2018,Region,PSRC Region,Total,Observed VMT,"88,396,000",,,,Vehicle Miles Traveled
+12/1/2019,2019,Region,PSRC Region,Total,Observed VMT,"88,428,000",,,,Vehicle Miles Traveled
+12/1/2020,2020,Region,PSRC Region,Total,Observed VMT,"74,196,000",,,,Vehicle Miles Traveled
+12/1/2021,2021,Region,PSRC Region,Total,Observed VMT,"79,480,000",,,,Vehicle Miles Traveled
+12/1/2018,2018,Region,PSRC Region,Total,Forecast VMT,"88,396,000",,,,Vehicle Miles Traveled
+12/1/2019,2019,Region,PSRC Region,Total,Forecast VMT,"88,428,000",,,,Vehicle Miles Traveled
+12/1/2020,2020,Region,PSRC Region,Total,Forecast VMT,"88,872,000",,,,Vehicle Miles Traveled
+12/1/2021,2021,Region,PSRC Region,Total,Forecast VMT,"88,904,000",,,,Vehicle Miles Traveled
+12/1/2022,2022,Region,PSRC Region,Total,Forecast VMT,"89,381,000",,,,Vehicle Miles Traveled
+12/1/2023,2023,Region,PSRC Region,Total,Forecast VMT,"89,857,000",,,,Vehicle Miles Traveled
+12/1/2024,2024,Region,PSRC Region,Total,Forecast VMT,"90,334,000",,,,Vehicle Miles Traveled
+12/1/2025,2025,Region,PSRC Region,Total,Forecast VMT,"90,810,000",,,,Vehicle Miles Traveled
+12/1/2026,2026,Region,PSRC Region,Total,Forecast VMT,"91,287,000",,,,Vehicle Miles Traveled
+12/1/2027,2027,Region,PSRC Region,Total,Forecast VMT,"91,763,000",,,,Vehicle Miles Traveled
+12/1/2028,2028,Region,PSRC Region,Total,Forecast VMT,"92,240,000",,,,Vehicle Miles Traveled
+12/1/2029,2029,Region,PSRC Region,Total,Forecast VMT,"92,716,000",,,,Vehicle Miles Traveled
+12/1/2030,2030,Region,PSRC Region,Total,Forecast VMT,"93,669,000",,,,Vehicle Miles Traveled
+12/1/2031,2031,Region,PSRC Region,Total,Forecast VMT,"94,278,000",,,,Vehicle Miles Traveled
+12/1/2032,2032,Region,PSRC Region,Total,Forecast VMT,"94,887,000",,,,Vehicle Miles Traveled
+12/1/2033,2033,Region,PSRC Region,Total,Forecast VMT,"95,496,000",,,,Vehicle Miles Traveled
+12/1/2034,2034,Region,PSRC Region,Total,Forecast VMT,"96,106,000",,,,Vehicle Miles Traveled
+12/1/2035,2035,Region,PSRC Region,Total,Forecast VMT,"96,715,000",,,,Vehicle Miles Traveled
+12/1/2036,2036,Region,PSRC Region,Total,Forecast VMT,"97,324,000",,,,Vehicle Miles Traveled
+12/1/2037,2037,Region,PSRC Region,Total,Forecast VMT,"97,933,000",,,,Vehicle Miles Traveled
+12/1/2038,2038,Region,PSRC Region,Total,Forecast VMT,"98,542,000",,,,Vehicle Miles Traveled
+12/1/2039,2039,Region,PSRC Region,Total,Forecast VMT,"99,151,000",,,,Vehicle Miles Traveled
+12/1/2040,2040,Region,PSRC Region,Total,Forecast VMT,"99,760,000",,,,Vehicle Miles Traveled
+12/1/2041,2041,Region,PSRC Region,Total,Forecast VMT,"100,354,000",,,,Vehicle Miles Traveled
+12/1/2042,2042,Region,PSRC Region,Total,Forecast VMT,"100,948,000",,,,Vehicle Miles Traveled
+12/1/2043,2043,Region,PSRC Region,Total,Forecast VMT,"101,542,000",,,,Vehicle Miles Traveled
+12/1/2044,2044,Region,PSRC Region,Total,Forecast VMT,"102,136,000",,,,Vehicle Miles Traveled
+12/1/2045,2045,Region,PSRC Region,Total,Forecast VMT,"102,730,000",,,,Vehicle Miles Traveled
+12/1/2046,2046,Region,PSRC Region,Total,Forecast VMT,"103,324,000",,,,Vehicle Miles Traveled
+12/1/2047,2047,Region,PSRC Region,Total,Forecast VMT,"103,918,000",,,,Vehicle Miles Traveled
+12/1/2048,2048,Region,PSRC Region,Total,Forecast VMT,"104,512,000",,,,Vehicle Miles Traveled
+12/1/2049,2049,Region,PSRC Region,Total,Forecast VMT,"105,106,000",,,,Vehicle Miles Traveled
+12/1/2050,2050,Region,PSRC Region,Total,Forecast VMT,"105,600,000",,,,Vehicle Miles Traveled
+12/1/1980,1980,Region,PSRC Region,per Capita,Observed VMT,16.3,,,,Vehicle Miles Traveled
+12/1/1981,1981,Region,PSRC Region,per Capita,Observed VMT,17,,,,Vehicle Miles Traveled
+12/1/1982,1982,Region,PSRC Region,per Capita,Observed VMT,17.4,,,,Vehicle Miles Traveled
+12/1/1983,1983,Region,PSRC Region,per Capita,Observed VMT,18.1,,,,Vehicle Miles Traveled
+12/1/1984,1984,Region,PSRC Region,per Capita,Observed VMT,18.8,,,,Vehicle Miles Traveled
+12/1/1985,1985,Region,PSRC Region,per Capita,Observed VMT,19.1,,,,Vehicle Miles Traveled
+12/1/1986,1986,Region,PSRC Region,per Capita,Observed VMT,19.7,,,,Vehicle Miles Traveled
+12/1/1987,1987,Region,PSRC Region,per Capita,Observed VMT,21.6,,,,Vehicle Miles Traveled
+12/1/1988,1988,Region,PSRC Region,per Capita,Observed VMT,22.6,,,,Vehicle Miles Traveled
+12/1/1989,1989,Region,PSRC Region,per Capita,Observed VMT,23.6,,,,Vehicle Miles Traveled
+12/1/1990,1990,Region,PSRC Region,per Capita,Observed VMT,22.6,,,,Vehicle Miles Traveled
+12/1/1991,1991,Region,PSRC Region,per Capita,Observed VMT,22.5,,,,Vehicle Miles Traveled
+12/1/1992,1992,Region,PSRC Region,per Capita,Observed VMT,22.5,,,,Vehicle Miles Traveled
+12/1/1993,1993,Region,PSRC Region,per Capita,Observed VMT,22.8,,,,Vehicle Miles Traveled
+12/1/1994,1994,Region,PSRC Region,per Capita,Observed VMT,22.9,,,,Vehicle Miles Traveled
+12/1/1995,1995,Region,PSRC Region,per Capita,Observed VMT,23.7,,,,Vehicle Miles Traveled
+12/1/1996,1996,Region,PSRC Region,per Capita,Observed VMT,23.4,,,,Vehicle Miles Traveled
+12/1/1997,1997,Region,PSRC Region,per Capita,Observed VMT,24,,,,Vehicle Miles Traveled
+12/1/1998,1998,Region,PSRC Region,per Capita,Observed VMT,24.1,,,,Vehicle Miles Traveled
+12/1/1999,1999,Region,PSRC Region,per Capita,Observed VMT,24.2,,,,Vehicle Miles Traveled
+12/1/2000,2000,Region,PSRC Region,per Capita,Observed VMT,23.9,,,,Vehicle Miles Traveled
+12/1/2001,2001,Region,PSRC Region,per Capita,Observed VMT,23.5,,,,Vehicle Miles Traveled
+12/1/2002,2002,Region,PSRC Region,per Capita,Observed VMT,23.8,,,,Vehicle Miles Traveled
+12/1/2003,2003,Region,PSRC Region,per Capita,Observed VMT,23.6,,,,Vehicle Miles Traveled
+12/1/2004,2004,Region,PSRC Region,per Capita,Observed VMT,23.4,,,,Vehicle Miles Traveled
+12/1/2005,2005,Region,PSRC Region,per Capita,Observed VMT,23.3,,,,Vehicle Miles Traveled
+12/1/2006,2006,Region,PSRC Region,per Capita,Observed VMT,23.1,,,,Vehicle Miles Traveled
+12/1/2007,2007,Region,PSRC Region,per Capita,Observed VMT,22.9,,,,Vehicle Miles Traveled
+12/1/2008,2008,Region,PSRC Region,per Capita,Observed VMT,22,,,,Vehicle Miles Traveled
+12/1/2009,2009,Region,PSRC Region,per Capita,Observed VMT,22,,,,Vehicle Miles Traveled
+12/1/2010,2010,Region,PSRC Region,per Capita,Observed VMT,22.5,,,,Vehicle Miles Traveled
+12/1/2011,2011,Region,PSRC Region,per Capita,Observed VMT,22.3,,,,Vehicle Miles Traveled
+12/1/2012,2012,Region,PSRC Region,per Capita,Observed VMT,21.6,,,,Vehicle Miles Traveled
+12/1/2013,2013,Region,PSRC Region,per Capita,Observed VMT,21.5,,,,Vehicle Miles Traveled
+12/1/2014,2014,Region,PSRC Region,per Capita,Observed VMT,21.4,,,,Vehicle Miles Traveled
+12/1/2015,2015,Region,PSRC Region,per Capita,Observed VMT,21.5,,,,Vehicle Miles Traveled
+12/1/2016,2016,Region,PSRC Region,per Capita,Observed VMT,21.8,,,,Vehicle Miles Traveled
+12/1/2017,2017,Region,PSRC Region,per Capita,Observed VMT,21.5,,,,Vehicle Miles Traveled
+12/1/2018,2018,Region,PSRC Region,per Capita,Observed VMT,21.4,,,,Vehicle Miles Traveled
+12/1/2019,2019,Region,PSRC Region,per Capita,Observed VMT,21,,,,Vehicle Miles Traveled
+12/1/2020,2020,Region,PSRC Region,per Capita,Observed VMT,17.3,,,,Vehicle Miles Traveled
+12/1/2021,2021,Region,PSRC Region,per Capita,Observed VMT,18.4,,,,Vehicle Miles Traveled
+12/1/2018,2018,Region,PSRC Region,per Capita,Forecast VMT,21.4,,,,Vehicle Miles Traveled
+12/1/2019,2019,Region,PSRC Region,per Capita,Forecast VMT,21,,,,Vehicle Miles Traveled
+12/1/2020,2020,Region,PSRC Region,per Capita,Forecast VMT,20.7,,,,Vehicle Miles Traveled
+12/1/2021,2021,Region,PSRC Region,per Capita,Forecast VMT,20.5,,,,Vehicle Miles Traveled
+12/1/2022,2022,Region,PSRC Region,per Capita,Forecast VMT,20.5,,,,Vehicle Miles Traveled
+12/1/2023,2023,Region,PSRC Region,per Capita,Forecast VMT,20.3,,,,Vehicle Miles Traveled
+12/1/2024,2024,Region,PSRC Region,per Capita,Forecast VMT,20.2,,,,Vehicle Miles Traveled
+12/1/2025,2025,Region,PSRC Region,per Capita,Forecast VMT,20,,,,Vehicle Miles Traveled
+12/1/2026,2026,Region,PSRC Region,per Capita,Forecast VMT,19.9,,,,Vehicle Miles Traveled
+12/1/2027,2027,Region,PSRC Region,per Capita,Forecast VMT,19.7,,,,Vehicle Miles Traveled
+12/1/2028,2028,Region,PSRC Region,per Capita,Forecast VMT,19.6,,,,Vehicle Miles Traveled
+12/1/2029,2029,Region,PSRC Region,per Capita,Forecast VMT,19.4,,,,Vehicle Miles Traveled
+12/1/2030,2030,Region,PSRC Region,per Capita,Forecast VMT,19.4,,,,Vehicle Miles Traveled
+12/1/2031,2031,Region,PSRC Region,per Capita,Forecast VMT,19.3,,,,Vehicle Miles Traveled
+12/1/2032,2032,Region,PSRC Region,per Capita,Forecast VMT,19.3,,,,Vehicle Miles Traveled
+12/1/2033,2033,Region,PSRC Region,per Capita,Forecast VMT,19.2,,,,Vehicle Miles Traveled
+12/1/2034,2034,Region,PSRC Region,per Capita,Forecast VMT,19.1,,,,Vehicle Miles Traveled
+12/1/2035,2035,Region,PSRC Region,per Capita,Forecast VMT,19,,,,Vehicle Miles Traveled
+12/1/2036,2036,Region,PSRC Region,per Capita,Forecast VMT,18.9,,,,Vehicle Miles Traveled
+12/1/2037,2037,Region,PSRC Region,per Capita,Forecast VMT,18.9,,,,Vehicle Miles Traveled
+12/1/2038,2038,Region,PSRC Region,per Capita,Forecast VMT,18.8,,,,Vehicle Miles Traveled
+12/1/2039,2039,Region,PSRC Region,per Capita,Forecast VMT,18.8,,,,Vehicle Miles Traveled
+12/1/2040,2040,Region,PSRC Region,per Capita,Forecast VMT,18.7,,,,Vehicle Miles Traveled
+12/1/2041,2041,Region,PSRC Region,per Capita,Forecast VMT,18.7,,,,Vehicle Miles Traveled
+12/1/2042,2042,Region,PSRC Region,per Capita,Forecast VMT,18.6,,,,Vehicle Miles Traveled
+12/1/2043,2043,Region,PSRC Region,per Capita,Forecast VMT,18.5,,,,Vehicle Miles Traveled
+12/1/2044,2044,Region,PSRC Region,per Capita,Forecast VMT,18.5,,,,Vehicle Miles Traveled
+12/1/2045,2045,Region,PSRC Region,per Capita,Forecast VMT,18.4,,,,Vehicle Miles Traveled
+12/1/2046,2046,Region,PSRC Region,per Capita,Forecast VMT,18.4,,,,Vehicle Miles Traveled
+12/1/2047,2047,Region,PSRC Region,per Capita,Forecast VMT,18.3,,,,Vehicle Miles Traveled
+12/1/2048,2048,Region,PSRC Region,per Capita,Forecast VMT,18.3,,,,Vehicle Miles Traveled
+12/1/2049,2049,Region,PSRC Region,per Capita,Forecast VMT,18.2,,,,Vehicle Miles Traveled
+12/1/2050,2050,Region,PSRC Region,per Capita,Forecast VMT,18.1,,,,Vehicle Miles Traveled
