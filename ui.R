@@ -1,5 +1,17 @@
 shinyUI(
-  navbarPage(title=tags$a("Puget Sound Regional Council", href="https://www.psrc.org", class = "source_url", target="_blank"),
+  navbarPage(title = div(tags$img(src='psrc-logo.png',
+                             style="margin-top: -30px; padding-left: 40px;",
+                             height = "80")
+                             ),
+             tags$head(
+               tags$style(HTML('.navbar-nav > li > a, .navbar-brand {
+                            padding-top:25px !important; 
+                            padding-bottom:0 !important;
+                            height: 75px;
+                            }
+                           .navbar {min-height:25px !important;}'))
+             ),
+             #title=tags$a("Puget Sound Regional Council", href="https://www.psrc.org", class = "source_url", target="_blank"),
              windowTitle = "Alpha Testing of PSRC RTP Dashboard", 
              theme = "styles.css",
              position = "fixed-top",
