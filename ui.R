@@ -1,8 +1,8 @@
 shinyUI(
-  navbarPage(title = div(tags$img(src='psrc-logo.png',
+  navbarPage(title = tags$a(div(tags$img(src='psrc-logo.png',
                              style="margin-top: -30px; padding-left: 40px;",
                              height = "80")
-                             ),
+                             ), href="https://www.psrc.org", target="_blank"),
              tags$head(
                tags$style(HTML('.navbar-nav > li > a, .navbar-brand {
                             padding-top:25px !important; 
