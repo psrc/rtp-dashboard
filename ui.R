@@ -111,6 +111,8 @@ shinyUI(
                                                  icon("phone-volume"), "206-971-3601",
                                                  hr()                                 ),
                                           column(8, style='padding-left:0px; padding-right:50px;',
+                                                 tags$div(class="page_goals","Goal: 80% below 1990 GHG Emissions by 2050"),
+                                                 br(),
                                                  textOutput("climate_text_1"),
                                                  br(),
                                                  textOutput("climate_text_2"),
@@ -210,6 +212,8 @@ shinyUI(
                                                  icon("phone-volume"), "206-464-6661",
                                                  hr()                                 ),
                                           column(8, style='padding-left:0px; padding-right:50px;',
+                                                 tags$div(class="page_goals","RTP Outcome: 25% Reduction in VMT per Capita by 2050"),
+                                                 br(),
                                                  h1("Regional Vehicle Miles Traveled"),
                                                  textOutput("regional_vmt_text"),
                                                  fluidRow(column(6,plotlyOutput("chart_total_vmt")),
@@ -298,6 +302,61 @@ shinyUI(
                         ),# End of Nav Bar Menu for People, Housing and Jobs
              
              navbarMenu(icon("child"), 
+                        
+                        tabPanel("Overview",
+                                 fluidRow(column(12, style='padding-left:50px; padding-right:50px;',
+                                                 bs4Jumbotron(
+                                                   title = strong(tags$div(class="mainpage_title","Addressing Safety: Target Zero")),
+                                                   status = "success",
+                                                   btnName = strong(tags$div(class="mainpage_subtitle","Regional Transportation Plan")),
+                                                   href = "https://www.psrc.org/planning-2050/regional-transportation-plan"))
+                                 ), # End of First Fluid Row for Fatal Collisions Tab
+                                 
+                                 fluidRow(column(4, style='padding-left:50px; padding-right:50px;',
+                                                 hr(),
+                                                 strong(tags$div(class="sidebar_heading","Regional Transportation Plan")),
+                                                 br(),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-transportation-plan/projects-and-approval", "Projects and Approval", target="_blank"),
+                                                 br(),br(),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/coordinated-mobility-plan", "Coordinated Mobility Plan", target="_blank"),
+                                                 br(),br(),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-transportation-plan/data-research-and-policy-briefs", "Data, Research and Policy Briefs", target="_blank"),
+                                                 br(),br(),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-transportation-plan/transportation-system-visualization-tool", "Transportation System Visualization Tool", target="_blank"),
+                                                 hr(),
+                                                 div(img(src="climate-image.png", width = "100%", height = "100%", style = "padding-top: 0px; border-radius:30px 0 30px 0;", alt = "Glass and steel building in the background")),
+                                                 hr(),
+                                                 strong(tags$div(class="sidebar_heading","Connect With Us")),
+                                                 hr(),
+                                                 tags$div(class="sidebar_notes","Gary Simonson:"),
+                                                 tags$div(class="sidebar_notes","Senior Planner"),
+                                                 br(),
+                                                 icon("envelope"), 
+                                                 tags$a(class = "source_url", href="mailto:gsimonson@psrc.org?", "Email"),
+                                                 br(), br(),
+                                                 icon("phone-volume"), "206-971-3276",
+                                                 hr()                                 ),
+                                          column(8, style='padding-left:0px; padding-right:50px;',
+                                                 tags$div(class="page_goals","Goal: Zero Fatal and Serious Injuries by 2030"),
+                                                 br(),
+                                                 textOutput("safety_text_1"),
+                                                 br(),
+                                                 textOutput("safety_text_2"),
+                                                 br(),
+                                                 textOutput("safety_text_3"),
+                                                 br(), 
+                                                 textOutput("safety_text_4"),
+                                                 br(), 
+                                                 textOutput("safety_text_5"),
+                                                 br(), 
+                                                 div(img(src="04_PR-Winter2022_Feature_SSA-Overview2.jpg", width = "50%", height = "50%", style = "padding-top: 0px; border-radius:0px 0 0px 0;", alt = "Bar chart of Greenhouse Gas Emissions in 2050")),
+                                                 br(),
+                                                 hr()
+                                                 
+                                                 
+                                          )) # End of Main Panel Fluid Row for Safety Tab
+                        ), # End of Tab Panel for Safety Overview
+                        
                         tabPanel("Fatal Collisions",
                                  fluidRow(column(12, style='padding-left:50px; padding-right:50px;',
                                                  bs4Jumbotron(
@@ -332,8 +391,8 @@ shinyUI(
                                                  icon("phone-volume"), "206-971-3276",
                                                  hr()                                 ),
                                  column(8, style='padding-left:0px; padding-right:50px;',
-                                        "Safety was one of the key policy focus areas identified by PSRC's Transportation Policy Board early in the development of the RTP and is a cross-cutting issue addressed throughout all relevant sections of the",
-                                        tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-transportation-plan", " Regional Transportation Plan.", target="_blank"),
+                                        tags$div(class="page_goals","Goal: Zero Fatal Injuries by 2030"),
+                                        br(),
                                         h1("Fatal Collisions in the PSRC Region"),
                                         textOutput("safety_text"),
                                         br(),
@@ -342,10 +401,13 @@ shinyUI(
                                         fluidRow(column(12,plotlyOutput("fatal_collisions_chart"))),
                                         hr(),
                                         h1("Fatal Collisions by County in the PSRC Region"),
-                                        fluidRow(column(8,plotOutput("county_fatal_collisions_chart")),
-                                                 column(4,"Text about collision data by county")),
+                                        textOutput("fatal_county_text"),
+                                        br(),
+                                        fluidRow(column(12,plotOutput("county_fatal_collisions_chart"))),
                                         hr(),
                                         h1("Fatal Collisions by Metropolitan Region"),
+                                        textOutput("fatal_mpo_text"),
+                                        br(),
                                         fluidRow(column(6,plotlyOutput("mpo_fatal_rate_min_yr_chart")),
                                                  column(6,plotlyOutput("mpo_fatal_rate_max_yr_chart"))),
                                         br(), br(),
@@ -356,6 +418,115 @@ shinyUI(
                                  )) # End of Main Panel Fluid Row for Fatal Collisions Tab
                         ), # End of Tab Panel for Safety
              ),# End of Nav Bar Menu for Safety
+             
+             navbarMenu(icon("bus"), 
+                        
+                        tabPanel("Overview",
+                                 fluidRow(column(12, style='padding-left:50px; padding-right:50px;',
+                                                 bs4Jumbotron(
+                                                   title = strong(tags$div(class="mainpage_title","Transit Performance")),
+                                                   status = "success",
+                                                   btnName = strong(tags$div(class="mainpage_subtitle","Regional Transportation Plan")),
+                                                   href = "https://www.psrc.org/planning-2050/regional-transportation-plan"))
+                                 ), # End of First Fluid Row Transit Tab
+                                 
+                                 fluidRow(column(4, style='padding-left:50px; padding-right:50px;',
+                                                 hr(),
+                                                 strong(tags$div(class="sidebar_heading","Regional Transportation Plan")),
+                                                 br(),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-transportation-plan/projects-and-approval", "Projects and Approval", target="_blank"),
+                                                 br(),br(),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/coordinated-mobility-plan", "Coordinated Mobility Plan", target="_blank"),
+                                                 br(),br(),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-transportation-plan/data-research-and-policy-briefs", "Data, Research and Policy Briefs", target="_blank"),
+                                                 br(),br(),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-transportation-plan/transportation-system-visualization-tool", "Transportation System Visualization Tool", target="_blank"),
+                                                 hr(),
+                                                 div(img(src="bellevuetransitcenter.jpg", width = "100%", height = "100%", style = "padding-top: 0px; border-radius:30px 0 30px 0;", alt = "Glass and steel building in the background")),
+                                                 hr(),
+                                                 strong(tags$div(class="sidebar_heading","Connect With Us")),
+                                                 hr(),
+                                                 tags$div(class="sidebar_notes","Gil Cerise:"),
+                                                 tags$div(class="sidebar_notes","Program Manager"),
+                                                 br(),
+                                                 icon("envelope"), 
+                                                 tags$a(class = "source_url", href="mailto:gcerise@psrc.org?", "Email"),
+                                                 br(), br(),
+                                                 icon("phone-volume"), "206-971-3053",
+                                                 hr()                                 ),
+                                          column(8, style='padding-left:0px; padding-right:50px;',
+                                                 tags$div(class="page_goals","RTP Outcome: Triple Transit Boardings by 2050"),
+                                                 br(),
+                                                 textOutput("transit_text_1"),
+                                                 br(),
+                                                 textOutput("transit_text_2"),
+                                                 br(),
+                                                 textOutput("transit_text_3"),
+                                                 br(), 
+                                                 div(img(src="st_northgate.png", width = "100%", height = "100%", style = "padding-top: 0px; border-radius:0px 0 0px 0;", alt = "Bar chart of Greenhouse Gas Emissions in 2050")),
+                                                 br(),
+                                                 hr()
+                                                 
+                                                 
+                                          )) # End of Main Panel Fluid Row for Transit Tab
+                        ), # End of Tab Panel for Transit Overview
+                        
+                        tabPanel("Transit Boardings",
+                                 fluidRow(column(12, style='padding-left:50px; padding-right:50px;',
+                                                 bs4Jumbotron(
+                                                   title = strong(tags$div(class="mainpage_title","Annual Transit Boardings")),
+                                                   status = "success",
+                                                   btnName = strong(tags$div(class="mainpage_subtitle","Regional Transportation Plan")),
+                                                   href = "https://www.psrc.org/planning-2050/regional-transportation-plan"))
+                                 ), # End of First Fluid Row Transit Tab
+                                 
+                                 fluidRow(column(4, style='padding-left:50px; padding-right:50px;',
+                                                 hr(),
+                                                 strong(tags$div(class="sidebar_heading","Regional Transportation Plan")),
+                                                 br(),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-transportation-plan/projects-and-approval", "Projects and Approval", target="_blank"),
+                                                 br(),br(),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/coordinated-mobility-plan", "Coordinated Mobility Plan", target="_blank"),
+                                                 br(),br(),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-transportation-plan/data-research-and-policy-briefs", "Data, Research and Policy Briefs", target="_blank"),
+                                                 br(),br(),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-transportation-plan/transportation-system-visualization-tool", "Transportation System Visualization Tool", target="_blank"),
+                                                 hr(),
+                                                 div(img(src="bellevuetransitcenter.jpg", width = "100%", height = "100%", style = "padding-top: 0px; border-radius:30px 0 30px 0;", alt = "Glass and steel building in the background")),
+                                                 hr(),
+                                                 strong(tags$div(class="sidebar_heading","Connect With Us")),
+                                                 hr(),
+                                                 tags$div(class="sidebar_notes","Gil Cerise:"),
+                                                 tags$div(class="sidebar_notes","Program Manager"),
+                                                 br(),
+                                                 icon("envelope"), 
+                                                 tags$a(class = "source_url", href="mailto:gcerise@psrc.org?", "Email"),
+                                                 br(), br(),
+                                                 icon("phone-volume"), "206-971-3053",
+                                                 hr()                                 ),
+                                          column(8, style='padding-left:0px; padding-right:50px;',
+                                                 tags$div(class="page_goals","RTP Outcome: Triple Transit Boardings by 2050"),
+                                                 br(),
+                                                 h1("Annual Transit Boardings in the PSRC Region"),
+                                                 hr(),
+                                                 fluidRow(column(12,plotlyOutput("chart_transit_boardings"))),
+                                                 hr(),
+                                                 h1("Transit Boardings by Mode"),
+                                                 br(),
+                                                 fluidRow(column(12,plotOutput("chart_boardings_mode"))),
+                                                 hr(),
+                                                 h1("Transit Boardings by Metropolitan Region"),
+                                                 br(),
+                                                 fluidRow(column(6,plotlyOutput("mpo_boardings_precovid_chart")),
+                                                          column(6,plotlyOutput("mpo_boardings_today_chart"))),
+                                                 br(), br(),
+                                                 br(), br(),
+                                                 hr()
+                                                 
+                                                 
+                                          )) # End of Main Panel Fluid Row for Transit Tab
+                        ), # End of Tab Panel for Transit Boardings
+             ),# End of Nav Bar Menu for Transit
              
              ) # End of NavBar Page
   ) # End of Shiny App

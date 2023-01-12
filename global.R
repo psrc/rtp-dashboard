@@ -31,6 +31,7 @@ current_population_year <- "2022"
 wgs84 <- 4326
 
 data <- read_csv("data/rtp-dashboard-data.csv", show_col_types = FALSE) %>%
+  mutate(date = lubridate::mdy(date)) %>%
   mutate(data_year = as.character(lubridate::year(date)))
 
 vmt <- read_csv("data/vmt-data.csv", show_col_types = FALSE) %>%
@@ -38,6 +39,12 @@ vmt <- read_csv("data/vmt-data.csv", show_col_types = FALSE) %>%
   mutate(data_year = as.character(lubridate::year(date)))
 
 data <- bind_rows(data, vmt)
+
+boardings <- read_csv("data/rtp-transit-boardings.csv", show_col_types = FALSE) %>%
+  mutate(date = lubridate::mdy(date)) %>%
+  mutate(data_year = as.character(lubridate::year(date)))
+
+data <- bind_rows(data, boardings)
 
 vkt_data <- read_csv("data/vkt-data.csv", show_col_types = FALSE) %>% 
   mutate(plot_id=as.character(plot_id)) %>% 
@@ -148,6 +155,28 @@ mpo_safety_tbl_max <- data %>%
 mpo_order <- mpo_safety_tbl_max %>% select(geography) %>% pull()
 mpo_safety_tbl_max <- mpo_safety_tbl_max %>% mutate(geography = factor(x=geography, levels=mpo_order))
 
+mpo_transit_boardings_precovid <- data %>% 
+  filter(geography_type=="Metro Regions" & metric=="YTD Transit Boardings" & variable=="All Transit Modes" & lubridate::year(date)==pre_covid & geography!="New York City") %>%
+  mutate(plot_id = case_when(
+    geography == "Seattle" ~ "PSRC",
+    geography %in% metros ~ "Comparable Metros")) %>%
+  mutate(plot_id=replace_na(plot_id,"Other")) %>%
+  arrange(estimate)
+
+mpo_order <- mpo_transit_boardings_precovid %>% select(geography) %>% pull()
+mpo_transit_boardings_precovid <- mpo_transit_boardings_precovid %>% mutate(geography = factor(x=geography, levels=mpo_order))
+
+mpo_transit_boardings_today <- data %>% 
+  filter(geography_type=="Metro Regions" & metric=="YTD Transit Boardings" & variable=="All Transit Modes" & lubridate::year(date)==current_population_year & geography!="New York City") %>%
+  mutate(plot_id = case_when(
+    geography == "Seattle" ~ "PSRC",
+    geography %in% metros ~ "Comparable Metros")) %>%
+  mutate(plot_id=replace_na(plot_id,"Other")) %>%
+  arrange(estimate)
+
+mpo_order <- mpo_transit_boardings_today %>% select(geography) %>% pull()
+mpo_transit_boardings_today <- mpo_transit_boardings_today %>% mutate(geography = factor(x=geography, levels=mpo_order))
+
 # Population Data for Text ---------------------------------------------------------
 vision_pop_today <- data %>% filter(lubridate::year(date)==current_population_year & variable=="Forecast Population") %>% select(estimate) %>% pull()
 actual_pop_today <- data %>% filter(lubridate::year(date)==current_population_year & variable=="Observed Population") %>% select(estimate) %>% pull()
@@ -252,4 +281,53 @@ vkt_caption <- paste0("Under VISION 2050, growth between 2018 and 2050 is focuse
                       "Metropolitan Cities, Core Cities and High-Capacity Transit Communities, the most urbanized and ",
                       "densely developed parts of the region. As shown below, driving in these places is more like many ",
                       "European countries than to other parts of the United States by 2050.")
+
+safety_overview_1 <- paste0("Safety was one of the key policy focus areas identified by PSRC’s Transportation Policy Board early in ",
+                            "the development of the RTP and is a cross-cutting issue addressed throughout all relevant sections of ",
+                            "the plan. VISION 2050 set a goal for the region to have a “sustainable, equitable, affordable, safe, and ",
+                            "efficient multimodal transportation system, with specific emphasis on an integrated regional transit ",
+                            "network that supports the Regional Growth Strategy and promotes vitality of the economy, ",
+                            "environment, and health.” In addition, VISION 2050 adopted the following policy related to safety:")
+
+safety_overview_2 <- paste0("MPP T-4: Improve the safety of the transportation system and, in the long term, achieve the ",
+                            "state’s goal of zero deaths and serious injuries.")
+
+safety_overview_3 <- paste0("In 2019, the State of Washington adopted the Target Zero plan with the goal to reduce the number of ",
+                            "traffic deaths and serious injuries on Washington's roadways to zero by the year 2030. The RTP will ",
+                            "implement the region’s safety goals through a Safe Systems Approach.")
+
+safety_overview_4 <- paste0("Safety impacts every aspect of the transportation system, covering all modes and encompassing a ",
+                            "variety of attributes from facility design to security to personal behavior. The Federal Highway ",
+                            "Administration (FHWA) refers to the Four E’s of safety: engineering, enforcement, education and emergency medical services.")
+
+safety_overview_5 <- paste0("Many organizations and jurisdictions have implemented programs and projects aimed at improving ",
+                            "safety and reducing deaths and serious injuries. All seek to achieve the long-term goal of zero fatalities ",
+                            "and serious injuries.")
+
+
+fatal_county_caption <- paste0("Trends in Fatal collisions vary across the region's counties. Although King and Kitsap counties have seen ",
+                             "slight reductions in fatal collisions in 2020, there were still more fatalaities than 2015.",
+                             "Pierce and Snohomich counties but experienced small increases in traffic realted deaths in 2020.")
+
+fatal_mpo_caption <- paste0("The Puget Sound region had the fifth lowest fatal accident rate per 100,000 people in 2020 among the 27 largest MPO regions, down slightly since ",
+                            "2010. Some the regions with rates lower than the PSRC region include New York and Boston. One region similar is size to PSRC with one of the lowest ",
+                            "rates are the Twin Cities. The highest fatality rates amongst MPO regions are in Florida.")
+
+transit_overview_1 <- paste0("The Regional Transportation Plan envisions an integrated system that supports the goals of VISION ",
+                             "2050, which calls for increased investment in transportation to support a growing population and ",
+                             "economy. VISION 2050 emphasizes investing in transportation projects and programs that support ",
+                             "local and regional growth centers and high-capacity transit station areas in particular. These policies ",
+                             "emphasize the importance of public transit to achieving the VISION 2050 regional growth strategy.")
+
+transit_overview_2 <- paste0("When people think of transit, most often they think of fixed-route rail or bus service that stops at specific ",
+                             "stations or stops on a schedule. For the purposes of this page, these types of transit services are referred to as ",
+                             "regular transit.")
+
+transit_overview_3 <- paste0("High-capacity transit in the region is provided by a variety of rail, bus rapid transit and ferry modes, ",
+                             "including: Sound Transit’s Link light rail, Tacoma Link, and Sounder commuter rail; Seattle’s two streetcar lines ",
+                             "and the historic 1962 monorail; Community Transit’s Swift and King County Metro’s RapidRide bus rapid transit services; ", 
+                             "and multimodal and passenger-only ferry services provided by the Washington State Ferries, Pierce County Ferries, ",
+                             "King County Metro and Kitsap Transit. Bus rapid transit (BRT) routes in the region are distinguished from other forms ",
+                             "of bus transit by a combination of features that include branded buses and stations, off-board fare payment, wider stop ","
+                             spacing than other local bus service, and other treatments such as transit signal priority and business access and transit (BAT) lanes.")
 

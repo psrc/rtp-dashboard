@@ -24,6 +24,27 @@ shinyServer(function(input, output) {
   output$county_vmt_text <- renderText({vmt_county_caption})
   
   output$vkt_text <- renderText({vkt_caption})
+  
+  output$safety_text_1 <- renderText({safety_overview_1})
+  
+  output$safety_text_2 <- renderText({safety_overview_2})
+  
+  output$safety_text_3 <- renderText({safety_overview_3})
+  
+  output$safety_text_4 <- renderText({safety_overview_4})
+  
+  output$safety_text_5 <- renderText({safety_overview_5})
+  
+  output$fatal_county_text <- renderText({fatal_county_caption})
+  
+  output$fatal_mpo_text <- renderText({fatal_mpo_caption})
+  
+  output$transit_text_1 <- renderText({transit_overview_1})
+  
+  output$transit_text_2 <- renderText({transit_overview_2})
+  
+  output$transit_text_3 <- renderText({transit_overview_3})
+  
 
     # Charts
     output$chart_population_growth <- renderPlotly({interactive_line_chart(t=data %>% filter(grouping=="Population" & variable=="Total" & geography=="Region" & data_year>=2000), 
@@ -107,6 +128,35 @@ shinyServer(function(input, output) {
                                                                        est="number", dec=0, color='pgnobgy_10',
                                                                        title=(paste0('Annual Vehicle Kilometers Traveled per Capita'))) %>% layout(showlegend = FALSE)})
     
+    
+    
+    output$chart_transit_boardings <- renderPlotly({interactive_line_chart(t=data %>% filter(grouping=="Annual Transit Boardings" & geography=="Region" & variable =="All Transit Modes" & data_year>=2000), 
+                                                                           x='data_year', y='estimate', fill='metric', est="number", 
+                                                                           title="Annual Regional Transit Boardings: 2002 to 2050",
+                                                                           xtype= "Continuous",
+                                                                           lwidth = 2,
+                                                                           breaks = c("2000","2010","2020","2030","2040","2050"),
+                                                                           color = "pgnobgy_5")})
+    
+    output$chart_boardings_mode <- renderPlot({create_facet_bar_chart(t=data %>% filter(grouping=="Annual Transit Boardings" & geography=="Region" & metric=="Observed" & variable!="All Transit Modes" & data_year>=2015 & data_year<=2021), 
+                                                                        w.x="data_year", w.y="estimate", 
+                                                                        f="data_year", g="variable", 
+                                                                        est.type = "number",
+                                                                        w.title="Annual Transit Boardings by Mode: 2015 to 2021",
+                                                                        w.facet=3, w.scales="free") +
+        ggplot2::theme(axis.title = ggplot2::element_blank(), 
+                       legend.position = "none")})
+    
+    
+    output$mpo_boardings_precovid_chart <- renderPlotly({interactive_bar_chart(t=mpo_transit_boardings_precovid,
+                                                                              y='geography', x='estimate', fill='plot_id',
+                                                                              est="number", dec=0, color='pgnobgy_5',
+                                                                              title=paste0('Year to Date Transit Boardings: ',pre_covid))})
+    
+    output$mpo_boardings_today_chart <- renderPlotly({interactive_bar_chart(t=mpo_transit_boardings_today,
+                                                                              y='geography', x='estimate', fill='plot_id',
+                                                                              est="number", dec=0, color='pgnobgy_5',
+                                                                              title=paste0('Year to Date Transit Boardings: ',current_population_year))})
     
     
 })    
