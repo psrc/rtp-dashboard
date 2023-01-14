@@ -138,11 +138,11 @@ shinyServer(function(input, output) {
                                                                            breaks = c("2000","2010","2020","2030","2040","2050"),
                                                                            color = "pgnobgy_5")})
     
-    output$chart_boardings_mode <- renderPlot({create_facet_bar_chart(t=data %>% filter(grouping=="Annual Transit Boardings" & geography=="Region" & metric=="Observed" & variable!="All Transit Modes" & data_year>=2015 & data_year<=2021), 
+    output$chart_boardings_mode <- renderPlot({create_facet_bar_chart(t=data %>% filter(metric=="YTD Transit Boardings" & geography=="Region" & variable!="All Transit Modes" & data_year>=2015 & data_year<=current_population_year), 
                                                                         w.x="data_year", w.y="estimate", 
                                                                         f="data_year", g="variable", 
                                                                         est.type = "number",
-                                                                        w.title="Annual Transit Boardings by Mode: 2015 to 2021",
+                                                                        w.title=paste0("YTD Transit Boardings by Mode: 2015 to ",current_population_year),
                                                                         w.facet=3, w.scales="free") +
         ggplot2::theme(axis.title = ggplot2::element_blank(), 
                        legend.position = "none")})
@@ -157,7 +157,36 @@ shinyServer(function(input, output) {
                                                                               y='geography', x='estimate', fill='plot_id',
                                                                               est="number", dec=0, color='pgnobgy_5',
                                                                               title=paste0('Year to Date Transit Boardings: ',current_population_year))})
+
+    output$chart_transit_hours <- renderPlotly({interactive_line_chart(t=data %>% filter(grouping=="Annual Transit Revenue-Hours" & geography=="Region" & variable =="All Transit Modes" & data_year>=2000), 
+                                                                           x='data_year', y='estimate', fill='metric', est="number", 
+                                                                           title="Annual Regional Transit Revenue-Hours: 2002 to 2050",
+                                                                           xtype= "Continuous",
+                                                                           lwidth = 2,
+                                                                           breaks = c("2000","2010","2020","2030","2040","2050"),
+                                                                           color = "pgnobgy_5")})
     
+    output$chart_hours_mode <- renderPlot({create_facet_bar_chart(t=data %>% filter(metric=="YTD Transit Revenue-Hours" & geography=="Region" & variable!="All Transit Modes" & data_year>=2015 & data_year<=current_population_year), 
+                                                                      w.x="data_year", w.y="estimate", 
+                                                                      f="data_year", g="variable", 
+                                                                      est.type = "number",
+                                                                      w.title=paste0("YTD Transit Revenue-Hours by Mode: 2015 to ",current_population_year),
+                                                                      w.facet=3, w.scales="free") +
+        ggplot2::theme(axis.title = ggplot2::element_blank(), 
+                       legend.position = "none")})
+    
+    
+    output$mpo_hours_precovid_chart <- renderPlotly({interactive_bar_chart(t=mpo_transit_hours_precovid,
+                                                                               y='geography', x='estimate', fill='plot_id',
+                                                                               est="number", dec=0, color='pgnobgy_5',
+                                                                               title=paste0('Year to Date Transit Revenue-Hours: ',pre_covid))})
+    
+    output$mpo_hours_today_chart <- renderPlotly({interactive_bar_chart(t=mpo_transit_hours_today,
+                                                                            y='geography', x='estimate', fill='plot_id',
+                                                                            est="number", dec=0, color='pgnobgy_5',
+                                                                            title=paste0('Year to Date Transit Revenue-Hours: ',current_population_year))})
+    
+        
     
 })    
 

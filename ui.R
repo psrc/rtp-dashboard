@@ -475,7 +475,7 @@ shinyUI(
                                                  br(),
                                                  textOutput("transit_text_3"),
                                                  br(), 
-                                                 div(img(src="st_northgate.png", width = "100%", height = "100%", style = "padding-top: 0px; border-radius:0px 0 0px 0;", alt = "Bar chart of Greenhouse Gas Emissions in 2050")),
+                                                 div(img(src="st_northgate_trim.png", width = "100%", height = "100%", style = "padding-top: 0px; border-radius:0px 0 0px 0;", alt = "Bar chart of Greenhouse Gas Emissions in 2050")),
                                                  br(),
                                                  hr()
                                                  
@@ -538,6 +538,62 @@ shinyUI(
                                                  
                                           )) # End of Main Panel Fluid Row for Transit Tab
                         ), # End of Tab Panel for Transit Boardings
+                        
+                        tabPanel("Transit Revenue-Hours",
+                                 fluidRow(column(12, style='padding-left:50px; padding-right:50px;',
+                                                 bs4Jumbotron(
+                                                   title = strong(tags$div(class="mainpage_title","Annual Transit Revenue-Hours")),
+                                                   status = "success",
+                                                   btnName = strong(tags$div(class="mainpage_subtitle","Regional Transportation Plan")),
+                                                   href = "https://www.psrc.org/planning-2050/regional-transportation-plan"))
+                                 ), # End of First Fluid Row Transit Tab
+                                 
+                                 fluidRow(column(4, style='padding-left:50px; padding-right:50px;',
+                                                 hr(),
+                                                 strong(tags$div(class="sidebar_heading","Regional Transportation Plan")),
+                                                 br(),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-transportation-plan/projects-and-approval", "Projects and Approval", target="_blank"),
+                                                 br(),br(),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/coordinated-mobility-plan", "Coordinated Mobility Plan", target="_blank"),
+                                                 br(),br(),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-transportation-plan/data-research-and-policy-briefs", "Data, Research and Policy Briefs", target="_blank"),
+                                                 br(),br(),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-transportation-plan/transportation-system-visualization-tool", "Transportation System Visualization Tool", target="_blank"),
+                                                 hr(),
+                                                 div(img(src="bellevuetransitcenter.jpg", width = "100%", height = "100%", style = "padding-top: 0px; border-radius:30px 0 30px 0;", alt = "Glass and steel building in the background")),
+                                                 hr(),
+                                                 strong(tags$div(class="sidebar_heading","Connect With Us")),
+                                                 hr(),
+                                                 tags$div(class="sidebar_notes","Gil Cerise:"),
+                                                 tags$div(class="sidebar_notes","Program Manager"),
+                                                 br(),
+                                                 icon("envelope"), 
+                                                 tags$a(class = "source_url", href="mailto:gcerise@psrc.org?", "Email"),
+                                                 br(), br(),
+                                                 icon("phone-volume"), "206-971-3053",
+                                                 hr()                                 ),
+                                          column(8, style='padding-left:0px; padding-right:50px;',
+                                                 tags$div(class="page_goals","RTP Input: 66% More Revenue-Hours by 2050"),
+                                                 br(),
+                                                 h1("Annual Transit Revenue-Hours in the PSRC Region"),
+                                                 hr(),
+                                                 fluidRow(column(12,plotlyOutput("chart_transit_hours"))),
+                                                 hr(),
+                                                 h1("Transit Revenue-Hours by Mode"),
+                                                 br(),
+                                                 fluidRow(column(12,plotOutput("chart_hours_mode"))),
+                                                 hr(),
+                                                 h1("Transit Revenue-Hours by Metropolitan Region"),
+                                                 br(),
+                                                 fluidRow(column(6,plotlyOutput("mpo_hours_precovid_chart")),
+                                                          column(6,plotlyOutput("mpo_hours_today_chart"))),
+                                                 br(), br(),
+                                                 br(), br(),
+                                                 hr()
+                                                 
+                                          )) # End of Main Panel Fluid Row for Transit Tab
+                        ), # End of Tab Panel for Transit Revenue-Hours
+                        
              ),# End of Nav Bar Menu for Transit
              
              ) # End of NavBar Page

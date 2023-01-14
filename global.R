@@ -39,12 +39,21 @@ vmt <- read_csv("data/vmt-data.csv", show_col_types = FALSE) %>%
   mutate(data_year = as.character(lubridate::year(date)))
 
 data <- bind_rows(data, vmt)
+rm(vmt)
 
 boardings <- read_csv("data/rtp-transit-boardings.csv", show_col_types = FALSE) %>%
   mutate(date = lubridate::mdy(date)) %>%
   mutate(data_year = as.character(lubridate::year(date)))
 
 data <- bind_rows(data, boardings)
+rm(boardings)
+
+hours <- read_csv("data/rtp-transit-hours.csv", show_col_types = FALSE) %>%
+  mutate(date = lubridate::mdy(date)) %>%
+  mutate(data_year = as.character(lubridate::year(date)))
+
+data <- bind_rows(data, hours)
+rm(hours)
 
 vkt_data <- read_csv("data/vkt-data.csv", show_col_types = FALSE) %>% 
   mutate(plot_id=as.character(plot_id)) %>% 
@@ -176,6 +185,28 @@ mpo_transit_boardings_today <- data %>%
 
 mpo_order <- mpo_transit_boardings_today %>% select(geography) %>% pull()
 mpo_transit_boardings_today <- mpo_transit_boardings_today %>% mutate(geography = factor(x=geography, levels=mpo_order))
+
+mpo_transit_hours_precovid <- data %>% 
+  filter(geography_type=="Metro Regions" & metric=="YTD Transit Revenue-Hours" & variable=="All Transit Modes" & lubridate::year(date)==pre_covid & geography!="New York City") %>%
+  mutate(plot_id = case_when(
+    geography == "Seattle" ~ "PSRC",
+    geography %in% metros ~ "Comparable Metros")) %>%
+  mutate(plot_id=replace_na(plot_id,"Other")) %>%
+  arrange(estimate)
+
+mpo_order <- mpo_transit_hours_precovid %>% select(geography) %>% pull()
+mpo_transit_hours_precovid <- mpo_transit_hours_precovid %>% mutate(geography = factor(x=geography, levels=mpo_order))
+
+mpo_transit_hours_today <- data %>% 
+  filter(geography_type=="Metro Regions" & metric=="YTD Transit Revenue-Hours" & variable=="All Transit Modes" & lubridate::year(date)==current_population_year & geography!="New York City") %>%
+  mutate(plot_id = case_when(
+    geography == "Seattle" ~ "PSRC",
+    geography %in% metros ~ "Comparable Metros")) %>%
+  mutate(plot_id=replace_na(plot_id,"Other")) %>%
+  arrange(estimate)
+
+mpo_order <- mpo_transit_hours_today %>% select(geography) %>% pull()
+mpo_transit_hours_today <- mpo_transit_hours_today %>% mutate(geography = factor(x=geography, levels=mpo_order))
 
 # Population Data for Text ---------------------------------------------------------
 vision_pop_today <- data %>% filter(lubridate::year(date)==current_population_year & variable=="Forecast Population") %>% select(estimate) %>% pull()
