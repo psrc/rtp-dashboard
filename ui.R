@@ -316,25 +316,24 @@ shinyUI(
                                                  bs4Jumbotron(
                                                    title = strong(tags$div(class="mainpage_title","Employment Growth")),
                                                    status = "success",
-                                                   btnName = strong(tags$div(class="mainpage_subtitle","VISION 2050")),
-                                                   href = "https://www.psrc.org/planning-2050/vision-2050"))
+                                                   btnName = strong(tags$div(class="mainpage_subtitle","Regional Economic Strategy")),
+                                                   href = "https://www.psrc.org/planning-2050/regional-economic-strategy"))
                                  ), # End of First Fluid Row for Employment Tab
                                  
                                  fluidRow(column(4, style='padding-left:50px; padding-right:50px;',
                                                  hr(),
-                                                 strong(tags$div(class="sidebar_heading","VISION 2050")),
+                                                 strong(tags$div(class="sidebar_heading","Employment Growth")),
                                                  br(),
-                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/vision-2050/data-and-research", "Data and Research", target="_blank"),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-economic-strategy", "Regional Economic Strategy", target="_blank"),
                                                  br(),br(),
-                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/vision-2050/environmental-review", "Environmental Review", target="_blank"),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/our-work/covered-employment-estimates", "Covered Employment Estimates", target="_blank"),
                                                  br(),br(),
-                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/vision/vision-2050-planning-resources", "Planning Resources", target="_blank"),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/our-work/regional-macroeconomic-forecast", "Regional Macroeconomic Forecast", target="_blank"),
                                                  br(),br(),
-                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/vision/vision-2050-awards", "VISION 2050 Awards", target="_blank"),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/our-work/industrial-lands", "Industrial Lands", target="_blank"),
                                                  br(),br(),
-                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/vision-2050/youth-engagement-psrc", "Youth Engagement at PSRC", target="_blank"),
                                                  hr(),
-                                                 div(img(src="img-v2050-building.jpg", width = "100%", height = "100%", style = "padding-top: 0px; border-radius:30px 0 30px 0;", alt = "Glass and steel building in the background")),
+                                                 div(img(src="res.png", width = "100%", height = "100%", style = "padding-top: 0px; border-radius:30px 0 30px 0;", alt = "Equity Strategy Document")),
                                                  hr(),
                                                  strong(tags$div(class="sidebar_heading","Connect With Us")),
                                                  hr(),
@@ -348,9 +347,7 @@ shinyUI(
                                                  hr()
                                  ),
                                  column(8, style='padding-left:0px; padding-right:50px;',
-                                        "Over the next 30 years, the central Puget Sound region will add another million and a half people, reaching a population of 5.8 million. 
-                                                 How can we ensure that all residents benefit from the region’s thriving communities, strong economy and healthy environment as population grows? 
-                                                 Local counties, cities, Tribes and other partners have worked together with PSRC to develop",
+                                        textOutput("employment_overview_text"),
                                         tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/vision-2050", " VISION 2050.", target="_blank"),
                                         h1("Regional Employment Growth"),
                                         #textOutput("population_vision_text"),

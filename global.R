@@ -213,6 +213,11 @@ vision_pop_today <- data %>% filter(lubridate::year(date)==current_population_ye
 actual_pop_today <- data %>% filter(lubridate::year(date)==current_population_year & variable=="Observed Population") %>% select(estimate) %>% pull()
 population_delta <- actual_pop_today - vision_pop_today
 
+# Employment Data for Text ------------------------------------------------
+#vision_jobs_today <- data %>% filter(lubridate::year(date)==current_population_year & variable=="Forecast Population") %>% select(estimate) %>% pull()
+#actual_jons_today <- data %>% filter(lubridate::year(date)==current_population_year & variable=="Observed Population") %>% select(estimate) %>% pull()
+#emoloyment_delta <- actual_pop_today - vision_pop_today
+
 # Vehicle Registration Data for Text --------------------------------------
 min_ev_date <- data %>% filter(metric=="New Vehicle Registrations" & geography=="Region") %>% select(date) %>% pull() %>% min()
 max_ev_date <- data %>% filter(metric=="New Vehicle Registrations" & geography=="Region") %>% select(date) %>% pull() %>% max()
@@ -265,6 +270,9 @@ pop_vision_caption <- paste0("Between ",base_year," and ", current_population_ye
                              prettyNum(round(population_delta,-3), big.mark = ","),
                              " people.")
 
+employment_overview <- paste("Over the next 30 years, the central Puget Sound region will add another million jobs, reaching an employment total of 3.2 million.", 
+                             "How can we ensure that all residents benefit from the region’s strong economy?",
+                             "Local counties, cities, Tribes and other partners have worked together with PSRC to develop")
 
 climate_overview_1 <- paste0("Climate change is a primary focus of VISION 2050, with a goal for the region to substantially reduce ",
                           "emissions of greenhouse gases that contribute to climate change in accordance with the goals of the ", 

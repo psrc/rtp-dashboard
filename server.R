@@ -3,6 +3,8 @@ shinyServer(function(input, output) {
   
   output$population_vision_text <- renderText({pop_vision_caption})
   
+  output$employment_overview_text <- renderText({employment_overview})
+  
   output$safety_text <- renderText({safety_caption})
   
   output$region_fatal_text <- renderText({fatal_trends_caption})
