@@ -47,7 +47,7 @@ shinyServer(function(input, output) {
   
 
     # Charts
-    output$chart_population_growth <- renderPlotly({interactive_line_chart(t=data %>% filter(grouping=="Population" & variable=="Total" & geography=="Region" & data_year>=2000), 
+    output$chart_population_growth <- renderPlotly({interactive_line_chart(t=data %>% filter(grouping=="Population" & variable=="Total" & geography=="Region" & data_year>=base_year), 
                                                                       x='data_year', y='estimate', fill='metric', est="number", 
                                                                       title="Regional Population: 2000 to 2050",
                                                                       xtype= "Continuous",

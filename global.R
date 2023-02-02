@@ -24,7 +24,7 @@ library(leaflet)
 install_psrc_fonts()
 
 # Inputs ---------------------------------------------------------------
-base_year <- "2018"
+base_year <- "2005"
 pre_covid <- "2019"
 current_population_year <- "2022"
 
