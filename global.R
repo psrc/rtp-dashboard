@@ -31,7 +31,7 @@ current_population_year <- "2022"
 wgs84 <- 4326
 
 data <- read_csv("data/rtp-dashboard-data.csv", show_col_types = FALSE) %>%
-  mutate(date = lubridate::mdy(date)) %>%
+  #mutate(date = lubridate::mdy(date)) %>%
   mutate(data_year = as.character(lubridate::year(date)))
 
 vmt <- read_csv("data/vmt-data.csv", show_col_types = FALSE) %>%

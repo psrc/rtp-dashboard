@@ -311,6 +311,67 @@ shinyUI(
                                                  
                                           )) # End of Main Panel Fluid Row for Population Tab
                                  ), # End of Tab Panel for Population
+                        tabPanel("Employment",
+                                 fluidRow(column(12, style='padding-left:50px; padding-right:50px;',
+                                                 bs4Jumbotron(
+                                                   title = strong(tags$div(class="mainpage_title","Employment Growth")),
+                                                   status = "success",
+                                                   btnName = strong(tags$div(class="mainpage_subtitle","VISION 2050")),
+                                                   href = "https://www.psrc.org/planning-2050/vision-2050"))
+                                 ), # End of First Fluid Row for Employment Tab
+                                 
+                                 fluidRow(column(4, style='padding-left:50px; padding-right:50px;',
+                                                 hr(),
+                                                 strong(tags$div(class="sidebar_heading","VISION 2050")),
+                                                 br(),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/vision-2050/data-and-research", "Data and Research", target="_blank"),
+                                                 br(),br(),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/vision-2050/environmental-review", "Environmental Review", target="_blank"),
+                                                 br(),br(),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/vision/vision-2050-planning-resources", "Planning Resources", target="_blank"),
+                                                 br(),br(),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/vision/vision-2050-awards", "VISION 2050 Awards", target="_blank"),
+                                                 br(),br(),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/vision-2050/youth-engagement-psrc", "Youth Engagement at PSRC", target="_blank"),
+                                                 hr(),
+                                                 div(img(src="img-v2050-building.jpg", width = "100%", height = "100%", style = "padding-top: 0px; border-radius:30px 0 30px 0;", alt = "Glass and steel building in the background")),
+                                                 hr(),
+                                                 strong(tags$div(class="sidebar_heading","Connect With Us")),
+                                                 hr(),
+                                                 tags$div(class="sidebar_notes","Grant Gibson:"),
+                                                 tags$div(class="sidebar_notes","Associate Planner, Data"),
+                                                 br(),
+                                                 icon("envelope"), 
+                                                 tags$a(class = "source_url", href="mailto:ggibson@psrc.org?", "Email"),
+                                                 br(), br(),
+                                                 icon("phone-volume"), "206-971-3272",
+                                                 hr()
+                                 ),
+                                 column(8, style='padding-left:0px; padding-right:50px;',
+                                        "Over the next 30 years, the central Puget Sound region will add another million and a half people, reaching a population of 5.8 million. 
+                                                 How can we ensure that all residents benefit from the region’s thriving communities, strong economy and healthy environment as population grows? 
+                                                 Local counties, cities, Tribes and other partners have worked together with PSRC to develop",
+                                        tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/vision-2050", " VISION 2050.", target="_blank"),
+                                        h1("Regional Employment Growth"),
+                                        #textOutput("population_vision_text"),
+                                        hr(),
+                                        fluidRow(column(12,plotlyOutput("chart_employment_growth"))),
+                                        hr(),
+                                        h1("Growth Near High Capacity Transit"),
+                                        "The Regional Growth Strategy defines roles for different types of places in accommodating the region's population and employment growth, 
+                                                 which inform countywide growth targets, local plans and regional plans. 
+                                                 The Regional Growth Strategy assumes 65% of the region's population growth and 75% of the region's job growth will locate in regional growth centers and near high-capacity transit. 
+                                                 The VISION 2050 Supplemental EIS studies the environmental outcomes of the Regional Growth Strategy. 
+                                                 Learn more about ",
+                                        tags$a(class = "source_url", href="https://www.psrc.org/media/5102", "guidance to implement the Regional Growth Strategy (PDF).", target="_blank"),
+                                        br(), br(),
+                                        br(), br(),
+                                        fluidRow(column(12,plotlyOutput("chart_employment_growth_hct"))),
+                                        hr()
+                                        
+                                        
+                                 )) # End of Main Panel Fluid Row for Employment Tab
+                        ), # End of Tab Panel for Employment
                         ),# End of Nav Bar Menu for People, Housing and Jobs
              
              navbarMenu(icon("child"), 

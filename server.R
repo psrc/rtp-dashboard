@@ -183,7 +183,19 @@ shinyServer(function(input, output) {
                                                                             est="number", dec=0, color='pgnobgy_5',
                                                                             title=paste0('Year to Date Transit Revenue-Hours: ',current_population_year))})
     
-        
+    output$chart_employment_growth <- renderPlotly({interactive_line_chart(t=data %>% filter(metric=="Total Employment" & variable=="Region" & data_year>=base_year), 
+                                                                           x='data_year', y='estimate', fill='metric', est="number", 
+                                                                           title="Regional Employment: 2010 to 2050",
+                                                                           lwidth = 2,
+                                                                           breaks = c("2010","2020","2030","2040","2050"),
+                                                                           color = "pgnobgy_5")})  
+    
+    output$chart_employment_growth_hct <- renderPlotly({interactive_line_chart(t=data %>% filter(metric=="Total Employment" & variable=="Inside HCT Area"), 
+                                                                               x='data_year', y='share', fill='metric', est="percent", 
+                                                                               title="Share of Regional Employment Growth near HCT: 2010 to 2021",
+                                                                               lwidth = 2,
+                                                                               breaks = c("2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021"),
+                                                                               color = "pgnobgy_5")})
     
 })    
 
