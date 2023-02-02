@@ -50,7 +50,6 @@ shinyServer(function(input, output) {
     output$chart_population_growth <- renderPlotly({interactive_line_chart(t=data %>% filter(grouping=="Population" & variable=="Total" & geography=="Region" & data_year>=base_year), 
                                                                       x='data_year', y='estimate', fill='metric', est="number", 
                                                                       title="Regional Population: 2000 to 2050",
-                                                                      xtype= "Continuous",
                                                                       lwidth = 2,
                                                                       breaks = c("2000","2010","2020","2030","2040","2050"),
                                                                       color = "pgnobgy_5")})
@@ -58,7 +57,6 @@ shinyServer(function(input, output) {
     output$chart_population_growth_hct <- renderPlotly({interactive_line_chart(t=data %>% filter(grouping=="Growth Near High Capacity Transit" & geography=="Inside HCT Area" & variable=="Change" & metric=="Population"), 
                                                                            x='data_year', y='share', fill='geography', est="percent", 
                                                                            title="Share of Regional Population Growth near HCT: 2010 to 2022",
-                                                                           xtype= "Continuous",
                                                                            lwidth = 2,
                                                                            breaks = c("2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022"),
                                                                            color = "pgnobgy_5") %>% layout(yaxis = list(range = c(0,1)))})
@@ -66,17 +64,17 @@ shinyServer(function(input, output) {
     output$fatal_collisions_chart <- renderPlotly({interactive_line_chart(t=data %>% filter(metric=="1yr Fatality Rate" & geography=="Seattle" & variable%in%c("Fatal Collisions","Fatalities")),
                                                                    x='data_year', y='estimate', fill='variable', est="number", 
                                                                    title="Fatal Collisions by Year in the PSRC Region: 2010 to 2020",
-                                                                   xtype= "Continuous",
                                                                    lwidth = 2,
                                                                    breaks = c("2010","2015","2020"),
                                                                    color = "pgnobgy_5")})
 
-    output$county_fatal_collisions_chart <- renderPlot({create_facet_bar_chart(t=data %>% filter(metric=="1yr Fatality Rate" & geography_type=="PSRC Region" & variable%in%c("Fatal Collisions") & data_year >= 2015), 
-                                                                        w.x="data_year", w.y="estimate", 
-                                                                        f="data_year", g="geography", 
-                                                                        est.type = "number",
-                                                                        w.title="Fatal Collisions by County: 2015 to 2020",
-                                                                        w.facet=2, w.scales="fixed") +
+    output$county_fatal_collisions_chart <- renderPlot({static_facet_column_chart(t=data %>% filter(metric=="1yr Fatality Rate" & geography_type=="PSRC Region" & variable%in%c("Fatal Collisions") & data_year >= 2015), 
+                                                                        x="data_year", y="estimate", 
+                                                                        fill="data_year", facet="geography", 
+                                                                        est = "number",
+                                                                        color = "pgnobgy_10",
+                                                                        title="Fatal Collisions by County: 2015 to 2020",
+                                                                        ncol=2, scales="fixed") +
         ggplot2::theme(axis.title = ggplot2::element_blank(), 
                        legend.position = "none")})
     
@@ -101,7 +99,6 @@ shinyServer(function(input, output) {
     output$chart_total_vmt <- renderPlotly({interactive_line_chart(t=data %>% filter(grouping=="Vehicle Miles Traveled" & variable=="Total" & geography=="Region" & data_year>=2000), 
                                                                            x='data_year', y='estimate', fill='metric', est="number", 
                                                                            title="Regional Vehicle Miles Traveled: 2000 to 2050",
-                                                                           xtype= "Continuous",
                                                                            lwidth = 2,
                                                                            breaks = c("2000","2010","2020","2030","2040","2050"),
                                                                            color = "pgnobgy_5")})
@@ -109,17 +106,17 @@ shinyServer(function(input, output) {
     output$chart_per_capita_vmt <- renderPlotly({interactive_line_chart(t=data %>% filter(grouping=="Vehicle Miles Traveled" & variable=="per Capita" & geography=="Region" & data_year>=2000), 
                                                                    x='data_year', y='estimate', fill='metric', est="number", 
                                                                    title="Regional VMT per Capita: 2000 to 2050",
-                                                                   xtype= "Continuous",
                                                                    lwidth = 2, dec=1,
                                                                    breaks = c("2000","2010","2020","2030","2040","2050"),
                                                                    color = "pgnobgy_5")})
     
-    output$chart_total_vmt_county <- renderPlot({create_facet_bar_chart(t=data %>% filter(grouping=="Vehicle Miles Traveled" & variable=="Total" & metric=="Observed VMT" & geography!="Region" & data_year>=2015 & data_year<=2021), 
-                                                                        w.x="data_year", w.y="estimate", 
-                                                                        f="data_year", g="geography", 
-                                                                        est.type = "number",
-                                                                        w.title="Daily Vehicle Miles Traveled by County: 2015 to 2021",
-                                                                        w.facet=2, w.scales="fixed") +
+    output$chart_total_vmt_county <- renderPlot({static_facet_column_chart(t=data %>% filter(grouping=="Vehicle Miles Traveled" & variable=="Total" & metric=="Observed VMT" & geography!="Region" & data_year>=2015 & data_year<=2021), 
+                                                                        x="data_year", y="estimate", 
+                                                                        fill="data_year", facet="geography", 
+                                                                        est = "number",
+                                                                        color = "pgnobgy_10",
+                                                                        title="Daily Vehicle Miles Traveled by County: 2015 to 2021",
+                                                                        ncol=2, scales="fixed") +
         ggplot2::theme(axis.title = ggplot2::element_blank(), 
                        legend.position = "none")})
     
@@ -133,17 +130,17 @@ shinyServer(function(input, output) {
     output$chart_transit_boardings <- renderPlotly({interactive_line_chart(t=data %>% filter(grouping=="Annual Transit Boardings" & geography=="Region" & variable =="All Transit Modes" & data_year>=2000), 
                                                                            x='data_year', y='estimate', fill='metric', est="number", 
                                                                            title="Annual Regional Transit Boardings: 2002 to 2050",
-                                                                           xtype= "Continuous",
                                                                            lwidth = 2,
                                                                            breaks = c("2000","2010","2020","2030","2040","2050"),
                                                                            color = "pgnobgy_5")})
     
-    output$chart_boardings_mode <- renderPlot({create_facet_bar_chart(t=data %>% filter(metric=="YTD Transit Boardings" & geography=="Region" & variable!="All Transit Modes" & data_year>=2015 & data_year<=current_population_year), 
-                                                                        w.x="data_year", w.y="estimate", 
-                                                                        f="data_year", g="variable", 
-                                                                        est.type = "number",
-                                                                        w.title=paste0("YTD Transit Boardings by Mode: 2015 to ",current_population_year),
-                                                                        w.facet=3, w.scales="free") +
+    output$chart_boardings_mode <- renderPlot({static_facet_column_chart(t=data %>% filter(metric=="YTD Transit Boardings" & geography=="Region" & variable!="All Transit Modes" & data_year>=2015 & data_year<=current_population_year), 
+                                                                        x="data_year", y="estimate", 
+                                                                        fill="data_year", facet="variable", 
+                                                                        est = "number",
+                                                                        color = "pgnobgy_10",
+                                                                        title=paste0("YTD Transit Boardings by Mode: 2015 to ",current_population_year),
+                                                                        ncol=3, scales="free") +
         ggplot2::theme(axis.title = ggplot2::element_blank(), 
                        legend.position = "none")})
     
@@ -161,17 +158,17 @@ shinyServer(function(input, output) {
     output$chart_transit_hours <- renderPlotly({interactive_line_chart(t=data %>% filter(grouping=="Annual Transit Revenue-Hours" & geography=="Region" & variable =="All Transit Modes" & data_year>=2000), 
                                                                            x='data_year', y='estimate', fill='metric', est="number", 
                                                                            title="Annual Regional Transit Revenue-Hours: 2002 to 2050",
-                                                                           xtype= "Continuous",
                                                                            lwidth = 2,
                                                                            breaks = c("2000","2010","2020","2030","2040","2050"),
                                                                            color = "pgnobgy_5")})
     
-    output$chart_hours_mode <- renderPlot({create_facet_bar_chart(t=data %>% filter(metric=="YTD Transit Revenue-Hours" & geography=="Region" & variable!="All Transit Modes" & data_year>=2015 & data_year<=current_population_year), 
-                                                                      w.x="data_year", w.y="estimate", 
-                                                                      f="data_year", g="variable", 
-                                                                      est.type = "number",
-                                                                      w.title=paste0("YTD Transit Revenue-Hours by Mode: 2015 to ",current_population_year),
-                                                                      w.facet=3, w.scales="free") +
+    output$chart_hours_mode <- renderPlot({static_facet_column_chart(t=data %>% filter(metric=="YTD Transit Revenue-Hours" & geography=="Region" & variable!="All Transit Modes" & data_year>=2015 & data_year<=current_population_year), 
+                                                                      x="data_year", y="estimate", 
+                                                                      fill="data_year", facet="variable", 
+                                                                      est = "number",
+                                                                      color = "pgnobgy_10",
+                                                                      title=paste0("YTD Transit Revenue-Hours by Mode: 2015 to ",current_population_year),
+                                                                      ncol=3, scales="free") +
         ggplot2::theme(axis.title = ggplot2::element_blank(), 
                        legend.position = "none")})
     
