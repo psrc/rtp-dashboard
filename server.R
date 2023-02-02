@@ -88,7 +88,7 @@ shinyServer(function(input, output) {
                                                                        est="number", dec=1, color='pgnobgy_5',
                                                                        title=paste0('Annual Fatalities per 100,000 people: ',safety_max_year))})
     
-    output$ev_share_new_registrations_chart <- renderPlotly({interactive_column_chart(t=data %>% filter(metric=="New Vehicle Registrations" & geography=="Region"),
+    output$ev_share_new_registrations_chart <- renderPlotly({interactive_column_chart(t=data %>% filter(metric=="New Vehicle Registrations" & geography=="Region") %>% mutate(date=as.character(date)),
                                                                                       y='share', x='date', fill='variable', pos = "stack",
                                                                                       est="percent", dec=0, color='pgnobgy_5',
                                                                                       title=(paste0('Share of New Vehicle Registrations')))})
