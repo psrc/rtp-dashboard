@@ -5,6 +5,8 @@ shinyServer(function(input, output) {
   
   output$employment_overview_text <- renderText({employment_overview})
   
+  output$jobs_vision_text <- renderText({jobs_vision_caption})
+  
   output$safety_text <- renderText({safety_caption})
   
   output$region_fatal_text <- renderText({fatal_trends_caption})
@@ -56,12 +58,13 @@ shinyServer(function(input, output) {
                                                                       breaks = c("2000","2010","2020","2030","2040","2050"),
                                                                       color = "pgnobgy_5")})
     
-    output$chart_population_growth_hct <- renderPlotly({interactive_line_chart(t=data %>% filter(grouping=="Growth Near High Capacity Transit" & geography=="Inside HCT Area" & variable=="Change" & metric=="Population"), 
-                                                                           x='data_year', y='share', fill='geography', est="percent", 
-                                                                           title="Share of Regional Population Growth near HCT: 2010 to 2022",
-                                                                           lwidth = 2,
-                                                                           breaks = c("2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022"),
-                                                                           color = "pgnobgy_5") %>% layout(yaxis = list(range = c(0,1)))})
+    output$chart_population_growth_hct <- renderPlotly({p=psrcplot:::make_interactive(static_line_chart(t=data %>% filter(grouping=="Growth Near High Capacity Transit" & geography=="Inside HCT Area" & variable=="Change" & metric=="Population"), 
+                                                                                                        x='data_year', y='share', fill='geography', est="percent", 
+                                                                                                        title="Share of Regional Population Growth near HCT: 2010 to 2022",
+                                                                                                        lwidth = 2,
+                                                                                                        breaks = c("2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022"),
+                                                                                                        color = "pgnobgy_5") + ggplot2::scale_y_continuous(limits=c(0,1), labels=scales::label_percent()), title="Share of Regional Population Growth near HCT: 2010 to 2022")})
+    
     
     output$fatal_collisions_chart <- renderPlotly({interactive_line_chart(t=data %>% filter(metric=="1yr Fatality Rate" & geography=="Seattle" & variable%in%c("Fatal Collisions","Fatalities")),
                                                                    x='data_year', y='estimate', fill='variable', est="number", 
@@ -76,9 +79,7 @@ shinyServer(function(input, output) {
                                                                         est = "number",
                                                                         color = "pgnobgy_10",
                                                                         title="Fatal Collisions by County: 2015 to 2020",
-                                                                        ncol=2, scales="fixed") +
-        ggplot2::theme(axis.title = ggplot2::element_blank(), 
-                       legend.position = "none")})
+                                                                        ncol=2, scales="fixed")})
     
     output$mpo_fatal_rate_min_yr_chart <- renderPlotly({interactive_bar_chart(t=mpo_safety_tbl_min,
                                                                        y='geography', x='estimate', fill='plot_id',
@@ -118,9 +119,7 @@ shinyServer(function(input, output) {
                                                                         est = "number",
                                                                         color = "pgnobgy_10",
                                                                         title="Daily Vehicle Miles Traveled by County: 2015 to 2021",
-                                                                        ncol=2, scales="fixed") +
-        ggplot2::theme(axis.title = ggplot2::element_blank(), 
-                       legend.position = "none")})
+                                                                        ncol=2, scales="fixed")})
     
     output$chart_vkt_per_capita <- renderPlotly({interactive_bar_chart(t=vkt_data,
                                                                        y='geography', x='vkt', fill='plot_id',
@@ -129,12 +128,11 @@ shinyServer(function(input, output) {
     
     
     
-    output$chart_transit_boardings <- renderPlotly({interactive_line_chart(t=data %>% filter(grouping=="Annual Transit Boardings" & geography=="Region" & variable =="All Transit Modes" & data_year>=2000), 
-                                                                           x='data_year', y='estimate', fill='metric', est="number", 
-                                                                           title="Annual Regional Transit Boardings: 2002 to 2050",
-                                                                           lwidth = 2,
-                                                                           breaks = c("2000","2010","2020","2030","2040","2050"),
-                                                                           color = "pgnobgy_5")})
+    output$chart_transit_boardings <- renderPlotly({psrcplot:::make_interactive(p=static_line_chart(t=data %>% filter(metric=="Annual Transit Boardings" & geography=="Region" & variable =="All Transit Modes") %>% mutate(grouping=gsub("PSRC Region", "Observed",grouping)), 
+                                                                                                    x='data_year', y='estimate', fill='grouping', est="number", 
+                                                                                                    lwidth = 2,
+                                                                                                    breaks = c("2000","2010","2020","2030","2040","2050"),
+                                                                                                    color = "pgnobgy_5") + ggplot2::scale_y_continuous(limits=c(0,800000000), labels=scales::label_comma()), title="Annual Regional Transit Boardings: 2002 to 2050")})
     
     output$chart_boardings_mode <- renderPlot({static_facet_column_chart(t=data %>% filter(metric=="YTD Transit Boardings" & geography=="Region" & variable!="All Transit Modes" & data_year>=2015 & data_year<=current_population_year), 
                                                                         x="data_year", y="estimate", 
@@ -142,9 +140,7 @@ shinyServer(function(input, output) {
                                                                         est = "number",
                                                                         color = "pgnobgy_10",
                                                                         title=paste0("YTD Transit Boardings by Mode: 2015 to ",current_population_year),
-                                                                        ncol=3, scales="free") +
-        ggplot2::theme(axis.title = ggplot2::element_blank(), 
-                       legend.position = "none")})
+                                                                        ncol=3, scales="free")})
     
     
     output$mpo_boardings_precovid_chart <- renderPlotly({interactive_bar_chart(t=mpo_transit_boardings_precovid,
@@ -157,12 +153,11 @@ shinyServer(function(input, output) {
                                                                               est="number", dec=0, color='pgnobgy_5',
                                                                               title=paste0('Year to Date Transit Boardings: ',current_population_year))})
 
-    output$chart_transit_hours <- renderPlotly({interactive_line_chart(t=data %>% filter(grouping=="Annual Transit Revenue-Hours" & geography=="Region" & variable =="All Transit Modes" & data_year>=2000), 
-                                                                           x='data_year', y='estimate', fill='metric', est="number", 
-                                                                           title="Annual Regional Transit Revenue-Hours: 2002 to 2050",
-                                                                           lwidth = 2,
-                                                                           breaks = c("2000","2010","2020","2030","2040","2050"),
-                                                                           color = "pgnobgy_5")})
+    output$chart_transit_hours <- renderPlotly({psrcplot:::make_interactive(p=static_line_chart(t=data %>% filter(metric=="Annual Transit Revenue-Hours" & geography=="Region" & variable =="All Transit Modes") %>% mutate(grouping=gsub("PSRC Region", "Observed",grouping)), 
+                                                                                                x='data_year', y='estimate', fill='grouping', est="number", 
+                                                                                                lwidth = 2,
+                                                                                                breaks = c("2000","2010","2020","2030","2040","2050"),
+                                                                                                color = "pgnobgy_5") + ggplot2::scale_y_continuous(limits=c(0,14000000), labels=scales::label_comma()), title="Annual Regional Transit Revenue-Hours: 2002 to 2050")})
     
     output$chart_hours_mode <- renderPlot({static_facet_column_chart(t=data %>% filter(metric=="YTD Transit Revenue-Hours" & geography=="Region" & variable!="All Transit Modes" & data_year>=2015 & data_year<=current_population_year), 
                                                                       x="data_year", y="estimate", 
@@ -170,9 +165,7 @@ shinyServer(function(input, output) {
                                                                       est = "number",
                                                                       color = "pgnobgy_10",
                                                                       title=paste0("YTD Transit Revenue-Hours by Mode: 2015 to ",current_population_year),
-                                                                      ncol=3, scales="free") +
-        ggplot2::theme(axis.title = ggplot2::element_blank(), 
-                       legend.position = "none")})
+                                                                      ncol=3, scales="free")})
     
     
     output$mpo_hours_precovid_chart <- renderPlotly({interactive_bar_chart(t=mpo_transit_hours_precovid,
@@ -185,19 +178,18 @@ shinyServer(function(input, output) {
                                                                             est="number", dec=0, color='pgnobgy_5',
                                                                             title=paste0('Year to Date Transit Revenue-Hours: ',current_population_year))})
     
-    output$chart_employment_growth <- renderPlotly({interactive_line_chart(t=data %>% filter(metric=="Total Employment" & variable=="Region" & data_year>=base_year), 
+    output$chart_employment_growth <- renderPlotly({interactive_line_chart(t=data %>% filter(grouping=="Total Employment" & variable=="Total" & geography=="Region" & data_year>=base_year), 
                                                                            x='data_year', y='estimate', fill='metric', est="number", 
                                                                            title="Regional Employment: 2010 to 2050",
                                                                            lwidth = 2,
                                                                            breaks = c("2010","2020","2030","2040","2050"),
                                                                            color = "pgnobgy_5")})  
     
-    output$chart_employment_growth_hct <- renderPlotly({interactive_line_chart(t=data %>% filter(metric=="Total Employment" & variable=="Inside HCT Area"), 
-                                                                               x='data_year', y='share', fill='metric', est="percent", 
-                                                                               title="Share of Regional Employment Growth near HCT: 2010 to 2021",
-                                                                               lwidth = 2,
-                                                                               breaks = c("2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021"),
-                                                                               color = "pgnobgy_5")})
+    output$chart_employment_growth_hct <- renderPlotly({psrcplot:::make_interactive(p=static_line_chart(t=data %>% filter(metric=="Total Employment" & variable=="Inside HCT Area"), 
+                                                                                                      x='data_year', y='share', fill='metric', est="percent", 
+                                                                                                      lwidth = 2,
+                                                                                                      breaks = c("2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021"),
+                                                                                                      color = "pgnobgy_5") + ggplot2::scale_y_continuous(limits=c(0,1), labels=scales::label_percent()), title="Share of Regional Employment Growth near HCT: 2010 to 2021")})
     
 })    
 

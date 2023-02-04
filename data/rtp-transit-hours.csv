@@ -1,4 +1,4 @@
-﻿date,data_year,geography,variable,estimate,geography_type,share,moe,share_moe,metric,grouping
+﻿date,data_year,geography,variable,estimate,geography_type,share,moe,share_moe,grouping,metric
 12/1/2016,2016,Region,All Transit Modes,7487702,PSRC Region,,,,Forecast,Annual Transit Revenue-Hours
 12/1/2017,2017,Region,All Transit Modes,7764780,PSRC Region,,,,Forecast,Annual Transit Revenue-Hours
 12/1/2018,2018,Region,All Transit Modes,7986846,PSRC Region,,,,Forecast,Annual Transit Revenue-Hours

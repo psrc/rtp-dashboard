@@ -27,6 +27,7 @@ install_psrc_fonts()
 base_year <- "2005"
 pre_covid <- "2019"
 current_population_year <- "2022"
+current_jobs_year <- "2021"
 
 wgs84 <- 4326
 
@@ -57,7 +58,7 @@ rm(hours)
 
 vkt_data <- read_csv("data/vkt-data.csv", show_col_types = FALSE) %>% 
   mutate(plot_id=as.character(plot_id)) %>% 
-  arrange(vkt)
+  arrange(desc(vkt))
 
 vkt_order <- vkt_data %>% select(geography) %>% distinct %>% pull()
 vkt_data <- vkt_data %>% mutate(geography = factor(x=geography, levels=vkt_order))
@@ -148,7 +149,7 @@ mpo_safety_tbl_min <- data %>%
     geography == "Seattle" ~ "PSRC",
     geography %in% metros ~ "Comparable Metros")) %>%
   mutate(plot_id=replace_na(plot_id,"Other")) %>%
-  arrange(estimate)
+  arrange(desc(estimate))
 
 mpo_order <- mpo_safety_tbl_min %>% select(geography) %>% pull()
 mpo_safety_tbl_min <- mpo_safety_tbl_min %>% mutate(geography = factor(x=geography, levels=mpo_order))
@@ -159,7 +160,7 @@ mpo_safety_tbl_max <- data %>%
     geography == "Seattle" ~ "PSRC",
     geography %in% metros ~ "Comparable Metros")) %>%
   mutate(plot_id=replace_na(plot_id,"Other")) %>%
-  arrange(estimate)
+  arrange(desc(estimate))
 
 mpo_order <- mpo_safety_tbl_max %>% select(geography) %>% pull()
 mpo_safety_tbl_max <- mpo_safety_tbl_max %>% mutate(geography = factor(x=geography, levels=mpo_order))
@@ -170,7 +171,7 @@ mpo_transit_boardings_precovid <- data %>%
     geography == "Seattle" ~ "PSRC",
     geography %in% metros ~ "Comparable Metros")) %>%
   mutate(plot_id=replace_na(plot_id,"Other")) %>%
-  arrange(estimate)
+  arrange(desc(estimate))
 
 mpo_order <- mpo_transit_boardings_precovid %>% select(geography) %>% pull()
 mpo_transit_boardings_precovid <- mpo_transit_boardings_precovid %>% mutate(geography = factor(x=geography, levels=mpo_order))
@@ -181,7 +182,7 @@ mpo_transit_boardings_today <- data %>%
     geography == "Seattle" ~ "PSRC",
     geography %in% metros ~ "Comparable Metros")) %>%
   mutate(plot_id=replace_na(plot_id,"Other")) %>%
-  arrange(estimate)
+  arrange(desc(estimate))
 
 mpo_order <- mpo_transit_boardings_today %>% select(geography) %>% pull()
 mpo_transit_boardings_today <- mpo_transit_boardings_today %>% mutate(geography = factor(x=geography, levels=mpo_order))
@@ -192,7 +193,7 @@ mpo_transit_hours_precovid <- data %>%
     geography == "Seattle" ~ "PSRC",
     geography %in% metros ~ "Comparable Metros")) %>%
   mutate(plot_id=replace_na(plot_id,"Other")) %>%
-  arrange(estimate)
+  arrange(desc(estimate))
 
 mpo_order <- mpo_transit_hours_precovid %>% select(geography) %>% pull()
 mpo_transit_hours_precovid <- mpo_transit_hours_precovid %>% mutate(geography = factor(x=geography, levels=mpo_order))
@@ -203,7 +204,7 @@ mpo_transit_hours_today <- data %>%
     geography == "Seattle" ~ "PSRC",
     geography %in% metros ~ "Comparable Metros")) %>%
   mutate(plot_id=replace_na(plot_id,"Other")) %>%
-  arrange(estimate)
+  arrange(desc(estimate))
 
 mpo_order <- mpo_transit_hours_today %>% select(geography) %>% pull()
 mpo_transit_hours_today <- mpo_transit_hours_today %>% mutate(geography = factor(x=geography, levels=mpo_order))
@@ -214,9 +215,9 @@ actual_pop_today <- data %>% filter(lubridate::year(date)==current_population_ye
 population_delta <- actual_pop_today - vision_pop_today
 
 # Employment Data for Text ------------------------------------------------
-#vision_jobs_today <- data %>% filter(lubridate::year(date)==current_population_year & variable=="Forecast Population") %>% select(estimate) %>% pull()
-#actual_jons_today <- data %>% filter(lubridate::year(date)==current_population_year & variable=="Observed Population") %>% select(estimate) %>% pull()
-#emoloyment_delta <- actual_pop_today - vision_pop_today
+vision_jobs_today <- data %>% filter(lubridate::year(date)==current_jobs_year & metric=="Forecast Employment" & variable=="Total") %>% select(estimate) %>% pull()
+actual_jobs_today <- data %>% filter(lubridate::year(date)==current_jobs_year & metric=="Observed Employment" & variable=="Total") %>% select(estimate) %>% pull()
+jobs_delta <- actual_jobs_today - vision_jobs_today
 
 # Vehicle Registration Data for Text --------------------------------------
 min_ev_date <- data %>% filter(metric=="New Vehicle Registrations" & geography=="Region") %>% select(date) %>% pull() %>% min()
@@ -270,7 +271,18 @@ pop_vision_caption <- paste0("Between ",base_year," and ", current_population_ye
                              prettyNum(round(population_delta,-3), big.mark = ","),
                              " people.")
 
-employment_overview <- paste("Over the next 30 years, the central Puget Sound region will add another million jobs, reaching an employment total of 3.2 million.", 
+jobs_vision_caption <- paste0("Job growth Between ",base_year," and ", current_population_year,
+                             " has been significantly impacted by the COVID-19 pandemic. In VISION 2050 forecasts, the total employment in ",
+                             current_jobs_year, 
+                             " was forecasted to be ", 
+                             prettyNum(round(vision_jobs_today,-3), big.mark = ","),
+                             ". The observed employment at the end of 2021 was  ",
+                             prettyNum(round(actual_jobs_today,-3), big.mark = ","), 
+                             ", a difference of ",
+                             prettyNum(round(jobs_delta,-3), big.mark = ","),
+                             " jobs.")
+
+employment_overview <- paste("Over the next 30 years, the central Puget Sound region will add another million jobs, reaching an employment total of 3.3 million jobs by 2050.", 
                              "How can we ensure that all residents benefit from the region’s strong economy?",
                              "Local counties, cities, Tribes and other partners have worked together with PSRC to develop")
 
@@ -369,5 +381,7 @@ transit_overview_3 <- paste0("High-capacity transit in the region is provided by
                              "King County Metro and Kitsap Transit. Bus rapid transit (BRT) routes in the region are distinguished from other forms ",
                              "of bus transit by a combination of features that include branded buses and stations, off-board fare payment, wider stop ","
                              spacing than other local bus service, and other treatments such as transit signal priority and business access and transit (BAT) lanes.")
+
+
 
 

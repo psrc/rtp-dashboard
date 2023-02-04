@@ -1,4 +1,4 @@
-﻿date,data_year,geography,variable,estimate,geography_type,share,moe,share_moe,metric,grouping
+﻿date,data_year,geography,variable,estimate,geography_type,share,moe,share_moe,grouping,metric
 12/1/2016,2016,Region,All Transit Modes,222592561,PSRC Region,,,,Forecast,Annual Transit Boardings
 12/1/2017,2017,Region,All Transit Modes,227475924,PSRC Region,,,,Forecast,Annual Transit Boardings
 12/1/2018,2018,Region,All Transit Modes,230538085,PSRC Region,,,,Forecast,Annual Transit Boardings

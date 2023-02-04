@@ -350,7 +350,7 @@ shinyUI(
                                         textOutput("employment_overview_text"),
                                         tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/vision-2050", " VISION 2050.", target="_blank"),
                                         h1("Regional Employment Growth"),
-                                        #textOutput("population_vision_text"),
+                                        textOutput("jobs_vision_text"),
                                         hr(),
                                         fluidRow(column(12,plotlyOutput("chart_employment_growth"))),
                                         hr(),
