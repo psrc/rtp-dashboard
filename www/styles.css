@@ -175,3 +175,15 @@ head {
     top: 70px;
     bottom: 0px;
 }
+
+.chart_title {
+  color: #999999;
+  font-family: "Poppins";
+  font-size: 14pt;
+}
+
+.chart_source {
+  color: #999999;
+  font-family: "Poppins";
+  font-size: 10pt;
+}

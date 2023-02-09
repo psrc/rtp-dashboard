@@ -28,12 +28,31 @@ base_year <- "2005"
 pre_covid <- "2019"
 current_population_year <- "2022"
 current_jobs_year <- "2021"
+current_vmt_year <- 2021
 
 wgs84 <- 4326
 
 data <- read_csv("data/rtp-dashboard-data.csv", show_col_types = FALSE) %>%
-  #mutate(date = lubridate::mdy(date)) %>%
   mutate(data_year = as.character(lubridate::year(date)))
+
+total_job_change <- data %>% filter(metric=="Total Employment", variable=="Region") %>%
+  mutate(total = (estimate-lag(estimate))) %>%
+  select(date, data_year, geography, total)
+
+hct_job_change <- data %>% filter(metric=="Total Employment", variable=="Inside HCT Area") %>%
+  mutate(hct = (estimate-lag(estimate))) %>%
+  select(date, data_year, geography, hct)
+
+job_change <- left_join(total_job_change, hct_job_change, by=c("date","data_year", "geography")) %>%
+  mutate(share=hct/total) %>%
+  rename(estimate=hct) %>%
+  mutate(variable="Inside HCT Area", geography_type="PSRC Region", metric="Employment Growth Inside HCT Area", grouping="Change") %>%
+  select(-total) %>%
+  drop_na()
+
+data <-bind_rows(data, job_change)
+
+rm(total_job_change, hct_job_change, job_change)
 
 vmt <- read_csv("data/vmt-data.csv", show_col_types = FALSE) %>%
   mutate(date = lubridate::mdy(date)) %>%
@@ -210,14 +229,22 @@ mpo_order <- mpo_transit_hours_today %>% select(geography) %>% pull()
 mpo_transit_hours_today <- mpo_transit_hours_today %>% mutate(geography = factor(x=geography, levels=mpo_order))
 
 # Population Data for Text ---------------------------------------------------------
-vision_pop_today <- data %>% filter(lubridate::year(date)==current_population_year & variable=="Forecast Population") %>% select(estimate) %>% pull()
-actual_pop_today <- data %>% filter(lubridate::year(date)==current_population_year & variable=="Observed Population") %>% select(estimate) %>% pull()
+vision_pop_today <- data %>% filter(lubridate::year(date)==current_population_year & metric=="Forecast Population" & variable=="Total" & geography=="Region") %>% select(estimate) %>% pull()
+actual_pop_today <- data %>% filter(lubridate::year(date)==current_population_year & metric=="Observed Population" & variable=="Total" & geography=="Region") %>% select(estimate) %>% pull()
 population_delta <- actual_pop_today - vision_pop_today
+actual_pop_hct_today <- data %>% filter(lubridate::year(date)==current_population_year & grouping=="Growth Near High Capacity Transit" & geography=="Inside HCT Area" & variable=="Change" & metric=="Population") %>% select(share) %>% pull()
+
+# Housing Data for Text ---------------------------------------------------------
+vision_housing_today <- data %>% filter(lubridate::year(date)==current_population_year & metric=="Forecast" & variable=="Total Housing Units" & geography=="Region") %>% select(estimate) %>% pull()
+actual_housing_today <- data %>% filter(lubridate::year(date)==current_population_year & metric=="Observed" & variable=="Total Housing Units" & geography=="Region" & grouping=="Total") %>% select(estimate) %>% pull()
+housing_delta <- actual_housing_today - vision_housing_today
+actual_housing_hct_today <- data %>% filter(lubridate::year(date)==current_population_year & grouping=="Growth Near High Capacity Transit" & geography=="Inside HCT Area" & variable=="Change" & metric=="Housing Units") %>% select(share) %>% pull()
 
 # Employment Data for Text ------------------------------------------------
 vision_jobs_today <- data %>% filter(lubridate::year(date)==current_jobs_year & metric=="Forecast Employment" & variable=="Total") %>% select(estimate) %>% pull()
 actual_jobs_today <- data %>% filter(lubridate::year(date)==current_jobs_year & metric=="Observed Employment" & variable=="Total") %>% select(estimate) %>% pull()
 jobs_delta <- actual_jobs_today - vision_jobs_today
+actual_jobs_hct_today <- data %>% filter(lubridate::year(date)==current_jobs_year & metric=="Employment Growth Inside HCT Area" & variable=="Inside HCT Area") %>% select(share) %>% pull()
 
 # Vehicle Registration Data for Text --------------------------------------
 min_ev_date <- data %>% filter(metric=="New Vehicle Registrations" & geography=="Region") %>% select(date) %>% pull() %>% min()
@@ -243,6 +270,28 @@ efa_tracts <- tracts %>%
   st_sf() 
 
 # Text Data ---------------------------------------------------------------
+growth_overview_1 <- paste("The region's vision for 2050 is to provide exceptional quality of life, opportunity for all, ",
+                           "connected communities, a spectacular natural environment, and an innovative, thriving economy.")
+
+growth_overview_2 <- paste("Over the next 30 years, the central Puget Sound region will add another million and a half people, ",
+                           "reaching a population of 5.8 million. How can we ensure that all residents benefit from the region’s ",
+                           "thriving communities, strong economy and healthy environment as population grows? ",
+                           "Local counties, cities, Tribes and other partners have worked together with PSRC to develop VISION 2050.")
+
+growth_overview_3 <- paste("VISION 2050’s multicounty planning policies, actions, and regional growth strategy guide how and where ",
+                           "the region grows through 2050. The plan informs updates to the Regional Transportation Plan ",
+                           "and Regional Economic Strategy. VISION 2050 also sets the stage for updates to countywide planning ",
+                           "policies and local comprehensive plans done by cities and counties.")
+
+housing_overview_1 <-paste("The region is expected to grow by 830,000 households by the year 2050. ",
+                           "Meeting the housing needs of all households at a range of income levels is ",
+                           "integral to creating a region that is livable for all residents, economically ",
+                           "prosperous and environmentally sustainable.")
+
+housing_overview_2 <-paste("By providing data, guidance, and technical assistance, ",
+                           "PSRC supports jurisdictions in their efforts to adopt best ",
+                           "housing practices and establish coordinated local housing and affordable housing targets.")
+
 safety_caption <- paste0("Safety impacts every aspect of the transportation system, covering all modes and encompassing a ",
                          "variety of attributes from facility design to security to personal behavior. The Federal Highway ",
                          "Administration (FHWA) refers to the Four E’s of safety: engineering, enforcement, education and ",
@@ -260,8 +309,7 @@ fatal_trends_caption <- paste0("The total number of crashes that resulted in fat
                                safety_max_year,
                                ".")
 
-pop_vision_caption <- paste0("Between ",base_year," and ", current_population_year,
-                             " population growth is in-line with VISION 2050. In VISION 2050 forecasts, the population in ",
+pop_vision_caption <- paste0("In VISION 2050 forecasts, the population in ",
                              current_population_year, 
                              " was forecasted to be ", 
                              prettyNum(round(vision_pop_today,-3), big.mark = ","),
@@ -270,6 +318,36 @@ pop_vision_caption <- paste0("Between ",base_year," and ", current_population_ye
                              ", a difference of ",
                              prettyNum(round(population_delta,-3), big.mark = ","),
                              " people.")
+pop_hct_caption <- paste0("In VISION 2050, the population growth goal is for ",
+                          "65% of population growth to be near high-capacity transit. ",
+                          "In ",
+                          current_population_year, 
+                          ", the observed share of population growth near HCT was ",
+                          prettyNum(round(actual_pop_hct_today*100,0), big.mark = ","),
+                          "%.")
+
+housing_vision_caption <- paste0("In VISION 2050 forecasts, the total housing units in the PSRC region in ",
+                             current_population_year, 
+                             " was forecasted to be ", 
+                             prettyNum(round(vision_housing_today,-3), big.mark = ","),
+                             ". The observed housing units in ",
+                             current_population_year,
+                             " were ",
+                             prettyNum(round(actual_housing_today,-3), big.mark = ","), 
+                             ", a difference of ",
+                             prettyNum(round(housing_delta,-3), big.mark = ","),
+                             " housing units.")
+
+housing_hct_caption <- paste0("In VISION 2050, the population growth goal is for ",
+                              "65% of population growth to be near high-capacity transit. ",
+                              "There is no specific goal for housing unit shares near ",
+                              "high-capacity transit however household sizes near stations ",
+                              "tend to be smaller and hence will likely require slight more units ",
+                              "near transit. In ",
+                              current_population_year, 
+                              ", the observed share of housing unit growth near HCT was ",
+                              prettyNum(round(actual_housing_hct_today*100,0), big.mark = ","),
+                              "%.")
 
 jobs_vision_caption <- paste0("Job growth Between ",base_year," and ", current_population_year,
                              " has been significantly impacted by the COVID-19 pandemic. In VISION 2050 forecasts, the total employment in ",
@@ -281,6 +359,14 @@ jobs_vision_caption <- paste0("Job growth Between ",base_year," and ", current_p
                              ", a difference of ",
                              prettyNum(round(jobs_delta,-3), big.mark = ","),
                              " jobs.")
+
+employment_hct_caption <- paste0("In VISION 2050, the employment growth goal is for ",
+                          "75% of job growth to be near high-capacity transit. ",
+                          "In ",
+                          current_population_year, 
+                          ", the observed share of job growth near HCT was ",
+                          prettyNum(round(actual_jobs_hct_today*100,0), big.mark = ","),
+                          "%.")
 
 employment_overview <- paste("Over the next 30 years, the central Puget Sound region will add another million jobs, reaching an employment total of 3.3 million jobs by 2050.", 
                              "How can we ensure that all residents benefit from the region’s strong economy?",
@@ -381,7 +467,6 @@ transit_overview_3 <- paste0("High-capacity transit in the region is provided by
                              "King County Metro and Kitsap Transit. Bus rapid transit (BRT) routes in the region are distinguished from other forms ",
                              "of bus transit by a combination of features that include branded buses and stations, off-board fare payment, wider stop ","
                              spacing than other local bus service, and other treatments such as transit signal priority and business access and transit (BAT) lanes.")
-
 
 
 
