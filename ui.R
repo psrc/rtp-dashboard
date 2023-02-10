@@ -236,8 +236,8 @@ shinyUI(
                                                           column(6,strong(tags$div(class="chart_title","Daily Regional VMT per Capita")))),
                                                  fluidRow(column(6,plotlyOutput("chart_total_vmt")),
                                                           column(6,plotlyOutput("chart_per_capita_vmt"))),
-                                                 fluidRow(column(6,tags$div(class="chart_source","WSDOT HPMS, SoundCast Model")),
-                                                          column(6,tags$div(class="chart_source","WSDOT HPMS, OFM and SoundCast Model"))),
+                                                 fluidRow(column(6,tags$div(class="chart_source","Source: WSDOT HPMS, SoundCast Model")),
+                                                          column(6,tags$div(class="chart_source","Source: WSDOT HPMS, OFM and SoundCast Model"))),
                                                  br(), 
                                                  h1("Vehicle Miles Traveled by County"),
                                                  textOutput("county_vmt_text"),
@@ -504,7 +504,7 @@ shinyUI(
                         ), # End of Tab Panel for Employment
                         ),# End of Nav Bar Menu for People, Housing and Jobs
              
-             navbarMenu(icon("child"), 
+             navbarMenu("Safety", 
                         
                         tabPanel("Overview",
                                  fluidRow(column(12, style='padding-left:50px; padding-right:50px;',
@@ -601,20 +601,26 @@ shinyUI(
                                         br(),
                                         textOutput("region_fatal_text"),
                                         hr(),
+                                        strong(tags$div(class="chart_title","Fatal Collisions in the PSRC Region")),
                                         fluidRow(column(12,plotlyOutput("fatal_collisions_chart"))),
+                                        tags$div(class="chart_source","Source: USDOT FARS Data"),
                                         hr(),
                                         h1("Fatal Collisions by County in the PSRC Region"),
                                         textOutput("fatal_county_text"),
                                         br(),
+                                        strong(tags$div(class="chart_title","Fatal Collisions by County")),
                                         fluidRow(column(12,plotOutput("county_fatal_collisions_chart"))),
+                                        tags$div(class="chart_source","Source: USDOT FARS Data"),
                                         hr(),
                                         h1("Fatal Collisions by Metropolitan Region"),
                                         textOutput("fatal_mpo_text"),
                                         br(),
+                                        fluidRow(column(6,strong(tags$div(class="chart_title",paste0("Annual Fatalities per 100,000 people: ",safety_min_year)))),
+                                                 column(6,strong(tags$div(class="chart_title",paste0("Annual Fatalities per 100,000 people: ",safety_max_year))))),
                                         fluidRow(column(6,plotlyOutput("mpo_fatal_rate_min_yr_chart")),
                                                  column(6,plotlyOutput("mpo_fatal_rate_max_yr_chart"))),
-                                        br(), br(),
-                                        br(), br(),
+                                        fluidRow(column(6,tags$div(class="chart_source","Source: USDOT FARS Data")),
+                                                 column(6,tags$div(class="chart_source","Source: USDOT FARS Data"))),
                                         hr()
                                         
                                         

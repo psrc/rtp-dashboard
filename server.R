@@ -141,29 +141,25 @@ shinyServer(function(input, output) {
   
     
     output$fatal_collisions_chart <- renderPlotly({interactive_line_chart(t=data %>% filter(metric=="1yr Fatality Rate" & geography=="Seattle" & variable%in%c("Fatal Collisions","Fatalities")),
-                                                                   x='data_year', y='estimate', fill='variable', est="number", 
-                                                                   title="Fatal Collisions by Year in the PSRC Region: 2010 to 2020",
+                                                                   x='data_year', y='estimate', fill='variable', est="number",
                                                                    lwidth = 2,
                                                                    breaks = c("2010","2015","2020"),
                                                                    color = "pgnobgy_5")})
 
-    output$county_fatal_collisions_chart <- renderPlot({static_facet_column_chart(t=data %>% filter(metric=="1yr Fatality Rate" & geography_type=="PSRC Region" & variable%in%c("Fatal Collisions") & data_year >= 2015), 
+    output$county_fatal_collisions_chart <- renderPlot({static_facet_column_chart(t=data %>% filter(metric=="1yr Fatality Rate" & geography_type=="PSRC Region" & variable%in%c("Fatal Collisions") & data_year>as.character(safety_max_year-5)), 
                                                                         x="data_year", y="estimate", 
                                                                         fill="data_year", facet="geography", 
                                                                         est = "number",
                                                                         color = "pgnobgy_10",
-                                                                        title="Fatal Collisions by County: 2015 to 2020",
                                                                         ncol=2, scales="fixed")})
     
     output$mpo_fatal_rate_min_yr_chart <- renderPlotly({interactive_bar_chart(t=mpo_safety_tbl_min,
                                                                        y='geography', x='estimate', fill='plot_id',
-                                                                       est="number", dec=1, color='pgnobgy_5',
-                                                                       title=paste0('Annual Fatalities per 100,000 people: ',safety_min_year))})
+                                                                       est="number", dec=1, color='pgnobgy_5')})
     
     output$mpo_fatal_rate_max_yr_chart <- renderPlotly({interactive_bar_chart(t=mpo_safety_tbl_max,
                                                                        y='geography', x='estimate', fill='plot_id',
-                                                                       est="number", dec=1, color='pgnobgy_5',
-                                                                       title=paste0('Annual Fatalities per 100,000 people: ',safety_max_year))})
+                                                                       est="number", dec=1, color='pgnobgy_5')})
     
     
     
