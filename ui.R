@@ -18,7 +18,8 @@ shinyUI(
              theme = "styles.css",
              position = "fixed-top",
              
-             tabPanel("Overview",
+             tabPanel(title="Overview",
+                      value="Main-Summary",
                       fluidRow(column(4, style='padding-left:50px; padding-right:0px;',
                                       div(img(src="street-intersection.jpeg", width = "100%", height = "100%", style = "padding-top: 0px; border-radius:0 0 30px 0;", alt = "Street Intersection with housing building in the background"))),
                                column(8, style='padding-left:0px; padding-right:50px;',
@@ -113,6 +114,13 @@ shinyUI(
                                                  icon("phone-volume"), "206-971-3601",
                                                  hr()                                 ),
                                           column(8, style='padding-left:0px; padding-right:50px;',
+                                                 
+                                                 fluidRow(column(4, actionButton("climate_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list"), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, actionButton("climate_to_zev", label=tags$div(class="btn_text","Zero Emission Vehicles"), icon = icon("charging-station"), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, actionButton("climate_to_vmt", label=tags$div(class="btn_text","Vehicle Miles Traveled"), icon=icon("road"), width = '100%', class = "btn_nav"), align="center")
+                                                 ), 
+                                                 hr(),
+                                                 
                                                  tags$div(class="page_goals","Goal: 80% below 1990 GHG Emissions by 2050"),
                                                  br(),
                                                  textOutput("climate_text_1"),
@@ -131,7 +139,8 @@ shinyUI(
                                           )) # End of Main Panel Fluid Row for Climate Tab
                         ), # End of Tab Panel for Climate Overview
                         
-                        tabPanel("Zero Emission Vehicles",
+                        tabPanel(title="Zero Emission Vehicles",
+                                 value="Climate-ZEV",
                                  fluidRow(column(12, style='padding-left:50px; padding-right:50px;',
                                                  bs4Jumbotron(
                                                    title = strong(tags$div(class="mainpage_title","Zero Emission Vehicle Registrations")),
@@ -165,6 +174,13 @@ shinyUI(
                                                  icon("phone-volume"), "206-971-3601",
                                                  hr()                                 ),
                                           column(8, style='padding-left:0px; padding-right:50px;',
+                                                 
+                                                 fluidRow(column(4, actionButton("zev_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list"), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, actionButton("zev_to_climate", label=tags$div(class="btn_text","Return to Climate Overview"), icon = icon("tree"), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, actionButton("zev_to_vmt", label=tags$div(class="btn_text","Vehicle Miles Traveled"), icon=icon("road"), width = '100%', class = "btn_nav"), align="center")
+                                                 ), 
+                                                 hr(),
+                                                 
                                                  h1("New Vehicle Registrations in the PSRC Region"),
                                                  textOutput("regional_ev_text"),
                                                  br(),
@@ -183,7 +199,8 @@ shinyUI(
                                           )) # End of Main Panel Fluid Row for Climate Tab
                         ), # End of Tab Panel for Climate ZEV
                         
-                        tabPanel("Vehicle Miles Traveled",
+                        tabPanel(title="Vehicle Miles Traveled",
+                                 value="Climate-VMT",
                                  fluidRow(column(12, style='padding-left:50px; padding-right:50px;',
                                                  bs4Jumbotron(
                                                    title = strong(tags$div(class="mainpage_title","Vehicle Miles Traveled")),
@@ -217,6 +234,13 @@ shinyUI(
                                                  icon("phone-volume"), "206-464-6661",
                                                  hr()                                 ),
                                           column(8, style='padding-left:0px; padding-right:50px;',
+                                                 
+                                                 fluidRow(column(4, actionButton("vmt_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list"), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, actionButton("vmt_to_climate", label=tags$div(class="btn_text","Return to Climate Overview"), icon = icon("tree"), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, actionButton("vmt_to_zev", label=tags$div(class="btn_text","Zero Emission Vehicles"), icon=icon("charging-station"), width = '100%', class = "btn_nav"), align="center")
+                                                 ), 
+                                                 hr(),
+                                                 
                                                  tags$div(class="page_goals","RTP Outcome: 25% Reduction in VMT per Capita by 2050"),
                                                  br(),
                                                  h1("Regional Vehicle Miles Traveled"),

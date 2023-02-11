@@ -203,7 +203,11 @@ shinyServer(function(input, output) {
     
     output$mpo_hours_today_chart <- renderPlotly({interactive_bar_chart(t=mpo_transit_hours_today,
                                                                             y='geography', x='estimate', fill='plot_id',
-                                                                            est="number", dec=0, color='pgnobgy_5')})
+    
+                                                                                                                                                est="number", dec=0, color='pgnobgy_5')})
+    ############################################################################
+    # Main Page Links
+    ############################################################################
     
     # Link to Climate Overview Tab
     observeEvent(input$link_to_climate_overview, {
@@ -223,6 +227,63 @@ shinyServer(function(input, output) {
     # Link to Transit Overview Tab
     observeEvent(input$link_to_transit_overview, {
       updateNavbarPage(inputId = "RTP-Dashboard", selected = "Transit-Overview")
+    })
+    
+    ############################################################################
+    # Climate Overview Page Links
+    ############################################################################
+    
+    # Link to Main Overview Tab
+    observeEvent(input$climate_to_main, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Main-Summary")
+    })
+    
+    # Link to Climate to ZEV Tab
+    observeEvent(input$climate_to_zev, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Climate-ZEV")
+    })
+    
+    # Link to Climate to VMT Tab
+    observeEvent(input$climate_to_vmt, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Climate-VMT")
+    })
+    
+    ############################################################################
+    # Climate ZEV Page Links
+    ############################################################################
+    
+    # Link to Main Overview Tab
+    observeEvent(input$zev_to_main, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Main-Summary")
+    })
+    
+    # Link to Climate Overview Tab
+    observeEvent(input$zev_to_climate, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Climate-Overview")
+    })
+    
+    # Link to ZEV to VMT Tab
+    observeEvent(input$zev_to_vmt, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Climate-VMT")
+    })
+    
+    ############################################################################
+    # Climate VMT Page Links
+    ############################################################################
+    
+    # Link to Main Overview Tab
+    observeEvent(input$vmt_to_main, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Main-Summary")
+    })
+    
+    # Link to Climate Overview Tab
+    observeEvent(input$vmt_to_climate, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Climate-Overview")
+    })
+    
+    # Link to ZEV Tab
+    observeEvent(input$vmt_to_zev, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Climate-ZEV")
     })
     
     
