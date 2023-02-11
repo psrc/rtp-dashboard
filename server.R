@@ -205,6 +205,26 @@ shinyServer(function(input, output) {
                                                                             y='geography', x='estimate', fill='plot_id',
                                                                             est="number", dec=0, color='pgnobgy_5')})
     
+    # Link to Climate Overview Tab
+    observeEvent(input$link_to_climate_overview, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Climate-Overview")
+    })
+    
+    # Link to Growth Overview Tab
+    observeEvent(input$link_to_growth_overview, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Growth-Overview")
+    })
+    
+    # Link to Safety Overview Tab
+    observeEvent(input$link_to_safety_overview, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Safety-Overview")
+    })
+    
+    # Link to Transit Overview Tab
+    observeEvent(input$link_to_transit_overview, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Transit-Overview")
+    })
+    
     
 })    
 

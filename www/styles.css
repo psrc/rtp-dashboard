@@ -187,3 +187,7 @@ head {
   font-family: "Poppins";
   font-size: 10pt;
 }
+
+.btn_nav {
+  background-color: #BCBEC0;
+}

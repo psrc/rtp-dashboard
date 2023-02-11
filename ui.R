@@ -1,5 +1,7 @@
 shinyUI(
-  navbarPage(title = tags$a(div(tags$img(src='psrc-logo.png',
+  navbarPage(
+    id = "RTP-Dashboard",
+    title = tags$a(div(tags$img(src='psrc-logo.png',
                              style="margin-top: -30px; padding-left: 40px;",
                              height = "80")
                              ), href="https://www.psrc.org", target="_blank"),
@@ -50,46 +52,34 @@ shinyUI(
                                       hr()),
                                column(8, style='padding-left:0px; padding-right:50px;',
                                       hr(),
-                                      div(img(src="img-rtp-logo-trim.jpg", width = "50%", height = "50%", style = "padding-top: 0px")),
-                                      "The Regional Transportation Plan (RTP) is the long-range transportation plan for the central Puget Sound region. 
-                        The RTP is adopted every four years, and is designed to implement the region’s growth plan, ",
-                                      tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/vision-2050", "VISION 2050", target="_blank"), 
-                                      ".The RTP meets all state and federal requirements and is based on the latest data, adopted land use assumptions, and technical tools. ",
-                                      br(),br(),
-                                      "The plan was developed over the last two years with extensive engagement with board members, technical committees, member jurisdictions, and the public. 
-                        The plan implements the polices and goals in VISION 2050, outlining investments the region is making in transit, rail, ferry, streets and highways, freight, bicycle and pedestrian facilities, and other systems to ensure the safe and efficient movement of people and goods.",
-                                      br(),br(),
-                                      "On April 28, 2022, the PSRC Executive Board unanimously recommended adoption of the Regional Transportation Plan for action by the General Assembly. 
-                        The General Assembly adopted the plan on May 26, 2022.",
-                                      hr(),
-                                      h2("RTP Performance Dashboard"),
                                       "The RTP Performance Dashboard is a resource to help the region understand how well it is meeting it's long range goals. At a minimum, the dashboard will be updated 
                         each fall as various Census and Transportation related metrics are released.
-                        Metrics on the dashboard are focused on topic areas that were identified by the Transporation Policy Board as high priorities for the region and include:",br(),br(),
-                               fluidRow(column(1, style='padding-left:0px; padding-right:5px;',
-                                               icon("tree"), br(),br(),
-                                               icon("users"), br(),br(),
-                                               icon("child"), br(),br(), 
-                                               icon("bicycle"), br(),br(), 
-                                               icon("bus"), br(),br(), 
-                                               icon("car"), br(),br(), 
-                                               icon("wrench")),
-                                      column(11, style='padding-left:5px; padding-right:50px;',
-                                             "Climate",br(),br(),
-                                             "People, Housing & Jobs",br(),br(),br(),
-                                             "Safety",br(),br(),
-                                             "Alternative Modes of Transportation", br(),br(),
-                                             "Transit Performance and Access",br(),br(),
-                                             "Travel Time and Congestion",br(),br(),br(),
-                                             "Transportation Projects",
-                                             hr())
-                                      ) # end of second fluid row for main overview page
+                        Metrics on the dashboard are focused on topic areas that were identified by the Transporation Policy Board as high priorities for the region and include:",
+                                      
+                                      hr(),
+                                      
+                                      fluidRow(column(4, actionButton("link_to_climate_overview", label="Climate", icon = icon("tree"), width = '100%', class = "btn_nav"), align="center"),
+                                               column(4, actionButton("link_to_growth_overview", label="People, Housing & Jobs", icon = icon("user"), width = '100%', class = "btn_nav"), align="center"),
+                                               column(4, actionButton("link_to_safety_overview", label="Safety", icon=icon("child"), width = '100%', class = "btn_nav"), align="center")
+                                      ), br(),
+                                      
+                                      fluidRow(column(4, actionButton("link_to_modes_overview", label="Alternative Modes", icon = icon("bicycle"), width = '100%', class = "btn_nav"), align="center"),
+                                               column(4, actionButton("link_to_transit_overview", label="Transit Performance", icon = icon("bus"), width = '100%', class = "btn_nav"), align="center"),
+                                               column(4, actionButton("link_to_time_overview", label="Travel Time", icon=icon("car"), width = '100%', class = "btn_nav"), align="center")
+                                      ), br(),
+                                      
+                                      fluidRow(column(4,""),
+                                               column(4, actionButton("link_to_projects_overview", label="Transportation Projects", icon = icon("wrench"), width = '100%', class = "btn_nav"), align="center"),
+                                               column(4,"")
+                                      ), br(),
+                                      
                                ), # end of second fluid row for main overview page
                       ) # end of second fluid row for main overview page
                       ), # end of tabpanel for Overview
              
              navbarMenu("Climate", 
-                        tabPanel("Overview",
+                        tabPanel(title="Overview",
+                                 value = "Climate-Overview",
                                  fluidRow(column(12, style='padding-left:50px; padding-right:50px;',
                                                  bs4Jumbotron(
                                                    title = strong(tags$div(class="mainpage_title","Addressing Climate Change")),
@@ -261,9 +251,10 @@ shinyUI(
                         
              ),# End of Nav Bar Menu for Climate
              
-             navbarMenu("Growth", 
+             navbarMenu(HTML("People,<br/>Housing & Jobs"), 
                         
-                        tabPanel("Overview",
+                        tabPanel(title="Overview",
+                                 value="Growth-Overview",
                                  fluidRow(column(12, style='padding-left:50px; padding-right:50px;',
                                                  bs4Jumbotron(
                                                    title = strong(tags$div(class="mainpage_title","Planning for Growth")),
@@ -506,7 +497,8 @@ shinyUI(
              
              navbarMenu("Safety", 
                         
-                        tabPanel("Overview",
+                        tabPanel(title= "Overview",
+                                 value = "Safety-Overview",
                                  fluidRow(column(12, style='padding-left:50px; padding-right:50px;',
                                                  bs4Jumbotron(
                                                    title = strong(tags$div(class="mainpage_title","Addressing Safety: Target Zero")),
@@ -630,7 +622,8 @@ shinyUI(
              
              navbarMenu(HTML("Transit<br/>Performance"), 
                         
-                        tabPanel("Overview",
+                        tabPanel(title="Overview",
+                                 value="Transit-Overview",
                                  fluidRow(column(12, style='padding-left:50px; padding-right:50px;',
                                                  bs4Jumbotron(
                                                    title = strong(tags$div(class="mainpage_title","Transit Performance")),
