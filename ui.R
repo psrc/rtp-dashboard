@@ -58,18 +58,18 @@ shinyUI(
                                       
                                       hr(),
                                       
-                                      fluidRow(column(4, actionButton("link_to_climate_overview", label="Climate", icon = icon("tree"), width = '100%', class = "btn_nav"), align="center"),
-                                               column(4, actionButton("link_to_growth_overview", label="People, Housing & Jobs", icon = icon("user"), width = '100%', class = "btn_nav"), align="center"),
-                                               column(4, actionButton("link_to_safety_overview", label="Safety", icon=icon("child"), width = '100%', class = "btn_nav"), align="center")
+                                      fluidRow(column(4, actionButton("link_to_climate_overview", label=tags$div(class="btn_text","Climate"), icon = icon("tree"), width = '100%', class = "btn_nav"), align="center"),
+                                               column(4, actionButton("link_to_growth_overview", label=tags$div(class="btn_text","People, Housing & Jobs"), icon = icon("user"), width = '100%', class = "btn_nav"), align="center"),
+                                               column(4, actionButton("link_to_safety_overview", label=tags$div(class="btn_text","Safety"), icon=icon("child"), width = '100%', class = "btn_nav"), align="center")
                                       ), br(),
                                       
-                                      fluidRow(column(4, actionButton("link_to_modes_overview", label="Alternative Modes", icon = icon("bicycle"), width = '100%', class = "btn_nav"), align="center"),
-                                               column(4, actionButton("link_to_transit_overview", label="Transit Performance", icon = icon("bus"), width = '100%', class = "btn_nav"), align="center"),
-                                               column(4, actionButton("link_to_time_overview", label="Travel Time", icon=icon("car"), width = '100%', class = "btn_nav"), align="center")
+                                      fluidRow(column(4, actionButton("link_to_modes_overview", label=tags$div(class="btn_text","Alternative Modes"), icon = icon("bicycle"), width = '100%', class = "btn_nav"), align="center"),
+                                               column(4, actionButton("link_to_transit_overview", label=tags$div(class="btn_text","Transit Performance"), icon = icon("bus"), width = '100%', class = "btn_nav"), align="center"),
+                                               column(4, actionButton("link_to_time_overview", label=tags$div(class="btn_text","Travel Time"), icon=icon("car"), width = '100%', class = "btn_nav"), align="center")
                                       ), br(),
                                       
                                       fluidRow(column(4,""),
-                                               column(4, actionButton("link_to_projects_overview", label="Transportation Projects", icon = icon("wrench"), width = '100%', class = "btn_nav"), align="center"),
+                                               column(4, actionButton("link_to_projects_overview", label=tags$div(class="btn_text","Transportation Projects"), icon = icon("wrench"), width = '100%', class = "btn_nav"), align="center"),
                                                column(4,"")
                                       ), br(),
                                       

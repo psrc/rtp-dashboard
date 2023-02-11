@@ -158,7 +158,7 @@ head {
   width: 18%;
 }
 
-.fa:hover {color: #F05A28;}
+.fa:hover {color: #8CC63E;}
 
 .navbar-default .navbar-nav > .active > a:focus {
   background-color: white; 
@@ -188,6 +188,23 @@ head {
   font-size: 10pt;
 }
 
-.btn_nav {
-  background-color: #BCBEC0;
+.fa {
+  color: #3f6618;
+  
 }
+
+.btn_nav {
+  background-color: transparent;
+  outline-color: transparent;
+  border-color: transparent;
+  
+}
+
+.btn_text {
+  font-size: 12pt;
+  color: #3f6618;
+}
+
+.btn_nav:hover {color: #8CC63E; text-decoration: underline; border-color: transparent; background-color: transparent;}
+
+.btn_text:hover {color: #8CC63E;}
