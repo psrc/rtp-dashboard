@@ -224,6 +224,11 @@ shinyServer(function(input, output) {
       updateNavbarPage(inputId = "RTP-Dashboard", selected = "Safety-Overview")
     })
     
+    # Link to Modes Overview Tab
+    observeEvent(input$link_to_modes_overview, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Mode-Overview")
+    })
+    
     # Link to Transit Overview Tab
     observeEvent(input$link_to_transit_overview, {
       updateNavbarPage(inputId = "RTP-Dashboard", selected = "Transit-Overview")
@@ -440,7 +445,150 @@ shinyServer(function(input, output) {
       
     })
 
+    ############################################################################
+    # Modes Overview Page Links
+    ############################################################################
     
+    # Link to Main Overview Tab
+    observeEvent(input$mode_to_main, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Main-Summary")
+    })
+    
+    # Link to Walking Tab
+    observeEvent(input$mode_to_walking, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Mode-Walking")
+    })
+    
+    # Link to Biking Tab
+    observeEvent(input$mode_to_biking, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Mode-Biking")
+    })
+    
+    # Link to Transit Tab
+    observeEvent(input$mode_to_transit, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Mode-Transit")
+    })
+    
+    # Link to Biking Tab
+    observeEvent(input$mode_to_wfh, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Mode-WFH")
+    })
+    
+    ############################################################################
+    # Modes Walking Page Links
+    ############################################################################
+    
+    # Link to Main Overview Tab
+    observeEvent(input$walk_to_main, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Main-Summary")
+    })
+    
+    # Link to Overview Tab
+    observeEvent(input$walk_to_mode, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Mode-Overview")
+    })
+    
+    # Link to Biking Tab
+    observeEvent(input$walk_to_biking, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Mode-Biking")
+    })
+    
+    # Link to Transit Tab
+    observeEvent(input$walk_to_transit, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Mode-Transit")
+    })
+    
+    # Link to Biking Tab
+    observeEvent(input$walk_to_wfh, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Mode-WFH")
+    })
+
+    ############################################################################
+    # Modes Biking Page Links
+    ############################################################################
+    
+    # Link to Main Overview Tab
+    observeEvent(input$bike_to_main, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Main-Summary")
+    })
+    
+    # Link to Walking Tab
+    observeEvent(input$bike_to_walking, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Mode-Walking")
+    })
+    
+    # Link to Overview Tab
+    observeEvent(input$bike_to_mode, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Mode-Overview")
+    })
+    
+    # Link to Transit Tab
+    observeEvent(input$bike_to_transit, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Mode-Transit")
+    })
+    
+    # Link to Biking Tab
+    observeEvent(input$bike_to_wfh, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Mode-WFH")
+    })
+
+    ############################################################################
+    # Modes Transit Page Links
+    ############################################################################
+    
+    # Link to Main Overview Tab
+    observeEvent(input$transit_to_main, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Main-Summary")
+    })
+    
+    # Link to Walking Tab
+    observeEvent(input$transit_to_walking, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Mode-Walking")
+    })
+    
+    # Link to Biking Tab
+    observeEvent(input$transit_to_biking, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Mode-Biking")
+    })
+    
+    # Link to Overview Tab
+    observeEvent(input$transit_to_mode, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Mode-Overview")
+    })
+    
+    # Link to Biking Tab
+    observeEvent(input$transit_to_wfh, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Mode-WFH")
+    })   
+    
+    ############################################################################
+    # Modes Work from Home Page Links
+    ############################################################################
+    
+    # Link to Main Overview Tab
+    observeEvent(input$wfh_to_main, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Main-Summary")
+    })
+    
+    # Link to Walking Tab
+    observeEvent(input$wfh_to_walking, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Mode-Walking")
+    })
+    
+    # Link to Biking Tab
+    observeEvent(input$wfh_to_biking, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Mode-Biking")
+    })
+    
+    # Link to Transit Tab
+    observeEvent(input$wfh_to_transit, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Mode-Transit")
+    })
+    
+    # Link to Biking Tab
+    observeEvent(input$wfh_to_mode, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Mode-Overview")
+    })
     
     
 })    

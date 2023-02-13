@@ -1,6 +1,8 @@
 shinyUI(
+  
   navbarPage(
     id = "RTP-Dashboard",
+    tags$style("@import url(https://use.fontawesome.com/releases/v6.3.0/css/all.css);"),
     title = tags$a(div(tags$img(src='psrc-logo.png',
                              style="margin-top: -30px; padding-left: 40px;",
                              height = "80")
@@ -61,7 +63,7 @@ shinyUI(
                                       
                                       fluidRow(column(4, actionButton("link_to_climate_overview", label=tags$div(class="btn_text","Climate"), icon = icon("tree"), width = '100%', class = "btn_nav"), align="center"),
                                                column(4, actionButton("link_to_growth_overview", label=tags$div(class="btn_text","People, Housing & Jobs"), icon = icon("user"), width = '100%', class = "btn_nav"), align="center"),
-                                               column(4, actionButton("link_to_safety_overview", label=tags$div(class="btn_text","Safety"), icon=icon("child"), width = '100%', class = "btn_nav"), align="center")
+                                               column(4, actionButton("link_to_safety_overview", label=tags$div(class="btn_text","Safety"), icon=icon("user-doctor"), width = '100%', class = "btn_nav"), align="center")
                                       ), br(),
                                       
                                       fluidRow(column(4, actionButton("link_to_modes_overview", label=tags$div(class="btn_text","Alternative Modes"), icon = icon("bicycle"), width = '100%', class = "btn_nav"), align="center"),
@@ -609,8 +611,8 @@ shinyUI(
                                           column(8, style='padding-left:0px; padding-right:50px;',
                                                  
                                                  fluidRow(column(4, actionButton("safety_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list"), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, actionButton("safety_to_fatal", label=tags$div(class="btn_text","Fatal Collisions"), icon = icon("hospital"), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, actionButton("safety_to_serious", label=tags$div(class="btn_text","Serious Injury Collisions"), icon=icon("heart"), width = '100%', class = "btn_nav"), align="center")
+                                                          column(4, actionButton("safety_to_fatal", label=tags$div(class="btn_text","Fatal Collisions"), icon = icon("truck-medical"), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, actionButton("safety_to_serious", label=tags$div(class="btn_text","Serious Injury Collisions"), icon=icon("hospital"), width = '100%', class = "btn_nav"), align="center")
                                                  ), 
                                                  hr(),
                                                  
@@ -671,8 +673,8 @@ shinyUI(
                                  column(8, style='padding-left:0px; padding-right:50px;',
                                         
                                         fluidRow(column(4, actionButton("fatal_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list"), width = '100%', class = "btn_nav"), align="center"),
-                                                 column(4, actionButton("fatal_to_safety", label=tags$div(class="btn_text","Return to Safety Overview"), icon = icon("child"), width = '100%', class = "btn_nav"), align="center"),
-                                                 column(4, actionButton("fatal_to_serious", label=tags$div(class="btn_text","Serious Injury Collisions"), icon=icon("heart"), width = '100%', class = "btn_nav"), align="center")
+                                                 column(4, actionButton("fatal_to_safety", label=tags$div(class="btn_text","Return to Safety Overview"), icon = icon("user-doctor"), width = '100%', class = "btn_nav"), align="center"),
+                                                 column(4, actionButton("fatal_to_serious", label=tags$div(class="btn_text","Serious Injury Collisions"), icon=icon("hospital"), width = '100%', class = "btn_nav"), align="center")
                                         ), 
                                         hr(),
                                         
@@ -746,8 +748,8 @@ shinyUI(
                                           column(8, style='padding-left:0px; padding-right:50px;',
                                                  
                                                  fluidRow(column(4, actionButton("serious_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list"), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, actionButton("serious_to_safety", label=tags$div(class="btn_text","Return to Safety Overview"), icon = icon("child"), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, actionButton("serious_to_fatal", label=tags$div(class="btn_text","Fatal Collisions"), icon=icon("hospital"), width = '100%', class = "btn_nav"), align="center")
+                                                          column(4, actionButton("serious_to_safety", label=tags$div(class="btn_text","Return to Safety Overview"), icon = icon("user-doctor"), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, actionButton("serious_to_fatal", label=tags$div(class="btn_text","Fatal Collisions"), icon=icon("truck-medical"), width = '100%', class = "btn_nav"), align="center")
                                                  ), 
                                                  hr(),
                                                  
@@ -762,6 +764,302 @@ shinyUI(
                         ), # End of Tab Panel for Serious Injuries
                         
              ),# End of Nav Bar Menu for Safety
+    
+    navbarMenu(HTML("Alternative<br/>Modes"), 
+               
+               tabPanel(title="Overview",
+                        value="Mode-Overview",
+                        fluidRow(column(12, style='padding-left:50px; padding-right:50px;',
+                                        bs4Jumbotron(
+                                          title = strong(tags$div(class="mainpage_title","Alternative Modes of Transportation")),
+                                          status = "success",
+                                          btnName = strong(tags$div(class="mainpage_subtitle","VISION 2050")),
+                                          href = "https://www.psrc.org/planning-2050/vision-2050"))
+                        ), # End of First Fluid Row for Overview Tab
+                        
+                        fluidRow(column(4, style='padding-left:50px; padding-right:50px;',
+                                        hr(),
+                                        strong(tags$div(class="sidebar_heading","VISION 2050")),
+                                        br(),
+                                        tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/vision-2050/data-and-research", "Data and Research", target="_blank"),
+                                        br(),br(),
+                                        tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/vision-2050/environmental-review", "Environmental Review", target="_blank"),
+                                        br(),br(),
+                                        tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/vision/vision-2050-planning-resources", "Planning Resources", target="_blank"),
+                                        br(),br(),
+                                        tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/vision/vision-2050-awards", "VISION 2050 Awards", target="_blank"),
+                                        br(),br(),
+                                        tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/vision-2050/youth-engagement-psrc", "Youth Engagement at PSRC", target="_blank"),
+                                        hr(),
+                                        div(img(src="img-v2050-building.jpg", width = "100%", height = "100%", style = "padding-top: 0px; border-radius:30px 0 30px 0;", alt = "Glass and steel building in the background")),
+                                        hr(),
+                                        strong(tags$div(class="sidebar_heading","Connect With Us")),
+                                        hr(),
+                                        tags$div(class="sidebar_notes","Gil Cerise:"),
+                                        tags$div(class="sidebar_notes","Program Manager"),
+                                        br(),
+                                        icon("envelope"), 
+                                        tags$a(class = "source_url", href="mailto:gcerise@psrc.org?", "Email"),
+                                        br(), br(),
+                                        icon("phone-volume"), "206-971-3053",
+                                        hr()),
+                                 column(8, style='padding-left:0px; padding-right:50px;',
+                                        
+                                        fluidRow(column(4, actionButton("mode_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list"), width = '100%', class = "btn_nav"), align="center"),
+                                                 column(4, actionButton("mode_to_walking", label=tags$div(class="btn_text","Walking"), icon = icon("person-walking"), width = '100%', class = "btn_nav"), align="center"),
+                                                 column(4, actionButton("mode_to_biking", label=tags$div(class="btn_text","Biking"), icon=icon("person-biking"), width = '100%', class = "btn_nav"), align="center")
+                                        ), br(),
+                                        
+                                        fluidRow(column(4, actionButton("mode_to_transit", label=tags$div(class="btn_text","Transit"), icon=icon("bus-simple"), width = '100%', class = "btn_nav"), align="center"),
+                                                 column(4, actionButton("mode_to_wfh", label=tags$div(class="btn_text","Working from Home"), icon=icon("headset"), width = '100%', class = "btn_nav"), align="center"),
+                                                 column(4,"")
+                                        ), 
+                                        hr(),
+                                        
+                                        br(),
+                                        div(img(src="under-construction.png", width = "75%", height = "75%", style = "padding-top: 0px; border-radius:0px 0 0px 0;", alt = "Bar chart of Greenhouse Gas Emissions in 2050")),
+                                        br(),
+                                        hr()
+                                        
+                                        
+                                 )) # End of Main Panel Fluid Row for Overview Tab
+               ), # End of Tab Panel for Alternative Modes Overview
+               
+               
+               tabPanel(title="Walking",
+                        value="Mode-Walking",
+                        fluidRow(column(12, style='padding-left:50px; padding-right:50px;',
+                                        bs4Jumbotron(
+                                          title = strong(tags$div(class="mainpage_title","Walking")),
+                                          status = "success",
+                                          btnName = strong(tags$div(class="mainpage_subtitle","VISION 2050")),
+                                          href = "https://www.psrc.org/planning-2050/vision-2050"))
+                        ), # End of First Fluid Row
+                        
+                        fluidRow(column(4, style='padding-left:50px; padding-right:50px;',
+                                        hr(),
+                                        strong(tags$div(class="sidebar_heading","VISION 2050")),
+                                        br(),
+                                        tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/vision-2050/data-and-research", "Data and Research", target="_blank"),
+                                        br(),br(),
+                                        tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/vision-2050/environmental-review", "Environmental Review", target="_blank"),
+                                        br(),br(),
+                                        tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/vision/vision-2050-planning-resources", "Planning Resources", target="_blank"),
+                                        br(),br(),
+                                        tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/vision/vision-2050-awards", "VISION 2050 Awards", target="_blank"),
+                                        br(),br(),
+                                        tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/vision-2050/youth-engagement-psrc", "Youth Engagement at PSRC", target="_blank"),
+                                        hr(),
+                                        div(img(src="mtrainierparadisehikers.jpeg", width = "100%", height = "100%", style = "padding-top: 0px; border-radius:30px 0 30px 0;", alt = "Glass and steel building in the background")),
+                                        hr(),
+                                        strong(tags$div(class="sidebar_heading","Connect With Us")),
+                                        hr(),
+                                        tags$div(class="sidebar_notes","Sarah Gutschow, AICP:"),
+                                        tags$div(class="sidebar_notes","Senior Planner"),
+                                        br(),
+                                        icon("envelope"), 
+                                        tags$a(class = "source_url", href="mailto:sgutschow@psrc.org?", "Email"),
+                                        br(), br(),
+                                        icon("phone-volume"), "206-587-4822",
+                                        hr()),
+                                 column(8, style='padding-left:0px; padding-right:50px;',
+                                        
+                                        fluidRow(column(4, actionButton("walk_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list"), width = '100%', class = "btn_nav"), align="center"),
+                                                 column(4, actionButton("walk_to_mode", label=tags$div(class="btn_text","Return to Overview"), icon = icon("bicycle"), width = '100%', class = "btn_nav"), align="center"),
+                                                 column(4, actionButton("walk_to_biking", label=tags$div(class="btn_text","Biking"), icon=icon("person-biking"), width = '100%', class = "btn_nav"), align="center")
+                                        ), br(),
+                                        
+                                        fluidRow(column(4, actionButton("walk_to_transit", label=tags$div(class="btn_text","Transit"), icon=icon("bus-simple"), width = '100%', class = "btn_nav"), align="center"),
+                                                 column(4, actionButton("walk_to_wfh", label=tags$div(class="btn_text","Working from Home"), icon=icon("headset"), width = '100%', class = "btn_nav"), align="center"),
+                                                 column(4,"")
+                                        ), 
+                                        hr(),
+                                        
+                                        br(),
+                                        div(img(src="under-construction.png", width = "75%", height = "75%", style = "padding-top: 0px; border-radius:0px 0 0px 0;", alt = "Bar chart of Greenhouse Gas Emissions in 2050")),
+                                        br(),
+                                        hr()
+                                        
+                                 )) # End of Main Panel Fluid Row for Walking Tab
+               ), # End of Tab Panel for Walking
+               
+               tabPanel(title="Biking",
+                        value="Mode-Biking",
+                        fluidRow(column(12, style='padding-left:50px; padding-right:50px;',
+                                        bs4Jumbotron(
+                                          title = strong(tags$div(class="mainpage_title","Biking")),
+                                          status = "success",
+                                          btnName = strong(tags$div(class="mainpage_subtitle","VISION 2050")),
+                                          href = "https://www.psrc.org/planning-2050/vision-2050"))
+                        ), # End of First Fluid Row
+                        
+                        fluidRow(column(4, style='padding-left:50px; padding-right:50px;',
+                                        hr(),
+                                        strong(tags$div(class="sidebar_heading","Housing Resources")),
+                                        br(),
+                                        tags$a(class = "source_url", href="https://www.psrc.org/media/3218", "Housing Affordability in the Central Puget Sound Region", target="_blank"),
+                                        br(),br(),
+                                        tags$a(class = "source_url", href="https://www.psrc.org/media/2304", "Housing Element Guide", target="_blank"),
+                                        br(),br(),
+                                        tags$a(class = "source_url", href="https://www.psrc.org/sites/default/files/2022-09/housing_incentives_and_tools_survey_report.pdf", "Housing Incentives and Tools Survey Report", target="_blank"),
+                                        br(),br(),
+                                        tags$a(class = "source_url", href="https://www.psrc.org/node/267", "Housing Innovations Program (HIP)", target="_blank"),
+                                        br(),br(),
+                                        tags$a(class = "source_url", href="https://www.psrc.org/node/2175", "Regional Housing Strategy", target="_blank"),
+                                        br(),br(),
+                                        tags$a(class = "source_url", href="https://www.psrc.org/sites/default/files/2022-03/v2050-paper-housing.pdf", "VISION 2050 Housing Background Paper", target="_blank"),
+                                        hr(),
+                                        div(img(src="redmond-housing_0.jpg", width = "100%", height = "100%", style = "padding-top: 0px; border-radius:30px 0 30px 0;", alt = "Housing with Metro bus in foreground")),
+                                        hr(),
+                                        strong(tags$div(class="sidebar_heading","Connect With Us")),
+                                        hr(),
+                                        tags$div(class="sidebar_notes","Sarah Gutschow, AICP:"),
+                                        tags$div(class="sidebar_notes","Senior Planner"),
+                                        br(),
+                                        icon("envelope"), 
+                                        tags$a(class = "source_url", href="mailto:sgutschow@psrc.org?", "Email"),
+                                        br(), br(),
+                                        icon("phone-volume"), "206-587-4822",
+                                        hr()
+                        ),
+                        column(8, style='padding-left:0px; padding-right:50px;',
+                               
+                               fluidRow(column(4, actionButton("bike_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list"), width = '100%', class = "btn_nav"), align="center"),
+                                        column(4, actionButton("bike_to_mode", label=tags$div(class="btn_text","Return to Overview"), icon = icon("bicycle"), width = '100%', class = "btn_nav"), align="center"),
+                                        column(4, actionButton("bike_to_walking", label=tags$div(class="btn_text","Walking"), icon = icon("person-walking"), width = '100%', class = "btn_nav"), align="center")
+                               ), br(),
+                               
+                               fluidRow(column(4, actionButton("bike_to_transit", label=tags$div(class="btn_text","Transit"), icon=icon("bus-simple"), width = '100%', class = "btn_nav"), align="center"),
+                                        column(4, actionButton("bike_to_wfh", label=tags$div(class="btn_text","Working from Home"), icon=icon("headset"), width = '100%', class = "btn_nav"), align="center"),
+                                        column(4,"")
+                               ), 
+                               hr(),
+                               
+                               br(),
+                               div(img(src="under-construction.png", width = "75%", height = "75%", style = "padding-top: 0px; border-radius:0px 0 0px 0;", alt = "Bar chart of Greenhouse Gas Emissions in 2050")),
+                               br(),
+                               hr()
+                               
+                        )) # End of Main Panel Fluid Row for Biking Tab
+               ), # End of Tab Panel for Biking
+               
+               tabPanel(title="Transit",
+                        value="Mode-Transit",
+                        fluidRow(column(12, style='padding-left:50px; padding-right:50px;',
+                                        bs4Jumbotron(
+                                          title = strong(tags$div(class="mainpage_title","Transit")),
+                                          status = "success",
+                                          btnName = strong(tags$div(class="mainpage_subtitle","Regional Economic Strategy")),
+                                          href = "https://www.psrc.org/planning-2050/regional-economic-strategy"))
+                        ), # End of First Fluid Row for Employment Tab
+                        
+                        fluidRow(column(4, style='padding-left:50px; padding-right:50px;',
+                                        hr(),
+                                        strong(tags$div(class="sidebar_heading","Transit")),
+                                        br(),
+                                        tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-economic-strategy", "Regional Economic Strategy", target="_blank"),
+                                        br(),br(),
+                                        tags$a(class = "source_url", href="https://www.psrc.org/our-work/covered-employment-estimates", "Covered Employment Estimates", target="_blank"),
+                                        br(),br(),
+                                        tags$a(class = "source_url", href="https://www.psrc.org/our-work/regional-macroeconomic-forecast", "Regional Macroeconomic Forecast", target="_blank"),
+                                        br(),br(),
+                                        tags$a(class = "source_url", href="https://www.psrc.org/our-work/industrial-lands", "Industrial Lands", target="_blank"),
+                                        br(),br(),
+                                        hr(),
+                                        div(img(src="res.png", width = "100%", height = "100%", style = "padding-top: 0px; border-radius:30px 0 30px 0;", alt = "Equity Strategy Document")),
+                                        hr(),
+                                        strong(tags$div(class="sidebar_heading","Connect With Us")),
+                                        hr(),
+                                        tags$div(class="sidebar_notes","Gil Cerise:"),
+                                        tags$div(class="sidebar_notes","Program Manager"),
+                                        br(),
+                                        icon("envelope"), 
+                                        tags$a(class = "source_url", href="mailto:gcerise@psrc.org?", "Email"),
+                                        br(), br(),
+                                        icon("phone-volume"), "206-971-3053",
+                                        hr()
+                        ),
+                        column(8, style='padding-left:0px; padding-right:50px;',
+                               
+                               fluidRow(column(4, actionButton("transit_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list"), width = '100%', class = "btn_nav"), align="center"),
+                                        column(4, actionButton("transit_to_mode", label=tags$div(class="btn_text","Return to Overview"), icon = icon("bicycle"), width = '100%', class = "btn_nav"), align="center"),
+                                        column(4, actionButton("transit_to_walking", label=tags$div(class="btn_text","Walking"), icon = icon("person-walking"), width = '100%', class = "btn_nav"), align="center")
+                               ), br(),
+                               
+                               fluidRow(column(4, actionButton("transit_to_biking", label=tags$div(class="btn_text","Biking"), icon=icon("person-biking"), width = '100%', class = "btn_nav"), align="center"),
+                                        column(4, actionButton("transit_to_wfh", label=tags$div(class="btn_text","Working from Home"), icon=icon("headset"), width = '100%', class = "btn_nav"), align="center"),
+                                        column(4,"")
+                               ), 
+                               hr(),
+                               
+                               br(),
+                               div(img(src="under-construction.png", width = "75%", height = "75%", style = "padding-top: 0px; border-radius:0px 0 0px 0;", alt = "Bar chart of Greenhouse Gas Emissions in 2050")),
+                               br(),
+                               hr()
+                               
+                               
+                        )) # End of Main Panel Fluid Row for Transit Tab
+               ), # End of Tab Panel for Transit
+               
+               tabPanel(title="Work from Home",
+                        value="Mode-WFH",
+                        fluidRow(column(12, style='padding-left:50px; padding-right:50px;',
+                                        bs4Jumbotron(
+                                          title = strong(tags$div(class="mainpage_title","Working from Home")),
+                                          status = "success",
+                                          btnName = strong(tags$div(class="mainpage_subtitle","Regional Economic Strategy")),
+                                          href = "https://www.psrc.org/planning-2050/regional-economic-strategy"))
+                        ), # End of First Fluid Row for Employment Tab
+                        
+                        fluidRow(column(4, style='padding-left:50px; padding-right:50px;',
+                                        hr(),
+                                        strong(tags$div(class="sidebar_heading","Transit")),
+                                        br(),
+                                        tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-economic-strategy", "Regional Economic Strategy", target="_blank"),
+                                        br(),br(),
+                                        tags$a(class = "source_url", href="https://www.psrc.org/our-work/covered-employment-estimates", "Covered Employment Estimates", target="_blank"),
+                                        br(),br(),
+                                        tags$a(class = "source_url", href="https://www.psrc.org/our-work/regional-macroeconomic-forecast", "Regional Macroeconomic Forecast", target="_blank"),
+                                        br(),br(),
+                                        tags$a(class = "source_url", href="https://www.psrc.org/our-work/industrial-lands", "Industrial Lands", target="_blank"),
+                                        br(),br(),
+                                        hr(),
+                                        div(img(src="res.png", width = "100%", height = "100%", style = "padding-top: 0px; border-radius:30px 0 30px 0;", alt = "Equity Strategy Document")),
+                                        hr(),
+                                        strong(tags$div(class="sidebar_heading","Connect With Us")),
+                                        hr(),
+                                        tags$div(class="sidebar_notes","Jean Kim:"),
+                                        tags$div(class="sidebar_notes","Senior Planner"),
+                                        br(),
+                                        icon("envelope"), 
+                                        tags$a(class = "source_url", href="mailto:jkim@psrc.org?", "Email"),
+                                        br(), br(),
+                                        icon("phone-volume"), "206-971-3052",
+                                        hr()
+                        ),
+                        column(8, style='padding-left:0px; padding-right:50px;',
+                               
+                               fluidRow(column(4, actionButton("wfh_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list"), width = '100%', class = "btn_nav"), align="center"),
+                                        column(4, actionButton("wfh_to_mode", label=tags$div(class="btn_text","Return to Overview"), icon = icon("bicycle"), width = '100%', class = "btn_nav"), align="center"),
+                                        column(4, actionButton("wfh_to_walking", label=tags$div(class="btn_text","Walking"), icon = icon("person-walking"), width = '100%', class = "btn_nav"), align="center")
+                               ), br(),
+                               
+                               fluidRow(column(4, actionButton("wfh_to_biking", label=tags$div(class="btn_text","Biking"), icon=icon("person-biking"), width = '100%', class = "btn_nav"), align="center"),
+                                        column(4, actionButton("wfh_to_transit", label=tags$div(class="btn_text","Transit"), icon=icon("bus-simple"), width = '100%', class = "btn_nav"), align="center"),
+                                        column(4,"")
+                               ), 
+                               hr(),
+                               
+                               br(),
+                               div(img(src="under-construction.png", width = "75%", height = "75%", style = "padding-top: 0px; border-radius:0px 0 0px 0;", alt = "Bar chart of Greenhouse Gas Emissions in 2050")),
+                               br(),
+                               hr()
+                               
+                               
+                        )) # End of Main Panel Fluid Row for WFH Tab
+               ), # End of Tab Panel for WFH
+               
+    ),# End of Nav Bar Menu for Alternative Modes
              
              navbarMenu(HTML("Transit<br/>Performance"), 
                         
