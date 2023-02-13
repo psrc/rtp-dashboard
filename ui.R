@@ -314,6 +314,18 @@ shinyUI(
                                                  icon("phone-volume"), "206-464-7549",
                                                  hr()),
                                           column(8, style='padding-left:0px; padding-right:50px;',
+                                                 
+                                                 fluidRow(column(4, actionButton("growth_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list"), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, actionButton("growth_to_population", label=tags$div(class="btn_text","Population"), icon = icon("user"), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, actionButton("growth_to_housing", label=tags$div(class="btn_text","Housing"), icon=icon("city"), width = '100%', class = "btn_nav"), align="center")
+                                                 ), br(),
+                                                 
+                                                 fluidRow(column(4,""),
+                                                          column(4, actionButton("growth_to_employment", label=tags$div(class="btn_text","Employment"), icon=icon("briefcase"), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4,"")
+                                                 ), 
+                                                 hr(),
+                                                 
                                                  tags$div(class="page_goals","Goal: 65% Population / 75% Job Growth near HCT"),
                                                  br(),
                                                  textOutput("growth_text_1"),
@@ -339,7 +351,8 @@ shinyUI(
                         ), # End of Tab Panel for Growth Overview
                         
                         
-                        tabPanel("Population",
+                        tabPanel(title="Population",
+                                 value="Growth-Population",
                                  fluidRow(column(12, style='padding-left:50px; padding-right:50px;',
                                                  bs4Jumbotron(
                                                    title = strong(tags$div(class="mainpage_title","Population Growth")),
@@ -375,6 +388,18 @@ shinyUI(
                                                  icon("phone-volume"), "206-464-7549",
                                                  hr()),
                                           column(8, style='padding-left:0px; padding-right:50px;',
+                                                 
+                                                 fluidRow(column(4, actionButton("population_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list"), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, actionButton("population_to_growth", label=tags$div(class="btn_text","Return to Growth Overview"), icon = icon("users"), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, actionButton("population_to_housing", label=tags$div(class="btn_text","Housing"), icon=icon("city"), width = '100%', class = "btn_nav"), align="center")
+                                                 ), br(),
+                                                 
+                                                 fluidRow(column(4,""),
+                                                          column(4, actionButton("population_to_employment", label=tags$div(class="btn_text","Employment"), icon=icon("briefcase"), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4,"")
+                                                 ), 
+                                                 hr(),
+                                                 
                                                  tags$div(class="page_goals","Goal: 65% of Population Growth Near HCT"),
                                                  br(),
                                                  h1("Regional Population Growth"),
@@ -396,7 +421,8 @@ shinyUI(
                                           )) # End of Main Panel Fluid Row for Population Tab
                                  ), # End of Tab Panel for Population
                         
-                        tabPanel("Housing",
+                        tabPanel(title="Housing",
+                                 value="Growth-Housing",
                                  fluidRow(column(12, style='padding-left:50px; padding-right:50px;',
                                                  bs4Jumbotron(
                                                    title = strong(tags$div(class="mainpage_title","Housing Unit Growth")),
@@ -435,6 +461,18 @@ shinyUI(
                                                  hr()
                                  ),
                                  column(8, style='padding-left:0px; padding-right:50px;',
+                                        
+                                        fluidRow(column(4, actionButton("housing_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list"), width = '100%', class = "btn_nav"), align="center"),
+                                                 column(4, actionButton("housing_to_growth", label=tags$div(class="btn_text","Return to Growth Overview"), icon = icon("users"), width = '100%', class = "btn_nav"), align="center"),
+                                                 column(4, actionButton("housing_to_population", label=tags$div(class="btn_text","Population"), icon=icon("user"), width = '100%', class = "btn_nav"), align="center")
+                                        ), br(),
+                                        
+                                        fluidRow(column(4,""),
+                                                 column(4, actionButton("housing_to_employment", label=tags$div(class="btn_text","Employment"), icon=icon("briefcase"), width = '100%', class = "btn_nav"), align="center"),
+                                                 column(4,"")
+                                        ), 
+                                        hr(),
+                                        
                                         tags$div(class="page_goals","VISION 2050 Outcome: 830,000 new Households by 2050"),
                                         br(),
                                         textOutput("housing_text_1"),
@@ -459,7 +497,8 @@ shinyUI(
                                  )) # End of Main Panel Fluid Row for Housing Units Tab
                         ), # End of Tab Panel for Housing Units
                         
-                        tabPanel("Employment",
+                        tabPanel(title="Employment",
+                                 value="Growth-Employment",
                                  fluidRow(column(12, style='padding-left:50px; padding-right:50px;',
                                                  bs4Jumbotron(
                                                    title = strong(tags$div(class="mainpage_title","Employment Growth")),
@@ -495,6 +534,18 @@ shinyUI(
                                                  hr()
                                  ),
                                  column(8, style='padding-left:0px; padding-right:50px;',
+                                        
+                                        fluidRow(column(4, actionButton("employment_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list"), width = '100%', class = "btn_nav"), align="center"),
+                                                 column(4, actionButton("employment_to_growth", label=tags$div(class="btn_text","Return to Growth Overview"), icon = icon("users"), width = '100%', class = "btn_nav"), align="center"),
+                                                 column(4, actionButton("employment_to_population", label=tags$div(class="btn_text","Population"), icon=icon("user"), width = '100%', class = "btn_nav"), align="center")
+                                        ), br(),
+                                        
+                                        fluidRow(column(4,""),
+                                                 column(4, actionButton("employment_to_housing", label=tags$div(class="btn_text","Housing"), icon=icon("city"), width = '100%', class = "btn_nav"), align="center"),
+                                                 column(4,"")
+                                        ), 
+                                        hr(),
+                                        
                                         tags$div(class="page_goals","Goal: 75% of Employment Growth Near HCT"),
                                         br(),
                                         textOutput("employment_overview_text"),

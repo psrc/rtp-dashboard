@@ -286,6 +286,102 @@ shinyServer(function(input, output) {
       updateNavbarPage(inputId = "RTP-Dashboard", selected = "Climate-ZEV")
     })
     
+    ############################################################################
+    # Growth Overview Page Links
+    ############################################################################
+    
+    # Link to Main Overview Tab
+    observeEvent(input$growth_to_main, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Main-Summary")
+    })
+    
+    # Link to Population Tab
+    observeEvent(input$growth_to_population, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Growth-Population")
+    })
+    
+    # Link to Housing Tab
+    observeEvent(input$growth_to_housing, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Growth-Housing")
+    })
+    
+    # Link to Employment Tab
+    observeEvent(input$growth_to_employment, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Growth-Employment")
+    })
+    
+    ############################################################################
+    # Growth Population Page Links
+    ############################################################################
+    
+    # Link to Main Overview Tab
+    observeEvent(input$population_to_main, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Main-Summary")
+    })
+    
+    # Link to Growth Tab
+    observeEvent(input$population_to_growth, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Growth-Overview")
+    })
+    
+    # Link to Housing Tab
+    observeEvent(input$population_to_housing, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Growth-Housing")
+    })
+    
+    # Link to Employment Tab
+    observeEvent(input$population_to_employment, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Growth-Employment")
+    })
+    
+    ############################################################################
+    # Growth Housing Page Links
+    ############################################################################
+    
+    # Link to Main Overview Tab
+    observeEvent(input$housing_to_main, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Main-Summary")
+    })
+    
+    # Link to Growth Tab
+    observeEvent(input$housing_to_growth, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Growth-Overview")
+    })
+    
+    # Link to Population Tab
+    observeEvent(input$housing_to_population, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Growth-Population")
+    })
+    
+    # Link to Employment Tab
+    observeEvent(input$housing_to_employment, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Growth-Employment")
+    })
+    
+    ############################################################################
+    # Growth Employment Page Links
+    ############################################################################
+    
+    # Link to Main Overview Tab
+    observeEvent(input$employment_to_main, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Main-Summary")
+    })
+    
+    # Link to Growth Tab
+    observeEvent(input$employment_to_growth, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Growth-Overview")
+    })
+    
+    # Link to Housing Tab
+    observeEvent(input$employment_to_housing, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Growth-Housing")
+    })
+    
+    # Link to Population Tab
+    observeEvent(input$employment_to_population, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Growth-Population")
+    })
+    
     
 })    
 
