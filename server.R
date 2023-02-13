@@ -382,6 +382,66 @@ shinyServer(function(input, output) {
       updateNavbarPage(inputId = "RTP-Dashboard", selected = "Growth-Population")
     })
     
+    ############################################################################
+    # Safety Overview Page Links
+    ############################################################################
+    
+    # Link to Main Overview Tab
+    observeEvent(input$safety_to_main, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Main-Summary")
+    })
+    
+    # Link to Safety to Fatal Tab
+    observeEvent(input$safety_to_fatal, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Safety-Fatal")
+    })
+    
+    # Link to Safety to Serious Tab
+    observeEvent(input$safety_to_serious, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Safety-Serious")
+    })
+    
+    ############################################################################
+    # Safety Fatality Page Links
+    ############################################################################
+    
+    # Link to Main Overview Tab
+    observeEvent(input$fatal_to_main, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Main-Summary")
+    })
+    
+    # Link to Fatal to Safety Overview Tab
+    observeEvent(input$fatal_to_safety, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Safety-Overview")
+    })
+    
+    # Link Fatal to Serious Tab
+    observeEvent(input$fatal_to_serious, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Safety-Serious")
+    })
+    
+    ############################################################################
+    # Safety Serious Injury Page Links
+    ############################################################################
+    
+    # Link to Main Overview Tab
+    observeEvent(input$serious_to_main, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Main-Summary")
+    })
+    
+    # Link Serious to Safety Overview Tab
+    observeEvent(input$serious_to_safety, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Safety-Overview")
+    })
+    
+    # Link Serious to Fatal Tab
+    observeEvent(input$serious_to_fatal, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Safety-Fatal")
+      
+    })
+
+    
+    
     
 })    
 

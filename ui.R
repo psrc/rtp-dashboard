@@ -607,6 +607,13 @@ shinyUI(
                                                  icon("phone-volume"), "206-971-3276",
                                                  hr()                                 ),
                                           column(8, style='padding-left:0px; padding-right:50px;',
+                                                 
+                                                 fluidRow(column(4, actionButton("safety_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list"), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, actionButton("safety_to_fatal", label=tags$div(class="btn_text","Fatal Collisions"), icon = icon("hospital"), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, actionButton("safety_to_serious", label=tags$div(class="btn_text","Serious Injury Collisions"), icon=icon("heart"), width = '100%', class = "btn_nav"), align="center")
+                                                 ), 
+                                                 hr(),
+                                                 
                                                  tags$div(class="page_goals","Goal: Zero Fatal and Serious Injuries by 2030"),
                                                  br(),
                                                  textOutput("safety_text_1"),
@@ -627,7 +634,8 @@ shinyUI(
                                           )) # End of Main Panel Fluid Row for Safety Tab
                         ), # End of Tab Panel for Safety Overview
                         
-                        tabPanel("Fatal Collisions",
+                        tabPanel(title="Fatal Collisions",
+                                 value="Safety-Fatal",
                                  fluidRow(column(12, style='padding-left:50px; padding-right:50px;',
                                                  bs4Jumbotron(
                                                    title = strong(tags$div(class="mainpage_title","Fatal Collisions")),
@@ -661,6 +669,13 @@ shinyUI(
                                                  icon("phone-volume"), "206-971-3276",
                                                  hr()                                 ),
                                  column(8, style='padding-left:0px; padding-right:50px;',
+                                        
+                                        fluidRow(column(4, actionButton("fatal_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list"), width = '100%', class = "btn_nav"), align="center"),
+                                                 column(4, actionButton("fatal_to_safety", label=tags$div(class="btn_text","Return to Safety Overview"), icon = icon("child"), width = '100%', class = "btn_nav"), align="center"),
+                                                 column(4, actionButton("fatal_to_serious", label=tags$div(class="btn_text","Serious Injury Collisions"), icon=icon("heart"), width = '100%', class = "btn_nav"), align="center")
+                                        ), 
+                                        hr(),
+                                        
                                         tags$div(class="page_goals","Goal: Zero Fatal Injuries by 2030"),
                                         br(),
                                         h1("Fatal Collisions in the PSRC Region"),
@@ -692,7 +707,60 @@ shinyUI(
                                         
                                         
                                  )) # End of Main Panel Fluid Row for Fatal Collisions Tab
-                        ), # End of Tab Panel for Safety
+                        ), # End of Tab Panel for Fatal Collisions
+                        
+                        tabPanel(title="Serious Injury Collisions",
+                                 value="Safety-Serious",
+                                 fluidRow(column(12, style='padding-left:50px; padding-right:50px;',
+                                                 bs4Jumbotron(
+                                                   title = strong(tags$div(class="mainpage_title","Serious Injury Collisions")),
+                                                   status = "success",
+                                                   btnName = strong(tags$div(class="mainpage_subtitle","Regional Transportation Plan")),
+                                                   href = "https://www.psrc.org/planning-2050/regional-transportation-plan"))
+                                 ), # End of First Fluid Row for Fatal Collisions Tab
+                                 
+                                 fluidRow(column(4, style='padding-left:50px; padding-right:50px;',
+                                                 hr(),
+                                                 strong(tags$div(class="sidebar_heading","Regional Transportation Plan")),
+                                                 br(),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-transportation-plan/projects-and-approval", "Projects and Approval", target="_blank"),
+                                                 br(),br(),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/coordinated-mobility-plan", "Coordinated Mobility Plan", target="_blank"),
+                                                 br(),br(),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-transportation-plan/data-research-and-policy-briefs", "Data, Research and Policy Briefs", target="_blank"),
+                                                 br(),br(),
+                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-transportation-plan/transportation-system-visualization-tool", "Transportation System Visualization Tool", target="_blank"),
+                                                 hr(),
+                                                 div(img(src="canyon_road.png", width = "100%", height = "100%", style = "padding-top: 0px; border-radius:30px 0 30px 0;", alt = "Glass and steel building in the background")),
+                                                 hr(),
+                                                 strong(tags$div(class="sidebar_heading","Connect With Us")),
+                                                 hr(),
+                                                 tags$div(class="sidebar_notes","Gary Simonson:"),
+                                                 tags$div(class="sidebar_notes","Senior Planner"),
+                                                 br(),
+                                                 icon("envelope"), 
+                                                 tags$a(class = "source_url", href="mailto:gsimonson@psrc.org?", "Email"),
+                                                 br(), br(),
+                                                 icon("phone-volume"), "206-971-3276",
+                                                 hr()                                 ),
+                                          column(8, style='padding-left:0px; padding-right:50px;',
+                                                 
+                                                 fluidRow(column(4, actionButton("serious_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list"), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, actionButton("serious_to_safety", label=tags$div(class="btn_text","Return to Safety Overview"), icon = icon("child"), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, actionButton("serious_to_fatal", label=tags$div(class="btn_text","Fatal Collisions"), icon=icon("hospital"), width = '100%', class = "btn_nav"), align="center")
+                                                 ), 
+                                                 hr(),
+                                                 
+                                                 tags$div(class="page_goals","Goal: Zero Serious Injuries by 2030"),
+                                                 br(),
+                                                 div(img(src="under-construction.png", width = "75%", height = "75%", style = "padding-top: 0px; border-radius:0px 0 0px 0;", alt = "Bar chart of Greenhouse Gas Emissions in 2050")),
+                                                 br(),
+                                                 hr()
+                                                 
+                                                 
+                                          )) # End of Main Panel Fluid Row for Serious Injury Collisions Tab
+                        ), # End of Tab Panel for Serious Injuries
+                        
              ),# End of Nav Bar Menu for Safety
              
              navbarMenu(HTML("Transit<br/>Performance"), 
