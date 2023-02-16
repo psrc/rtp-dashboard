@@ -61,18 +61,18 @@ shinyUI(
                                       
                                       hr(),
                                       
-                                      fluidRow(column(4, actionButton("link_to_climate_overview", label=tags$div(class="btn_text","Climate"), icon = icon("tree"), width = '100%', class = "btn_nav"), align="center"),
-                                               column(4, actionButton("link_to_growth_overview", label=tags$div(class="btn_text","People, Housing & Jobs"), icon = icon("user"), width = '100%', class = "btn_nav"), align="center"),
-                                               column(4, actionButton("link_to_safety_overview", label=tags$div(class="btn_text","Safety"), icon=icon("user-doctor"), width = '100%', class = "btn_nav"), align="center")
+                                      fluidRow(column(4, actionButton("link_to_climate_overview", label=tags$div(class="btn_text","Climate"), icon = icon("tree",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                               column(4, actionButton("link_to_growth_overview", label=tags$div(class="btn_text","People, Housing & Jobs"), icon = icon("user",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                               column(4, actionButton("link_to_safety_overview", label=tags$div(class="btn_text","Safety"), icon=icon("user-doctor",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center")
                                       ), br(),
                                       
-                                      fluidRow(column(4, actionButton("link_to_modes_overview", label=tags$div(class="btn_text","Alternative Modes"), icon = icon("bicycle"), width = '100%', class = "btn_nav"), align="center"),
-                                               column(4, actionButton("link_to_transit_overview", label=tags$div(class="btn_text","Transit Performance"), icon = icon("bus"), width = '100%', class = "btn_nav"), align="center"),
-                                               column(4, actionButton("link_to_time_overview", label=tags$div(class="btn_text","Travel Time"), icon=icon("car"), width = '100%', class = "btn_nav"), align="center")
+                                      fluidRow(column(4, actionButton("link_to_modes_overview", label=tags$div(class="btn_text","Walk, Bike & Roll"), icon = icon("bicycle",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                               column(4, actionButton("link_to_transit_overview", label=tags$div(class="btn_text","Transit Performance"), icon = icon("bus",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                               column(4, actionButton("link_to_time_overview", label=tags$div(class="btn_text","Travel Time"), icon=icon("car",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center")
                                       ), br(),
                                       
                                       fluidRow(column(4,""),
-                                               column(4, actionButton("link_to_projects_overview", label=tags$div(class="btn_text","Transportation Projects"), icon = icon("wrench"), width = '100%', class = "btn_nav"), align="center"),
+                                               column(4, actionButton("link_to_projects_overview", label=tags$div(class="btn_text","Transportation Projects"), icon = icon("wrench",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
                                                column(4,"")
                                       ), br(),
                                       
@@ -117,9 +117,9 @@ shinyUI(
                                                  hr()                                 ),
                                           column(8, style='padding-left:0px; padding-right:50px;',
                                                  
-                                                 fluidRow(column(4, actionButton("climate_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list"), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, actionButton("climate_to_zev", label=tags$div(class="btn_text","Zero Emission Vehicles"), icon = icon("charging-station"), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, actionButton("climate_to_vmt", label=tags$div(class="btn_text","Vehicle Miles Traveled"), icon=icon("road"), width = '100%', class = "btn_nav"), align="center")
+                                                 fluidRow(column(4, actionButton("climate_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, actionButton("climate_to_zev", label=tags$div(class="btn_text","Zero Emission Vehicles"), icon = icon("charging-station",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, actionButton("climate_to_vmt", label=tags$div(class="btn_text","Vehicle Miles Traveled"), icon=icon("road",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center")
                                                  ), 
                                                  hr(),
                                                  
@@ -177,9 +177,9 @@ shinyUI(
                                                  hr()                                 ),
                                           column(8, style='padding-left:0px; padding-right:50px;',
                                                  
-                                                 fluidRow(column(4, actionButton("zev_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list"), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, actionButton("zev_to_climate", label=tags$div(class="btn_text","Return to Climate Overview"), icon = icon("tree"), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, actionButton("zev_to_vmt", label=tags$div(class="btn_text","Vehicle Miles Traveled"), icon=icon("road"), width = '100%', class = "btn_nav"), align="center")
+                                                 fluidRow(column(4, actionButton("zev_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, actionButton("zev_to_climate", label=tags$div(class="btn_text","Return to Climate Overview"), icon = icon("tree",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, actionButton("zev_to_vmt", label=tags$div(class="btn_text","Vehicle Miles Traveled"), icon=icon("road",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center")
                                                  ), 
                                                  hr(),
                                                  
@@ -237,9 +237,9 @@ shinyUI(
                                                  hr()                                 ),
                                           column(8, style='padding-left:0px; padding-right:50px;',
                                                  
-                                                 fluidRow(column(4, actionButton("vmt_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list"), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, actionButton("vmt_to_climate", label=tags$div(class="btn_text","Return to Climate Overview"), icon = icon("tree"), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, actionButton("vmt_to_zev", label=tags$div(class="btn_text","Zero Emission Vehicles"), icon=icon("charging-station"), width = '100%', class = "btn_nav"), align="center")
+                                                 fluidRow(column(4, actionButton("vmt_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, actionButton("vmt_to_climate", label=tags$div(class="btn_text","Return to Climate Overview"), icon = icon("tree",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, actionButton("vmt_to_zev", label=tags$div(class="btn_text","Zero Emission Vehicles"), icon=icon("charging-station",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center")
                                                  ), 
                                                  hr(),
                                                  
@@ -317,13 +317,13 @@ shinyUI(
                                                  hr()),
                                           column(8, style='padding-left:0px; padding-right:50px;',
                                                  
-                                                 fluidRow(column(4, actionButton("growth_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list"), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, actionButton("growth_to_population", label=tags$div(class="btn_text","Population"), icon = icon("user"), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, actionButton("growth_to_housing", label=tags$div(class="btn_text","Housing"), icon=icon("city"), width = '100%', class = "btn_nav"), align="center")
+                                                 fluidRow(column(4, actionButton("growth_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, actionButton("growth_to_population", label=tags$div(class="btn_text","Population"), icon = icon("user",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, actionButton("growth_to_housing", label=tags$div(class="btn_text","Housing"), icon=icon("city",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center")
                                                  ), br(),
                                                  
                                                  fluidRow(column(4,""),
-                                                          column(4, actionButton("growth_to_employment", label=tags$div(class="btn_text","Employment"), icon=icon("briefcase"), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, actionButton("growth_to_employment", label=tags$div(class="btn_text","Employment"), icon=icon("briefcase",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
                                                           column(4,"")
                                                  ), 
                                                  hr(),
@@ -391,13 +391,13 @@ shinyUI(
                                                  hr()),
                                           column(8, style='padding-left:0px; padding-right:50px;',
                                                  
-                                                 fluidRow(column(4, actionButton("population_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list"), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, actionButton("population_to_growth", label=tags$div(class="btn_text","Return to Growth Overview"), icon = icon("users"), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, actionButton("population_to_housing", label=tags$div(class="btn_text","Housing"), icon=icon("city"), width = '100%', class = "btn_nav"), align="center")
+                                                 fluidRow(column(4, actionButton("population_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, actionButton("population_to_growth", label=tags$div(class="btn_text","Return to Growth Overview"), icon = icon("users",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, actionButton("population_to_housing", label=tags$div(class="btn_text","Housing"), icon=icon("city",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center")
                                                  ), br(),
                                                  
                                                  fluidRow(column(4,""),
-                                                          column(4, actionButton("population_to_employment", label=tags$div(class="btn_text","Employment"), icon=icon("briefcase"), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, actionButton("population_to_employment", label=tags$div(class="btn_text","Employment"), icon=icon("briefcase",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
                                                           column(4,"")
                                                  ), 
                                                  hr(),
@@ -464,13 +464,13 @@ shinyUI(
                                  ),
                                  column(8, style='padding-left:0px; padding-right:50px;',
                                         
-                                        fluidRow(column(4, actionButton("housing_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list"), width = '100%', class = "btn_nav"), align="center"),
-                                                 column(4, actionButton("housing_to_growth", label=tags$div(class="btn_text","Return to Growth Overview"), icon = icon("users"), width = '100%', class = "btn_nav"), align="center"),
-                                                 column(4, actionButton("housing_to_population", label=tags$div(class="btn_text","Population"), icon=icon("user"), width = '100%', class = "btn_nav"), align="center")
+                                        fluidRow(column(4, actionButton("housing_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                                 column(4, actionButton("housing_to_growth", label=tags$div(class="btn_text","Return to Growth Overview"), icon = icon("users",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                                 column(4, actionButton("housing_to_population", label=tags$div(class="btn_text","Population"), icon=icon("user",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center")
                                         ), br(),
                                         
                                         fluidRow(column(4,""),
-                                                 column(4, actionButton("housing_to_employment", label=tags$div(class="btn_text","Employment"), icon=icon("briefcase"), width = '100%', class = "btn_nav"), align="center"),
+                                                 column(4, actionButton("housing_to_employment", label=tags$div(class="btn_text","Employment"), icon=icon("briefcase",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
                                                  column(4,"")
                                         ), 
                                         hr(),
@@ -537,13 +537,13 @@ shinyUI(
                                  ),
                                  column(8, style='padding-left:0px; padding-right:50px;',
                                         
-                                        fluidRow(column(4, actionButton("employment_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list"), width = '100%', class = "btn_nav"), align="center"),
-                                                 column(4, actionButton("employment_to_growth", label=tags$div(class="btn_text","Return to Growth Overview"), icon = icon("users"), width = '100%', class = "btn_nav"), align="center"),
-                                                 column(4, actionButton("employment_to_population", label=tags$div(class="btn_text","Population"), icon=icon("user"), width = '100%', class = "btn_nav"), align="center")
+                                        fluidRow(column(4, actionButton("employment_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                                 column(4, actionButton("employment_to_growth", label=tags$div(class="btn_text","Return to Growth Overview"), icon = icon("users",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                                 column(4, actionButton("employment_to_population", label=tags$div(class="btn_text","Population"), icon=icon("user",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center")
                                         ), br(),
                                         
                                         fluidRow(column(4,""),
-                                                 column(4, actionButton("employment_to_housing", label=tags$div(class="btn_text","Housing"), icon=icon("city"), width = '100%', class = "btn_nav"), align="center"),
+                                                 column(4, actionButton("employment_to_housing", label=tags$div(class="btn_text","Housing"), icon=icon("city",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
                                                  column(4,"")
                                         ), 
                                         hr(),
@@ -610,9 +610,9 @@ shinyUI(
                                                  hr()                                 ),
                                           column(8, style='padding-left:0px; padding-right:50px;',
                                                  
-                                                 fluidRow(column(4, actionButton("safety_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list"), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, actionButton("safety_to_fatal", label=tags$div(class="btn_text","Fatal Collisions"), icon = icon("truck-medical"), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, actionButton("safety_to_serious", label=tags$div(class="btn_text","Serious Injury Collisions"), icon=icon("hospital"), width = '100%', class = "btn_nav"), align="center")
+                                                 fluidRow(column(4, actionButton("safety_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, actionButton("safety_to_fatal", label=tags$div(class="btn_text","Fatal Collisions"), icon = icon("truck-medical",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, actionButton("safety_to_serious", label=tags$div(class="btn_text","Serious Injury Collisions"), icon=icon("hospital",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center")
                                                  ), 
                                                  hr(),
                                                  
@@ -672,9 +672,9 @@ shinyUI(
                                                  hr()                                 ),
                                  column(8, style='padding-left:0px; padding-right:50px;',
                                         
-                                        fluidRow(column(4, actionButton("fatal_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list"), width = '100%', class = "btn_nav"), align="center"),
-                                                 column(4, actionButton("fatal_to_safety", label=tags$div(class="btn_text","Return to Safety Overview"), icon = icon("user-doctor"), width = '100%', class = "btn_nav"), align="center"),
-                                                 column(4, actionButton("fatal_to_serious", label=tags$div(class="btn_text","Serious Injury Collisions"), icon=icon("hospital"), width = '100%', class = "btn_nav"), align="center")
+                                        fluidRow(column(4, actionButton("fatal_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                                 column(4, actionButton("fatal_to_safety", label=tags$div(class="btn_text","Return to Safety Overview"), icon = icon("user-doctor",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                                 column(4, actionButton("fatal_to_serious", label=tags$div(class="btn_text","Serious Injury Collisions"), icon=icon("hospital",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center")
                                         ), 
                                         hr(),
                                         
@@ -747,9 +747,9 @@ shinyUI(
                                                  hr()                                 ),
                                           column(8, style='padding-left:0px; padding-right:50px;',
                                                  
-                                                 fluidRow(column(4, actionButton("serious_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list"), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, actionButton("serious_to_safety", label=tags$div(class="btn_text","Return to Safety Overview"), icon = icon("user-doctor"), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, actionButton("serious_to_fatal", label=tags$div(class="btn_text","Fatal Collisions"), icon=icon("truck-medical"), width = '100%', class = "btn_nav"), align="center")
+                                                 fluidRow(column(4, actionButton("serious_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, actionButton("serious_to_safety", label=tags$div(class="btn_text","Return to Safety Overview"), icon = icon("user-doctor",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, actionButton("serious_to_fatal", label=tags$div(class="btn_text","Fatal Collisions"), icon=icon("truck-medical",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center")
                                                  ), 
                                                  hr(),
                                                  
@@ -765,7 +765,7 @@ shinyUI(
                         
              ),# End of Nav Bar Menu for Safety
     
-    navbarMenu(HTML("Alternative<br/>Modes"), 
+    navbarMenu(HTML("Walk,<br/>Bike & Roll"), 
                
                tabPanel(title="Overview",
                         value="Mode-Overview",
@@ -805,13 +805,13 @@ shinyUI(
                                         hr()),
                                  column(8, style='padding-left:0px; padding-right:50px;',
                                         
-                                        fluidRow(column(4, actionButton("mode_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list"), width = '100%', class = "btn_nav"), align="center"),
-                                                 column(4, actionButton("mode_to_walking", label=tags$div(class="btn_text","Walking"), icon = icon("person-walking"), width = '100%', class = "btn_nav"), align="center"),
-                                                 column(4, actionButton("mode_to_biking", label=tags$div(class="btn_text","Biking"), icon=icon("person-biking"), width = '100%', class = "btn_nav"), align="center")
+                                        fluidRow(column(4, actionButton("mode_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                                 column(4, actionButton("mode_to_walking", label=tags$div(class="btn_text","Walking"), icon = icon("person-walking",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                                 column(4, actionButton("mode_to_biking", label=tags$div(class="btn_text","Biking"), icon=icon("person-biking",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center")
                                         ), br(),
                                         
-                                        fluidRow(column(4, actionButton("mode_to_transit", label=tags$div(class="btn_text","Transit"), icon=icon("bus-simple"), width = '100%', class = "btn_nav"), align="center"),
-                                                 column(4, actionButton("mode_to_wfh", label=tags$div(class="btn_text","Working from Home"), icon=icon("headset"), width = '100%', class = "btn_nav"), align="center"),
+                                        fluidRow(column(4, actionButton("mode_to_transit", label=tags$div(class="btn_text","Transit"), icon=icon("bus-simple",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                                 column(4, actionButton("mode_to_wfh", label=tags$div(class="btn_text","Working from Home"), icon=icon("headset",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
                                                  column(4,"")
                                         ), 
                                         hr(),
@@ -864,13 +864,13 @@ shinyUI(
                                         hr()),
                                  column(8, style='padding-left:0px; padding-right:50px;',
                                         
-                                        fluidRow(column(4, actionButton("walk_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list"), width = '100%', class = "btn_nav"), align="center"),
-                                                 column(4, actionButton("walk_to_mode", label=tags$div(class="btn_text","Return to Overview"), icon = icon("bicycle"), width = '100%', class = "btn_nav"), align="center"),
-                                                 column(4, actionButton("walk_to_biking", label=tags$div(class="btn_text","Biking"), icon=icon("person-biking"), width = '100%', class = "btn_nav"), align="center")
+                                        fluidRow(column(4, actionButton("walk_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                                 column(4, actionButton("walk_to_mode", label=tags$div(class="btn_text","Return to Overview"), icon = icon("bicycle",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                                 column(4, actionButton("walk_to_biking", label=tags$div(class="btn_text","Biking"), icon=icon("person-biking",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center")
                                         ), br(),
                                         
-                                        fluidRow(column(4, actionButton("walk_to_transit", label=tags$div(class="btn_text","Transit"), icon=icon("bus-simple"), width = '100%', class = "btn_nav"), align="center"),
-                                                 column(4, actionButton("walk_to_wfh", label=tags$div(class="btn_text","Working from Home"), icon=icon("headset"), width = '100%', class = "btn_nav"), align="center"),
+                                        fluidRow(column(4, actionButton("walk_to_transit", label=tags$div(class="btn_text","Transit"), icon=icon("bus-simple",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                                 column(4, actionButton("walk_to_wfh", label=tags$div(class="btn_text","Working from Home"), icon=icon("headset",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
                                                  column(4,"")
                                         ), 
                                         hr(),
@@ -924,13 +924,13 @@ shinyUI(
                         ),
                         column(8, style='padding-left:0px; padding-right:50px;',
                                
-                               fluidRow(column(4, actionButton("bike_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list"), width = '100%', class = "btn_nav"), align="center"),
-                                        column(4, actionButton("bike_to_mode", label=tags$div(class="btn_text","Return to Overview"), icon = icon("bicycle"), width = '100%', class = "btn_nav"), align="center"),
-                                        column(4, actionButton("bike_to_walking", label=tags$div(class="btn_text","Walking"), icon = icon("person-walking"), width = '100%', class = "btn_nav"), align="center")
+                               fluidRow(column(4, actionButton("bike_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                        column(4, actionButton("bike_to_mode", label=tags$div(class="btn_text","Return to Overview"), icon = icon("bicycle",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                        column(4, actionButton("bike_to_walking", label=tags$div(class="btn_text","Walking"), icon = icon("person-walking",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center")
                                ), br(),
                                
-                               fluidRow(column(4, actionButton("bike_to_transit", label=tags$div(class="btn_text","Transit"), icon=icon("bus-simple"), width = '100%', class = "btn_nav"), align="center"),
-                                        column(4, actionButton("bike_to_wfh", label=tags$div(class="btn_text","Working from Home"), icon=icon("headset"), width = '100%', class = "btn_nav"), align="center"),
+                               fluidRow(column(4, actionButton("bike_to_transit", label=tags$div(class="btn_text","Transit"), icon=icon("bus-simple",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                        column(4, actionButton("bike_to_wfh", label=tags$div(class="btn_text","Working from Home"), icon=icon("headset",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
                                         column(4,"")
                                ), 
                                hr(),
@@ -981,13 +981,13 @@ shinyUI(
                         ),
                         column(8, style='padding-left:0px; padding-right:50px;',
                                
-                               fluidRow(column(4, actionButton("transit_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list"), width = '100%', class = "btn_nav"), align="center"),
-                                        column(4, actionButton("transit_to_mode", label=tags$div(class="btn_text","Return to Overview"), icon = icon("bicycle"), width = '100%', class = "btn_nav"), align="center"),
-                                        column(4, actionButton("transit_to_walking", label=tags$div(class="btn_text","Walking"), icon = icon("person-walking"), width = '100%', class = "btn_nav"), align="center")
+                               fluidRow(column(4, actionButton("transit_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                        column(4, actionButton("transit_to_mode", label=tags$div(class="btn_text","Return to Overview"), icon = icon("bicycle",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                        column(4, actionButton("transit_to_walking", label=tags$div(class="btn_text","Walking"), icon = icon("person-walking",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center")
                                ), br(),
                                
-                               fluidRow(column(4, actionButton("transit_to_biking", label=tags$div(class="btn_text","Biking"), icon=icon("person-biking"), width = '100%', class = "btn_nav"), align="center"),
-                                        column(4, actionButton("transit_to_wfh", label=tags$div(class="btn_text","Working from Home"), icon=icon("headset"), width = '100%', class = "btn_nav"), align="center"),
+                               fluidRow(column(4, actionButton("transit_to_biking", label=tags$div(class="btn_text","Biking"), icon=icon("person-biking",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                        column(4, actionButton("transit_to_wfh", label=tags$div(class="btn_text","Working from Home"), icon=icon("headset",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
                                         column(4,"")
                                ), 
                                hr(),
@@ -1039,13 +1039,13 @@ shinyUI(
                         ),
                         column(8, style='padding-left:0px; padding-right:50px;',
                                
-                               fluidRow(column(4, actionButton("wfh_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list"), width = '100%', class = "btn_nav"), align="center"),
-                                        column(4, actionButton("wfh_to_mode", label=tags$div(class="btn_text","Return to Overview"), icon = icon("bicycle"), width = '100%', class = "btn_nav"), align="center"),
-                                        column(4, actionButton("wfh_to_walking", label=tags$div(class="btn_text","Walking"), icon = icon("person-walking"), width = '100%', class = "btn_nav"), align="center")
+                               fluidRow(column(4, actionButton("wfh_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                        column(4, actionButton("wfh_to_mode", label=tags$div(class="btn_text","Return to Overview"), icon = icon("bicycle",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                        column(4, actionButton("wfh_to_walking", label=tags$div(class="btn_text","Walking"), icon = icon("person-walking",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center")
                                ), br(),
                                
-                               fluidRow(column(4, actionButton("wfh_to_biking", label=tags$div(class="btn_text","Biking"), icon=icon("person-biking"), width = '100%', class = "btn_nav"), align="center"),
-                                        column(4, actionButton("wfh_to_transit", label=tags$div(class="btn_text","Transit"), icon=icon("bus-simple"), width = '100%', class = "btn_nav"), align="center"),
+                               fluidRow(column(4, actionButton("wfh_to_biking", label=tags$div(class="btn_text","Biking"), icon=icon("person-biking",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                        column(4, actionButton("wfh_to_transit", label=tags$div(class="btn_text","Transit"), icon=icon("bus-simple",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
                                         column(4,"")
                                ), 
                                hr(),
