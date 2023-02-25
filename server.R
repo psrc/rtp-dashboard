@@ -202,9 +202,50 @@ shinyServer(function(input, output) {
                                                                                est="number", dec=0, color='pgnobgy_5')})
     
     output$mpo_hours_today_chart <- renderPlotly({interactive_bar_chart(t=mpo_transit_hours_today,
-                                                                            y='geography', x='estimate', fill='plot_id',
+                                                                        y='geography', x='estimate', fill='plot_id',
+                                                                        est="number", dec=0, color='pgnobgy_5')})
     
-                                                                                                                                                est="number", dec=0, color='pgnobgy_5')})
+    output$transit_ms_region_chart <- renderPlotly({interactive_column_chart(t=data %>% filter(metric=="Mode to Work" & geography=="Region" & variable=="Public transportation") %>% mutate(date=as.character(date)),
+                                                                             y='share', x='data_year', fill='data_year',
+                                                                             est="percent", dec=0, color='obgnpgy_10')})
+    
+    output$transit_ms_king_chart <- renderPlotly({interactive_column_chart(t=data %>% filter(metric=="Mode to Work" & geography=="King County" & variable=="Public transportation") %>% mutate(date=as.character(date)),
+                                                                             y='share', x='data_year', fill='data_year',
+                                                                             est="percent", dec=0, color='obgnpgy_10')})
+    
+    output$transit_ms_kitsap_chart <- renderPlotly({interactive_column_chart(t=data %>% filter(metric=="Mode to Work" & geography=="Kitsap County" & variable=="Public transportation") %>% mutate(date=as.character(date)),
+                                                                           y='share', x='data_year', fill='data_year',
+                                                                           est="percent", dec=0, color='obgnpgy_10')})
+    
+    output$transit_ms_pierce_chart <- renderPlotly({interactive_column_chart(t=data %>% filter(metric=="Mode to Work" & geography=="Pierce County" & variable=="Public transportation") %>% mutate(date=as.character(date)),
+                                                                           y='share', x='data_year', fill='data_year',
+                                                                           est="percent", dec=0, color='obgnpgy_10')})
+    
+    output$transit_ms_snohomish_chart <- renderPlotly({interactive_column_chart(t=data %>% filter(metric=="Mode to Work" & geography=="Snohomish County" & variable=="Public transportation") %>% mutate(date=as.character(date)),
+                                                                           y='share', x='data_year', fill='data_year',
+                                                                           est="percent", dec=0, color='obgnpgy_10')})
+    
+    
+    output$transit_ms_city_chart <- renderPlotly({interactive_bar_chart(t=data %>% filter(metric=="Mode to Work" & geography_type=="City" & variable=="Public transportation" & data_year==input$Transit_MS_Year) %>% 
+                                                                          mutate(low_high=forcats::fct_reorder(geography, -share)),
+                                                                        x='share', y='low_high', fill='variable',
+                                                                        est="percent", dec=0, color='pognbgy_5')})
+    
+    output$transit_ms_mpo_pre_text <- renderText({paste0("Transit to Work: ",as.character(as.integer(input$Transit_MPO_MS_Year)-5))})
+    
+    output$transit_ms_mpo_today_text <- renderText({paste0("Transit to Work: ",as.character(as.integer(input$Transit_MPO_MS_Year)))})
+    
+    output$transit_ms_mpo_chart_today <- renderPlotly({interactive_bar_chart(t=data %>% filter(metric=="Mode to Work" & geography_type=="Metro Regions" & variable=="Public transportation" & data_year==input$Transit_MPO_MS_Year) %>% 
+                                                                            mutate(low_high=forcats::fct_reorder(geography, -share)),
+                                                                        x='share', y='low_high', fill='variable',
+                                                                        est="percent", dec=0, color='gnbopgy_5')})
+    
+    output$transit_ms_mpo_chart_pre <- renderPlotly({interactive_bar_chart(t=data %>% filter(metric=="Mode to Work" & geography_type=="Metro Regions" & variable=="Public transportation" & data_year==as.character(as.integer(input$Transit_MPO_MS_Year)-5)) %>% 
+                                                                               mutate(low_high=forcats::fct_reorder(geography, -share)),
+                                                                             x='share', y='low_high', fill='variable',
+                                                                             est="percent", dec=0, color='obgnpgy_5')})
+    
+    
     ############################################################################
     # Main Page Links
     ############################################################################

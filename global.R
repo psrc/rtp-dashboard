@@ -269,6 +269,10 @@ efa_tracts <- tracts %>%
   st_union() %>%
   st_sf() 
 
+min_transit_years <- data %>% filter(metric=="Mode to Work" & geography=="Region") %>% select(data_year) %>% pull() %>% unique() %>% min()
+max_min_transit_years <- as.character(as.integer(min_transit_years)+5)
+transit_years <- data %>% filter(metric=="Mode to Work" & geography=="Region" & data_year>=max_min_transit_years) %>% select(data_year) %>% pull() %>% unique()
+
 # Text Data ---------------------------------------------------------------
 growth_overview_1 <- paste("The region's vision for 2050 is to provide exceptional quality of life, opportunity for all, ",
                            "connected communities, a spectacular natural environment, and an innovative, thriving economy.")
@@ -467,4 +471,5 @@ transit_overview_3 <- paste0("High-capacity transit in the region is provided by
                              "King County Metro and Kitsap Transit. Bus rapid transit (BRT) routes in the region are distinguished from other forms ",
                              "of bus transit by a combination of features that include branded buses and stations, off-board fare payment, wider stop ","
                              spacing than other local bus service, and other treatments such as transit signal priority and business access and transit (BAT) lanes.")
+
 
