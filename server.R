@@ -505,11 +505,6 @@ shinyServer(function(input, output) {
       updateNavbarPage(inputId = "RTP-Dashboard", selected = "Mode-Biking")
     })
     
-    # Link to Transit Tab
-    observeEvent(input$mode_to_transit, {
-      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Mode-Transit")
-    })
-    
     # Link to Biking Tab
     observeEvent(input$mode_to_wfh, {
       updateNavbarPage(inputId = "RTP-Dashboard", selected = "Mode-WFH")
@@ -532,11 +527,6 @@ shinyServer(function(input, output) {
     # Link to Biking Tab
     observeEvent(input$walk_to_biking, {
       updateNavbarPage(inputId = "RTP-Dashboard", selected = "Mode-Biking")
-    })
-    
-    # Link to Transit Tab
-    observeEvent(input$walk_to_transit, {
-      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Mode-Transit")
     })
     
     # Link to Biking Tab
@@ -563,45 +553,11 @@ shinyServer(function(input, output) {
       updateNavbarPage(inputId = "RTP-Dashboard", selected = "Mode-Overview")
     })
     
-    # Link to Transit Tab
-    observeEvent(input$bike_to_transit, {
-      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Mode-Transit")
-    })
-    
     # Link to Biking Tab
     observeEvent(input$bike_to_wfh, {
       updateNavbarPage(inputId = "RTP-Dashboard", selected = "Mode-WFH")
     })
 
-    ############################################################################
-    # Modes Transit Page Links
-    ############################################################################
-    
-    # Link to Main Overview Tab
-    observeEvent(input$transit_to_main, {
-      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Main-Summary")
-    })
-    
-    # Link to Walking Tab
-    observeEvent(input$transit_to_walking, {
-      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Mode-Walking")
-    })
-    
-    # Link to Biking Tab
-    observeEvent(input$transit_to_biking, {
-      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Mode-Biking")
-    })
-    
-    # Link to Overview Tab
-    observeEvent(input$transit_to_mode, {
-      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Mode-Overview")
-    })
-    
-    # Link to Biking Tab
-    observeEvent(input$transit_to_wfh, {
-      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Mode-WFH")
-    })   
-    
     ############################################################################
     # Modes Work from Home Page Links
     ############################################################################
@@ -621,16 +577,106 @@ shinyServer(function(input, output) {
       updateNavbarPage(inputId = "RTP-Dashboard", selected = "Mode-Biking")
     })
     
-    # Link to Transit Tab
-    observeEvent(input$wfh_to_transit, {
-      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Mode-Transit")
-    })
-    
     # Link to Biking Tab
     observeEvent(input$wfh_to_mode, {
       updateNavbarPage(inputId = "RTP-Dashboard", selected = "Mode-Overview")
     })
     
+    ############################################################################
+    # Transit Overview Page Links
+    ############################################################################
     
+    # Link to Main Overview Tab
+    observeEvent(input$transit_to_main, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Main-Summary")
+    })
+    
+    # Link to Boardings Tab
+    observeEvent(input$transit_to_upt, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Transit-UPT")
+    })
+    
+    # Link to Revenue Hours Tab
+    observeEvent(input$transit_to_vrh, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Transit-VRH")
+    })
+      
+    # Link to Transit Mode Share Tab
+    observeEvent(input$transit_to_tms, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Transit-Mode")
+    })
+    
+    ############################################################################
+    # Transit Boardings Page Links
+    ############################################################################
+    
+    # Link to Main Overview Tab
+    observeEvent(input$upt_to_main, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Main-Summary")
+    })
+    
+    # Link to Revenue Hours Tab
+    observeEvent(input$upt_to_vrh, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Transit-VRH")
+    })
+    
+    # Link to Transit Mode Tab
+    observeEvent(input$upt_to_tms, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Transit-Mode")
+    })
+    
+    # Link to Overview Tab
+    observeEvent(input$upt_to_transit, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Transit-Overview")
+    })    
+
+    ############################################################################
+    # Transit Hours Page Links
+    ############################################################################
+    
+    # Link to Main Overview Tab
+    observeEvent(input$vrh_to_main, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Main-Summary")
+    })
+    
+    # Link to Boardings Tab
+    observeEvent(input$vrh_to_upt, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Transit-UPT")
+    })
+    
+    # Link to Transit Mode Tab
+    observeEvent(input$vrh_to_tms, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Transit-Mode")
+    })
+    
+    # Link to Overview Tab
+    observeEvent(input$vrh_to_transit, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Transit-Overview")
+    })       
+ 
+    ############################################################################
+    # Transit Mode Share Page Links
+    ############################################################################
+    
+    # Link to Main Overview Tab
+    observeEvent(input$tms_to_main, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Main-Summary")
+    })
+    
+    # Link to Boardings Tab
+    observeEvent(input$tms_to_upt, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Transit-UPT")
+    })
+    
+    # Link to Transit Mode Tab
+    observeEvent(input$tms_to_vrh, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Transit-VRH")
+    })
+    
+    # Link to Overview Tab
+    observeEvent(input$tms_to_transit, {
+      updateNavbarPage(inputId = "RTP-Dashboard", selected = "Transit-Overview")
+    })   
+       
 })    
 

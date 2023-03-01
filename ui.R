@@ -807,10 +807,10 @@ shinyUI(
                                         
                                         fluidRow(column(4, actionButton("mode_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
                                                  column(4, actionButton("mode_to_walking", label=tags$div(class="btn_text","Walking"), icon = icon("person-walking",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                 column(4, actionButton("mode_to_biking", label=tags$div(class="btn_text","Biking"), icon=icon("person-biking",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center")
+                                                 column(4, "")
                                         ), br(),
                                         
-                                        fluidRow(column(4, actionButton("mode_to_transit", label=tags$div(class="btn_text","Transit"), icon=icon("bus-simple",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                        fluidRow(column(4, actionButton("mode_to_biking", label=tags$div(class="btn_text","Biking"), icon=icon("person-biking",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
                                                  column(4, actionButton("mode_to_wfh", label=tags$div(class="btn_text","Working from Home"), icon=icon("headset",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
                                                  column(4,"")
                                         ), 
@@ -866,10 +866,10 @@ shinyUI(
                                         
                                         fluidRow(column(4, actionButton("walk_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
                                                  column(4, actionButton("walk_to_mode", label=tags$div(class="btn_text","Return to Overview"), icon = icon("bicycle",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                 column(4, actionButton("walk_to_biking", label=tags$div(class="btn_text","Biking"), icon=icon("person-biking",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center")
+                                                 column(4, "")
                                         ), br(),
                                         
-                                        fluidRow(column(4, actionButton("walk_to_transit", label=tags$div(class="btn_text","Transit"), icon=icon("bus-simple",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                        fluidRow(column(4, actionButton("walk_to_biking", label=tags$div(class="btn_text","Biking"), icon=icon("person-biking",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
                                                  column(4, actionButton("walk_to_wfh", label=tags$div(class="btn_text","Working from Home"), icon=icon("headset",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
                                                  column(4,"")
                                         ), 
@@ -926,10 +926,10 @@ shinyUI(
                                
                                fluidRow(column(4, actionButton("bike_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
                                         column(4, actionButton("bike_to_mode", label=tags$div(class="btn_text","Return to Overview"), icon = icon("bicycle",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                        column(4, actionButton("bike_to_walking", label=tags$div(class="btn_text","Walking"), icon = icon("person-walking",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center")
+                                        column(4, "")
                                ), br(),
                                
-                               fluidRow(column(4, actionButton("bike_to_transit", label=tags$div(class="btn_text","Transit"), icon=icon("bus-simple",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                               fluidRow(column(4, actionButton("bike_to_walking", label=tags$div(class="btn_text","Walking"), icon = icon("person-walking",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
                                         column(4, actionButton("bike_to_wfh", label=tags$div(class="btn_text","Working from Home"), icon=icon("headset",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
                                         column(4,"")
                                ), 
@@ -942,64 +942,6 @@ shinyUI(
                                
                         )) # End of Main Panel Fluid Row for Biking Tab
                ), # End of Tab Panel for Biking
-               
-               tabPanel(title="Transit",
-                        value="Mode-Transit",
-                        fluidRow(column(12, style='padding-left:50px; padding-right:50px;',
-                                        bs4Jumbotron(
-                                          title = strong(tags$div(class="mainpage_title","Transit")),
-                                          status = "success",
-                                          btnName = strong(tags$div(class="mainpage_subtitle","Regional Economic Strategy")),
-                                          href = "https://www.psrc.org/planning-2050/regional-economic-strategy"))
-                        ), # End of First Fluid Row for Employment Tab
-                        
-                        fluidRow(column(4, style='padding-left:50px; padding-right:50px;',
-                                        hr(),
-                                        strong(tags$div(class="sidebar_heading","Transit")),
-                                        br(),
-                                        tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-economic-strategy", "Regional Economic Strategy", target="_blank"),
-                                        br(),br(),
-                                        tags$a(class = "source_url", href="https://www.psrc.org/our-work/covered-employment-estimates", "Covered Employment Estimates", target="_blank"),
-                                        br(),br(),
-                                        tags$a(class = "source_url", href="https://www.psrc.org/our-work/regional-macroeconomic-forecast", "Regional Macroeconomic Forecast", target="_blank"),
-                                        br(),br(),
-                                        tags$a(class = "source_url", href="https://www.psrc.org/our-work/industrial-lands", "Industrial Lands", target="_blank"),
-                                        br(),br(),
-                                        hr(),
-                                        div(img(src="res.png", width = "100%", height = "100%", style = "padding-top: 0px; border-radius:30px 0 30px 0;", alt = "Equity Strategy Document")),
-                                        hr(),
-                                        strong(tags$div(class="sidebar_heading","Connect With Us")),
-                                        hr(),
-                                        tags$div(class="sidebar_notes","Gil Cerise:"),
-                                        tags$div(class="sidebar_notes","Program Manager"),
-                                        br(),
-                                        icon("envelope"), 
-                                        tags$a(class = "source_url", href="mailto:gcerise@psrc.org?", "Email"),
-                                        br(), br(),
-                                        icon("phone-volume"), "206-971-3053",
-                                        hr()
-                        ),
-                        column(8, style='padding-left:0px; padding-right:50px;',
-                               
-                               fluidRow(column(4, actionButton("transit_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                        column(4, actionButton("transit_to_mode", label=tags$div(class="btn_text","Return to Overview"), icon = icon("bicycle",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                        column(4, actionButton("transit_to_walking", label=tags$div(class="btn_text","Walking"), icon = icon("person-walking",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center")
-                               ), br(),
-                               
-                               fluidRow(column(4, actionButton("transit_to_biking", label=tags$div(class="btn_text","Biking"), icon=icon("person-biking",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                        column(4, actionButton("transit_to_wfh", label=tags$div(class="btn_text","Working from Home"), icon=icon("headset",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                        column(4,"")
-                               ), 
-                               hr(),
-                               
-                               br(),
-                               div(img(src="under-construction.png", width = "75%", height = "75%", style = "padding-top: 0px; border-radius:0px 0 0px 0;", alt = "Bar chart of Greenhouse Gas Emissions in 2050")),
-                               br(),
-                               hr()
-                               
-                               
-                        )) # End of Main Panel Fluid Row for Transit Tab
-               ), # End of Tab Panel for Transit
                
                tabPanel(title="Work from Home",
                         value="Mode-WFH",
@@ -1041,11 +983,11 @@ shinyUI(
                                
                                fluidRow(column(4, actionButton("wfh_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
                                         column(4, actionButton("wfh_to_mode", label=tags$div(class="btn_text","Return to Overview"), icon = icon("bicycle",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                        column(4, actionButton("wfh_to_walking", label=tags$div(class="btn_text","Walking"), icon = icon("person-walking",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center")
+                                        column(4, "")
                                ), br(),
                                
-                               fluidRow(column(4, actionButton("wfh_to_biking", label=tags$div(class="btn_text","Biking"), icon=icon("person-biking",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                        column(4, actionButton("wfh_to_transit", label=tags$div(class="btn_text","Transit"), icon=icon("bus-simple",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                               fluidRow(column(4, actionButton("wfh_to_walking", label=tags$div(class="btn_text","Walking"), icon = icon("person-walking",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                        column(4, actionButton("wfh_to_biking", label=tags$div(class="btn_text","Biking"), icon=icon("person-biking",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
                                         column(4,"")
                                ), 
                                hr(),
@@ -1102,6 +1044,18 @@ shinyUI(
                                           column(8, style='padding-left:0px; padding-right:50px;',
                                                  tags$div(class="page_goals","RTP Outcome: Triple Transit Boardings by 2050"),
                                                  br(),
+                                                 
+                                                 fluidRow(column(4, actionButton("transit_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, actionButton("transit_to_upt", label=tags$div(class="btn_text","Boardings"), icon = icon("person-walking-arrow-right",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, "")
+                                                 ), br(),
+                                                 
+                                                 fluidRow(column(4, actionButton("transit_to_vrh", label=tags$div(class="btn_text","Revenue-Hours"), icon=icon("calendar-days",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, actionButton("transit_to_tms", label=tags$div(class="btn_text","Mode Share"), icon=icon("train",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4,"")
+                                                 ), 
+                                                 hr(),
+                                                 
                                                  textOutput("transit_text_1"),
                                                  br(),
                                                  textOutput("transit_text_2"),
@@ -1116,7 +1070,8 @@ shinyUI(
                                           )) # End of Main Panel Fluid Row for Transit Tab
                         ), # End of Tab Panel for Transit Overview
                         
-                        tabPanel("Transit Boardings",
+                        tabPanel(title="Transit Boardings",
+                                 value="Transit-UPT",
                                  fluidRow(column(12, style='padding-left:50px; padding-right:50px;',
                                                  bs4Jumbotron(
                                                    title = strong(tags$div(class="mainpage_title","Annual Transit Boardings")),
@@ -1153,7 +1108,20 @@ shinyUI(
                                                  hr()                                 ),
                                           column(8, style='padding-left:0px; padding-right:50px;',
                                                  tags$div(class="page_goals","RTP Outcome: Triple Transit Boardings by 2050"),
+                                                 
                                                  br(),
+                                                 
+                                                 fluidRow(column(4, actionButton("upt_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, actionButton("upt_to_transit", label=tags$div(class="btn_text","Return to Overview"), icon = icon("bus",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, "")
+                                                 ), br(),
+                                                 
+                                                 fluidRow(column(4, actionButton("upt_to_vrh", label=tags$div(class="btn_text","Revenue-Hours"), icon=icon("calendar-days",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, actionButton("upt_to_tms", label=tags$div(class="btn_text","Mode Share"), icon=icon("train",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4,"")
+                                                 ), 
+                                                 hr(),
+                                                 
                                                  h1("Annual Transit Boardings in the PSRC Region"),
                                                  hr(),
                                                  strong(tags$div(class="chart_title","Annual Regional Transit Boardings")),
@@ -1180,7 +1148,8 @@ shinyUI(
                                           )) # End of Main Panel Fluid Row for Transit Tab
                         ), # End of Tab Panel for Transit Boardings
                         
-                        tabPanel("Transit Revenue-Hours",
+                        tabPanel(title="Transit Revenue-Hours",
+                                 value="Transit-VRH",
                                  fluidRow(column(12, style='padding-left:50px; padding-right:50px;',
                                                  bs4Jumbotron(
                                                    title = strong(tags$div(class="mainpage_title","Annual Transit Revenue-Hours")),
@@ -1217,7 +1186,20 @@ shinyUI(
                                                  hr()                                 ),
                                           column(8, style='padding-left:0px; padding-right:50px;',
                                                  tags$div(class="page_goals","RTP Input: 66% More Revenue-Hours by 2050"),
+                                                 
                                                  br(),
+                                                 
+                                                 fluidRow(column(4, actionButton("vrh_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, actionButton("vrh_to_transit", label=tags$div(class="btn_text","Return to Overview"), icon = icon("bus",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, "")
+                                                 ), br(),
+                                                 
+                                                 fluidRow(column(4, actionButton("vrh_to_upt", label=tags$div(class="btn_text","Boardings"), icon=icon("person-walking-arrow-right",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, actionButton("vrh_to_tms", label=tags$div(class="btn_text","Mode Share"), icon=icon("train",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4,"")
+                                                 ), 
+                                                 hr(),
+                                                 
                                                  h1("Annual Transit Revenue-Hours in the PSRC Region"),
                                                  hr(),
                                                  strong(tags$div(class="chart_title","Annual Regional Transit Revenue-Hours")),
@@ -1243,7 +1225,8 @@ shinyUI(
                                           )) # End of Main Panel Fluid Row for Transit Tab
                         ), # End of Tab Panel for Transit Revenue-Hours
                         
-                        tabPanel("Transit Mode Share",
+                        tabPanel(title="Transit Mode Share",
+                                 value="Transit-Mode",
                                  fluidRow(column(12, style='padding-left:50px; padding-right:50px;',
                                                  bs4Jumbotron(
                                                    title = strong(tags$div(class="mainpage_title","Transit Mode Share to Work")),
@@ -1279,8 +1262,20 @@ shinyUI(
                                                  icon("phone-volume"), "206-971-3053",
                                                  hr()                                 ),
                                           column(8, style='padding-left:0px; padding-right:50px;',
-                                                 tags$div(class="page_goals","Plan Outcome: xx% Transit Share by 2050"),
+                                                 tags$div(class="page_goals","Plan Outcome: 13% Transit Share by 2050"),
                                                  br(),
+                                                 
+                                                 fluidRow(column(4, actionButton("tms_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, actionButton("tms_to_transit", label=tags$div(class="btn_text","Return to Overview"), icon = icon("bus",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, "")
+                                                 ), br(),
+                                                 
+                                                 fluidRow(column(4, actionButton("tms_to_upt", label=tags$div(class="btn_text","Boardings"), icon=icon("person-walking-arrow-right",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4, actionButton("tms_to_vrh", label=tags$div(class="btn_text","Revenue-Hours"), icon=icon("calendar",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
+                                                          column(4,"")
+                                                 ), 
+                                                 hr(),
+                                                 
                                                  h1("Transit Mode Share to Work in the PSRC Region"),
                                                  hr(),
                                                  strong(tags$div(class="chart_title","Transit Mode Share to Work")),
