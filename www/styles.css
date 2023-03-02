@@ -33,7 +33,7 @@ h4 {
 }
 
 i {
-  color: #76787A;
+  color: #EC9B21;
   font-size: 20pt;
   padding-left: 25px;
   padding-right: 25px;
@@ -45,8 +45,20 @@ i {
   padding-right: 10px;
 }
 
+#footer {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 .jumbotron.bg-success{
   background-color: #005753;
+  padding-top: 50px;
+  padding-bottom: 10px;
+  border-radius: 0px;
+}
+
+.jumbotron.bg-info{
+  background-color: #4A0048;
   padding-top: 50px;
   padding-bottom: 10px;
   border-radius: 0px;
@@ -81,6 +93,24 @@ i {
   color: #FFFFFF;
   font-family: "Poppins";
   font-size: 22pt;
+}
+
+.footer_title {
+  color: #FFFFFF;
+  font-family: "Poppins";
+  font-size: 16pt;
+}
+
+.footer_url {
+  color: #EC9B21;
+  font-family: "Poppins";
+  font-size: 12pt;
+}
+
+.footer_mission {
+  color: #FFFFFF;
+  font-family: "Poppins";
+  font-size: 12pt;
 }
 
 .mainpage_subtitle {
@@ -122,7 +152,7 @@ i {
 }
 
 .footer {
-  position: absolute;
+  position: fixed;
   color: #FFFFFF;
   font-family: "Poppins";
   font-size: 12pt;
@@ -130,8 +160,7 @@ i {
   width: 100%;
   height: 50px; 
   background-color: #4A0048;
-  z-index: 1000;
-  padding: 10px;
+
 }
 
 nav {
