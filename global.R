@@ -472,4 +472,3 @@ transit_overview_3 <- paste0("High-capacity transit in the region is provided by
                              "of bus transit by a combination of features that include branded buses and stations, off-board fare payment, wider stop ","
                              spacing than other local bus service, and other treatments such as transit signal priority and business access and transit (BAT) lanes.")
 
-

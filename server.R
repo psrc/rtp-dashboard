@@ -245,6 +245,22 @@ shinyServer(function(input, output) {
                                                                              x='share', y='low_high', fill='variable',
                                                                              est="percent", dec=0, color='obgnpgy_5')})
     
+    output$transit_ms_race_pre_text <- renderText({paste0("Transit to Work: ",as.character(as.integer(input$Transit_Race_MS_Year)-5))})
+    
+    output$transit_ms_race_today_text <- renderText({paste0("Transit to Work: ",as.character(as.integer(input$Transit_Race_MS_Year)))})
+    
+    
+    output$transit_ms_race_chart_today <- renderPlotly({interactive_column_chart(t=data %>% filter(metric=="Simplified Commute Mode" & variable=="Transit" & geography_type=="PSRC Region Race & Ethnicity" & data_year==input$Transit_Race_MS_Year) %>% 
+                                                                                                      mutate(grouping = gsub(" alone","", grouping)) %>%
+                                                                                                      mutate(low_high=forcats::fct_reorder(grouping, -share)),
+                                                                                                    y='share', x='low_high', fill='variable', moe='share_moe',
+                                                                                                    est="percent", dec=0, color='blues_dec')})
+    
+    output$transit_ms_race_chart_pre <- renderPlotly({interactive_bar_chart(t=data %>% filter(metric=="Simplified Commute Mode" & variable=="Transit" & geography_type=="PSRC Region Race & Ethnicity" & data_year==as.character(as.integer(input$Transit_Race_MS_Year)-5)) %>% 
+                                                                                                      mutate(low_high=forcats::fct_reorder(grouping, -share)),
+                                                                                                    x='share', y='low_high', fill='variable',
+                                                                                                    est="percent", dec=0, color='gnbopgy_5')})
+    
     
     ############################################################################
     # Main Page Links

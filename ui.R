@@ -1281,6 +1281,7 @@ shinyUI(
                                                  fluidRow(column(12,plotlyOutput("transit_ms_region_chart"))),
                                                  tags$div(class="chart_source","Source: ACS 1yr Data Table B08006 for King, Kitsap, Pierce and Snohomish counties"),
                                                  hr(),
+                                                 
                                                  h1("Transit Mode Share to Work by County"),
                                                  br(),
                                                  fluidRow(column(6,strong(tags$div(class="chart_title","Transit to Work: King County"))),
@@ -1293,6 +1294,16 @@ shinyUI(
                                                           column(6,plotlyOutput("transit_ms_snohomish_chart"))),
                                                  tags$div(class="chart_source","Source: ACS 1yr Data Table B08006 for King, Kitsap, Pierce and Snohomish counties"),
                                                  hr(),
+                                                 
+                                                 h1("Transit Mode Share to Work by Race/Ethnicity"),
+                                                 br(),
+                                                 selectInput("Transit_Race_MS_Year","Select Latest Year:",list("Year" = transit_years), selected = "2021"),
+                                                 br(),
+                                                 strong(tags$div(class="chart_title",textOutput("transit_ms_race_today_text"))),
+                                                 fluidRow(column(12,plotlyOutput("transit_ms_race_chart_today"))),
+                                                 tags$div(class="chart_source","Source: PUMS 5yr Data for King, Kitsap, Pierce and Snohomish counties"),
+                                                 hr(),
+                                                 
                                                  h1("Transit Mode Share to Work by City"),
                                                  br(),
                                                  selectInput("Transit_MS_Year","Select Year:",list("Year" = transit_years), selected = "2021"),
@@ -1301,6 +1312,7 @@ shinyUI(
                                                  fluidRow(column(12,plotlyOutput("transit_ms_city_chart", height = "800px"))),
                                                  tags$div(class="chart_source","Source: ACS 5yr Data Table B08006 by Place in King, Kitsap, Pierce and Snohomish counties"),
                                                  hr(),
+                                                 
                                                  h1("Transit Mode Share to Work by Metropolitan Region"),
                                                  br(),
                                                  selectInput("Transit_MPO_MS_Year","Select Latest Year:",list("Year" = transit_years), selected = "2021"),
