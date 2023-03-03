@@ -205,9 +205,11 @@ shinyServer(function(input, output) {
                                                                         y='geography', x='estimate', fill='plot_id',
                                                                         est="number", dec=0, color='pgnobgy_5')})
     
-    output$transit_ms_region_chart <- renderPlotly({interactive_column_chart(t=data %>% filter(metric=="Mode to Work" & geography=="Region" & variable=="Public transportation") %>% mutate(date=as.character(date)),
-                                                                             y='share', x='data_year', fill='data_year',
-                                                                             est="percent", dec=0, color='obgnpgy_10')})
+    output$transit_ms_region_chart <- renderPlotly({psrcplot:::make_interactive(p=static_line_chart(t=data %>% filter(metric=="Mode to Work" & geography=="Region" & variable=="Public transportation") %>% mutate(date=as.character(date)), 
+                                                                                                    x='data_year', y='share', fill='variable', est="percent", 
+                                                                                                    lwidth = 2,
+                                                                                                    breaks = c("2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021"),
+                                                                                                    color='obgnpgy_10') + ggplot2::scale_y_continuous(limits=c(0,0.25), labels=scales::label_percent()))})
     
     output$transit_ms_king_chart <- renderPlotly({interactive_column_chart(t=data %>% filter(metric=="Mode to Work" & geography=="King County" & variable=="Public transportation") %>% mutate(date=as.character(date)),
                                                                              y='share', x='data_year', fill='data_year',
