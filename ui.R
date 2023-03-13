@@ -876,7 +876,13 @@ shinyUI(
                                         hr(),
                                         
                                         br(),
-                                        div(img(src="under-construction.png", width = "75%", height = "75%", style = "padding-top: 0px; border-radius:0px 0 0px 0;", alt = "Bar chart of Greenhouse Gas Emissions in 2050")),
+                                        #div(img(src="under-construction.png", width = "75%", height = "75%", style = "padding-top: 0px; border-radius:0px 0 0px 0;", alt = "Bar chart of Greenhouse Gas Emissions in 2050")),
+                                        fluidRow(column(6,strong(tags$div(class="chart_title","Number of People Making a Walk Commute by County"))),
+                                                 column(6,strong(tags$div(class="chart_title","Share of People Making a Walk Commute by County")))),
+                                        fluidRow(column(6,plotlyOutput("commute_mode_walk_est_chart")),
+                                                 column(6,plotlyOutput("commute_mode_walk_share_chart"))),
+                                        fluidRow(column(6,tags$div(class="chart_source","Source: US Census PUMS Data, 2011-2016 & 2017-2021")),
+                                                 column(6,tags$div(class="chart_source","Source: US Census PUMS Data, 2011-2016 & 2017-2021"))),
                                         br(),
                                         hr()
                                         
@@ -936,7 +942,13 @@ shinyUI(
                                hr(),
                                
                                br(),
-                               div(img(src="under-construction.png", width = "75%", height = "75%", style = "padding-top: 0px; border-radius:0px 0 0px 0;", alt = "Bar chart of Greenhouse Gas Emissions in 2050")),
+                               #div(img(src="under-construction.png", width = "75%", height = "75%", style = "padding-top: 0px; border-radius:0px 0 0px 0;", alt = "Bar chart of Greenhouse Gas Emissions in 2050")),
+                               fluidRow(column(6,strong(tags$div(class="chart_title","Number of People Making a Bicycle Commute by County"))),
+                                        column(6,strong(tags$div(class="chart_title","Share of People Making a Bicycle Commute by County")))),
+                               fluidRow(column(6,plotlyOutput("commute_mode_bike_est_chart")),
+                                        column(6,plotlyOutput("commute_mode_bike_share_chart"))),
+                               fluidRow(column(6,tags$div(class="chart_source","Source: US Census PUMS Data, 2011-2016 & 2017-2021")),
+                                        column(6,tags$div(class="chart_source","Source: US Census PUMS Data, 2011-2016 & 2017-2021"))),
                                br(),
                                hr()
                                

@@ -263,6 +263,22 @@ shinyServer(function(input, output) {
                                                                                                     x='share', y='low_high', fill='variable',
                                                                                                     est="percent", dec=0, color='gnbopgy_5')})
     
+    output$commute_mode_walk_est_chart <- renderPlotly({interactive_column_chart(t=data %>% filter(metric=="Simplified Commute Mode" & geography_type=="County" & variable=="Walked"),
+                                                                                 y='estimate', x='geography', moe="estimate_moe", fill='data_year', pos = "dodge",
+                                                                                 est="number", color='pgnobgy_10')})
+    
+    output$commute_mode_walk_share_chart <- renderPlotly({interactive_column_chart(t=data %>% filter(metric=="Simplified Commute Mode" & geography_type=="County" & variable=="Walked"),
+                                                                                   y='share', x='geography', moe="share_moe", fill='data_year', pos = "dodge",
+                                                                                   est="percent", dec=1, color='pgnobgy_10')})
+    
+    output$commute_mode_bike_est_chart <- renderPlotly({interactive_column_chart(t=data %>% filter(metric=="Simplified Commute Mode" & geography_type=="County" & variable=="Bicycle"),
+                                                                                 y='estimate', x='geography', moe="estimate_moe", fill='data_year', pos = "dodge",
+                                                                                 est="number", color='pgnobgy_10')})
+    
+    output$commute_mode_bike_share_chart <- renderPlotly({interactive_column_chart(t=data %>% filter(metric=="Simplified Commute Mode" & geography_type=="County" & variable=="Bicycle"),
+                                                                                   y='share', x='geography', moe="share_moe", fill='data_year', pos = "dodge",
+                                                                                   est="percent", dec=1, color='pgnobgy_10')})
+    
     
     ############################################################################
     # Main Page Links
