@@ -58,25 +58,10 @@ shinyUI(
                                       hr(),
                                       "The RTP Performance Dashboard is a resource to help the region understand how well it is meeting it's long range goals. At a minimum, the dashboard will be updated 
                         each fall as various Census and Transportation related metrics are released.
-                        Metrics on the dashboard are focused on topic areas that were identified by the Transporation Policy Board as high priorities for the region and include:",
+                        Metrics on the dashboard are focused on topic areas that were identified by the Transporation Policy Board as high priorities for the region",
                                       
                                       hr(),
-                                      
-                                      fluidRow(column(4, actionButton("link_to_climate_overview", label=tags$div(class="btn_text","Climate"), icon = icon("tree",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                               column(4, actionButton("link_to_growth_overview", label=tags$div(class="btn_text","People, Housing & Jobs"), icon = icon("user",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                               column(4, actionButton("link_to_safety_overview", label=tags$div(class="btn_text","Safety"), icon=icon("user-doctor",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center")
-                                      ), br(),
-                                      
-                                      fluidRow(column(4, actionButton("link_to_modes_overview", label=tags$div(class="btn_text","Walk, Bike & Roll"), icon = icon("bicycle",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                               column(4, actionButton("link_to_transit_overview", label=tags$div(class="btn_text","Transit Performance"), icon = icon("bus",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                               column(4, actionButton("link_to_time_overview", label=tags$div(class="btn_text","Travel Time"), icon=icon("car",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center")
-                                      ), br(),
-                                      
-                                      fluidRow(column(4,""),
-                                               column(4, actionButton("link_to_projects_overview", label=tags$div(class="btn_text","Transportation Projects"), icon = icon("wrench",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                               column(4,"")
-                                      ), br(),
-                                      
+
                                ), # end of second fluid row for main overview page
                       ) # end of second fluid row for main overview page
                       ), # end of tabpanel for Overview
@@ -117,13 +102,6 @@ shinyUI(
                                                  icon("phone-volume"), "206-971-3601",
                                                  hr()                                 ),
                                           column(8, style='padding-left:0px; padding-right:50px;',
-                                                 
-                                                 fluidRow(column(4, actionButton("climate_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, actionButton("climate_to_zev", label=tags$div(class="btn_text","Zero Emission Vehicles"), icon = icon("charging-station",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, actionButton("climate_to_vmt", label=tags$div(class="btn_text","Vehicle Miles Traveled"), icon=icon("road",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center")
-                                                 ), 
-                                                 hr(),
-                                                 
                                                  tags$div(class="page_goals","Goal: 80% below 1990 GHG Emissions by 2050"),
                                                  br(),
                                                  textOutput("climate_text_1"),
@@ -177,13 +155,6 @@ shinyUI(
                                                  icon("phone-volume"), "206-971-3601",
                                                  hr()                                 ),
                                           column(8, style='padding-left:0px; padding-right:50px;',
-                                                 
-                                                 fluidRow(column(4, actionButton("zev_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, actionButton("zev_to_climate", label=tags$div(class="btn_text","Return to Climate Overview"), icon = icon("tree",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, actionButton("zev_to_vmt", label=tags$div(class="btn_text","Vehicle Miles Traveled"), icon=icon("road",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center")
-                                                 ), 
-                                                 hr(),
-                                                 
                                                  h1("New Vehicle Registrations in the PSRC Region"),
                                                  textOutput("regional_ev_text"),
                                                  br(),
@@ -237,13 +208,6 @@ shinyUI(
                                                  icon("phone-volume"), "206-464-6661",
                                                  hr()                                 ),
                                           column(8, style='padding-left:0px; padding-right:50px;',
-                                                 
-                                                 fluidRow(column(4, actionButton("vmt_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, actionButton("vmt_to_climate", label=tags$div(class="btn_text","Return to Climate Overview"), icon = icon("tree",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, actionButton("vmt_to_zev", label=tags$div(class="btn_text","Zero Emission Vehicles"), icon=icon("charging-station",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center")
-                                                 ), 
-                                                 hr(),
-                                                 
                                                  tags$div(class="page_goals","RTP Outcome: 25% Reduction in VMT per Capita by 2050"),
                                                  br(),
                                                  h1("Regional Vehicle Miles Traveled"),
@@ -317,18 +281,6 @@ shinyUI(
                                                  icon("phone-volume"), "206-464-7549",
                                                  hr()),
                                           column(8, style='padding-left:0px; padding-right:50px;',
-                                                 
-                                                 fluidRow(column(4, actionButton("growth_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, actionButton("growth_to_population", label=tags$div(class="btn_text","Population"), icon = icon("user",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, actionButton("growth_to_housing", label=tags$div(class="btn_text","Housing"), icon=icon("city",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center")
-                                                 ), br(),
-                                                 
-                                                 fluidRow(column(4,""),
-                                                          column(4, actionButton("growth_to_employment", label=tags$div(class="btn_text","Employment"), icon=icon("briefcase",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4,"")
-                                                 ), 
-                                                 hr(),
-                                                 
                                                  tags$div(class="page_goals","Goal: 65% Population / 75% Job Growth near HCT"),
                                                  br(),
                                                  textOutput("growth_text_1"),
@@ -391,18 +343,6 @@ shinyUI(
                                                  icon("phone-volume"), "206-464-7549",
                                                  hr()),
                                           column(8, style='padding-left:0px; padding-right:50px;',
-                                                 
-                                                 fluidRow(column(4, actionButton("population_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, actionButton("population_to_growth", label=tags$div(class="btn_text","Return to Growth Overview"), icon = icon("users",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, actionButton("population_to_housing", label=tags$div(class="btn_text","Housing"), icon=icon("city",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center")
-                                                 ), br(),
-                                                 
-                                                 fluidRow(column(4,""),
-                                                          column(4, actionButton("population_to_employment", label=tags$div(class="btn_text","Employment"), icon=icon("briefcase",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4,"")
-                                                 ), 
-                                                 hr(),
-                                                 
                                                  tags$div(class="page_goals","Goal: 65% of Population Growth Near HCT"),
                                                  br(),
                                                  h1("Regional Population Growth"),
@@ -464,18 +404,6 @@ shinyUI(
                                                  hr()
                                  ),
                                  column(8, style='padding-left:0px; padding-right:50px;',
-                                        
-                                        fluidRow(column(4, actionButton("housing_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                 column(4, actionButton("housing_to_growth", label=tags$div(class="btn_text","Return to Growth Overview"), icon = icon("users",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                 column(4, actionButton("housing_to_population", label=tags$div(class="btn_text","Population"), icon=icon("user",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center")
-                                        ), br(),
-                                        
-                                        fluidRow(column(4,""),
-                                                 column(4, actionButton("housing_to_employment", label=tags$div(class="btn_text","Employment"), icon=icon("briefcase",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                 column(4,"")
-                                        ), 
-                                        hr(),
-                                        
                                         tags$div(class="page_goals","VISION 2050 Outcome: 830,000 new Households by 2050"),
                                         br(),
                                         textOutput("housing_text_1"),
@@ -536,18 +464,6 @@ shinyUI(
                                                  hr()
                                  ),
                                  column(8, style='padding-left:0px; padding-right:50px;',
-                                        
-                                        fluidRow(column(4, actionButton("employment_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                 column(4, actionButton("employment_to_growth", label=tags$div(class="btn_text","Return to Growth Overview"), icon = icon("users",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                 column(4, actionButton("employment_to_population", label=tags$div(class="btn_text","Population"), icon=icon("user",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center")
-                                        ), br(),
-                                        
-                                        fluidRow(column(4,""),
-                                                 column(4, actionButton("employment_to_housing", label=tags$div(class="btn_text","Housing"), icon=icon("city",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                 column(4,"")
-                                        ), 
-                                        hr(),
-                                        
                                         tags$div(class="page_goals","Goal: 75% of Employment Growth Near HCT"),
                                         br(),
                                         textOutput("employment_overview_text"),
@@ -609,13 +525,6 @@ shinyUI(
                                                  icon("phone-volume"), "206-971-3276",
                                                  hr()                                 ),
                                           column(8, style='padding-left:0px; padding-right:50px;',
-                                                 
-                                                 fluidRow(column(4, actionButton("safety_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, actionButton("safety_to_fatal", label=tags$div(class="btn_text","Fatal Collisions"), icon = icon("truck-medical",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, actionButton("safety_to_serious", label=tags$div(class="btn_text","Serious Injury Collisions"), icon=icon("hospital",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center")
-                                                 ), 
-                                                 hr(),
-                                                 
                                                  tags$div(class="page_goals","Goal: Zero Fatal and Serious Injuries by 2030"),
                                                  br(),
                                                  textOutput("safety_text_1"),
@@ -671,13 +580,6 @@ shinyUI(
                                                  icon("phone-volume"), "206-971-3276",
                                                  hr()                                 ),
                                  column(8, style='padding-left:0px; padding-right:50px;',
-                                        
-                                        fluidRow(column(4, actionButton("fatal_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                 column(4, actionButton("fatal_to_safety", label=tags$div(class="btn_text","Return to Safety Overview"), icon = icon("user-doctor",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                 column(4, actionButton("fatal_to_serious", label=tags$div(class="btn_text","Serious Injury Collisions"), icon=icon("hospital",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center")
-                                        ), 
-                                        hr(),
-                                        
                                         tags$div(class="page_goals","Goal: Zero Fatal Injuries by 2030"),
                                         br(),
                                         h1("Fatal Collisions in the PSRC Region"),
@@ -746,13 +648,6 @@ shinyUI(
                                                  icon("phone-volume"), "206-971-3276",
                                                  hr()                                 ),
                                           column(8, style='padding-left:0px; padding-right:50px;',
-                                                 
-                                                 fluidRow(column(4, actionButton("serious_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, actionButton("serious_to_safety", label=tags$div(class="btn_text","Return to Safety Overview"), icon = icon("user-doctor",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, actionButton("serious_to_fatal", label=tags$div(class="btn_text","Fatal Collisions"), icon=icon("truck-medical",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center")
-                                                 ), 
-                                                 hr(),
-                                                 
                                                  tags$div(class="page_goals","Goal: Zero Serious Injuries by 2030"),
                                                  br(),
                                                  div(img(src="under-construction.png", width = "75%", height = "75%", style = "padding-top: 0px; border-radius:0px 0 0px 0;", alt = "Bar chart of Greenhouse Gas Emissions in 2050")),
@@ -804,18 +699,6 @@ shinyUI(
                                         icon("phone-volume"), "206-971-3053",
                                         hr()),
                                  column(8, style='padding-left:0px; padding-right:50px;',
-                                        
-                                        fluidRow(column(4, actionButton("mode_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                 column(4, actionButton("mode_to_walking", label=tags$div(class="btn_text","Walking"), icon = icon("person-walking",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                 column(4, "")
-                                        ), br(),
-                                        
-                                        fluidRow(column(4, actionButton("mode_to_biking", label=tags$div(class="btn_text","Biking"), icon=icon("person-biking",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                 column(4, actionButton("mode_to_wfh", label=tags$div(class="btn_text","Working from Home"), icon=icon("headset",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                 column(4,"")
-                                        ), 
-                                        hr(),
-                                        
                                         br(),
                                         div(img(src="under-construction.png", width = "75%", height = "75%", style = "padding-top: 0px; border-radius:0px 0 0px 0;", alt = "Bar chart of Greenhouse Gas Emissions in 2050")),
                                         br(),
@@ -863,18 +746,6 @@ shinyUI(
                                         icon("phone-volume"), "206-587-4822",
                                         hr()),
                                  column(8, style='padding-left:0px; padding-right:50px;',
-                                        
-                                        fluidRow(column(4, actionButton("walk_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                 column(4, actionButton("walk_to_mode", label=tags$div(class="btn_text","Return to Overview"), icon = icon("bicycle",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                 column(4, "")
-                                        ), br(),
-                                        
-                                        fluidRow(column(4, actionButton("walk_to_biking", label=tags$div(class="btn_text","Biking"), icon=icon("person-biking",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                 column(4, actionButton("walk_to_wfh", label=tags$div(class="btn_text","Working from Home"), icon=icon("headset",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                 column(4,"")
-                                        ), 
-                                        hr(),
-                                        
                                         br(),
                                         #div(img(src="under-construction.png", width = "75%", height = "75%", style = "padding-top: 0px; border-radius:0px 0 0px 0;", alt = "Bar chart of Greenhouse Gas Emissions in 2050")),
                                         fluidRow(column(6,strong(tags$div(class="chart_title","Number of People Making a Walk Commute by County"))),
@@ -929,18 +800,6 @@ shinyUI(
                                         hr()
                         ),
                         column(8, style='padding-left:0px; padding-right:50px;',
-                               
-                               fluidRow(column(4, actionButton("bike_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                        column(4, actionButton("bike_to_mode", label=tags$div(class="btn_text","Return to Overview"), icon = icon("bicycle",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                        column(4, "")
-                               ), br(),
-                               
-                               fluidRow(column(4, actionButton("bike_to_walking", label=tags$div(class="btn_text","Walking"), icon = icon("person-walking",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                        column(4, actionButton("bike_to_wfh", label=tags$div(class="btn_text","Working from Home"), icon=icon("headset",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                        column(4,"")
-                               ), 
-                               hr(),
-                               
                                br(),
                                #div(img(src="under-construction.png", width = "75%", height = "75%", style = "padding-top: 0px; border-radius:0px 0 0px 0;", alt = "Bar chart of Greenhouse Gas Emissions in 2050")),
                                fluidRow(column(6,strong(tags$div(class="chart_title","Number of People Making a Bicycle Commute by County"))),
@@ -991,18 +850,6 @@ shinyUI(
                                         hr()
                         ),
                         column(8, style='padding-left:0px; padding-right:50px;',
-                               
-                               fluidRow(column(4, actionButton("wfh_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                        column(4, actionButton("wfh_to_mode", label=tags$div(class="btn_text","Return to Overview"), icon = icon("bicycle",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                        column(4, "")
-                               ), br(),
-                               
-                               fluidRow(column(4, actionButton("wfh_to_walking", label=tags$div(class="btn_text","Walking"), icon = icon("person-walking",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                        column(4, actionButton("wfh_to_biking", label=tags$div(class="btn_text","Biking"), icon=icon("person-biking",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                        column(4,"")
-                               ), 
-                               hr(),
-                               
                                br(),
                                div(img(src="under-construction.png", width = "75%", height = "75%", style = "padding-top: 0px; border-radius:0px 0 0px 0;", alt = "Bar chart of Greenhouse Gas Emissions in 2050")),
                                br(),
@@ -1055,18 +902,6 @@ shinyUI(
                                           column(8, style='padding-left:0px; padding-right:50px;',
                                                  tags$div(class="page_goals","RTP Outcome: Triple Transit Boardings by 2050"),
                                                  br(),
-                                                 
-                                                 fluidRow(column(4, actionButton("transit_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, actionButton("transit_to_upt", label=tags$div(class="btn_text","Boardings"), icon = icon("person-walking-arrow-right",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, "")
-                                                 ), br(),
-                                                 
-                                                 fluidRow(column(4, actionButton("transit_to_vrh", label=tags$div(class="btn_text","Revenue-Hours"), icon=icon("calendar-days",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, actionButton("transit_to_tms", label=tags$div(class="btn_text","Mode Share"), icon=icon("train",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4,"")
-                                                 ), 
-                                                 hr(),
-                                                 
                                                  textOutput("transit_text_1"),
                                                  br(),
                                                  textOutput("transit_text_2"),
@@ -1119,20 +954,6 @@ shinyUI(
                                                  hr()                                 ),
                                           column(8, style='padding-left:0px; padding-right:50px;',
                                                  tags$div(class="page_goals","RTP Outcome: Triple Transit Boardings by 2050"),
-                                                 
-                                                 br(),
-                                                 
-                                                 fluidRow(column(4, actionButton("upt_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, actionButton("upt_to_transit", label=tags$div(class="btn_text","Return to Overview"), icon = icon("bus",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, "")
-                                                 ), br(),
-                                                 
-                                                 fluidRow(column(4, actionButton("upt_to_vrh", label=tags$div(class="btn_text","Revenue-Hours"), icon=icon("calendar-days",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, actionButton("upt_to_tms", label=tags$div(class="btn_text","Mode Share"), icon=icon("train",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4,"")
-                                                 ), 
-                                                 hr(),
-                                                 
                                                  h1("Annual Transit Boardings in the PSRC Region"),
                                                  hr(),
                                                  strong(tags$div(class="chart_title","Annual Regional Transit Boardings")),
@@ -1197,21 +1018,7 @@ shinyUI(
                                                  hr()                                 ),
                                           column(8, style='padding-left:0px; padding-right:50px;',
                                                  tags$div(class="page_goals","RTP Input: 66% More Revenue-Hours by 2050"),
-                                                 
-                                                 br(),
-                                                 
-                                                 fluidRow(column(4, actionButton("vrh_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, actionButton("vrh_to_transit", label=tags$div(class="btn_text","Return to Overview"), icon = icon("bus",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, "")
-                                                 ), br(),
-                                                 
-                                                 fluidRow(column(4, actionButton("vrh_to_upt", label=tags$div(class="btn_text","Boardings"), icon=icon("person-walking-arrow-right",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, actionButton("vrh_to_tms", label=tags$div(class="btn_text","Mode Share"), icon=icon("train",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4,"")
-                                                 ), 
-                                                 hr(),
-                                                 
-                                                 h1("Annual Transit Revenue-Hours in the PSRC Region"),
+                                                h1("Annual Transit Revenue-Hours in the PSRC Region"),
                                                  hr(),
                                                  strong(tags$div(class="chart_title","Annual Regional Transit Revenue-Hours")),
                                                  fluidRow(column(12,plotlyOutput("chart_transit_hours"))),
@@ -1275,18 +1082,6 @@ shinyUI(
                                           column(8, style='padding-left:0px; padding-right:50px;',
                                                  tags$div(class="page_goals","Plan Outcome: 13% Transit Share by 2050"),
                                                  br(),
-                                                 
-                                                 fluidRow(column(4, actionButton("tms_to_main", label=tags$div(class="btn_text","Return to Landing Page"), icon = icon("list",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, actionButton("tms_to_transit", label=tags$div(class="btn_text","Return to Overview"), icon = icon("bus",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, "")
-                                                 ), br(),
-                                                 
-                                                 fluidRow(column(4, actionButton("tms_to_upt", label=tags$div(class="btn_text","Boardings"), icon=icon("person-walking-arrow-right",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4, actionButton("tms_to_vrh", label=tags$div(class="btn_text","Revenue-Hours"), icon=icon("calendar",verify_fa = FALSE), width = '100%', class = "btn_nav"), align="center"),
-                                                          column(4,"")
-                                                 ), 
-                                                 hr(),
-                                                 
                                                  h1("Transit Mode Share to Work in the PSRC Region"),
                                                  hr(),
                                                  strong(tags$div(class="chart_title","Transit Mode Share to Work")),
