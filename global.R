@@ -10,9 +10,8 @@ library(tidyverse)
 
 # Packages for Chart Creation
 library(psrcplot)
-#library(ggplot2)
-#library(scales)
 library(plotly)
+library(echarts4r)
 
 # Packages for Map Creation
 library(sf)
@@ -21,7 +20,14 @@ library(leaflet)
 # Packages for Table Creation
 #library(DT)
 
+# Package for Excel Data Creation
+library(openxlsx)
+
 install_psrc_fonts()
+
+
+# Run Modules Files ---------------------------------------------------------------------------
+# TBD
 
 # Inputs ---------------------------------------------------------------
 base_year <- "2005"
@@ -274,44 +280,44 @@ max_min_transit_years <- as.character(as.integer(min_transit_years)+5)
 transit_years <- data %>% filter(metric=="Mode to Work" & geography=="Region" & data_year>=max_min_transit_years) %>% select(data_year) %>% pull() %>% unique()
 
 # Text Data ---------------------------------------------------------------
-growth_overview_1 <- paste("The region's vision for 2050 is to provide exceptional quality of life, opportunity for all, ",
+growth_overview_1 <- paste("The region's vision for 2050 is to provide exceptional quality of life, opportunity for all,",
                            "connected communities, a spectacular natural environment, and an innovative, thriving economy.")
 
-growth_overview_2 <- paste("Over the next 30 years, the central Puget Sound region will add another million and a half people, ",
-                           "reaching a population of 5.8 million. How can we ensure that all residents benefit from the region’s ",
-                           "thriving communities, strong economy and healthy environment as population grows? ",
+growth_overview_2 <- paste("Over the next 30 years, the central Puget Sound region will add another million and a half people,",
+                           "reaching a population of 5.8 million. How can we ensure that all residents benefit from the region’s",
+                           "thriving communities, strong economy and healthy environment as population grows?",
                            "Local counties, cities, Tribes and other partners have worked together with PSRC to develop VISION 2050.")
 
-growth_overview_3 <- paste("VISION 2050’s multicounty planning policies, actions, and regional growth strategy guide how and where ",
-                           "the region grows through 2050. The plan informs updates to the Regional Transportation Plan ",
-                           "and Regional Economic Strategy. VISION 2050 also sets the stage for updates to countywide planning ",
+growth_overview_3 <- paste("VISION 2050’s multicounty planning policies, actions, and regional growth strategy guide how and where",
+                           "the region grows through 2050. The plan informs updates to the Regional Transportation Plan",
+                           "and Regional Economic Strategy. VISION 2050 also sets the stage for updates to countywide planning",
                            "policies and local comprehensive plans done by cities and counties.")
 
-housing_overview_1 <-paste("The region is expected to grow by 830,000 households by the year 2050. ",
-                           "Meeting the housing needs of all households at a range of income levels is ",
-                           "integral to creating a region that is livable for all residents, economically ",
+housing_overview_1 <-paste("The region is expected to grow by 830,000 households by the year 2050.",
+                           "Meeting the housing needs of all households at a range of income levels is",
+                           "integral to creating a region that is livable for all residents, economically",
                            "prosperous and environmentally sustainable.")
 
-housing_overview_2 <-paste("By providing data, guidance, and technical assistance, ",
-                           "PSRC supports jurisdictions in their efforts to adopt best ",
+housing_overview_2 <-paste("By providing data, guidance, and technical assistance,",
+                           "PSRC supports jurisdictions in their efforts to adopt best",
                            "housing practices and establish coordinated local housing and affordable housing targets.")
 
-safety_caption <- paste0("Safety impacts every aspect of the transportation system, covering all modes and encompassing a ",
-                         "variety of attributes from facility design to security to personal behavior. The Federal Highway ",
-                         "Administration (FHWA) refers to the Four E’s of safety: engineering, enforcement, education and ",
-                         "emergency medical services. Many organizations and jurisdictions have implemented programs ",
-                         "and projects aimed at improving safety and reducing deaths and serious injuries. All seek to ",
-                         "achieve the long-term goal of zero fatalities and serious injuries.")
+safety_caption <- paste("Safety impacts every aspect of the transportation system, covering all modes and encompassing a",
+                        "variety of attributes from facility design to security to personal behavior. The Federal Highway",
+                        "Administration (FHWA) refers to the Four E’s of safety: engineering, enforcement, education and",
+                        "emergency medical services. Many organizations and jurisdictions have implemented programs",
+                        "and projects aimed at improving safety and reducing deaths and serious injuries. All seek to",
+                        "achieve the long-term goal of zero fatalities and serious injuries.")
 
-fatal_trends_caption <- paste0("The total number of crashes that resulted in fatalities in the ",
-                               "Puget Sound region between ",
-                               safety_min_year,
-                               " and ",
-                               safety_max_year,
-                               " are shown below. After a decrease in the early part of the decade, there was a ",
-                               "significant increase between 2013 and 2016, followed by a leveling-out through ",
-                               safety_max_year,
-                               ".")
+fatal_trends_caption <- paste("The total number of crashes that resulted in fatalities in the",
+                              "Puget Sound region between",
+                              safety_min_year,
+                              "and",
+                              safety_max_year,
+                              "are shown below. After a decrease in the early part of the decade, there was a",
+                              "significant increase between 2013 and 2016, followed by a leveling-out through",
+                              safety_max_year,
+                              ".")
 
 pop_vision_caption <- paste0("In VISION 2050 forecasts, the population in ",
                              current_population_year, 

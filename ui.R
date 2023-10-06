@@ -17,7 +17,7 @@ shinyUI(
                            .navbar {min-height:25px !important;}'))
              ),
     
-             windowTitle = "Alpha Testing of PSRC RTP Dashboard", 
+             windowTitle = "Post-Alpha Testing of PSRC RTP Dashboard", 
              theme = "styles.css",
              position = "fixed-top",
              
