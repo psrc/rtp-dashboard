@@ -20,6 +20,7 @@ climate_overview_server <- function(id) {
     
     output$climate_text_4 <- renderText({climate_overview_4})
     
+    # Overview UI
     output$climateoverview <- renderUI({
       tagList(
         # Climate Overview
