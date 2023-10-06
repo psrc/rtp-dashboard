@@ -67,14 +67,17 @@ climate_zev_server <- function(id) {
     # Tab layout
     output$climatezev <- renderUI({
       tagList(
-        # Zero Emission Vehicles
         h1("New Vehicle Registrations in the PSRC Region"),
         textOutput(ns("regional_ev_text")),
         br(),
+        
+        # Share of registrations
         strong(tags$div(class="chart_title","Share of New Vehicle Registrations")),
         fluidRow(column(12,plotlyOutput(ns("ev_share_new_registrations_chart")))),
         tags$div(class="chart_source","Source: WA State Open Data Portal, King, Kitsap, Pierce & Snohomish counties"),
         hr(style = "border-top: 1px solid #000000;"),
+        
+        #  Zipcode
         h1("New Vehicle Registrations by Zipcode"),
         textOutput(ns("zipcode_ev_text")),
         fluidRow(column(12,leafletOutput(ns("ev_zipcode_map")))),
@@ -131,9 +134,10 @@ climate_vmt_server <- function(id) {
     # Tab layout
     output$climatezev <- renderUI({
       tagList(
-        # Vehicle Miles Traveled
         tags$div(class="page_goals","RTP Outcome: 25% Reduction in VMT per Capita by 2050"),
         br(),
+        
+        # Regional VMT
         h1("Regional Vehicle Miles Traveled"),
         textOutput(ns("regional_vmt_text")),
         br(),
@@ -145,6 +149,8 @@ climate_vmt_server <- function(id) {
                  column(6,tags$div(class="chart_source","Source: WSDOT HPMS, OFM and SoundCast Model"))),
         br(),
         hr(style = "border-top: 1px solid #000000;"),
+        
+        # County VMT
         h1("Vehicle Miles Traveled by County"),
         textOutput(ns("county_vmt_text")),
         br(),
@@ -153,6 +159,8 @@ climate_vmt_server <- function(id) {
         tags$div(class="chart_source","Source: WSDOT HPMS"),
         br(),
         hr(style = "border-top: 1px solid #000000;"),
+        
+        # VKT
         h1("Vehicle Kilometers Traveled Comparison"),
         textOutput(ns("vkt_text")),
         br(),
