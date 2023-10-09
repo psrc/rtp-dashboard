@@ -1,5 +1,13 @@
-# Define server logic required to draw a histogram
+# Define server logic
 shinyServer(function(input, output) {
+  
+  # Modules
+  footer_server('psrcfooter')
+  
+  banner_server('overviewBanner', 
+                banner_title = "RTP Performance Dashboard", 
+                banner_subtitle = "Planning for 2050",
+                banner_url = "https://www.psrc.org/planning-2050")
   
   output$growth_text_1 <- renderText({growth_overview_1})
   

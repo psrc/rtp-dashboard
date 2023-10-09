@@ -23,11 +23,9 @@ library(leaflet)
 # Package for Excel Data Creation
 library(openxlsx)
 
-install_psrc_fonts()
-
-
 # Run Modules Files ---------------------------------------------------------------------------
-# TBD
+module_files <- list.files('modules', full.names = TRUE)
+sapply(module_files, source)
 
 # Inputs ---------------------------------------------------------------
 base_year <- "2005"

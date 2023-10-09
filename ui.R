@@ -23,15 +23,7 @@ shinyUI(
              
              tabPanel(title="Overview",
                       value="Main-Summary",
-                      fluidRow(column(4, style='padding-left:50px; padding-right:0px;',
-                                      div(img(src="street-intersection.jpeg", width = "100%", height = "100%", style = "padding-top: 0px; border-radius:0 0 30px 0;", alt = "Street Intersection with housing building in the background"))),
-                               column(8, style='padding-left:0px; padding-right:50px;',
-                                      bs4Jumbotron(
-                                        title = strong(tags$div(class="mainpage_title","RTP Performance Dashboard")),
-                                        status = "success",
-                                        btnName = strong(tags$div(class="mainpage_subtitle","Planning for 2050")),
-                                        href = "https://www.psrc.org/planning-2050"))
-                               ), # end of first row for main overview page
+                      banner_ui('overviewBanner'),
                       fluidRow(column(4, style='padding-left:75px; padding-right:75px;',
                                       hr(),
                                       strong(tags$div(class="sidebar_heading","Regional Transportation Plan")),
@@ -1136,18 +1128,7 @@ shinyUI(
                         
              ),# End of Nav Bar Menu for Transit
     
-    tags$footer(bs4Jumbotron(
-      title = strong(tags$div(class="footer_title","About PSRC")),
-      lead = tags$div(class="footer_mission","PSRC’s mission is to ensure a thriving central Puget Sound, now and into the future, 
-      through planning for regional transportation, growth management and economic development."),
-      tags$a(class = "footer_url", href="https://www.facebook.com/PugetSoundRegionalCouncil", icon("facebook"), target="_blank"),
-      tags$a(class = "footer_url", href="https://twitter.com/SoundRegion", icon("twitter"), target="_blank"),
-      tags$a(class = "footer_url", href="https://www.instagram.com/soundregion/", icon("instagram"), target="_blank"),
-      tags$a(class = "footer_url", href="https://www.linkedin.com/company/soundregion", icon("linkedin"), target="_blank"),
-      status = "info",
-      btnName = strong(tags$div(class="footer_title","Connect with PSRC", icon("envelope"))),
-      href = "mailto:info@psrc.org?"
-      )),
+    tags$footer(footer_ui('psrcfooter'))
     
              ) # End of NavBar Page
   ) # End of Shiny App
