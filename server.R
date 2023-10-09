@@ -9,6 +9,9 @@ shinyServer(function(input, output) {
                 banner_subtitle = "Planning for 2050",
                 banner_url = "https://www.psrc.org/planning-2050")
   
+  left_panel_server('leftOverview', page_nm = "Overview")
+  
+  
   output$growth_text_1 <- renderText({growth_overview_1})
   
   output$growth_text_2 <- renderText({growth_overview_2})

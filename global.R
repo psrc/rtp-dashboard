@@ -26,6 +26,10 @@ library(openxlsx)
 # Run Modules Files ---------------------------------------------------------------------------
 module_files <- list.files('modules', full.names = TRUE)
 sapply(module_files, source)
+source("functions.R")
+
+# Page Information --------------------------------------------------------
+left_panel_info <- read_csv("data/left_panel_information.csv", show_col_types = FALSE)
 
 # Inputs ---------------------------------------------------------------
 base_year <- "2005"

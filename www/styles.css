@@ -50,10 +50,20 @@ i {
   padding-right: 10px;
 }
 
+.well {
+  background-color: #F2F2F2;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
 .jumbotron.bg-success{
   background-color: #005753;
-  padding-top: 50px;
+  padding-top: 25px;
   padding-bottom: 10px;
+  padding-left: 50px;
+  padding-right: 50px;
   border-radius: 0px;
 }
 
@@ -62,7 +72,25 @@ i {
   padding-top: 50px;
   padding-bottom: 10px;
   border-radius: 0px;
+  width: 100%;
 }
+
+.jumbotron.bg-primary{
+  background-color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 0px;
+  width: 100%;
+}
+
+.my-4{
+  border-top: 1px;
+  color: white;
+}
+  
+
 
 .card.bg-success{
   background-color: #005753;
@@ -74,7 +102,19 @@ i {
 .source_url {
   color: #00716C;
   font-family: "Poppins";
-  font-size: 14pt;
+  font-size: 12pt;
+}
+
+.sidebar_phone {
+  color: #00716C;
+  font-family: "Poppins";
+  font-size: 12pt;
+}
+
+.sidebar_email {
+  color: #00716C;
+  font-family: "Poppins";
+  font-size: 12pt;
 }
 
 .logo_url {
