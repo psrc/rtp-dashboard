@@ -4,12 +4,24 @@ shinyServer(function(input, output) {
   # Modules
   footer_server('psrcfooter')
   
+  # Main Overview Page
   banner_server('overviewBanner', 
                 banner_title = "RTP Performance Dashboard", 
                 banner_subtitle = "Planning for 2050",
                 banner_url = "https://www.psrc.org/planning-2050")
   
   left_panel_server('leftOverview', page_nm = "Overview")
+  
+  # Climate Page
+  banner_server('climateBanner', 
+                banner_title = "Addressing Climate Change", 
+                banner_subtitle = "Regional Transportation Plan",
+                banner_url = "https://www.psrc.org/planning-2050/regional-transportation-plan")
+  
+  left_panel_server('leftClimate', page_nm = "Climate")
+  climate_overview_server('climateOverview')
+  climate_zev_server('ZEVclimate')
+  climate_vmt_server('VMTclimate')
   
   
   output$growth_text_1 <- renderText({growth_overview_1})

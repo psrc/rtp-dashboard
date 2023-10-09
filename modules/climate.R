@@ -133,7 +133,7 @@ climate_vmt_server <- function(id) {
                                                                        est="number", dec=0, color='pgnobgy_10') %>% layout(showlegend = FALSE)})
     
     # Tab layout
-    output$climatezev <- renderUI({
+    output$climatevmt <- renderUI({
       tagList(
         tags$div(class="page_goals","RTP Outcome: 25% Reduction in VMT per Capita by 2050"),
         br(),

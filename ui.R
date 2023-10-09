@@ -22,7 +22,7 @@ shinyUI(
              position = "fixed-top",
              
              tabPanel(title="Overview",
-                      value="Main-Summary",
+                      value="Overview-Page",
                       banner_ui('overviewBanner'),
                       fluidRow(column(4, style='padding-left:25px; padding-right:0px;', left_panel_ui('leftOverview')),
                                column(8, style='padding-left:25px; padding-right:50px;',
@@ -37,181 +37,22 @@ shinyUI(
                       ) # end of second fluid row for main overview page
                       ), # end of tabpanel for Overview
              
-             navbarMenu("Climate", 
-                        tabPanel(title="Overview",
-                                 value = "Climate-Overview",
-                                 fluidRow(column(12, style='padding-left:50px; padding-right:50px;',
-                                                 bs4Jumbotron(
-                                                   title = strong(tags$div(class="mainpage_title","Addressing Climate Change")),
-                                                   status = "success",
-                                                   btnName = strong(tags$div(class="mainpage_subtitle","Regional Transportation Plan")),
-                                                   href = "https://www.psrc.org/planning-2050/regional-transportation-plan"))
-                                 ), # End of First Fluid Row for Fatal Collisions Tab
-                                 
-                                 fluidRow(column(4, style='padding-left:50px; padding-right:50px;',
-                                                 hr(),
-                                                 strong(tags$div(class="sidebar_heading","Climate Change Resources")),
-                                                 br(),
-                                                 tags$a(class = "source_url", href="https://pugetsoundrev.org/", "Puget Sound Regional Electric Vehicle Collaborative", target="_blank"),
-                                                 hr(style = "border-top: 1px solid #000000;"),
-                                                 tags$a(class = "source_url", href="https://www.psrc.org/sites/default/files/2022-03/electric-vehicle-guidance.pdf", "Electric Vehicle Infrastructure", target="_blank"),
-                                                 hr(style = "border-top: 1px solid #000000;"),
-                                                 tags$a(class = "source_url", href="https://pugetsoundclimate.org/", "Puget Sound Climate Preparedness Collaborative", target="_blank"),
-                                                 hr(style = "border-top: 1px solid #000000;"),
-                                                 tags$a(class = "source_url", href="https://ecology.wa.gov/Air-Climate/Climate-Commitment-Act", "Climate Commitment Act", target="_blank"),
-                                                 hr(style = "border-top: 1px solid #000000;"),
-                                                 div(img(src="climate-image.png", width = "100%", height = "100%", style = "padding-top: 0px; border-radius:30px 0 30px 0;", alt = "Glass and steel building in the background")),
-                                                 hr(),
-                                                 strong(tags$div(class="sidebar_heading","Connect With Us")),
-                                                 hr(),
-                                                 tags$div(class="sidebar_notes","Kelly McGourty:"),
-                                                 tags$div(class="sidebar_notes","Director of Transportation Planning"),
-                                                 br(),
-                                                 icon("envelope"), 
-                                                 tags$a(class = "source_url", href="mailto:kmcgourty@psrc.org?", "Email"),
-                                                 br(), br(),
-                                                 icon("phone-volume"), "206-971-3601",
-                                                 hr()                                 ),
-                                          column(8, style='padding-left:0px; padding-right:50px;',
-                                                 tags$div(class="page_goals","Goal: 80% below 1990 GHG Emissions by 2050"),
-                                                 br(),
-                                                 textOutput("climate_text_1"),
-                                                 br(),
-                                                 textOutput("climate_text_2"),
-                                                 br(),
-                                                 textOutput("climate_text_3"),
-                                                 br(), 
-                                                 textOutput("climate_text_4"),
-                                                 br(), 
-                                                 div(img(src="ghg-2050-emissions.png", width = "100%", height = "100%", style = "padding-top: 0px; border-radius:0px 0 0px 0;", alt = "Bar chart of Greenhouse Gas Emissions in 2050")),
-                                                 br(),
-                                                 hr()
-                                                 
-                                                 
-                                          )) # End of Main Panel Fluid Row for Climate Tab
-                        ), # End of Tab Panel for Climate Overview
-                        
-                        tabPanel(title="Zero Emission Vehicles",
-                                 value="Climate-ZEV",
-                                 fluidRow(column(12, style='padding-left:50px; padding-right:50px;',
-                                                 bs4Jumbotron(
-                                                   title = strong(tags$div(class="mainpage_title","Zero Emission Vehicle Registrations")),
-                                                   status = "success",
-                                                   btnName = strong(tags$div(class="mainpage_subtitle","Regional Transportation Plan")),
-                                                   href = "https://www.psrc.org/planning-2050/regional-transportation-plan"))
-                                 ), # End of First Fluid Row for Fatal Collisions Tab
-                                 
-                                 fluidRow(column(4, style='padding-left:50px; padding-right:50px;',
-                                                 hr(),
-                                                 strong(tags$div(class="sidebar_heading","Climate Change Resources")),
-                                                 br(),
-                                                 tags$a(class = "source_url", href="https://pugetsoundrev.org/", "Puget Sound Regional Electric Vehicle Collaborative", target="_blank"),
-                                                 hr(style = "border-top: 1px solid #000000;"),
-                                                 tags$a(class = "source_url", href="https://www.psrc.org/sites/default/files/2022-03/electric-vehicle-guidance.pdf", "Electric Vehicle Infrastructure", target="_blank"),
-                                                 hr(style = "border-top: 1px solid #000000;"),
-                                                 tags$a(class = "source_url", href="https://pugetsoundclimate.org/", "Puget Sound Climate Preparedness Collaborative", target="_blank"),
-                                                 hr(style = "border-top: 1px solid #000000;"),
-                                                 tags$a(class = "source_url", href="https://ecology.wa.gov/Air-Climate/Climate-Commitment-Act", "Climate Commitment Act", target="_blank"),
-                                                 hr(style = "border-top: 1px solid #000000;"),
-                                                 div(img(src="climate-image.png", width = "100%", height = "100%", style = "padding-top: 0px; border-radius:30px 0 30px 0;", alt = "Glass and steel building in the background")),
-                                                 hr(),
-                                                 strong(tags$div(class="sidebar_heading","Connect With Us")),
-                                                 hr(),
-                                                 tags$div(class="sidebar_notes","Kelly McGourty:"),
-                                                 tags$div(class="sidebar_notes","Director of Transportation Planning"),
-                                                 br(),
-                                                 icon("envelope"), 
-                                                 tags$a(class = "source_url", href="mailto:kmcgourty@psrc.org?", "Email"),
-                                                 br(), br(),
-                                                 icon("phone-volume"), "206-971-3601",
-                                                 hr()                                 ),
-                                          column(8, style='padding-left:0px; padding-right:50px;',
-                                                 h1("New Vehicle Registrations in the PSRC Region"),
-                                                 textOutput("regional_ev_text"),
-                                                 br(),
-                                                 strong(tags$div(class="chart_title","Share of New Vehicle Registrations")),
-                                                 fluidRow(column(12,plotlyOutput("ev_share_new_registrations_chart"))),
-                                                 tags$div(class="chart_source","Source: WA State Open Data Portal, King, Kitsap, Pierce & Snohomish counties"),
-                                                 hr(),
-                                                 h1("New Vehicle Registrations by Zipcode"),
-                                                 textOutput("zipcode_ev_text"),
-                                                 fluidRow(column(12,leafletOutput("ev_zipcode_map"))),
-                                                 br(), br(),
-                                                 br(), br(),
-                                                 hr()
-                                                 
-                                                 
-                                          )) # End of Main Panel Fluid Row for Climate Tab
-                        ), # End of Tab Panel for Climate ZEV
-                        
-                        tabPanel(title="Vehicle Miles Traveled",
-                                 value="Climate-VMT",
-                                 fluidRow(column(12, style='padding-left:50px; padding-right:50px;',
-                                                 bs4Jumbotron(
-                                                   title = strong(tags$div(class="mainpage_title","Vehicle Miles Traveled")),
-                                                   status = "success",
-                                                   btnName = strong(tags$div(class="mainpage_subtitle","Regional Transportation Plan")),
-                                                   href = "https://www.psrc.org/planning-2050/regional-transportation-plan"))
-                                 ), # End of First Fluid Row for Fatal Collisions Tab
-                                 
-                                 fluidRow(column(4, style='padding-left:50px; padding-right:50px;',
-                                                 hr(),
-                                                 strong(tags$div(class="sidebar_heading","Climate Change Resources")),
-                                                 br(),
-                                                 tags$a(class = "source_url", href="https://pugetsoundrev.org/", "Puget Sound Regional Electric Vehicle Collaborative", target="_blank"),
-                                                 hr(style = "border-top: 1px solid #000000;"),
-                                                 tags$a(class = "source_url", href="https://www.psrc.org/sites/default/files/2022-03/electric-vehicle-guidance.pdf", "Electric Vehicle Infrastructure", target="_blank"),
-                                                 hr(style = "border-top: 1px solid #000000;"),
-                                                 tags$a(class = "source_url", href="https://pugetsoundclimate.org/", "Puget Sound Climate Preparedness Collaborative", target="_blank"),
-                                                 hr(style = "border-top: 1px solid #000000;"),
-                                                 tags$a(class = "source_url", href="https://ecology.wa.gov/Air-Climate/Climate-Commitment-Act", "Climate Commitment Act", target="_blank"),
-                                                 hr(style = "border-top: 1px solid #000000;"),
-                                                 div(img(src="climate-image.png", width = "100%", height = "100%", style = "padding-top: 0px; border-radius:30px 0 30px 0;", alt = "Glass and steel building in the background")),
-                                                 hr(),
-                                                 strong(tags$div(class="sidebar_heading","Connect With Us")),
-                                                 hr(),
-                                                 tags$div(class="sidebar_notes","Kris Overby:"),
-                                                 tags$div(class="sidebar_notes","Senior Modeler"),
-                                                 br(),
-                                                 icon("envelope"), 
-                                                 tags$a(class = "source_url", href="mailto:koverby@psrc.org?", "Email"),
-                                                 br(), br(),
-                                                 icon("phone-volume"), "206-464-6661",
-                                                 hr()                                 ),
-                                          column(8, style='padding-left:0px; padding-right:50px;',
-                                                 tags$div(class="page_goals","RTP Outcome: 25% Reduction in VMT per Capita by 2050"),
-                                                 br(),
-                                                 h1("Regional Vehicle Miles Traveled"),
-                                                 textOutput("regional_vmt_text"),
-                                                 br(),
-                                                 fluidRow(column(6,strong(tags$div(class="chart_title","Daily Regional Vehicle Miles Traveled"))),
-                                                          column(6,strong(tags$div(class="chart_title","Daily Regional VMT per Capita")))),
-                                                 fluidRow(column(6,plotlyOutput("chart_total_vmt")),
-                                                          column(6,plotlyOutput("chart_per_capita_vmt"))),
-                                                 fluidRow(column(6,tags$div(class="chart_source","Source: WSDOT HPMS, SoundCast Model")),
-                                                          column(6,tags$div(class="chart_source","Source: WSDOT HPMS, OFM and SoundCast Model"))),
-                                                 br(), 
-                                                 h1("Vehicle Miles Traveled by County"),
-                                                 textOutput("county_vmt_text"),
-                                                 br(),
-                                                 strong(tags$div(class="chart_title","Daily Vehicle Miles Traveled by County")),
-                                                 fluidRow(column(12,plotOutput("chart_total_vmt_county"))),
-                                                 tags$div(class="chart_source","Source: WSDOT HPMS"),
-                                                 br(), 
-                                                 h1("Vehicle Kilometers Traveled Comparison"),
-                                                 textOutput("vkt_text"),
-                                                 br(),
-                                                 strong(tags$div(class="chart_title","Annual Vehicle Kilometers Traveled per Capita")),
-                                                 fluidRow(column(12,plotlyOutput("chart_vkt_per_capita"))),
-                                                 tags$div(class="chart_source","Source: WSDOT HPMS, SoundCast, "),
-                                                 br(),
-                                                 hr()
-                                                 
-                                                 
-                                          )) # End of Main Panel Fluid Row for Climate Tab
-                        ), # End of Tab Panel for Climate VMT
-                        
-             ),# End of Nav Bar Menu for Climate
+            tabPanel("Climate", 
+                     value="Climate-Page",
+                     banner_ui('climateBanner'),
+                     
+                     fluidRow(column(4, style='padding-left:25px; padding-right:0px;', left_panel_ui('leftClimate')),
+                              column(8, style='padding-left:25px; padding-right:50px;', 
+                                     
+                                     # Climate Overview
+                                     climate_overview_ui('climateOverview'),
+                                     
+                                     tabsetPanel(type = "tabs",
+                                                 tabPanel("Zero Emission Vehicles", climate_zev_ui('ZEVclimate')),
+                                                 tabPanel("Vehicle Miles Traveled", climate_vmt_ui('VMTclimate')))
+                                     ), # End of Main Panel for Climate
+                              ) # End of Main Panel Fluid Row for Climate Tab
+                        ), # End of Tab Panel for Climate
              
              navbarMenu(HTML("People,<br/>Housing & Jobs"), 
                         
