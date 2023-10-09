@@ -20,6 +20,14 @@ left_panel_server <- function(id, page_nm) {
     contact_phone <- page_information(tbl=left_panel_info, page_name=page_nm, page_info = "contact_phone")
     contact_email <- page_information(tbl=left_panel_info, page_name=page_nm, page_info = "contact_email")
     panel_photo <- page_information(tbl=left_panel_info, page_name=page_nm, page_info = "image")
+    link1_html <- page_information(tbl=left_panel_info, page_name=page_nm, page_info = "link1_html")
+    link1_text <- page_information(tbl=left_panel_info, page_name=page_nm, page_info = "link1_title")
+    link2_html <- page_information(tbl=left_panel_info, page_name=page_nm, page_info = "link2_html")
+    link2_text <- page_information(tbl=left_panel_info, page_name=page_nm, page_info = "link2_title")
+    link3_html <- page_information(tbl=left_panel_info, page_name=page_nm, page_info = "link3_html")
+    link3_text <- page_information(tbl=left_panel_info, page_name=page_nm, page_info = "link3_title")
+    link4_html <- page_information(tbl=left_panel_info, page_name=page_nm, page_info = "link4_html")
+    link4_text <- page_information(tbl=left_panel_info, page_name=page_nm, page_info = "link4_title")
 
     # Tab layout
     output$aleftpanel <- renderUI({
@@ -27,16 +35,15 @@ left_panel_server <- function(id, page_nm) {
       tagList(
         
         hr(),
-        
         strong(tags$div(class="source_url","Regional Transportation Plan")),
-        br(),
-        tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-transportation-plan/projects-and-approval", "Projects and Approval", target="_blank"),
         hr(style = "border-top: 1px solid #000000;"),
-        tags$a(class = "source_url", href="https://www.psrc.org/coordinated-mobility-plan", "Coordinated Mobility Plan", target="_blank"),
+        tags$a(class = "source_url", href=link1_html, link1_text, target="_blank"),
         hr(style = "border-top: 1px solid #000000;"),
-        tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-transportation-plan/data-research-and-policy-briefs", "Data, Research and Policy Briefs", target="_blank"),
+        tags$a(class = "source_url", href=link2_html, link2_text, target="_blank"),
         hr(style = "border-top: 1px solid #000000;"),
-        tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-transportation-plan/transportation-system-visualization-tool", "Transportation System Visualization Tool", target="_blank"),
+        tags$a(class = "source_url", href=link3_html, link3_text, target="_blank"),
+        hr(style = "border-top: 1px solid #000000;"),
+        tags$a(class = "source_url", href=link4_html, link4_text, target="_blank"),
         
         hr(style = "border-top: 1px solid #000000;"),
         div(img(src=panel_photo, width = "100%", height = "100%", style = "padding-top: 0px; border-radius:30px 0 30px 0;", alt = "Misc Picture")),
