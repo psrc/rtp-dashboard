@@ -23,6 +23,20 @@ shinyServer(function(input, output) {
   climate_zev_server('ZEVclimate')
   climate_vmt_server('VMTclimate')
   
+  # Growth Page
+  banner_server('growthBanner', 
+                banner_title = "Planning for Growth", 
+                banner_subtitle = "VISION 2050",
+                banner_url = "https://www.psrc.org/planning-2050/vision-2050")
+  
+  left_panel_server('leftGrowth', page_nm = "Growth")
+  growth_overview_server('growthOverview')
+  population_server('Populationgrowth')
+  housing_server('Housinggrowth')
+  jobs_server('Jobsgrowth')
+  
+  
+
   
   output$growth_text_1 <- renderText({growth_overview_1})
   
