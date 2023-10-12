@@ -46,6 +46,18 @@ shinyServer(function(input, output) {
   fatal_server('Fatalsafety')
   serious_server('Serioussafety')
   
+  # Modes
+  banner_server('modeBanner', 
+                banner_title = "Alternative Modes of Transportation", 
+                banner_subtitle = "Regional Transportation Plan",
+                banner_url = "https://www.psrc.org/planning-2050/regional-transportation-plan")
+  
+  left_panel_server('leftMode', page_nm = "Modes")
+  mode_overview_server('modeOverview')
+  walk_server('Walkmode')
+  bike_server('Bikemode')
+  telework_server('WFHmode')
+  
 
   
 
@@ -162,21 +174,6 @@ shinyServer(function(input, output) {
                                                                                                     x='share', y='low_high', fill='variable',
                                                                                                     est="percent", dec=0, color='gnbopgy_5')})
     
-    output$commute_mode_walk_est_chart <- renderPlotly({interactive_column_chart(t=data %>% filter(metric=="Simplified Commute Mode" & geography_type=="County" & variable=="Walked"),
-                                                                                 y='estimate', x='geography', moe="estimate_moe", fill='data_year', pos = "dodge",
-                                                                                 est="number", color='pgnobgy_10')})
-    
-    output$commute_mode_walk_share_chart <- renderPlotly({interactive_column_chart(t=data %>% filter(metric=="Simplified Commute Mode" & geography_type=="County" & variable=="Walked"),
-                                                                                   y='share', x='geography', moe="share_moe", fill='data_year', pos = "dodge",
-                                                                                   est="percent", dec=1, color='pgnobgy_10')})
-    
-    output$commute_mode_bike_est_chart <- renderPlotly({interactive_column_chart(t=data %>% filter(metric=="Simplified Commute Mode" & geography_type=="County" & variable=="Bicycle"),
-                                                                                 y='estimate', x='geography', moe="estimate_moe", fill='data_year', pos = "dodge",
-                                                                                 est="number", color='pgnobgy_10')})
-    
-    output$commute_mode_bike_share_chart <- renderPlotly({interactive_column_chart(t=data %>% filter(metric=="Simplified Commute Mode" & geography_type=="County" & variable=="Bicycle"),
-                                                                                   y='share', x='geography', moe="share_moe", fill='data_year', pos = "dodge",
-                                                                                   est="percent", dec=1, color='pgnobgy_10')})
-    
+   
 })    
 
