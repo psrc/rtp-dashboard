@@ -36,6 +36,7 @@ base_year <- "2005"
 pre_covid <- "2019"
 current_population_year <- "2022"
 current_jobs_year <- "2021"
+current_census_year <- "2021"
 current_vmt_year <- 2021
 
 wgs84 <- 4326

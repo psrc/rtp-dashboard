@@ -216,30 +216,30 @@ modeshare_server <- function(id) {
                                                                                 y='share', x='data_year', fill='data_year',
                                                                                 est="percent", dec=0, color='obgnpgy_10')})
     
-    output$transit_ms_race_today_text <- renderText({paste0("Transit to Work: ",as.character(as.integer(input$Transit_Race_MS_Year)))})
+    output$transit_ms_race_today_text <- renderText({paste0("Transit to Work: ",as.character(as.integer(current_census_year)))})
     
     
-    output$transit_ms_race_chart_today <- renderPlotly({interactive_column_chart(t=data %>% filter(metric=="Simplified Commute Mode" & variable=="Transit" & geography_type=="PSRC Region Race & Ethnicity" & data_year==input$Transit_Race_MS_Year) %>% 
+    output$transit_ms_race_chart_today <- renderPlotly({interactive_column_chart(t=data %>% filter(metric=="Simplified Commute Mode" & variable=="Transit" & geography_type=="PSRC Region Race & Ethnicity" & data_year==current_census_year) %>% 
                                                                                    mutate(grouping = gsub(" alone","", grouping)) %>%
                                                                                    mutate(low_high=forcats::fct_reorder(grouping, -share)),
                                                                                  y='share', x='low_high', fill='variable', moe='share_moe',
                                                                                  est="percent", dec=0, color='blues_dec')})
     
-    output$transit_ms_city_chart <- renderPlotly({interactive_bar_chart(t=data %>% filter(metric=="Mode to Work" & geography_type=="City" & variable=="Public transportation" & data_year==input$Transit_MS_Year) %>% 
+    output$transit_ms_city_chart <- renderPlotly({interactive_bar_chart(t=data %>% filter(metric=="Mode to Work" & geography_type=="City" & variable=="Public transportation" & data_year==current_census_year) %>% 
                                                                           mutate(low_high=forcats::fct_reorder(geography, -share)),
                                                                         x='share', y='low_high', fill='variable',
                                                                         est="percent", dec=0, color='pognbgy_5')})
     
-    output$transit_ms_mpo_pre_text <- renderText({paste0("Transit to Work: ",as.character(as.integer(input$Transit_MPO_MS_Year)-5))})
+    output$transit_ms_mpo_pre_text <- renderText({paste0("Transit to Work: ",as.character(as.integer(current_census_year)-5))})
     
-    output$transit_ms_mpo_today_text <- renderText({paste0("Transit to Work: ",as.character(as.integer(input$Transit_MPO_MS_Year)))})
+    output$transit_ms_mpo_today_text <- renderText({paste0("Transit to Work: ",as.character(as.integer(current_census_year)))})
     
-    output$transit_ms_mpo_chart_today <- renderPlotly({interactive_bar_chart(t=data %>% filter(metric=="Mode to Work" & geography_type=="Metro Regions" & variable=="Public transportation" & data_year==input$Transit_MPO_MS_Year) %>% 
+    output$transit_ms_mpo_chart_today <- renderPlotly({interactive_bar_chart(t=data %>% filter(metric=="Mode to Work" & geography_type=="Metro Regions" & variable=="Public transportation" & data_year==current_census_year) %>% 
                                                                                mutate(low_high=forcats::fct_reorder(geography, -share)),
                                                                              x='share', y='low_high', fill='variable',
                                                                              est="percent", dec=0, color='gnbopgy_5')})
     
-    output$transit_ms_mpo_chart_pre <- renderPlotly({interactive_bar_chart(t=data %>% filter(metric=="Mode to Work" & geography_type=="Metro Regions" & variable=="Public transportation" & data_year==as.character(as.integer(input$Transit_MPO_MS_Year)-5)) %>% 
+    output$transit_ms_mpo_chart_pre <- renderPlotly({interactive_bar_chart(t=data %>% filter(metric=="Mode to Work" & geography_type=="Metro Regions" & variable=="Public transportation" & data_year==as.character(as.integer(current_census_year)-5)) %>% 
                                                                              mutate(low_high=forcats::fct_reorder(geography, -share)),
                                                                            x='share', y='low_high', fill='variable',
                                                                            est="percent", dec=0, color='obgnpgy_5')})
@@ -275,8 +275,6 @@ modeshare_server <- function(id) {
         # Mode Share by Race
         h1("Transit Mode Share to Work by Race/Ethnicity"),
         br(),
-        selectInput("Transit_Race_MS_Year","Select Latest Year:",list("Year" = transit_years), selected = "2021"),
-        br(),
         strong(tags$div(class="chart_title",textOutput(ns("transit_ms_race_today_text")))),
         fluidRow(column(12,plotlyOutput(ns("transit_ms_race_chart_today")))),
         tags$div(class="chart_source","Source: PUMS 5yr Data for King, Kitsap, Pierce and Snohomish counties"),
@@ -285,17 +283,13 @@ modeshare_server <- function(id) {
         # Mode Share by City
         h1("Transit Mode Share to Work by City"),
         br(),
-        selectInput("Transit_MS_Year","Select Year:",list("Year" = transit_years), selected = "2021"),
-        br(),
         strong(tags$div(class="chart_title","Transit Mode Share to Work by City")),
-        fluidRow(column(12,plotlyOutput(ns("transit_ms_city_chart", height = "800px")))),
+        fluidRow(column(12,plotlyOutput(ns("transit_ms_city_chart"), height = "800px"))),
         tags$div(class="chart_source","Source: ACS 5yr Data Table B08006 by Place in King, Kitsap, Pierce and Snohomish counties"),
         hr(),
         
         # Mode Share by Metro
         h1("Transit Mode Share to Work by Metropolitan Region"),
-        br(),
-        selectInput("Transit_MPO_MS_Year","Select Latest Year:",list("Year" = transit_years), selected = "2021"),
         br(),
         fluidRow(column(6,strong(tags$div(class="chart_title",textOutput(ns("transit_ms_mpo_pre_text"))))),
                  column(6,strong(tags$div(class="chart_title",textOutput(ns("transit_ms_mpo_today_text")))))),
