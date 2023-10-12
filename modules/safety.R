@@ -96,32 +96,32 @@ fatal_server <- function(id) {
         
         # Fatal - Region
         h1("Fatal Collisions in the PSRC Region"),
-        textOutput("safety_text"),
+        textOutput(ns("safety_text")),
         br(),
-        textOutput("region_fatal_text"),
+        textOutput(ns("region_fatal_text")),
         hr(),
         strong(tags$div(class="chart_title","Fatal Collisions in the PSRC Region")),
-        fluidRow(column(12,plotlyOutput("fatal_collisions_chart"))),
+        fluidRow(column(12,plotlyOutput(ns("fatal_collisions_chart")))),
         tags$div(class="chart_source","Source: USDOT FARS Data"),
         hr(style = "border-top: 1px solid #000000;"),
         
         # Fatal - County
         h1("Fatal Collisions by County in the PSRC Region"),
-        textOutput("fatal_county_text"),
+        textOutput(ns("fatal_county_text")),
         br(),
         strong(tags$div(class="chart_title","Fatal Collisions by County")),
-        fluidRow(column(12,plotOutput("county_fatal_collisions_chart"))),
+        fluidRow(column(12,plotOutput(ns("county_fatal_collisions_chart")))),
         tags$div(class="chart_source","Source: USDOT FARS Data"),
         hr(style = "border-top: 1px solid #000000;"),
         
         # Fatal - MPO
         h1("Fatal Collisions by Metropolitan Region"),
-        textOutput("fatal_mpo_text"),
+        textOutput(ns("fatal_mpo_text")),
         br(),
         fluidRow(column(6,strong(tags$div(class="chart_title",paste0("Annual Fatalities per 100,000 people: ",safety_min_year)))),
                  column(6,strong(tags$div(class="chart_title",paste0("Annual Fatalities per 100,000 people: ",safety_max_year))))),
-        fluidRow(column(6,plotlyOutput("mpo_fatal_rate_min_yr_chart")),
-                 column(6,plotlyOutput("mpo_fatal_rate_max_yr_chart"))),
+        fluidRow(column(6,plotlyOutput(ns("mpo_fatal_rate_min_yr_chart"))),
+                 column(6,plotlyOutput(ns("mpo_fatal_rate_max_yr_chart")))),
         fluidRow(column(6,tags$div(class="chart_source","Source: USDOT FARS Data")),
                  column(6,tags$div(class="chart_source","Source: USDOT FARS Data"))),
         hr(style = "border-top: 1px solid #000000;")

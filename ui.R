@@ -55,193 +55,33 @@ shinyUI(
                         ), # End of Tab Panel for Climate
              
             tabPanel(HTML("Growth"), 
-                     value="Growth-Overview",
+                     value="Growth-Page",
                      banner_ui('growthBanner'),
                      
                      fluidRow(column(4, style='padding-left:25px; padding-right:0px;', left_panel_ui('leftGrowth')),
-                                          column(8, style='padding-left:25px; padding-right:50px;',
-                                                 
-                                                 growth_overview_ui('growthOverview'),
-                                                 
-                                                 tabsetPanel(type = "tabs",
-                                                             tabPanel("Population", population_ui('Populationgrowth')),
-                                                             tabPanel("Housing", housing_ui('Housinggrowth')),
-                                                             tabPanel("Jobs", jobs_ui('Jobsgrowth')))
-                                                 ), # End of Main Panel for Growth
+                              column(8, style='padding-left:25px; padding-right:50px;',
+                                     growth_overview_ui('growthOverview'),
+                                     tabsetPanel(type = "tabs",
+                                                 tabPanel("Population", population_ui('Populationgrowth')),
+                                                 tabPanel("Housing", housing_ui('Housinggrowth')),
+                                                 tabPanel("Jobs", jobs_ui('Jobsgrowth')))
+                                     ), # End of Main Panel for Growth
                               ), # End of Main Panel Fluid Row for Growth Tab
-                        ),# End of Tab Panel for for People, Housing and Jobs
+                     ),# End of Tab Panel for Growth
              
-             navbarMenu("Safety", 
-                        
-                        tabPanel(title= "Overview",
-                                 value = "Safety-Overview",
-                                 fluidRow(column(12, style='padding-left:50px; padding-right:50px;',
-                                                 bs4Jumbotron(
-                                                   title = strong(tags$div(class="mainpage_title","Addressing Safety: Target Zero")),
-                                                   status = "success",
-                                                   btnName = strong(tags$div(class="mainpage_subtitle","Regional Transportation Plan")),
-                                                   href = "https://www.psrc.org/planning-2050/regional-transportation-plan"))
-                                 ), # End of First Fluid Row for Fatal Collisions Tab
-                                 
-                                 fluidRow(column(4, style='padding-left:50px; padding-right:50px;',
-                                                 hr(),
-                                                 strong(tags$div(class="sidebar_heading","Regional Transportation Plan")),
-                                                 br(),
-                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-transportation-plan/projects-and-approval", "Projects and Approval", target="_blank"),
-                                                 hr(style = "border-top: 1px solid #000000;"),
-                                                 tags$a(class = "source_url", href="https://www.psrc.org/coordinated-mobility-plan", "Coordinated Mobility Plan", target="_blank"),
-                                                 hr(style = "border-top: 1px solid #000000;"),
-                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-transportation-plan/data-research-and-policy-briefs", "Data, Research and Policy Briefs", target="_blank"),
-                                                 hr(style = "border-top: 1px solid #000000;"),
-                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-transportation-plan/transportation-system-visualization-tool", "Transportation System Visualization Tool", target="_blank"),
-                                                 hr(style = "border-top: 1px solid #000000;"),
-                                                 div(img(src="climate-image.png", width = "100%", height = "100%", style = "padding-top: 0px; border-radius:30px 0 30px 0;", alt = "Glass and steel building in the background")),
-                                                 hr(),
-                                                 strong(tags$div(class="sidebar_heading","Connect With Us")),
-                                                 hr(),
-                                                 tags$div(class="sidebar_notes","Gary Simonson:"),
-                                                 tags$div(class="sidebar_notes","Senior Planner"),
-                                                 br(),
-                                                 icon("envelope"), 
-                                                 tags$a(class = "source_url", href="mailto:gsimonson@psrc.org?", "Email"),
-                                                 br(), br(),
-                                                 icon("phone-volume"), "206-971-3276",
-                                                 hr()                                 ),
-                                          column(8, style='padding-left:0px; padding-right:50px;',
-                                                 tags$div(class="page_goals","Goal: Zero Fatal and Serious Injuries by 2030"),
-                                                 br(),
-                                                 textOutput("safety_text_1"),
-                                                 br(),
-                                                 textOutput("safety_text_2"),
-                                                 br(),
-                                                 textOutput("safety_text_3"),
-                                                 br(), 
-                                                 textOutput("safety_text_4"),
-                                                 br(), 
-                                                 textOutput("safety_text_5"),
-                                                 br(), 
-                                                 div(img(src="04_PR-Winter2022_Feature_SSA-Overview2.jpg", width = "50%", height = "50%", style = "padding-top: 0px; border-radius:0px 0 0px 0;", alt = "Bar chart of Greenhouse Gas Emissions in 2050")),
-                                                 br(),
-                                                 hr()
-                                                 
-                                                 
-                                          )) # End of Main Panel Fluid Row for Safety Tab
-                        ), # End of Tab Panel for Safety Overview
-                        
-                        tabPanel(title="Fatal Collisions",
-                                 value="Safety-Fatal",
-                                 fluidRow(column(12, style='padding-left:50px; padding-right:50px;',
-                                                 bs4Jumbotron(
-                                                   title = strong(tags$div(class="mainpage_title","Fatal Collisions")),
-                                                   status = "success",
-                                                   btnName = strong(tags$div(class="mainpage_subtitle","Regional Transportation Plan")),
-                                                   href = "https://www.psrc.org/planning-2050/regional-transportation-plan"))
-                                 ), # End of First Fluid Row for Fatal Collisions Tab
-                                 
-                                 fluidRow(column(4, style='padding-left:50px; padding-right:50px;',
-                                                 hr(),
-                                                 strong(tags$div(class="sidebar_heading","Regional Transportation Plan")),
-                                                 br(),
-                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-transportation-plan/projects-and-approval", "Projects and Approval", target="_blank"),
-                                                 hr(style = "border-top: 1px solid #000000;"),
-                                                 tags$a(class = "source_url", href="https://www.psrc.org/coordinated-mobility-plan", "Coordinated Mobility Plan", target="_blank"),
-                                                 hr(style = "border-top: 1px solid #000000;"),
-                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-transportation-plan/data-research-and-policy-briefs", "Data, Research and Policy Briefs", target="_blank"),
-                                                 hr(style = "border-top: 1px solid #000000;"),
-                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-transportation-plan/transportation-system-visualization-tool", "Transportation System Visualization Tool", target="_blank"),
-                                                 hr(style = "border-top: 1px solid #000000;"),
-                                                 div(img(src="canyon_road.png", width = "100%", height = "100%", style = "padding-top: 0px; border-radius:30px 0 30px 0;", alt = "Glass and steel building in the background")),
-                                                 hr(),
-                                                 strong(tags$div(class="sidebar_heading","Connect With Us")),
-                                                 hr(),
-                                                 tags$div(class="sidebar_notes","Gary Simonson:"),
-                                                 tags$div(class="sidebar_notes","Senior Planner"),
-                                                 br(),
-                                                 icon("envelope"), 
-                                                 tags$a(class = "source_url", href="mailto:gsimonson@psrc.org?", "Email"),
-                                                 br(), br(),
-                                                 icon("phone-volume"), "206-971-3276",
-                                                 hr()                                 ),
-                                 column(8, style='padding-left:0px; padding-right:50px;',
-                                        tags$div(class="page_goals","Goal: Zero Fatal Injuries by 2030"),
-                                        br(),
-                                        h1("Fatal Collisions in the PSRC Region"),
-                                        textOutput("safety_text"),
-                                        br(),
-                                        textOutput("region_fatal_text"),
-                                        hr(),
-                                        strong(tags$div(class="chart_title","Fatal Collisions in the PSRC Region")),
-                                        fluidRow(column(12,plotlyOutput("fatal_collisions_chart"))),
-                                        tags$div(class="chart_source","Source: USDOT FARS Data"),
-                                        hr(),
-                                        h1("Fatal Collisions by County in the PSRC Region"),
-                                        textOutput("fatal_county_text"),
-                                        br(),
-                                        strong(tags$div(class="chart_title","Fatal Collisions by County")),
-                                        fluidRow(column(12,plotOutput("county_fatal_collisions_chart"))),
-                                        tags$div(class="chart_source","Source: USDOT FARS Data"),
-                                        hr(),
-                                        h1("Fatal Collisions by Metropolitan Region"),
-                                        textOutput("fatal_mpo_text"),
-                                        br(),
-                                        fluidRow(column(6,strong(tags$div(class="chart_title",paste0("Annual Fatalities per 100,000 people: ",safety_min_year)))),
-                                                 column(6,strong(tags$div(class="chart_title",paste0("Annual Fatalities per 100,000 people: ",safety_max_year))))),
-                                        fluidRow(column(6,plotlyOutput("mpo_fatal_rate_min_yr_chart")),
-                                                 column(6,plotlyOutput("mpo_fatal_rate_max_yr_chart"))),
-                                        fluidRow(column(6,tags$div(class="chart_source","Source: USDOT FARS Data")),
-                                                 column(6,tags$div(class="chart_source","Source: USDOT FARS Data"))),
-                                        hr()
-                                        
-                                        
-                                 )) # End of Main Panel Fluid Row for Fatal Collisions Tab
-                        ), # End of Tab Panel for Fatal Collisions
-                        
-                        tabPanel(title="Serious Injury Collisions",
-                                 value="Safety-Serious",
-                                 fluidRow(column(12, style='padding-left:50px; padding-right:50px;',
-                                                 bs4Jumbotron(
-                                                   title = strong(tags$div(class="mainpage_title","Serious Injury Collisions")),
-                                                   status = "success",
-                                                   btnName = strong(tags$div(class="mainpage_subtitle","Regional Transportation Plan")),
-                                                   href = "https://www.psrc.org/planning-2050/regional-transportation-plan"))
-                                 ), # End of First Fluid Row for Fatal Collisions Tab
-                                 
-                                 fluidRow(column(4, style='padding-left:50px; padding-right:50px;',
-                                                 hr(),
-                                                 strong(tags$div(class="sidebar_heading","Regional Transportation Plan")),
-                                                 br(),
-                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-transportation-plan/projects-and-approval", "Projects and Approval", target="_blank"),
-                                                 hr(style = "border-top: 1px solid #000000;"),
-                                                 tags$a(class = "source_url", href="https://www.psrc.org/coordinated-mobility-plan", "Coordinated Mobility Plan", target="_blank"),
-                                                 hr(style = "border-top: 1px solid #000000;"),
-                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-transportation-plan/data-research-and-policy-briefs", "Data, Research and Policy Briefs", target="_blank"),
-                                                 hr(style = "border-top: 1px solid #000000;"),
-                                                 tags$a(class = "source_url", href="https://www.psrc.org/planning-2050/regional-transportation-plan/transportation-system-visualization-tool", "Transportation System Visualization Tool", target="_blank"),
-                                                 hr(style = "border-top: 1px solid #000000;"),
-                                                 div(img(src="canyon_road.png", width = "100%", height = "100%", style = "padding-top: 0px; border-radius:30px 0 30px 0;", alt = "Glass and steel building in the background")),
-                                                 hr(),
-                                                 strong(tags$div(class="sidebar_heading","Connect With Us")),
-                                                 hr(),
-                                                 tags$div(class="sidebar_notes","Gary Simonson:"),
-                                                 tags$div(class="sidebar_notes","Senior Planner"),
-                                                 br(),
-                                                 icon("envelope"), 
-                                                 tags$a(class = "source_url", href="mailto:gsimonson@psrc.org?", "Email"),
-                                                 br(), br(),
-                                                 icon("phone-volume"), "206-971-3276",
-                                                 hr()                                 ),
-                                          column(8, style='padding-left:0px; padding-right:50px;',
-                                                 tags$div(class="page_goals","Goal: Zero Serious Injuries by 2030"),
-                                                 br(),
-                                                 div(img(src="under-construction.png", width = "75%", height = "75%", style = "padding-top: 0px; border-radius:0px 0 0px 0;", alt = "Bar chart of Greenhouse Gas Emissions in 2050")),
-                                                 br(),
-                                                 hr()
-                                                 
-                                                 
-                                          )) # End of Main Panel Fluid Row for Serious Injury Collisions Tab
-                        ), # End of Tab Panel for Serious Injuries
-                        
-             ),# End of Nav Bar Menu for Safety
+             tabPanel("Safety", 
+                      value = "Safety-Page",
+                      banner_ui('safetyBanner'),
+                      
+                      fluidRow(column(4, style='padding-left:25px; padding-right:0px;', left_panel_ui('leftSafety')),
+                               column(8, style='padding-left:25px; padding-right:50px;',
+                                      safety_overview_ui('safetyOverview'),
+                                      tabsetPanel(type = "tabs",
+                                                  tabPanel("Traffic Deaths", fatal_ui('Fatalsafety')),
+                                                  tabPanel("Serious Injuries", serious_ui('Serioussafety')))
+                                      ), # End of Main Panel for Safety
+                               ), # End of Main Panel Fluid Row for Safety Tab
+                      ),# End of Tab Panel for Safety
     
     navbarMenu(HTML("Walk,<br/>Bike & Roll"), 
                
