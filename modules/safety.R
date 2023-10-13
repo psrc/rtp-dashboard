@@ -43,11 +43,9 @@ fatal_server <- function(id) {
     output$fatal_county <- renderText({page_information(tbl=page_text, page_name="Safety", page_section = "Fatal-County", page_info = "description")})
     output$fatal_mpo <- renderText({page_information(tbl=page_text, page_name="Safety", page_section = "Fatal-MPO", page_info = "description")})
 
-    output$fatal_collisions_chart <- renderPlotly({interactive_line_chart(t=data %>% filter(metric=="1yr Fatality Rate" & geography=="Seattle" & variable%in%c("Fatal Collisions","Fatalities")),
-                                                                          x='data_year', y='estimate', fill='variable', est="number",
-                                                                          lwidth = 2,
-                                                                          breaks = c("2010","2015","2020"),
-                                                                          color = "pgnobgy_5")})
+    output$fatal_collisions_chart <- renderEcharts4r({echart_line_chart(df=data %>% filter(metric=="1yr Fatality Rate" & geography=="Seattle" & variable%in%c("Fatalities per 100,000 People","Fatalities")),
+                                                                     x='data_year', y='estimate', fill='metric', tog = 'variable',
+                                                                     esttype="number", color = "jewel", dec = 0)})
     
     output$county_fatal_collisions_chart <- renderPlot({static_facet_column_chart(t=data %>% filter(metric=="1yr Fatality Rate" & geography_type=="PSRC Region" & variable%in%c("Fatal Collisions") & data_year>as.character(safety_max_year-5)), 
                                                                                   x="data_year", y="estimate", 
@@ -72,7 +70,7 @@ fatal_server <- function(id) {
         textOutput(ns("fatal_region")),
         hr(),
         strong(tags$div(class="chart_title","Fatal Collisions in the PSRC Region")),
-        fluidRow(column(12,plotlyOutput(ns("fatal_collisions_chart")))),
+        fluidRow(column(12,echarts4rOutput(ns("fatal_collisions_chart")))),
         tags$div(class="chart_source","Source: USDOT FARS Data"),
         hr(style = "border-top: 1px solid #000000;"),
         
