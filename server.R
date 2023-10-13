@@ -37,7 +37,7 @@ shinyServer(function(input, output) {
   
   # Safety Page
   banner_server('safetyBanner', 
-                banner_title = "Addressing Safety: Target Zero", 
+                banner_title = "Addressing Safety: Safe System Approach", 
                 banner_subtitle = "Regional Transportation Plan",
                 banner_url = "https://www.psrc.org/planning-2050/regional-transportation-plan")
   
@@ -45,6 +45,8 @@ shinyServer(function(input, output) {
   safety_overview_server('safetyOverview')
   fatal_server('Fatalsafety')
   serious_server('Serioussafety')
+  
+  
   
   # Modes Page
   banner_server('modeBanner', 

@@ -30,6 +30,7 @@ source("functions.R")
 
 # Page Information --------------------------------------------------------
 left_panel_info <- read_csv("data/left_panel_information.csv", show_col_types = FALSE)
+page_text <- read_csv("data/page_text.csv", show_col_types = FALSE)
 
 # Inputs ---------------------------------------------------------------
 base_year <- "2005"

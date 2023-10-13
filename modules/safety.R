@@ -12,33 +12,14 @@ safety_overview_server <- function(id) {
     ns <- session$ns
     
     # Text
-    output$safety_text_1 <- renderText({safety_overview_1})
-    
-    output$safety_text_2 <- renderText({safety_overview_2})
-    
-    output$safety_text_3 <- renderText({safety_overview_3})
-    
-    output$safety_text_4 <- renderText({safety_overview_4})
-    
-    output$safety_text_5 <- renderText({safety_overview_5})
+    output$safety_overview_text <- renderText({page_information(tbl=page_text, page_name="Safety", page_section = "Overview", page_info = "description")})
     
     # Overview UI
     output$safetyoverview <- renderUI({
       tagList(
-        # Safety Overview
-        tags$div(class="page_goals","Goal: Zero Fatal and Serious Injuries by 2030"),
+        tags$div(class="page_goals", "Goal: Zero Fatal and Serious Injuries by 2030"),
         br(),
-        textOutput(ns("safety_text_1")),
-        br(),
-        textOutput(ns("safety_text_2")),
-        br(),
-        textOutput(ns("safety_text_3")),
-        br(), 
-        textOutput(ns("safety_text_4")),
-        br(), 
-        textOutput(ns("safety_text_5")),
-        br(), 
-        div(img(src="04_PR-Winter2022_Feature_SSA-Overview2.jpg", width = "50%", height = "50%", style = "padding-top: 0px; border-radius:0px 0 0px 0;", alt = "Bar chart of Greenhouse Gas Emissions in 2050")),
+        textOutput(ns("safety_overview_text")),
         br()
       )
     })
