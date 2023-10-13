@@ -306,23 +306,6 @@ housing_overview_2 <-paste("By providing data, guidance, and technical assistanc
                            "PSRC supports jurisdictions in their efforts to adopt best",
                            "housing practices and establish coordinated local housing and affordable housing targets.")
 
-safety_caption <- paste("Safety impacts every aspect of the transportation system, covering all modes and encompassing a",
-                        "variety of attributes from facility design to security to personal behavior. The Federal Highway",
-                        "Administration (FHWA) refers to the Four E’s of safety: engineering, enforcement, education and",
-                        "emergency medical services. Many organizations and jurisdictions have implemented programs",
-                        "and projects aimed at improving safety and reducing deaths and serious injuries. All seek to",
-                        "achieve the long-term goal of zero fatalities and serious injuries.")
-
-fatal_trends_caption <- paste("The total number of crashes that resulted in fatalities in the",
-                              "Puget Sound region between",
-                              safety_min_year,
-                              "and",
-                              safety_max_year,
-                              "are shown below. After a decrease in the early part of the decade, there was a",
-                              "significant increase between 2013 and 2016, followed by a leveling-out through",
-                              safety_max_year,
-                              ".")
-
 pop_vision_caption <- paste0("In VISION 2050 forecasts, the population in ",
                              current_population_year, 
                              " was forecasted to be ", 
@@ -432,37 +415,6 @@ vkt_caption <- paste0("Under VISION 2050, growth between 2018 and 2050 is focuse
                       "Metropolitan Cities, Core Cities and High-Capacity Transit Communities, the most urbanized and ",
                       "densely developed parts of the region. As shown below, driving in these places is more like many ",
                       "European countries than to other parts of the United States by 2050.")
-
-safety_overview_1 <- paste0("Safety was one of the key policy focus areas identified by PSRC’s Transportation Policy Board early in ",
-                            "the development of the RTP and is a cross-cutting issue addressed throughout all relevant sections of ",
-                            "the plan. VISION 2050 set a goal for the region to have a “sustainable, equitable, affordable, safe, and ",
-                            "efficient multimodal transportation system, with specific emphasis on an integrated regional transit ",
-                            "network that supports the Regional Growth Strategy and promotes vitality of the economy, ",
-                            "environment, and health.” In addition, VISION 2050 adopted the following policy related to safety:")
-
-safety_overview_2 <- paste0("MPP T-4: Improve the safety of the transportation system and, in the long term, achieve the ",
-                            "state’s goal of zero deaths and serious injuries.")
-
-safety_overview_3 <- paste0("In 2019, the State of Washington adopted the Target Zero plan with the goal to reduce the number of ",
-                            "traffic deaths and serious injuries on Washington's roadways to zero by the year 2030. The RTP will ",
-                            "implement the region’s safety goals through a Safe Systems Approach.")
-
-safety_overview_4 <- paste0("Safety impacts every aspect of the transportation system, covering all modes and encompassing a ",
-                            "variety of attributes from facility design to security to personal behavior. The Federal Highway ",
-                            "Administration (FHWA) refers to the Four E’s of safety: engineering, enforcement, education and emergency medical services.")
-
-safety_overview_5 <- paste0("Many organizations and jurisdictions have implemented programs and projects aimed at improving ",
-                            "safety and reducing deaths and serious injuries. All seek to achieve the long-term goal of zero fatalities ",
-                            "and serious injuries.")
-
-
-fatal_county_caption <- paste0("Trends in Fatal collisions vary across the region's counties. Although King and Kitsap counties have seen ",
-                             "slight reductions in fatal collisions in 2020, there were still more fatalaities than 2015.",
-                             "Pierce and Snohomich counties but experienced small increases in traffic realted deaths in 2020.")
-
-fatal_mpo_caption <- paste0("The Puget Sound region had the fifth lowest fatal accident rate per 100,000 people in 2020 among the 27 largest MPO regions, down slightly since ",
-                            "2010. Some the regions with rates lower than the PSRC region include New York and Boston. One region similar is size to PSRC with one of the lowest ",
-                            "rates are the Twin Cities. The highest fatality rates amongst MPO regions are in Florida.")
 
 transit_overview_1 <- paste0("The Regional Transportation Plan envisions an integrated system that supports the goals of VISION ",
                              "2050, which calls for increased investment in transportation to support a growing population and ",
