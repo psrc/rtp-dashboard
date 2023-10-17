@@ -26,15 +26,15 @@ safety_overview_server <- function(id) {
 }
 
 # Safety Tabs ---------------------------------------------------------------------------------
-fatal_ui <- function(id) {
+safety_geography_ui <- function(id) {
   ns <- NS(id)
   
   tagList(
-    uiOutput(ns("fataltab"))
+    uiOutput(ns("geographytab"))
   )
 }
 
-fatal_server <- function(id) {
+safety_geography_server <- function(id) {
   moduleServer(id, function(input, output, session){
     ns <- session$ns
     
@@ -43,16 +43,25 @@ fatal_server <- function(id) {
     output$fatal_county <- renderText({page_information(tbl=page_text, page_name="Safety", page_section = "Fatal-County", page_info = "description")})
     output$fatal_mpo <- renderText({page_information(tbl=page_text, page_name="Safety", page_section = "Fatal-MPO", page_info = "description")})
 
-    output$fatal_collisions_chart <- renderEcharts4r({echart_line_chart(df=data %>% filter(metric=="1yr Fatality Rate" & geography=="Seattle" & variable%in%c("Fatalities per 100,000 People","Fatalities")),
-                                                                     x='data_year', y='estimate', fill='metric', tog = 'variable',
-                                                                     esttype="number", color = "jewel", dec = 0)})
+    output$region_collisions_chart <- renderEcharts4r({echart_line_chart(df=safety_data |> filter(geography == "Region" & geography_type == "Region"),
+                                                                        x='data_year', y='estimate', fill='metric', tog = 'variable',
+                                                                        esttype="number", color = "jewel", dec = 1)})
     
-    output$county_fatal_collisions_chart <- renderPlot({static_facet_column_chart(t=data %>% filter(metric=="1yr Fatality Rate" & geography_type=="PSRC Region" & variable%in%c("Fatal Collisions") & data_year>as.character(safety_max_year-5)), 
-                                                                                  x="data_year", y="estimate", 
-                                                                                  fill="data_year", facet="geography", 
-                                                                                  est = "number",
-                                                                                  color = "pgnobgy_10",
-                                                                                  ncol=2, scales="fixed")})
+    output$king_collisions_chart <- renderEcharts4r({echart_column_chart(df = safety_data |> filter(variable == "Total" & geography_type == "County" & geography == "King" & (data_year >= as.integer(current_population_year)-5 & data_year <= current_population_year)),
+                                                                         x='data_year', y='estimate', fill='metric', title='King County',
+                                                                         dec = 1, esttype = 'number', color = psrc_colors$pognbgy_5)})
+    
+    output$kitsap_collisions_chart <- renderEcharts4r({echart_column_chart(df = safety_data |> filter(variable == "Total" & geography_type == "County" & geography == "Kitsap" & (data_year >= as.integer(current_population_year)-5 & data_year <= current_population_year)),
+                                                                           x='data_year', y='estimate', fill='metric', title='Kitsap County',
+                                                                           dec = 1, esttype = 'number', color = psrc_colors$pognbgy_5)})
+    
+    output$pierce_collisions_chart <- renderEcharts4r({echart_column_chart(df = safety_data |> filter(variable == "Total" & geography_type == "County" & geography == "Pierce" & (data_year >= as.integer(current_population_year)-5 & data_year <= current_population_year)),
+                                                                           x='data_year', y='estimate', fill='metric', title='Pierce County',
+                                                                           dec = 1, esttype = 'number', color = psrc_colors$pognbgy_5)})
+    
+    output$snohomish_collisions_chart <- renderEcharts4r({echart_column_chart(df = safety_data |> filter(variable == "Total" & geography_type == "County" & geography == "Snohomish" & (data_year >= as.integer(current_population_year)-5 & data_year <= current_population_year)),
+                                                                              x='data_year', y='estimate', fill='metric', title='Snohomish County',
+                                                                              dec = 1, esttype = 'number', color = psrc_colors$pognbgy_5)})
     
     output$mpo_fatal_rate_min_yr_chart <- renderPlotly({interactive_bar_chart(t=mpo_safety_tbl_min,
                                                                               y='geography', x='estimate', fill='plot_id',
@@ -63,28 +72,33 @@ fatal_server <- function(id) {
                                                                               est="number", dec=1, color='pgnobgy_5')})
     
     # Tab layout
-    output$fataltab <- renderUI({
+    output$geographytab <- renderUI({
       tagList(
-        # Fatal - Region
-        h1("Fatal Collisions in the PSRC Region"),
+        # Region
+        h1("Region"),
         textOutput(ns("fatal_region")),
         hr(),
-        strong(tags$div(class="chart_title","Fatal Collisions in the PSRC Region")),
-        fluidRow(column(12,echarts4rOutput(ns("fatal_collisions_chart")))),
-        tags$div(class="chart_source","Source: USDOT FARS Data"),
+        #strong(tags$div(class="chart_title","Serious Injury and Traffic Related Deaths in the PSRC Region")),
+        fluidRow(column(12,echarts4rOutput(ns("region_collisions_chart")))),
+        tags$div(class="chart_source","Fatalities: Washington Traffic Safety Commission Coded Fatality Files (2022 Preliminary)"),
+        tags$div(class="chart_source","Serious Injuries: WSDOT, Crash Data Division, Multi-Row data files (MRFF)"),
         hr(style = "border-top: 1px solid #000000;"),
         
-        # Fatal - County
-        h1("Fatal Collisions by County in the PSRC Region"),
+        # FaCounty
+        h1("County"),
         textOutput(ns("fatal_county")),
         br(),
-        strong(tags$div(class="chart_title","Fatal Collisions by County")),
-        fluidRow(column(12,plotOutput(ns("county_fatal_collisions_chart")))),
-        tags$div(class="chart_source","Source: USDOT FARS Data"),
+        #strong(tags$div(class="chart_title","Fatal Collisions by County")),
+        fluidRow(column(6,echarts4rOutput(ns("king_collisions_chart"))),
+                 column(6,echarts4rOutput(ns("kitsap_collisions_chart")))),
+        fluidRow(column(6,echarts4rOutput(ns("pierce_collisions_chart"))),
+                 column(6,echarts4rOutput(ns("snohomish_collisions_chart")))),
+        tags$div(class="chart_source","Fatalities: Washington Traffic Safety Commission Coded Fatality Files (2022 Preliminary)"),
+        tags$div(class="chart_source","Serious Injuries: WSDOT, Crash Data Division, Multi-Row data files (MRFF)"),
         hr(style = "border-top: 1px solid #000000;"),
         
         # Fatal - MPO
-        h1("Fatal Collisions by Metropolitan Region"),
+        h1("Metropolitan Region"),
         textOutput(ns("fatal_mpo")),
         br(),
         fluidRow(column(6,strong(tags$div(class="chart_title",paste0("Annual Fatalities per 100,000 people: ",safety_min_year)))),

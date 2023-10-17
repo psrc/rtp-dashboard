@@ -42,6 +42,17 @@ current_vmt_year <- 2021
 
 wgs84 <- 4326
 
+# Data via RDS files ------------------------------------------------------
+safety_data <- readRDS("data/collision_data.rds") |> mutate(data_year = as.character(lubridate::year(date)))
+commute_data <- readRDS("data/commute_data.rds") |> mutate(data_year = as.character(lubridate::year(date)))
+
+#zipcodes <- st_read("data/psrc_zipcodes.shp") %>% st_transform(wgs84)
+zipcodes <- readRDS("data/zipcodes.rds")
+
+#tracts <- st_read("https://services6.arcgis.com/GWxg6t7KXELn1thE/arcgis/rest/services/tract2010_nowater/FeatureServer/0/query?where=0=0&outFields=*&f=pgeojson")
+tracts <- readRDS("data/tracts.rds")
+
+# Data via CSV ------------------------------------------------------------
 data <- read_csv("data/rtp-dashboard-data.csv", show_col_types = FALSE) %>%
   mutate(data_year = as.character(lubridate::year(date)))
 
@@ -93,10 +104,6 @@ vkt_order <- vkt_data %>% select(geography) %>% distinct %>% pull()
 vkt_data <- vkt_data %>% mutate(geography = factor(x=geography, levels=vkt_order))
 
 efa_income <- read_csv("data/efa_income_tracts.csv", show_col_types = FALSE) %>% select(GEOID) %>% pull()
-
-zipcodes <- st_read("data/psrc_zipcodes.shp") %>% st_transform(wgs84)
-
-tracts <- st_read("https://services6.arcgis.com/GWxg6t7KXELn1thE/arcgis/rest/services/tract2010_nowater/FeatureServer/0/query?where=0=0&outFields=*&f=pgeojson")
 
 # Functions ---------------------------------------------------------------
 create_share_map<- function(lyr, title, colors="Blues", dec=0) {
@@ -433,4 +440,11 @@ transit_overview_3 <- paste0("High-capacity transit in the region is provided by
                              "King County Metro and Kitsap Transit. Bus rapid transit (BRT) routes in the region are distinguished from other forms ",
                              "of bus transit by a combination of features that include branded buses and stations, off-board fare payment, wider stop ","
                              spacing than other local bus service, and other treatments such as transit signal priority and business access and transit (BAT) lanes.")
+
+#echart_bar_chart <- function(df, x, y, fill, title, dec, esttype, color)
+
+my_chart <- echart_bar_chart(df=mpo_safety_tbl_min, title = "",
+                             y='estimate', x='geography', fill='plot_id',
+                             esttype="number", dec=1, color='pgnobgy_5')
+
 

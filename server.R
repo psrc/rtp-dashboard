@@ -43,7 +43,7 @@ shinyServer(function(input, output) {
   
   left_panel_server('leftSafety', page_nm = "Safety")
   safety_overview_server('safetyOverview')
-  fatal_server('Fatalsafety')
+  safety_geography_server('Geographysafety')
   serious_server('Serioussafety')
   
   

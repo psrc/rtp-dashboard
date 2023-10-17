@@ -41,7 +41,7 @@ shinyUI(
              fluidRow(column(4, style='padding-left:25px; padding-right:0px;', left_panel_ui('leftClimate')),
                       column(8, style='padding-left:25px; padding-right:50px;', 
                              climate_overview_ui('climateOverview'),
-                             tabsetPanel(type = "tabs",
+                             tabsetPanel(type = "pills",
                                          tabPanel("Zero Emission Vehicles", climate_zev_ui('ZEVclimate')),
                                          tabPanel("Vehicle Miles Traveled", climate_vmt_ui('VMTclimate')))
                              ), # End of Main Panel for Climate
@@ -54,7 +54,7 @@ shinyUI(
              fluidRow(column(4, style='padding-left:25px; padding-right:0px;', left_panel_ui('leftGrowth')),
                       column(8, style='padding-left:25px; padding-right:50px;',
                              growth_overview_ui('growthOverview'),
-                             tabsetPanel(type = "tabs",
+                             tabsetPanel(type = "pills",
                                          tabPanel("Population", population_ui('Populationgrowth')),
                                          tabPanel("Housing", housing_ui('Housinggrowth')),
                                          tabPanel("Jobs", jobs_ui('Jobsgrowth')))
@@ -68,8 +68,8 @@ shinyUI(
              fluidRow(column(4, style='padding-left:25px; padding-right:0px;', left_panel_ui('leftSafety')),
                       column(8, style='padding-left:25px; padding-right:50px;',
                              safety_overview_ui('safetyOverview'),
-                             tabsetPanel(type = "tabs",
-                                         tabPanel("Traffic Deaths", fatal_ui('Fatalsafety')),
+                             tabsetPanel(type = "pills",
+                                         tabPanel("By Geography", safety_geography_ui('Geographysafety')),
                                          tabPanel("Serious Injuries", serious_ui('Serioussafety')))
                              ), # End of Main Panel for Safety
                       ), # End of Main Panel Fluid Row for Safety Tab
