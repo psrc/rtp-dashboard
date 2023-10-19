@@ -1,0 +1,10 @@
+name: development-rtp-dashboard
+title: Development RTP Dashboard
+username: psrcwa
+account: psrcwa
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 10248723
+bundleId:
+url: https://psrcwa.shinyapps.io/development-rtp-dashboard/
+version: 1
