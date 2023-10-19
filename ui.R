@@ -17,7 +17,7 @@ shinyUI(
                            .navbar {min-height:25px !important;}'))
              ),
     
-    windowTitle = "RTP Dashboard", 
+    windowTitle = "RTP Dashboard - Development Version", 
     theme = "styles.css",
     position = "fixed-top",
              
@@ -27,6 +27,8 @@ shinyUI(
              fluidRow(column(4, style='padding-left:25px; padding-right:0px;', left_panel_ui('leftOverview')),
                       column(8, style='padding-left:25px; padding-right:50px;',
                              hr(),
+                             tags$div(class="page_goals", "This is the Development Version of the APP"),
+                             br(), br(),
                              "The RTP Performance Dashboard is a resource to help the region understand how well it is meeting it's long range goals. At a minimum, the dashboard will be updated 
                              each fall as various Census and Transportation related metrics are released. 
                              Metrics on the dashboard are focused on topic areas that were identified by the Transporation Policy Board as high priorities for the region",
@@ -69,8 +71,8 @@ shinyUI(
                       column(8, style='padding-left:25px; padding-right:50px;',
                              safety_overview_ui('safetyOverview'),
                              tabsetPanel(type = "pills",
-                                         tabPanel("By Geography", safety_geography_ui('Geographysafety')),
-                                         tabPanel("Serious Injuries", serious_ui('Serioussafety')))
+                                         tabPanel("Geography", safety_geography_ui('Geographysafety')),
+                                         tabPanel("Demographics", safety_demographics_ui('Demographicsafety')))
                              ), # End of Main Panel for Safety
                       ), # End of Main Panel Fluid Row for Safety Tab
              ),# End of Tab Panel for Safety

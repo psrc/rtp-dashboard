@@ -5,13 +5,12 @@ library(sf)
 wgs84 <- 4326
 
 # Census Commute Data -----------------------------------------------------
-mode_to_work <- process_acs_data(years=c(2021))
-time_to_work <- process_acs_data(years=c(2021), acs_tbl="B08303", acs_variables="commute-times")
-departure_to_work <- process_acs_data(years=c(2021), acs_tbl="B08011", acs_variables="departure-time")
+mode_to_work <- process_acs_data(years=c(2016, 2021))
+time_to_work <- process_acs_data(years=c(2016, 2021), acs_tbl="B08303", acs_variables="commute-times")
+departure_to_work <- process_acs_data(years=c(2016, 2021), acs_tbl="B08011", acs_variables="departure-time")
 commute_data <- bind_rows(mode_to_work, time_to_work, departure_to_work)
-rm(mode_to_work, time_to_work, departure_to_work)
 saveRDS(commute_data, "C:/coding/rtp-dashboard/data/commute_data.rds")
-commute_data <- readRDS("C:/coding/rtp-dashboard/data/commute_data.rds")
+rm(mode_to_work, time_to_work, departure_to_work)
 
 # Safety Data -------------------------------------------------------------
 fatal_collisions <- wstc_fatal_collisions(data_years=seq(10, 22, by = 1))
@@ -19,7 +18,10 @@ serious_collisions <- wsdot_serious_injury_collisions(data_file="X:/DSA/rtp-dash
 collisions <- bind_rows(fatal_collisions, serious_collisions)
 saveRDS(collisions, "X:/DSA/rtp-dashboard/processed_collision_data.rds")
 collision_data <- summarise_collision_data(data_file="X:/DSA/rtp-dashboard/processed_collision_data.rds")
+mpo_collisions <- process_mpo_fars_data(safety_yrs=c(seq(2010,2021,by=1)))
+collision_data <- bind_rows(collision_data, mpo_collisions)
 saveRDS(collision_data, "C:/coding/rtp-dashboard/data/collision_data.rds")
+rm(fatal_collisions, serious_collisions, collisions, mpo_collisions)
 
 # Shapefiles --------------------------------------------------------------
 zipcodes <- st_read("C:/coding/rtp-dashboard/data/psrc_zipcodes.shp") %>% st_transform(wgs84)

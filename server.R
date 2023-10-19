@@ -44,9 +44,7 @@ shinyServer(function(input, output) {
   left_panel_server('leftSafety', page_nm = "Safety")
   safety_overview_server('safetyOverview')
   safety_geography_server('Geographysafety')
-  serious_server('Serioussafety')
-  
-  
+  safety_demographics_server('Demographicsafety')
   
   # Modes Page
   banner_server('modeBanner', 

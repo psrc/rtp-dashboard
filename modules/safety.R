@@ -39,9 +39,9 @@ safety_geography_server <- function(id) {
     ns <- session$ns
     
     # Text and charts
-    output$fatal_region <- renderText({page_information(tbl=page_text, page_name="Safety", page_section = "Fatal-Regional", page_info = "description")})
-    output$fatal_county <- renderText({page_information(tbl=page_text, page_name="Safety", page_section = "Fatal-County", page_info = "description")})
-    output$fatal_mpo <- renderText({page_information(tbl=page_text, page_name="Safety", page_section = "Fatal-MPO", page_info = "description")})
+    output$fatal_region <- renderText({page_information(tbl=page_text, page_name="Safety", page_section = "Geography-Regional", page_info = "description")})
+    output$fatal_county <- renderText({page_information(tbl=page_text, page_name="Safety", page_section = "Geography-County", page_info = "description")})
+    output$fatal_mpo <- renderText({page_information(tbl=page_text, page_name="Safety", page_section = "Geography-MPO", page_info = "description")})
 
     output$region_collisions_chart <- renderEcharts4r({echart_line_chart(df=safety_data |> filter(geography == "Region" & geography_type == "Region"),
                                                                         x='data_year', y='estimate', fill='metric', tog = 'variable',
@@ -63,28 +63,22 @@ safety_geography_server <- function(id) {
                                                                               x='data_year', y='estimate', fill='metric', title='Snohomish County',
                                                                               dec = 1, esttype = 'number', color = psrc_colors$pognbgy_5)})
     
-    output$mpo_fatal_rate_min_yr_chart <- renderPlotly({interactive_bar_chart(t=mpo_safety_tbl_min,
-                                                                              y='geography', x='estimate', fill='plot_id',
-                                                                              est="number", dec=1, color='pgnobgy_5')})
-    
-    output$mpo_fatal_rate_max_yr_chart <- renderPlotly({interactive_bar_chart(t=mpo_safety_tbl_max,
-                                                                              y='geography', x='estimate', fill='plot_id',
-                                                                              est="number", dec=1, color='pgnobgy_5')})
-    
+    output$mpo_fatal_collisions_chart <- renderEcharts4r({echart_bar_chart(df=mpo_safety, title = "Traffic Deaths per 100,000 people", tog = 'variable',
+                                                                           y='estimate', x='geography', esttype="number", dec=1, color = 'jewel')})
     # Tab layout
     output$geographytab <- renderUI({
       tagList(
         # Region
         h1("Region"),
         textOutput(ns("fatal_region")),
-        hr(),
+        br(),
         #strong(tags$div(class="chart_title","Serious Injury and Traffic Related Deaths in the PSRC Region")),
         fluidRow(column(12,echarts4rOutput(ns("region_collisions_chart")))),
         tags$div(class="chart_source","Fatalities: Washington Traffic Safety Commission Coded Fatality Files (2022 Preliminary)"),
         tags$div(class="chart_source","Serious Injuries: WSDOT, Crash Data Division, Multi-Row data files (MRFF)"),
         hr(style = "border-top: 1px solid #000000;"),
         
-        # FaCounty
+        # County
         h1("County"),
         textOutput(ns("fatal_county")),
         br(),
@@ -97,39 +91,95 @@ safety_geography_server <- function(id) {
         tags$div(class="chart_source","Serious Injuries: WSDOT, Crash Data Division, Multi-Row data files (MRFF)"),
         hr(style = "border-top: 1px solid #000000;"),
         
-        # Fatal - MPO
+        # MPO
         h1("Metropolitan Region"),
         textOutput(ns("fatal_mpo")),
-        br(),
-        fluidRow(column(6,strong(tags$div(class="chart_title",paste0("Annual Fatalities per 100,000 people: ",safety_min_year)))),
-                 column(6,strong(tags$div(class="chart_title",paste0("Annual Fatalities per 100,000 people: ",safety_max_year))))),
-        fluidRow(column(6,plotlyOutput(ns("mpo_fatal_rate_min_yr_chart"))),
-                 column(6,plotlyOutput(ns("mpo_fatal_rate_max_yr_chart")))),
-        fluidRow(column(6,tags$div(class="chart_source","Source: USDOT FARS Data")),
-                 column(6,tags$div(class="chart_source","Source: USDOT FARS Data"))),
+        fluidRow(column(12,echarts4rOutput(ns("mpo_fatal_collisions_chart"), height = "600px"))),
+        tags$div(class="chart_source","Fatalities: NHTSA Fatality Analysis Reporting System (FARS) Data"),
+        tags$div(class="chart_source","Population: US Census Bureau American Community Survey (ACS) 5-year data Table B03002"),
         hr(style = "border-top: 1px solid #000000;")
       )
     })
   })  # end moduleServer
 }
 
-serious_ui <- function(id) {
+safety_demographics_ui <- function(id) {
   ns <- NS(id)
   
   tagList(
-    uiOutput(ns("serioustab"))
+    uiOutput(ns("demographicstab"))
   )
 }
 
-serious_server <- function(id) {
+safety_demographics_server <- function(id) {
   moduleServer(id, function(input, output, session){
     ns <- session$ns
     
     # Text and charts
+    output$demographics_race <- renderText({page_information(tbl=page_text, page_name="Safety", page_section = "Demographics-Race", page_info = "description")})
+    output$demographics_age <- renderText({page_information(tbl=page_text, page_name="Safety", page_section = "Demographics-Age", page_info = "description")})
+    output$demographics_gender <- renderText({page_information(tbl=page_text, page_name="Safety", page_section = "Demographics-Gender", page_info = "description")})
+    
+    
+    output$demographics_race_chart <- renderEcharts4r({echart_pictorial(df= safety_data |> 
+                                                                          filter(geography_type=="Race" & data_year == current_census_year & variable == "Rate per 100k people") |>
+                                                                          mutate(grouping = str_wrap(grouping, 15)),
+                                                                        x="grouping", y="estimate", tog="variable", 
+                                                                        icon=fa_user, color=psrc_colors$gnbopgy_5,
+                                                                        title="Race & Hispanic Origin", dec = 2)})
+    
+    output$demographics_age_total_chart <- renderEcharts4r({echart_column_chart(df = safety_data |> filter(geography_type == "Age Group" & data_year == current_census_year & variable == "Total"),
+                                                                                x='grouping', y='estimate', fill='metric', title='Total Injuries',
+                                                                                dec = 1, esttype = 'number', color = psrc_colors$gnbopgy_5)})
+    
+    output$demographics_age_rate_chart <- renderEcharts4r({echart_column_chart(df = safety_data |> filter(geography_type == "Age Group" & data_year == current_census_year & variable == "Rate per 100k people"),
+                                                                               x='grouping', y='estimate', fill='metric', title='Rate per 100k people',
+                                                                               dec = 1, esttype = 'number', color = psrc_colors$gnbopgy_5)})
+    
+    output$demographics_gender_total_chart <- renderEcharts4r({echart_column_chart(df = safety_data |> filter(geography_type == "Gender" & data_year == current_census_year & variable == "Total"),
+                                                                                   x='grouping', y='estimate', fill='metric', title='Total Injuries',
+                                                                                   dec = 1, esttype = 'number', color = psrc_colors$gnbopgy_5)})
+    
+    output$demographics_gender_rate_chart <- renderEcharts4r({echart_column_chart(df = safety_data |> filter(geography_type == "Gender" & data_year == current_census_year & variable == "Rate per 100k people"),
+                                                                                  x='grouping', y='estimate', fill='metric', title='Rate per 100k people',
+                                                                                  dec = 1, esttype = 'number', color = psrc_colors$gnbopgy_5)})
+    
     
     # Tab layout
-    output$serioustab <- renderUI({
+    output$demographicstab <- renderUI({
       tagList(
+        # Race
+        h1("Race & Ethnicity"),
+        textOutput(ns("demographics_race")),
+        br(),
+        fluidRow(column(12,echarts4rOutput(ns("demographics_race_chart")))),
+        tags$div(class="chart_source","Fatalities: Washington Traffic Safety Commission Coded Fatality Files (2022 Preliminary)"),
+        tags$div(class="chart_source","Population: US Census Bureau American Community Survey (ACS) 5-year data Table B03002"),
+        hr(style = "border-top: 1px solid #000000;"),
+        
+        # Age
+        h1("Age Group"),
+        textOutput(ns("demographics_age")),
+        br(),
+        fluidRow(column(6,echarts4rOutput(ns("demographics_age_total_chart"))),
+                 column(6,echarts4rOutput(ns("demographics_age_rate_chart")))),
+        br(),
+        tags$div(class="chart_source","Fatalities: Washington Traffic Safety Commission Coded Fatality Files (2022 Preliminary)"),
+        tags$div(class="chart_source","Serious Injuries: WSDOT, Crash Data Division, Multi-Row data files (MRFF)"),
+        tags$div(class="chart_source","Population: US Census Bureau American Community Survey (ACS) 5-year data Table B01001"),
+        hr(style = "border-top: 1px solid #000000;"),
+        
+        # Gender
+        h1("Gender"),
+        textOutput(ns("demographics_gender")),
+        br(),
+        fluidRow(column(6,echarts4rOutput(ns("demographics_gender_total_chart"))),
+                 column(6,echarts4rOutput(ns("demographics_gender_rate_chart")))),
+        br(),
+        tags$div(class="chart_source","Fatalities: Washington Traffic Safety Commission Coded Fatality Files (2022 Preliminary)"),
+        tags$div(class="chart_source","Serious Injuries: WSDOT, Crash Data Division, Multi-Row data files (MRFF)"),
+        tags$div(class="chart_source","Population: US Census Bureau American Community Survey (ACS) 5-year data Table B01001"),
+        hr(style = "border-top: 1px solid #000000;")
         
       )
     })
