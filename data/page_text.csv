@@ -1,11 +1,13 @@
 ﻿page,section,description
 Safety,Overview,"Safety was one of the key policy focus areas identified by PSRC’s Transportation Policy Board early in the development of the RTP. Safety impacts every aspect of the transportation system, covering all modes and encompassing a variety of attributes from facility design to security to personal behavior. Many organizations and jurisdictions have implemented programs and projects aimed at improving safety and reducing deaths and serious injuries. All seek to achieve the long-term goal of zero fatalities and serious injuries."
 Safety,Geography-Regional,"The total number of crashes that resulted in fatalities in the Puget Sound region between 2010 and 2022 are shown below. After a decrease in the early part of the decade, there has been a significant increase in traffic related deaths in the past three years. In 2022, traffic related deaths averaged almost 1 per day in the region."
+Safety,Geography-HDC,Total collisions by Historically Disadvantaged Communities
 Safety,Geography-County,Trends in Fatal collisions vary across the region's counties.
 Safety,Geography-MPO,"The Puget Sound region had the fifth lowest fatal accident rate per 100,000 people in 2020 among the 27 largest MPO regions. Some the regions with rates lower than the PSRC region include New York and Boston. One region similar is size to PSRC with one of the lowest rates are the Twin Cities. The highest fatality rates amongst MPO regions are in Florida."
 Safety,Demographics-Race,Total fatal collisions by race
 Safety,Demographics-Age,Total fatal and serious collisions by age group
 Safety,Demographics-Gender,Total fatal and serious collisions by gender
 Safety,Other-Mode,Total collisions by mode
+Safety,Other-Roadway,Total collisions by type of roadway
 Safety,Other-Time,Total fatal and serious collisions by time of day
 Safety,Other-Day,Total fatal and serious collisions by day of week

@@ -39,13 +39,26 @@ safety_geography_server <- function(id) {
     ns <- session$ns
     
     # Text and charts
-    output$fatal_region <- renderText({page_information(tbl=page_text, page_name="Safety", page_section = "Geography-Regional", page_info = "description")})
-    output$fatal_county <- renderText({page_information(tbl=page_text, page_name="Safety", page_section = "Geography-County", page_info = "description")})
-    output$fatal_mpo <- renderText({page_information(tbl=page_text, page_name="Safety", page_section = "Geography-MPO", page_info = "description")})
+    output$geography_region <- renderText({page_information(tbl=page_text, page_name="Safety", page_section = "Geography-Regional", page_info = "description")})
+    output$geography_county <- renderText({page_information(tbl=page_text, page_name="Safety", page_section = "Geography-County", page_info = "description")})
+    output$geography_mpo <- renderText({page_information(tbl=page_text, page_name="Safety", page_section = "Geography-MPO", page_info = "description")})
+    output$geography_hdc <- renderText({page_information(tbl=page_text, page_name="Safety", page_section = "Geography-HDC", page_info = "description")})
 
     output$region_collisions_chart <- renderEcharts4r({echart_line_chart(df=safety_data |> filter(geography == "Region" & geography_type == "Region"),
                                                                         x='data_year', y='estimate', fill='metric', tog = 'variable',
                                                                         esttype="number", color = "jewel", dec = 1)})
+    
+    output$geography_hdc_fatal_chart <- renderEcharts4r({echart_column_chart(df = safety_data |> 
+                                                                               filter(geography_type == "Historically Disadvantaged Community" & variable == "Total" & metric == "Traffic Related Deaths" & grouping != "Other") |>
+                                                                               mutate(metric=grouping),
+                                                                             x='data_year', y='estimate', fill='metric', title='Traffic Related Deaths',
+                                                                             dec = 0, esttype = 'number', color = psrc_colors$gnbopgy_5)})
+    
+    output$geography_hdc_serious_chart <- renderEcharts4r({echart_column_chart(df = safety_data |> 
+                                                                              filter(geography_type == "Historically Disadvantaged Community" & variable == "Total" & metric == "Serious Injury"& grouping != "Other") |>
+                                                                              mutate(metric=grouping),
+                                                                            x='data_year', y='estimate', fill='metric', title='Serious Injury',
+                                                                            dec = 0, esttype = 'number', color = psrc_colors$gnbopgy_5)})
     
     output$king_collisions_chart <- renderEcharts4r({echart_column_chart(df = safety_data |> filter(variable == "Total" & geography_type == "County" & geography == "King" & (data_year >= as.integer(current_population_year)-5 & data_year <= current_population_year)),
                                                                          x='data_year', y='estimate', fill='metric', title='King County',
@@ -70,7 +83,7 @@ safety_geography_server <- function(id) {
       tagList(
         # Region
         h1("Region"),
-        textOutput(ns("fatal_region")),
+        textOutput(ns("geography_region")),
         br(),
         #strong(tags$div(class="chart_title","Serious Injury and Traffic Related Deaths in the PSRC Region")),
         fluidRow(column(12,echarts4rOutput(ns("region_collisions_chart")))),
@@ -78,9 +91,19 @@ safety_geography_server <- function(id) {
         tags$div(class="chart_source","Serious Injuries: WSDOT, Crash Data Division, Multi-Row data files (MRFF)"),
         hr(style = "border-top: 1px solid #000000;"),
         
+        h1("Historically Disadvantaged Community"),
+        textOutput(ns("geography_hdc")),
+        br(),
+        fluidRow(column(6,echarts4rOutput(ns("geography_hdc_fatal_chart"))),
+                 column(6,echarts4rOutput(ns("geography_hdc_serious_chart")))),
+        br(),
+        tags$div(class="chart_source","Fatalities: Washington Traffic Safety Commission Coded Fatality Files (2022 Preliminary)"),
+        tags$div(class="chart_source","Serious Injuries: WSDOT, Crash Data Division, Multi-Row data files (MRFF)"),
+        hr(style = "border-top: 1px solid #000000;"),
+        
         # County
         h1("County"),
-        textOutput(ns("fatal_county")),
+        textOutput(ns("geography_county")),
         br(),
         #strong(tags$div(class="chart_title","Fatal Collisions by County")),
         fluidRow(column(6,echarts4rOutput(ns("king_collisions_chart"))),
@@ -93,7 +116,7 @@ safety_geography_server <- function(id) {
         
         # MPO
         h1("Metropolitan Region"),
-        textOutput(ns("fatal_mpo")),
+        textOutput(ns("geography_mpo")),
         fluidRow(column(12,echarts4rOutput(ns("mpo_fatal_collisions_chart"), height = "600px"))),
         tags$div(class="chart_source","Fatalities: NHTSA Fatality Analysis Reporting System (FARS) Data"),
         tags$div(class="chart_source","Population: US Census Bureau American Community Survey (ACS) 5-year data Table B03002"),
@@ -203,6 +226,7 @@ safety_demographics_server <- function(id) {
         output$other_mode <- renderText({page_information(tbl=page_text, page_name="Safety", page_section = "Other-Mode", page_info = "description")})
         output$other_time <- renderText({page_information(tbl=page_text, page_name="Safety", page_section = "Other-Time", page_info = "description")})
         output$other_day <- renderText({page_information(tbl=page_text, page_name="Safety", page_section = "Other-Day", page_info = "description")})
+        output$other_roadway <- renderText({page_information(tbl=page_text, page_name="Safety", page_section = "Other-Roadway", page_info = "description")})
         
         
         output$other_mode_fatal_chart <- renderEcharts4r({echart_column_chart(df = safety_data |> 
@@ -217,6 +241,45 @@ safety_demographics_server <- function(id) {
                                                                               x='data_year', y='estimate', fill='metric', title='Serious Injury',
                                                                               dec = 0, esttype = 'number', color = psrc_colors$gnbopgy_5)})
         
+        output$other_tod_fatal_chart <- renderEcharts4r({echart_column_chart(df = safety_data |> 
+                                                                               filter(geography_type == "Time of Day" & variable == "Total" & metric == "Traffic Related Deaths" & grouping != "Other") |>
+                                                                               mutate(metric=grouping),
+                                                                             x='data_year', y='estimate', fill='metric', title='Traffic Related Deaths',
+                                                                             dec = 0, esttype = 'number', color = psrc_colors$gnbopgy_5)})
+        
+        output$other_tod_serious_chart <- renderEcharts4r({echart_column_chart(df = safety_data |> 
+                                                                                 filter(geography_type == "Time of Day" & variable == "Total" & metric == "Serious Injury" & grouping != "Other") |>
+                                                                                 mutate(metric=grouping),
+                                                                               x='data_year', y='estimate', fill='metric', title='Serious Injury',
+                                                                               dec = 0, esttype = 'number', color = psrc_colors$gnbopgy_5)})
+        
+        output$other_dow_fatal_chart <- renderEcharts4r({echart_column_chart(df = safety_data |> 
+                                                                               filter(geography_type == "Day of Week" & variable == "Total" & metric == "Traffic Related Deaths" & grouping != "Other") |>
+                                                                               mutate(metric=grouping),
+                                                                             x='data_year', y='estimate', fill='metric', title='Traffic Related Deaths',
+                                                                             dec = 0, esttype = 'number', color = psrc_colors$gnbopgy_5)})
+        
+        output$other_dow_serious_chart <- renderEcharts4r({echart_column_chart(df = safety_data |> 
+                                                                                 filter(geography_type == "Day of Week" & variable == "Total" & metric == "Serious Injury" & grouping != "Other") |>
+                                                                                 mutate(metric=grouping),
+                                                                               x='data_year', y='estimate', fill='metric', title='Serious Injury',
+                                                                               dec = 0, esttype = 'number', color = psrc_colors$gnbopgy_5)})
+        
+        output$other_roadway_fatal_chart <- renderEcharts4r({echart_column_chart(df = safety_data |> 
+                                                                                   filter(geography_type == "Roadway Type" & variable == "Total" & metric == "Traffic Related Deaths" & grouping != "Other") |>
+                                                                                   mutate(metric=grouping),
+                                                                                 x='data_year', y='estimate', fill='metric', title='Traffic Related Deaths',
+                                                                                 dec = 0, esttype = 'number', color = psrc_colors$gnbopgy_5)})
+        
+        output$other_roadway_serious_chart <- renderEcharts4r({echart_column_chart(df = safety_data |> 
+                                                                                     filter(geography_type == "Roadway Type" & variable == "Total" & metric == "Serious Injury" & grouping != "Other") |>
+                                                                                     mutate(metric=grouping),
+                                                                                   x='data_year', y='estimate', fill='metric', title='Serious Injury',
+                                                                                   dec = 0, esttype = 'number', color = psrc_colors$gnbopgy_5)})
+        
+        
+        
+        
         # Tab layout
         output$othertab <- renderUI({
           tagList(
@@ -226,6 +289,36 @@ safety_demographics_server <- function(id) {
             br(),
             fluidRow(column(6,echarts4rOutput(ns("other_mode_fatal_chart"))),
                      column(6,echarts4rOutput(ns("other_mode_serious_chart")))),
+            br(),
+            tags$div(class="chart_source","Fatalities: Washington Traffic Safety Commission Coded Fatality Files (2022 Preliminary)"),
+            tags$div(class="chart_source","Serious Injuries: WSDOT, Crash Data Division, Multi-Row data files (MRFF)"),
+            hr(style = "border-top: 1px solid #000000;"),
+            
+            h1("Roadway Type"),
+            textOutput(ns("other_roadway")),
+            br(),
+            fluidRow(column(6,echarts4rOutput(ns("other_roadway_fatal_chart"))),
+                     column(6,echarts4rOutput(ns("other_roadway_serious_chart")))),
+            br(),
+            tags$div(class="chart_source","Fatalities: Washington Traffic Safety Commission Coded Fatality Files (2022 Preliminary)"),
+            tags$div(class="chart_source","Serious Injuries: WSDOT, Crash Data Division, Multi-Row data files (MRFF)"),
+            hr(style = "border-top: 1px solid #000000;"),
+            
+            h1("Time of Day"),
+            textOutput(ns("other_time")),
+            br(),
+            fluidRow(column(6,echarts4rOutput(ns("other_tod_fatal_chart"))),
+                     column(6,echarts4rOutput(ns("other_tod_serious_chart")))),
+            br(),
+            tags$div(class="chart_source","Fatalities: Washington Traffic Safety Commission Coded Fatality Files (2022 Preliminary)"),
+            tags$div(class="chart_source","Serious Injuries: WSDOT, Crash Data Division, Multi-Row data files (MRFF)"),
+            hr(style = "border-top: 1px solid #000000;"),
+            
+            h1("Day of Week"),
+            textOutput(ns("other_day")),
+            br(),
+            fluidRow(column(6,echarts4rOutput(ns("other_dow_fatal_chart"))),
+                     column(6,echarts4rOutput(ns("other_dow_serious_chart")))),
             br(),
             tags$div(class="chart_source","Fatalities: Washington Traffic Safety Commission Coded Fatality Files (2022 Preliminary)"),
             tags$div(class="chart_source","Serious Injuries: WSDOT, Crash Data Division, Multi-Row data files (MRFF)"),
