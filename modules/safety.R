@@ -182,6 +182,57 @@ safety_demographics_server <- function(id) {
         hr(style = "border-top: 1px solid #000000;")
         
       )
-    })
+    }) # end of render ui for demographics tab
+  })
+  } # end of module server for demographics server
+  
+
+    safety_other_ui <- function(id) {
+      ns <- NS(id)
+      
+      tagList(
+        uiOutput(ns("othertab"))
+      )
+    }
+    
+    safety_other_server <- function(id) {
+      moduleServer(id, function(input, output, session){
+        ns <- session$ns
+        
+        # Text and charts
+        output$other_mode <- renderText({page_information(tbl=page_text, page_name="Safety", page_section = "Other-Mode", page_info = "description")})
+        output$other_time <- renderText({page_information(tbl=page_text, page_name="Safety", page_section = "Other-Time", page_info = "description")})
+        output$other_day <- renderText({page_information(tbl=page_text, page_name="Safety", page_section = "Other-Day", page_info = "description")})
+        
+        
+        output$other_mode_fatal_chart <- renderEcharts4r({echart_column_chart(df = safety_data |> 
+                                                                                filter(geography_type == "Mode" & variable == "Total" & metric == "Traffic Related Deaths" & grouping != "Other") |>
+                                                                                mutate(metric=grouping),
+                                                                              x='data_year', y='estimate', fill='metric', title='Traffic Related Deaths',
+                                                                              dec = 0, esttype = 'number', color = psrc_colors$gnbopgy_5)})
+        
+        output$other_mode_serious_chart <- renderEcharts4r({echart_column_chart(df = safety_data |> 
+                                                                                  filter(geography_type == "Mode" & variable == "Total" & metric == "Serious Injury"& grouping != "Other") |>
+                                                                                mutate(metric=grouping),
+                                                                              x='data_year', y='estimate', fill='metric', title='Serious Injury',
+                                                                              dec = 0, esttype = 'number', color = psrc_colors$gnbopgy_5)})
+        
+        # Tab layout
+        output$othertab <- renderUI({
+          tagList(
+            # Mode
+            h1("Mode"),
+            textOutput(ns("other_mode")),
+            br(),
+            fluidRow(column(6,echarts4rOutput(ns("other_mode_fatal_chart"))),
+                     column(6,echarts4rOutput(ns("other_mode_serious_chart")))),
+            br(),
+            tags$div(class="chart_source","Fatalities: Washington Traffic Safety Commission Coded Fatality Files (2022 Preliminary)"),
+            tags$div(class="chart_source","Serious Injuries: WSDOT, Crash Data Division, Multi-Row data files (MRFF)"),
+            hr(style = "border-top: 1px solid #000000;")
+            
+          )
+        })
+  
   })  # end moduleServer
 }

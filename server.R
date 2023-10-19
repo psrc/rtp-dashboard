@@ -45,6 +45,7 @@ shinyServer(function(input, output) {
   safety_overview_server('safetyOverview')
   safety_geography_server('Geographysafety')
   safety_demographics_server('Demographicsafety')
+  safety_other_server('Othersafety')
   
   # Modes Page
   banner_server('modeBanner', 

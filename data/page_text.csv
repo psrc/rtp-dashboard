@@ -6,3 +6,6 @@ Safety,Geography-MPO,"The Puget Sound region had the fifth lowest fatal accident
 Safety,Demographics-Race,Total fatal collisions by race
 Safety,Demographics-Age,Total fatal and serious collisions by age group
 Safety,Demographics-Gender,Total fatal and serious collisions by gender
+Safety,Other-Mode,Total collisions by mode
+Safety,Other-Time,Total fatal and serious collisions by time of day
+Safety,Other-Day,Total fatal and serious collisions by day of week

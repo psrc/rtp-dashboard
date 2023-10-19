@@ -72,7 +72,8 @@ shinyUI(
                              safety_overview_ui('safetyOverview'),
                              tabsetPanel(type = "pills",
                                          tabPanel("Geography", safety_geography_ui('Geographysafety')),
-                                         tabPanel("Demographics", safety_demographics_ui('Demographicsafety')))
+                                         tabPanel("Demographics", safety_demographics_ui('Demographicsafety')),
+                                         tabPanel("Other", safety_other_ui('Othersafety')))
                              ), # End of Main Panel for Safety
                       ), # End of Main Panel Fluid Row for Safety Tab
              ),# End of Tab Panel for Safety

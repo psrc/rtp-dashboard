@@ -35,7 +35,7 @@ left_panel_server <- function(id, page_nm) {
       tagList(
         
         hr(),
-        strong(tags$div(class="source_url","Regional Transportation Plan")),
+        strong(tags$div(class="source_url","Resources")),
         hr(style = "border-top: 1px solid #000000;"),
         tags$a(class = "source_url", href=link1_html, link1_text, target="_blank"),
         hr(style = "border-top: 1px solid #000000;"),
