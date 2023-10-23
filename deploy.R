@@ -8,6 +8,6 @@ deployApp(account = 'psrcwa',
 
 # official version ----
 
-deployApp(account = 'psrcwa',
-          appName = 'rtp_dashboard',
-          appTitle = 'RTP Dashboard')
+# deployApp(account = 'psrcwa',
+#           appName = 'rtp_dashboard',
+#           appTitle = 'RTP Dashboard')

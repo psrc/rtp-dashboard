@@ -26,6 +26,61 @@ page_information <- function(tbl, page_name, page_section=NULL, page_info) {
   
 }
 
+# Share Map -------------------------------------------------------------
+create_share_map<- function(lyr, title, colors="Blues", dec=0) {
+  
+  # Determine Bins
+  rng <- range(lyr$share)
+  max_bin <- max(abs(rng))
+  round_to <- 10^floor(log10(max_bin))
+  max_bin <- ceiling(max_bin/round_to)*round_to
+  breaks <- (max_bin*c(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.8, 1))
+  bins <- c(0, breaks)
+  pal <- colorBin(colors, domain = lyr$share, bins = bins)
+  
+  labels <- paste0("<b>",paste0(title,": "), "</b>", prettyNum(round(lyr$share*100, dec), big.mark = ","),"%") %>% lapply(htmltools::HTML)
+  
+  working_map <- leaflet(data = lyr) %>% 
+    addProviderTiles(providers$CartoDB.Positron) %>%
+    addLayersControl(baseGroups = c("Base Map"),
+                     overlayGroups = c(title,"Equity Focus Area"),
+                     options = layersControlOptions(collapsed = TRUE)) %>%
+    addPolygons(data = efa_tracts,
+                fillColor = "#91268F",
+                weight = 0,
+                opacity = 0,
+                color = "#91268F",
+                dashArray = "1",
+                fillOpacity = 0.5,
+                group = "Equity Focus Area") %>% 
+    addPolygons(fillColor = pal(lyr$share),
+                weight = 1.0,
+                opacity = 1,
+                color = "white",
+                dashArray = "3",
+                fillOpacity = 0.7,
+                highlight = highlightOptions(
+                  weight =5,
+                  color = "76787A",
+                  dashArray ="",
+                  fillOpacity = 0.7,
+                  bringToFront = TRUE),
+                label = labels,
+                labelOptions = labelOptions(
+                  style = list("font-weight" = "normal", padding = "3px 8px"),
+                  textsize = "15px",
+                  direction = "auto"),
+                group = title) %>%
+    addLegend(colors=c("#91268F"),
+              labels=c("Yes"),
+              group = "Equity Focus Area",
+              position = "bottomright",
+              title = "Equity Focus Area: Income")
+  
+  return(working_map)
+  
+}
+
 # Line Charts -------------------------------------------------------------
 echart_line_chart <- function(df, x, y, fill, tog, dec, esttype, color) {
   

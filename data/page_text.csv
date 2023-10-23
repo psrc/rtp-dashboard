@@ -11,3 +11,6 @@ Safety,Other-Mode,Total collisions by mode
 Safety,Other-Roadway,Total collisions by type of roadway
 Safety,Other-Time,Total fatal and serious collisions by time of day
 Safety,Other-Day,Total fatal and serious collisions by day of week
+Climate,Overview,"Climate change is a primary focus of VISION 2050 and the RTP, with a goal for the region to substantially reduce emissions of greenhouse gases that contribute to climate change in accordance with the goals of the Puget Sound Clean Air Agency (50% below 1990 levels by 2030 and 80% below 1990 levels by 2050) as well as to prepare for climate change impacts."
+Climate,ZEV-Regional,"Decarbonization of the transporation fleet is an important part of the Four-Part Greenhouse Gas Strategy. In 2023, almost 1/4 of all new vehicle registrations in the region have been electric or plug-in electric vehicles."
+Climate,ZEV-Zipcode,"Electric vehicle registrations are all the across the Puget Sound Region but some of the highest levels of market penetration are in the Seattle, Bellevue and Redmond area. There are noticable areas in Kitsap, Pierce and Snohomish counties that have lower ZEV registration levels and they tend to overlap with areas of lower incomes."

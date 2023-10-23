@@ -12,29 +12,13 @@ climate_overview_server <- function(id) {
     ns <- session$ns
     
     # Text
-    output$climate_text_1 <- renderText({climate_overview_1})
-    
-    output$climate_text_2 <- renderText({climate_overview_2})
-    
-    output$climate_text_3 <- renderText({climate_overview_3})
-    
-    output$climate_text_4 <- renderText({climate_overview_4})
+    output$climate_overview_text <- renderText({page_information(tbl=page_text, page_name="Climate", page_section = "Overview", page_info = "description")})
     
     # Overview UI
     output$climateoverview <- renderUI({
       tagList(
-        # Climate Overview
-        tags$div(class="page_goals","Goal: 80% below 1990 GHG Emissions by 2050"),
-        br(),
-        textOutput(ns("climate_text_1")),
-        br(),
-        textOutput(ns("climate_text_2")),
-        br(),
-        textOutput(ns("climate_text_3")),
-        br(), 
-        textOutput(ns("climate_text_4")),
-        br(), 
-        div(img(src="ghg-2050-emissions.png", width = "100%", height = "100%", style = "padding-top: 0px; border-radius:0px 0 0px 0;", alt = "Bar chart of Greenhouse Gas Emissions in 2050")),
+        tags$div(class="page_goals", "Goal: 80% below 1990 GHG Emissions by 2050"),
+        textOutput(ns("climate_overview_text")),
         br()
       )
     })
@@ -55,9 +39,8 @@ climate_zev_server <- function(id) {
     ns <- session$ns
     
     # Text and charts
-    output$regional_ev_text <- renderText({ev_registration_caption})
-    
-    output$zipcode_ev_text <- renderText({ev_zipcode_caption})
+    output$zev_region <- renderText({page_information(tbl=page_text, page_name="Climate", page_section = "ZEV-Regional", page_info = "description")})
+    output$zev_zipcodes <- renderText({page_information(tbl=page_text, page_name="Climate", page_section = "ZEV-Zipcode", page_info = "description")})
     
     output$ev_share_new_registrations_chart <- renderPlotly({interactive_column_chart(t=data %>% filter(metric=="New Vehicle Registrations" & geography=="Region") %>% mutate(date=as.character(date)),
                                                                                       y='share', x='date', fill='variable', pos = "stack",
@@ -69,10 +52,8 @@ climate_zev_server <- function(id) {
     output$climatezev <- renderUI({
       tagList(
         h1("New Vehicle Registrations in the PSRC Region"),
-        textOutput(ns("regional_ev_text")),
+        textOutput(ns("zev_region")),
         br(),
-        
-        # Share of registrations
         strong(tags$div(class="chart_title","Share of New Vehicle Registrations")),
         fluidRow(column(12,plotlyOutput(ns("ev_share_new_registrations_chart")))),
         tags$div(class="chart_source","Source: WA State Open Data Portal, King, Kitsap, Pierce & Snohomish counties"),
@@ -80,10 +61,10 @@ climate_zev_server <- function(id) {
         
         #  Zipcode
         h1("New Vehicle Registrations by Zipcode"),
-        textOutput(ns("zipcode_ev_text")),
+        textOutput(ns("zev_zipcodes")),
+        br(),
         fluidRow(column(12,leafletOutput(ns("ev_zipcode_map")))),
-        br(), br(),
-        br(), br(),
+        tags$div(class="chart_source","Source: WA State Open Data Portal, King, Kitsap, Pierce & Snohomish counties"),
         hr(style = "border-top: 1px solid #000000;")
       )
     })
