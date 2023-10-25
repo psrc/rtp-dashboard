@@ -48,15 +48,14 @@ fa_wfh <- "path://M218.3 8.5c12.3-11.3 31.2-11.3 43.4 0l208 192c6.7 6.2 10.3 14.
 fa_bus <- "path://M224 0C348.8 0 448 35.2 448 80V96 416c0 17.7-14.3 32-32 32v32c0 17.7-14.3 32-32 32H352c-17.7 0-32-14.3-32-32V448H128v32c0 17.7-14.3 32-32 32H64c-17.7 0-32-14.3-32-32l0-32c-17.7 0-32-14.3-32-32V96 80C0 35.2 99.2 0 224 0zM64 128V256c0 17.7 14.3 32 32 32H352c17.7 0 32-14.3 32-32V128c0-17.7-14.3-32-32-32H96c-17.7 0-32 14.3-32 32zM80 400a32 32 0 1 0 0-64 32 32 0 1 0 0 64zm288 0a32 32 0 1 0 0-64 32 32 0 1 0 0 64z"
 fa_house <- "path://M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"
 
-
 # Data via RDS files ------------------------------------------------------
 safety_data <- readRDS("data/collision_data.rds") |> mutate(data_year = as.character(lubridate::year(date)))
 commute_data <- readRDS("data/commute_data.rds") |> mutate(data_year = as.character(lubridate::year(date)))
+climate_data <- readRDS("data/ev_registrations.rds") |> mutate(data_year = as.character(lubridate::year(date)))
+ev_by_tract <- readRDS("data/ev_registration_by_tract.rds")
+vmt_data <- readRDS("data/vmt.rds")
 
-#zipcodes <- st_read("data/psrc_zipcodes.shp") %>% st_transform(wgs84)
-zipcodes <- readRDS("data/zipcodes.rds")
-
-#tracts <- st_read("https://services6.arcgis.com/GWxg6t7KXELn1thE/arcgis/rest/services/tract2010_nowater/FeatureServer/0/query?where=0=0&outFields=*&f=pgeojson")
+#zipcodes <- readRDS("data/zipcodes.rds")
 tracts <- readRDS("data/tracts.rds")
 
 # Data via CSV ------------------------------------------------------------
@@ -82,13 +81,6 @@ data <-bind_rows(data, job_change)
 
 rm(total_job_change, hct_job_change, job_change)
 
-vmt <- read_csv("data/vmt-data.csv", show_col_types = FALSE) %>%
-  mutate(date = lubridate::mdy(date)) %>%
-  mutate(data_year = as.character(lubridate::year(date)))
-
-data <- bind_rows(data, vmt)
-rm(vmt)
-
 boardings <- read_csv("data/rtp-transit-boardings.csv", show_col_types = FALSE) %>%
   mutate(date = lubridate::mdy(date)) %>%
   mutate(data_year = as.character(lubridate::year(date)))
@@ -103,10 +95,17 @@ hours <- read_csv("data/rtp-transit-hours.csv", show_col_types = FALSE) %>%
 data <- bind_rows(data, hours)
 rm(hours)
 
+# vmt <- read_csv("data/vmt-data.csv", show_col_types = FALSE) %>%
+#   mutate(date = lubridate::mdy(date)) %>%
+#   mutate(data_year = as.character(lubridate::year(date)))
+# 
+# data <- bind_rows(data, vmt)
+# rm(vmt)
+# 
 vkt_data <- read_csv("data/vkt-data.csv", show_col_types = FALSE) %>% 
-  mutate(plot_id=as.character(plot_id)) %>% 
-  arrange(desc(vkt))
-
+ mutate(plot_id=as.character(plot_id)) %>% 
+ arrange(desc(vkt))
+ 
 vkt_order <- vkt_data %>% select(geography) %>% distinct %>% pull()
 vkt_data <- vkt_data %>% mutate(geography = factor(x=geography, levels=vkt_order))
 
@@ -189,23 +188,6 @@ jobs_delta <- actual_jobs_today - vision_jobs_today
 actual_jobs_hct_today <- data %>% filter(lubridate::year(date)==current_jobs_year & metric=="Employment Growth Inside HCT Area" & variable=="Inside HCT Area") %>% select(share) %>% pull()
 
 # Vehicle Registration Data for Text --------------------------------------
-min_ev_date <- data %>% filter(metric=="New Vehicle Registrations" & geography=="Region") %>% select(date) %>% pull() %>% min()
-max_ev_date <- data %>% filter(metric=="New Vehicle Registrations" & geography=="Region") %>% select(date) %>% pull() %>% max()
-
-evs_previous <- 1 - (data %>% filter(metric=="New Vehicle Registrations" & geography=="Region" & date==min_ev_date & variable=="ICE (Internal Combustion Engine)") %>% select(share) %>% pull())
-evs_today <- 1 - (data %>% filter(metric=="New Vehicle Registrations" & geography=="Region" & date==max_ev_date & variable=="ICE (Internal Combustion Engine)") %>% select(share) %>% pull())
-
-ev_zips <- data %>% 
-  filter(metric=="New Vehicle Registrations" & geography_type=="Zipcode" & date==max_ev_date & variable!="ICE (Internal Combustion Engine)") %>%
-  select(geography, estimate, share) %>%
-  group_by(geography) %>%
-  summarise(estimate=sum(estimate), share=sum(share)) %>%
-  as_tibble()
-
-ev_zipcodes <- left_join(zipcodes, ev_zips, by=c("zipcode"="geography")) %>% 
-  mutate(share = replace_na(share, 0)) %>%
-  select(zipcode, share)
-
 efa_tracts <- tracts %>% 
   filter(GEOID10 %in% efa_income) %>%
   st_union() %>%
@@ -301,21 +283,6 @@ employment_overview <- paste("Over the next 30 years, the central Puget Sound re
                              "How can we ensure that all residents benefit from the region’s strong economy?",
                              "Local counties, cities, Tribes and other partners have worked together with PSRC to develop")
 
-vmt_caption <- paste0("Vehicle miles traveled peaked in the late 1990’s at around 24 miles per person per day. In 2018, the ",
-                      "average miles driven per day had reduced to about 21 miles per day. Over the next thirty years, the ",
-                      "average distance driven per capita is forecasted to reduce even further to approximately 18 miles per ",
-                      "day per person, helping the region to contribute to goals of reducing VMT per capita.")
-
-vmt_county_caption <- paste0("Vehicle miles driven vary greatly across the region as well as by equity focus areas. For ",
-                             "example, even though the average resident of the region travels almost 18 miles per day in 2050, people of ",
-                             "lower incomes travel about 15 miles per day and people living in regional growth centers travel around 7 miles per day")
-
-vkt_caption <- paste0("Under VISION 2050, growth between 2018 and 2050 is focused near high-capacity transit stations. ",
-                      "The majority of these investments are located in the VISION 2050 regional geographies of ",
-                      "Metropolitan Cities, Core Cities and High-Capacity Transit Communities, the most urbanized and ",
-                      "densely developed parts of the region. As shown below, driving in these places is more like many ",
-                      "European countries than to other parts of the United States by 2050.")
-
 transit_overview_1 <- paste0("The Regional Transportation Plan envisions an integrated system that supports the goals of VISION ",
                              "2050, which calls for increased investment in transportation to support a growing population and ",
                              "economy. VISION 2050 emphasizes investing in transportation projects and programs that support ",
@@ -333,6 +300,4 @@ transit_overview_3 <- paste0("High-capacity transit in the region is provided by
                              "King County Metro and Kitsap Transit. Bus rapid transit (BRT) routes in the region are distinguished from other forms ",
                              "of bus transit by a combination of features that include branded buses and stations, off-board fare payment, wider stop ","
                              spacing than other local bus service, and other treatments such as transit signal priority and business access and transit (BAT) lanes.")
-
-
 

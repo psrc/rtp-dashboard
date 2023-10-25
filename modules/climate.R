@@ -40,13 +40,15 @@ climate_zev_server <- function(id) {
     
     # Text and charts
     output$zev_region <- renderText({page_information(tbl=page_text, page_name="Climate", page_section = "ZEV-Regional", page_info = "description")})
-    output$zev_zipcodes <- renderText({page_information(tbl=page_text, page_name="Climate", page_section = "ZEV-Zipcode", page_info = "description")})
+    output$zev_tracts <- renderText({page_information(tbl=page_text, page_name="Climate", page_section = "ZEV-Zipcode", page_info = "description")})
     
-    output$ev_share_new_registrations_chart <- renderPlotly({interactive_column_chart(t=data %>% filter(metric=="New Vehicle Registrations" & geography=="Region") %>% mutate(date=as.character(date)),
-                                                                                      y='share', x='date', fill='variable', pos = "stack",
-                                                                                      est="percent", dec=0, color='pgnobgy_5') %>% plotly::layout(showlegend=FALSE)})
+    output$ev_share_new_registrations_chart <- renderEcharts4r({echart_line_chart(df=climate_data |> 
+                                                                                    filter(geography == "Region" & metric == "new-vehicle-registrations" & variable != "Plug-in Hybrid Electric Vehicle") |>
+                                                                                    mutate(plot_date = paste0(lubridate::month(date),"-",lubridate::year(date))),
+                                                                                  x='plot_date', y='share', fill='variable', tog = 'grouping',
+                                                                                  esttype="percent", color = "jewel", dec = 0)})
     
-    output$ev_zipcode_map <- renderLeaflet({create_share_map(lyr=ev_zipcodes, title="ZEV Share")})
+    output$ev_tract_map <- renderLeaflet({create_share_map(lyr=ev_by_tract, title="ZEV Share")})
     
     # Tab layout
     output$climatezev <- renderUI({
@@ -55,15 +57,15 @@ climate_zev_server <- function(id) {
         textOutput(ns("zev_region")),
         br(),
         strong(tags$div(class="chart_title","Share of New Vehicle Registrations")),
-        fluidRow(column(12,plotlyOutput(ns("ev_share_new_registrations_chart")))),
+        fluidRow(column(12,echarts4rOutput(ns("ev_share_new_registrations_chart")))),
         tags$div(class="chart_source","Source: WA State Open Data Portal, King, Kitsap, Pierce & Snohomish counties"),
         hr(style = "border-top: 1px solid #000000;"),
         
-        #  Zipcode
-        h1("New Vehicle Registrations by Zipcode"),
-        textOutput(ns("zev_zipcodes")),
+        #  Tracts
+        h1("New Vehicle Registrations by Census Tract"),
+        textOutput(ns("zev_tracts")),
         br(),
-        fluidRow(column(12,leafletOutput(ns("ev_zipcode_map")))),
+        fluidRow(column(12,leafletOutput(ns("ev_tract_map")))),
         tags$div(class="chart_source","Source: WA State Open Data Portal, King, Kitsap, Pierce & Snohomish counties"),
         hr(style = "border-top: 1px solid #000000;")
       )
@@ -84,30 +86,29 @@ climate_vmt_server <- function(id) {
     ns <- session$ns
     
     # Text and charts
-    output$regional_vmt_text <- renderText({vmt_caption})
+    output$regional_vmt_text <- renderText({page_information(tbl=page_text, page_name="Climate", page_section = "VMT-Regional", page_info = "description")})
+    output$county_vmt_text <- renderText({page_information(tbl=page_text, page_name="Climate", page_section = "VMT-County", page_info = "description")})
+    output$vkt_text <- renderText({page_information(tbl=page_text, page_name="Climate", page_section = "VMT-Global", page_info = "description")})
+
+    output$chart_region_vmt <- renderEcharts4r({echart_line_chart(df=vmt_data |> filter(data_year >= 2000 & geography == "Region"),
+                                                              x='data_year', y='estimate', fill='variable', tog = 'grouping',
+                                                              esttype="number", color = "jewel", dec = 0)})
     
-    output$county_vmt_text <- renderText({vmt_county_caption})
+    output$king_vmt_chart <- renderEcharts4r({echart_column_chart(df = vmt_data |> filter(data_year >= 2000 & geography == "King" & variable == "Observed"),
+                                                                  x='data_year', y='estimate', fill='metric', title='King County',
+                                                                  dec = 1, esttype = 'number', color = psrc_colors$pognbgy_5)})
     
-    output$vkt_text <- renderText({vkt_caption})
+    output$kitsap_vmt_chart <- renderEcharts4r({echart_column_chart(df = vmt_data |> filter(data_year >= 2000 & geography == "Kitsap" & variable == "Observed"),
+                                                                    x='data_year', y='estimate', fill='metric', title='Kitsap County',
+                                                                    dec = 1, esttype = 'number', color = psrc_colors$gnbopgy_5)})
     
-    output$chart_total_vmt <- renderPlotly({psrcplot:::make_interactive(static_line_chart(t=data %>% filter(grouping=="Vehicle Miles Traveled" & variable=="Total" & geography=="Region" & data_year>=2000), 
-                                                                                          x='data_year', y='estimate', fill='metric', est="number",
-                                                                                          lwidth = 2,
-                                                                                          breaks = c("2000","2010","2020","2030","2040","2050"),
-                                                                                          color = "pgnobgy_5") + ggplot2::scale_y_continuous(limits=c(40000000,120000000), labels=scales::label_comma()))})
+    output$pierce_vmt_chart <- renderEcharts4r({echart_column_chart(df = vmt_data |> filter(data_year >= 2000 & geography == "Pierce" & variable == "Observed"),
+                                                                    x='data_year', y='estimate', fill='metric', title='Pierce County',
+                                                                    dec = 1, esttype = 'number', color = psrc_colors$obgnpgy_5)})
     
-    output$chart_per_capita_vmt <- renderPlotly({psrcplot:::make_interactive(static_line_chart(t=data %>% filter(grouping=="Vehicle Miles Traveled" & variable=="per Capita" & geography=="Region" & data_year>=2000), 
-                                                                                               x='data_year', y='estimate', fill='metric', est="number",
-                                                                                               lwidth = 2, dec=1,
-                                                                                               breaks = c("2000","2010","2020","2030","2040","2050"),
-                                                                                               color = "pgnobgy_5") + ggplot2::scale_y_continuous(limits=c(10,30), labels=scales::label_comma()))})
-    
-    output$chart_total_vmt_county <- renderPlot({static_facet_column_chart(t=data %>% filter(grouping=="Vehicle Miles Traveled" & variable=="Total" & metric=="Observed VMT" & geography!="Region" & data_year>as.character(current_vmt_year-5)), 
-                                                                           x="data_year", y="estimate", 
-                                                                           fill="data_year", facet="geography", 
-                                                                           est = "number",
-                                                                           color = "pgnobgy_10",
-                                                                           ncol=2, scales="free")})
+    output$snohomish_vmt_chart <- renderEcharts4r({echart_column_chart(df = vmt_data |> filter(data_year >= 2000 & geography == "Snohomish" & variable == "Observed"),
+                                                                       x='data_year', y='estimate', fill='metric', title='Snohomish County',
+                                                                       dec = 1, esttype = 'number', color = psrc_colors$gnbopgy_5[[2]])})
     
     output$chart_vkt_per_capita <- renderPlotly({interactive_bar_chart(t=vkt_data,
                                                                        y='geography', x='vkt', fill='plot_id',
@@ -116,32 +117,25 @@ climate_vmt_server <- function(id) {
     # Tab layout
     output$climatevmt <- renderUI({
       tagList(
-        tags$div(class="page_goals","RTP Outcome: 25% Reduction in VMT per Capita by 2050"),
-        br(),
-        
-        # Regional VMT
-        h1("Regional Vehicle Miles Traveled"),
+        h1("Region"),
         textOutput(ns("regional_vmt_text")),
         br(),
-        fluidRow(column(6,strong(tags$div(class="chart_title","Daily Regional Vehicle Miles Traveled"))),
-                 column(6,strong(tags$div(class="chart_title","Daily Regional VMT per Capita")))),
-        fluidRow(column(6,plotlyOutput(ns("chart_total_vmt"))),
-                 column(6,plotlyOutput(ns("chart_per_capita_vmt")))),
-        fluidRow(column(6,tags$div(class="chart_source","Source: WSDOT HPMS, SoundCast Model")),
-                 column(6,tags$div(class="chart_source","Source: WSDOT HPMS, OFM and SoundCast Model"))),
-        br(),
+        strong(tags$div(class="chart_title","Daily Regional Vehicle Miles Traveled")),
+        fluidRow(column(12,echarts4rOutput(ns("chart_region_vmt")))),
+        tags$div(class="chart_source","Source: WSDOT HPMS, OFM and SoundCast Model"),
         hr(style = "border-top: 1px solid #000000;"),
         
         # County VMT
-        h1("Vehicle Miles Traveled by County"),
+        h1("County"),
         textOutput(ns("county_vmt_text")),
         br(),
-        strong(tags$div(class="chart_title","Daily Vehicle Miles Traveled by County")),
-        fluidRow(column(12,plotOutput(ns("chart_total_vmt_county")))),
+        fluidRow(column(6,echarts4rOutput(ns("king_vmt_chart"))),
+                 column(6,echarts4rOutput(ns("kitsap_vmt_chart")))),
+        fluidRow(column(6,echarts4rOutput(ns("pierce_vmt_chart"))),
+                 column(6,echarts4rOutput(ns("snohomish_vmt_chart")))),
         tags$div(class="chart_source","Source: WSDOT HPMS"),
-        br(),
         hr(style = "border-top: 1px solid #000000;"),
-        
+
         # VKT
         h1("Vehicle Kilometers Traveled Comparison"),
         textOutput(ns("vkt_text")),

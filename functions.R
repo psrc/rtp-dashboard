@@ -29,6 +29,9 @@ page_information <- function(tbl, page_name, page_section=NULL, page_info) {
 # Share Map -------------------------------------------------------------
 create_share_map<- function(lyr, title, colors="Blues", dec=0) {
   
+  # Replace any NaNs with zero in the share column
+  lyr <- lyr |> mutate(share = replace_na(share, 0))
+  
   # Determine Bins
   rng <- range(lyr$share)
   max_bin <- max(abs(rng))

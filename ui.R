@@ -50,6 +50,20 @@ shinyUI(
                       ) # End of Main Panel Fluid Row for Climate Tab
              ), # End of Tab Panel for Climate
     
+    tabPanel(title="Safety", 
+             value = "Safety-Page",
+             banner_ui('safetyBanner'),
+             fluidRow(column(4, style='padding-left:25px; padding-right:0px;', left_panel_ui('leftSafety')),
+                      column(8, style='padding-left:25px; padding-right:50px;',
+                             safety_overview_ui('safetyOverview'),
+                             tabsetPanel(type = "pills",
+                                         tabPanel("Geography", safety_geography_ui('Geographysafety')),
+                                         tabPanel("Demographics", safety_demographics_ui('Demographicsafety')),
+                                         tabPanel("Other", safety_other_ui('Othersafety')))
+                      ), # End of Main Panel for Safety
+             ), # End of Main Panel Fluid Row for Safety Tab
+    ),# End of Tab Panel for Safety
+    
     tabPanel(title=HTML("Growth"), 
              value="Growth-Page",
              banner_ui('growthBanner'),
@@ -63,20 +77,6 @@ shinyUI(
                              ), # End of Main Panel for Growth
                       ), # End of Main Panel Fluid Row for Growth Tab
              ),# End of Tab Panel for Growth
-    
-    tabPanel(title="Safety", 
-             value = "Safety-Page",
-             banner_ui('safetyBanner'),
-             fluidRow(column(4, style='padding-left:25px; padding-right:0px;', left_panel_ui('leftSafety')),
-                      column(8, style='padding-left:25px; padding-right:50px;',
-                             safety_overview_ui('safetyOverview'),
-                             tabsetPanel(type = "pills",
-                                         tabPanel("Geography", safety_geography_ui('Geographysafety')),
-                                         tabPanel("Demographics", safety_demographics_ui('Demographicsafety')),
-                                         tabPanel("Other", safety_other_ui('Othersafety')))
-                             ), # End of Main Panel for Safety
-                      ), # End of Main Panel Fluid Row for Safety Tab
-             ),# End of Tab Panel for Safety
     
     tabPanel(title=HTML("Walk,<br/>Bike & Roll"),
              value="Mode-Page",
