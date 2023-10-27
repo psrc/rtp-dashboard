@@ -78,10 +78,13 @@ vkt_data <- vkt_data |> mutate(geography = factor(x=geography, levels=vkt_order)
 
 saveRDS(vkt_data, "C:/coding/rtp-dashboard/data/vkt.rds")
 
-
 # Shapefiles --------------------------------------------------------------
 zipcodes <- st_read("C:/coding/rtp-dashboard/data/psrc_zipcodes.shp") |> st_transform(wgs84)
 saveRDS(zipcodes, "C:/coding/rtp-dashboard/data/zipcodes.rds")
 
 tracts <- st_read("https://services6.arcgis.com/GWxg6t7KXELn1thE/arcgis/rest/services/tract2010_nowater/FeatureServer/0/query?where=0=0&outFields=*&f=pgeojson")
 saveRDS(tracts, "C:/coding/rtp-dashboard/data/tracts.rds")
+
+efa_income <- read_csv("data/efa_income_tracts.csv", show_col_types = FALSE) |> select(GEOID) |> pull()
+efa_income_lyr <- tracts |> filter(GEOID10 %in% efa_income) |> st_union() |> st_sf() 
+saveRDS(efa_income_lyr, "C:/coding/rtp-dashboard/data/efa_income.rds")

@@ -55,6 +55,7 @@ climate_data <- readRDS("data/ev_registrations.rds") |> mutate(data_year = as.ch
 ev_by_tract <- readRDS("data/ev_registration_by_tract.rds")
 vmt_data <- readRDS("data/vmt.rds")
 vkt_data <- readRDS("data/vkt.rds")
+efa_income <- readRDS("data/efa_income.rds")
 
 #zipcodes <- readRDS("data/zipcodes.rds")
 tracts <- readRDS("data/tracts.rds")
@@ -95,8 +96,6 @@ hours <- read_csv("data/rtp-transit-hours.csv", show_col_types = FALSE) %>%
 
 data <- bind_rows(data, hours)
 rm(hours)
-
-efa_income <- read_csv("data/efa_income_tracts.csv", show_col_types = FALSE) %>% select(GEOID) %>% pull()
 
 # Create MPO Data for Charts ----------------------------------------------
 metros <- c("Portland", "Bay Area", "San Diego", "Denver", "Atlanta","Washington DC", "Boston", "Miami" ,"Phoenix", "Austin", "Dallas")
@@ -175,11 +174,6 @@ jobs_delta <- actual_jobs_today - vision_jobs_today
 actual_jobs_hct_today <- data %>% filter(lubridate::year(date)==current_jobs_year & metric=="Employment Growth Inside HCT Area" & variable=="Inside HCT Area") %>% select(share) %>% pull()
 
 # Vehicle Registration Data for Text --------------------------------------
-efa_tracts <- tracts %>% 
-  filter(GEOID10 %in% efa_income) %>%
-  st_union() %>%
-  st_sf() 
-
 min_transit_years <- data %>% filter(metric=="Mode to Work" & geography=="Region") %>% select(data_year) %>% pull() %>% unique() %>% min()
 max_min_transit_years <- as.character(as.integer(min_transit_years)+5)
 transit_years <- data %>% filter(metric=="Mode to Work" & geography=="Region" & data_year>=max_min_transit_years) %>% select(data_year) %>% pull() %>% unique()

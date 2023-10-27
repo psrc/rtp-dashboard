@@ -40,7 +40,7 @@ climate_zev_server <- function(id) {
     
     # Text and charts
     output$zev_region <- renderText({page_information(tbl=page_text, page_name="Climate", page_section = "ZEV-Regional", page_info = "description")})
-    output$zev_tracts <- renderText({page_information(tbl=page_text, page_name="Climate", page_section = "ZEV-Zipcode", page_info = "description")})
+    output$zev_tracts <- renderText({page_information(tbl=page_text, page_name="Climate", page_section = "ZEV-Tracts", page_info = "description")})
     
     output$ev_share_new_registrations_chart <- renderEcharts4r({echart_line_chart(df=climate_data |> 
                                                                                     filter(geography == "Region" & metric == "new-vehicle-registrations" & variable != "Plug-in Hybrid Electric Vehicle") |>
@@ -48,7 +48,9 @@ climate_zev_server <- function(id) {
                                                                                   x='plot_date', y='share', fill='variable', tog = 'grouping',
                                                                                   esttype="percent", color = "jewel", dec = 0)})
     
-    output$ev_tract_map <- renderLeaflet({create_share_map(lyr=ev_by_tract, title="ZEV Share")})
+    output$ev_tract_map <- renderLeaflet({create_share_map(lyr=ev_by_tract, title="ZEV Share", 
+                                                           efa_lyr=efa_income, 
+                                                           efa_title="Equiy Focus Area: Income")})
     
     # Tab layout
     output$climatezev <- renderUI({

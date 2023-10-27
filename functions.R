@@ -27,7 +27,7 @@ page_information <- function(tbl, page_name, page_section=NULL, page_info) {
 }
 
 # Share Map -------------------------------------------------------------
-create_share_map<- function(lyr, title, colors="Blues", dec=0) {
+create_share_map<- function(lyr, title, efa_lyr, efa_title, colors="Blues", dec=0) {
   
   # Replace any NaNs with zero in the share column
   lyr <- lyr |> mutate(share = replace_na(share, 0))
@@ -48,7 +48,7 @@ create_share_map<- function(lyr, title, colors="Blues", dec=0) {
     addLayersControl(baseGroups = c("Base Map"),
                      overlayGroups = c(title,"Equity Focus Area"),
                      options = layersControlOptions(collapsed = TRUE)) %>%
-    addPolygons(data = efa_tracts,
+    addPolygons(data = efa_lyr,
                 fillColor = "#91268F",
                 weight = 0,
                 opacity = 0,
@@ -78,7 +78,7 @@ create_share_map<- function(lyr, title, colors="Blues", dec=0) {
               labels=c("Yes"),
               group = "Equity Focus Area",
               position = "bottomright",
-              title = "Equity Focus Area: Income")
+              title = efa_title)
   
   return(working_map)
   
