@@ -18,7 +18,7 @@ safety_overview_server <- function(id) {
     output$safetyoverview <- renderUI({
       tagList(
         tags$div(class="page_goals", "Goal: Zero Fatal and Serious Injuries by 2030"),
-        textOutput(ns("safety_overview_text")),
+        textOutput(ns("safety_overview_text")) |> withSpinner(color=load_clr),
         br()
       )
     })
@@ -83,9 +83,8 @@ safety_geography_server <- function(id) {
       tagList(
         # Region
         h1("Region"),
-        textOutput(ns("geography_region")),
+        textOutput(ns("geography_region")) |> withSpinner(color=load_clr),
         br(),
-        #strong(tags$div(class="chart_title","Serious Injury and Traffic Related Deaths in the PSRC Region")),
         fluidRow(column(12,echarts4rOutput(ns("region_collisions_chart")))),
         tags$div(class="chart_source","Fatalities: Washington Traffic Safety Commission Coded Fatality Files (2022 Preliminary)"),
         tags$div(class="chart_source","Serious Injuries: WSDOT, Crash Data Division, Multi-Row data files (MRFF)"),
@@ -173,7 +172,7 @@ safety_demographics_server <- function(id) {
       tagList(
         # Race
         h1("Race & Ethnicity"),
-        textOutput(ns("demographics_race")),
+        textOutput(ns("demographics_race")) |> withSpinner(color=load_clr),
         br(),
         fluidRow(column(12,echarts4rOutput(ns("demographics_race_chart")))),
         tags$div(class="chart_source","Fatalities: Washington Traffic Safety Commission Coded Fatality Files (2022 Preliminary)"),
@@ -285,7 +284,7 @@ safety_demographics_server <- function(id) {
           tagList(
             # Mode
             h1("Mode"),
-            textOutput(ns("other_mode")),
+            textOutput(ns("other_mode")) |> withSpinner(color=load_clr),
             br(),
             fluidRow(column(6,echarts4rOutput(ns("other_mode_fatal_chart"))),
                      column(6,echarts4rOutput(ns("other_mode_serious_chart")))),

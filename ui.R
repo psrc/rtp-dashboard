@@ -28,11 +28,7 @@ shinyUI(
                       column(8, style='padding-left:25px; padding-right:50px;',
                              hr(),
                              tags$div(class="page_goals", "This is the Development Version of the APP"),
-                             br(), br(),
-                             "The RTP Performance Dashboard is a resource to help the region understand how well it is meeting it's long range goals. At a minimum, the dashboard will be updated 
-                             each fall as various Census and Transportation related metrics are released. 
-                             Metrics on the dashboard are focused on topic areas that were identified by the Transporation Policy Board as high priorities for the region",
-                             hr(),
+                             dashboard_overview_ui('Mainoverview'),
                              ), # end of second fluid row for main overview page
                       ) # end of second fluid row for main overview page
              ), # end of tabpanel for Overview
@@ -70,10 +66,7 @@ shinyUI(
              fluidRow(column(4, style='padding-left:25px; padding-right:0px;', left_panel_ui('leftGrowth')),
                       column(8, style='padding-left:25px; padding-right:50px;',
                              growth_overview_ui('growthOverview'),
-                             tabsetPanel(type = "pills",
-                                         tabPanel("Population", population_ui('Populationgrowth')),
-                                         tabPanel("Housing", housing_ui('Housinggrowth')),
-                                         tabPanel("Jobs", jobs_ui('Jobsgrowth')))
+                             growth_ui('PopHsgJobgrowth')
                              ), # End of Main Panel for Growth
                       ), # End of Main Panel Fluid Row for Growth Tab
              ),# End of Tab Panel for Growth

@@ -56,7 +56,7 @@ climate_zev_server <- function(id) {
     output$climatezev <- renderUI({
       tagList(
         h1("Vehicle Registrations in the PSRC Region"),
-        textOutput(ns("zev_region")),
+        textOutput(ns("zev_region")) |> withSpinner(color=load_clr),
         br(),
         strong(tags$div(class="chart_title","Share of New Vehicle Registrations")),
         fluidRow(column(12,echarts4rOutput(ns("ev_share_new_registrations_chart")))),
@@ -71,7 +71,7 @@ climate_zev_server <- function(id) {
         tags$div(class="chart_source","Source: WA State Open Data Portal, King, Kitsap, Pierce & Snohomish counties"),
         hr(style = "border-top: 1px solid #000000;")
       )
-    })
+    }) #|> withSpinner(color="#0dc5c1")
   })  # end moduleServer
 }
 
@@ -119,7 +119,7 @@ climate_vmt_server <- function(id) {
     output$climatevmt <- renderUI({
       tagList(
         h1("Region"),
-        textOutput(ns("regional_vmt_text")),
+        textOutput(ns("regional_vmt_text")) |> withSpinner(color=load_clr),
         br(),
         strong(tags$div(class="chart_title","Daily Regional Vehicle Miles Traveled")),
         fluidRow(column(12,echarts4rOutput(ns("chart_region_vmt")))),

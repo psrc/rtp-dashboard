@@ -11,6 +11,7 @@ shinyServer(function(input, output) {
                 banner_url = "https://www.psrc.org/planning-2050")
   
   left_panel_server('leftOverview', page_nm = "Overview")
+  dashboard_overview_server('Mainoverview')
   
   # Climate Page
   banner_server('climateBanner', 
@@ -31,9 +32,7 @@ shinyServer(function(input, output) {
   
   left_panel_server('leftGrowth', page_nm = "Growth")
   growth_overview_server('growthOverview')
-  population_server('Populationgrowth')
-  housing_server('Housinggrowth')
-  jobs_server('Jobsgrowth')
+  growth_server('PopHsgJobgrowth')
   
   # Safety Page
   banner_server('safetyBanner', 

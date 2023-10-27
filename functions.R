@@ -85,7 +85,7 @@ create_share_map<- function(lyr, title, efa_lyr, efa_title, colors="Blues", dec=
 }
 
 # Line Charts -------------------------------------------------------------
-echart_line_chart <- function(df, x, y, fill, tog, dec, esttype, color) {
+echart_line_chart <- function(df, x, y, fill, tog, dec, esttype, color, y_min=0) {
   
   if (color == "blues") {chart_color <- psrcplot::psrc_colors$blues_inc}
   if (color == "greens") {chart_color <- psrcplot::psrc_colors$greens_inc}
@@ -203,6 +203,8 @@ echart_line_chart <- function(df, x, y, fill, tog, dec, esttype, color) {
     c <- c %>%
       echarts4r::e_tooltip(trigger = "item")
   }
+  
+  c <- c |> echarts4r::e_y_axis(min=y_min)
   
   return(c)
   
