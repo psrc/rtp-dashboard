@@ -53,7 +53,7 @@ climate_zev_server <- function(id) {
     # Tab layout
     output$climatezev <- renderUI({
       tagList(
-        h1("New Vehicle Registrations in the PSRC Region"),
+        h1("Vehicle Registrations in the PSRC Region"),
         textOutput(ns("zev_region")),
         br(),
         strong(tags$div(class="chart_title","Share of New Vehicle Registrations")),
@@ -62,7 +62,7 @@ climate_zev_server <- function(id) {
         hr(style = "border-top: 1px solid #000000;"),
         
         #  Tracts
-        h1("New Vehicle Registrations by Census Tract"),
+        h1("Vehicle Registrations by Census Tract"),
         textOutput(ns("zev_tracts")),
         br(),
         fluidRow(column(12,leafletOutput(ns("ev_tract_map")))),
@@ -110,9 +110,8 @@ climate_vmt_server <- function(id) {
                                                                        x='data_year', y='estimate', fill='metric', title='Snohomish County',
                                                                        dec = 1, esttype = 'number', color = psrc_colors$gnbopgy_5[[2]])})
     
-    output$chart_vkt_per_capita <- renderPlotly({interactive_bar_chart(t=vkt_data,
-                                                                       y='geography', x='vkt', fill='plot_id',
-                                                                       est="number", dec=0, color='pgnobgy_10') %>% layout(showlegend = FALSE)})
+    output$chart_vkt_per_capita <- renderEcharts4r({echart_bar_chart(df=vkt_data, title = "", tog = 'metric',
+                                                                     y='estimate', x='geography', esttype="number", dec=1, color = 'jewel')})
     
     # Tab layout
     output$climatevmt <- renderUI({
@@ -141,7 +140,7 @@ climate_vmt_server <- function(id) {
         textOutput(ns("vkt_text")),
         br(),
         strong(tags$div(class="chart_title","Annual Vehicle Kilometers Traveled per Capita")),
-        fluidRow(column(12,plotlyOutput(ns("chart_vkt_per_capita")))),
+        fluidRow(column(12,echarts4rOutput(ns("chart_vkt_per_capita"), height = "800px"))),
         tags$div(class="chart_source","Source: WSDOT HPMS, SoundCast, "),
         br(),
         hr(style = "border-top: 1px solid #000000;")

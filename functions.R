@@ -383,7 +383,7 @@ echart_bar_chart <- function(df, x, y, tog, title, dec, esttype, color) {
   }
   
   c <- c |> 
-    echarts4r::e_grid(left = '15%', top = top_padding, bottom = bottom_padding) %>%
+    echarts4r::e_grid(left = '20%', top = top_padding, bottom = bottom_padding) %>%
     echarts4r::e_x_axis(axisTick=list(show = FALSE)) %>%
     echarts4r::e_show_loading() %>%
     echarts4r::e_legend(show = FALSE)

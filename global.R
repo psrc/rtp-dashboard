@@ -54,6 +54,7 @@ commute_data <- readRDS("data/commute_data.rds") |> mutate(data_year = as.charac
 climate_data <- readRDS("data/ev_registrations.rds") |> mutate(data_year = as.character(lubridate::year(date)))
 ev_by_tract <- readRDS("data/ev_registration_by_tract.rds")
 vmt_data <- readRDS("data/vmt.rds")
+vkt_data <- readRDS("data/vkt.rds")
 
 #zipcodes <- readRDS("data/zipcodes.rds")
 tracts <- readRDS("data/tracts.rds")
@@ -94,20 +95,6 @@ hours <- read_csv("data/rtp-transit-hours.csv", show_col_types = FALSE) %>%
 
 data <- bind_rows(data, hours)
 rm(hours)
-
-# vmt <- read_csv("data/vmt-data.csv", show_col_types = FALSE) %>%
-#   mutate(date = lubridate::mdy(date)) %>%
-#   mutate(data_year = as.character(lubridate::year(date)))
-# 
-# data <- bind_rows(data, vmt)
-# rm(vmt)
-# 
-vkt_data <- read_csv("data/vkt-data.csv", show_col_types = FALSE) %>% 
- mutate(plot_id=as.character(plot_id)) %>% 
- arrange(desc(vkt))
- 
-vkt_order <- vkt_data %>% select(geography) %>% distinct %>% pull()
-vkt_data <- vkt_data %>% mutate(geography = factor(x=geography, levels=vkt_order))
 
 efa_income <- read_csv("data/efa_income_tracts.csv", show_col_types = FALSE) %>% select(GEOID) %>% pull()
 
@@ -300,4 +287,3 @@ transit_overview_3 <- paste0("High-capacity transit in the region is provided by
                              "King County Metro and Kitsap Transit. Bus rapid transit (BRT) routes in the region are distinguished from other forms ",
                              "of bus transit by a combination of features that include branded buses and stations, off-board fare payment, wider stop ","
                              spacing than other local bus service, and other treatments such as transit signal priority and business access and transit (BAT) lanes.")
-

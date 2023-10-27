@@ -66,17 +66,21 @@ vmt <- read_csv("data/vmt-data.csv", show_col_types = FALSE) |>
   mutate(date = lubridate::mdy(date)) |>
   mutate(data_year = as.character(lubridate::year(date)))
 
-vkt_data <- read_csv("data/vkt-data.csv", show_col_types = FALSE) %>% 
-  mutate(plot_id=as.character(plot_id)) %>% 
-  arrange(desc(vkt))
-
-vkt_order <- vkt_data %>% select(geography) %>% distinct %>% pull()
-vkt_data <- vkt_data %>% mutate(geography = factor(x=geography, levels=vkt_order))
-
 saveRDS(vmt, "C:/coding/rtp-dashboard/data/vmt.rds")
 
+vkt_data <- read_csv("data/vkt-data.csv", show_col_types = FALSE) |> 
+  mutate(plot_id=as.character(plot_id), metric="Annual Kilometers per Capita", geography=str_wrap(geography, 15)) |> 
+  rename(estimate = "vkt") |>
+  arrange(estimate)
+
+vkt_order <- vkt_data |> select("geography") |> distinct() |> pull()
+vkt_data <- vkt_data |> mutate(geography = factor(x=geography, levels=vkt_order))
+
+saveRDS(vkt_data, "C:/coding/rtp-dashboard/data/vkt.rds")
+
+
 # Shapefiles --------------------------------------------------------------
-zipcodes <- st_read("C:/coding/rtp-dashboard/data/psrc_zipcodes.shp") %>% st_transform(wgs84)
+zipcodes <- st_read("C:/coding/rtp-dashboard/data/psrc_zipcodes.shp") |> st_transform(wgs84)
 saveRDS(zipcodes, "C:/coding/rtp-dashboard/data/zipcodes.rds")
 
 tracts <- st_read("https://services6.arcgis.com/GWxg6t7KXELn1thE/arcgis/rest/services/tract2010_nowater/FeatureServer/0/query?where=0=0&outFields=*&f=pgeojson")
