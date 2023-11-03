@@ -52,6 +52,8 @@ fa_house <- "path://M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-
 # color for page loading spinner
 load_clr <- "#91268F"
 
+transit_modes <- c("Bus", "Commuter Rail", "Ferry", "Rail", "Vanpool")
+
 # Data via RDS files ------------------------------------------------------
 safety_data <- readRDS("data/collision_data.rds") |> mutate(data_year = as.character(lubridate::year(date)))
 commute_data <- readRDS("data/commute_data.rds")
@@ -84,53 +86,3 @@ mpo_safety <- safety_data |>
 
 mpo_order <- mpo_safety |> select(geography) |> pull()
 mpo_safety <- mpo_safety |> mutate(geography = factor(x=geography, levels=mpo_order))
-
-mpo_transit_boardings_precovid <- data %>% 
-  filter(geography_type=="Metro Regions" & metric=="YTD Transit Boardings" & variable=="All Transit Modes" & lubridate::year(date)==pre_covid & geography!="New York City") %>%
-  mutate(plot_id = case_when(
-    geography == "Seattle" ~ "PSRC",
-    geography %in% metros ~ "Comparable Metros")) %>%
-  mutate(plot_id=replace_na(plot_id,"Other")) %>%
-  arrange(desc(estimate))
-
-mpo_order <- mpo_transit_boardings_precovid %>% select(geography) %>% pull()
-mpo_transit_boardings_precovid <- mpo_transit_boardings_precovid %>% mutate(geography = factor(x=geography, levels=mpo_order))
-
-mpo_transit_boardings_today <- data %>% 
-  filter(geography_type=="Metro Regions" & metric=="YTD Transit Boardings" & variable=="All Transit Modes" & lubridate::year(date)==current_population_year & geography!="New York City") %>%
-  mutate(plot_id = case_when(
-    geography == "Seattle" ~ "PSRC",
-    geography %in% metros ~ "Comparable Metros")) %>%
-  mutate(plot_id=replace_na(plot_id,"Other")) %>%
-  arrange(desc(estimate))
-
-mpo_order <- mpo_transit_boardings_today %>% select(geography) %>% pull()
-mpo_transit_boardings_today <- mpo_transit_boardings_today %>% mutate(geography = factor(x=geography, levels=mpo_order))
-
-mpo_transit_hours_precovid <- data %>% 
-  filter(geography_type=="Metro Regions" & metric=="YTD Transit Revenue-Hours" & variable=="All Transit Modes" & lubridate::year(date)==pre_covid & geography!="New York City") %>%
-  mutate(plot_id = case_when(
-    geography == "Seattle" ~ "PSRC",
-    geography %in% metros ~ "Comparable Metros")) %>%
-  mutate(plot_id=replace_na(plot_id,"Other")) %>%
-  arrange(desc(estimate))
-
-mpo_order <- mpo_transit_hours_precovid %>% select(geography) %>% pull()
-mpo_transit_hours_precovid <- mpo_transit_hours_precovid %>% mutate(geography = factor(x=geography, levels=mpo_order))
-
-mpo_transit_hours_today <- data %>% 
-  filter(geography_type=="Metro Regions" & metric=="YTD Transit Revenue-Hours" & variable=="All Transit Modes" & lubridate::year(date)==current_population_year & geography!="New York City") %>%
-  mutate(plot_id = case_when(
-    geography == "Seattle" ~ "PSRC",
-    geography %in% metros ~ "Comparable Metros")) %>%
-  mutate(plot_id=replace_na(plot_id,"Other")) %>%
-  arrange(desc(estimate))
-
-mpo_order <- mpo_transit_hours_today %>% select(geography) %>% pull()
-mpo_transit_hours_today <- mpo_transit_hours_today %>% mutate(geography = factor(x=geography, levels=mpo_order))
-
-# Vehicle Registration Data for Text --------------------------------------
-min_transit_years <- data %>% filter(metric=="Mode to Work" & geography=="Region") %>% select(data_year) %>% pull() %>% unique() %>% min()
-max_min_transit_years <- as.character(as.integer(min_transit_years)+5)
-transit_years <- data %>% filter(metric=="Mode to Work" & geography=="Region" & data_year>=max_min_transit_years) %>% select(data_year) %>% pull() %>% unique()
-

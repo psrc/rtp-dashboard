@@ -17,6 +17,6 @@ Traffic Related Deaths and Serious Injuries: Time of Day,Safety,"Washington Traf
 Traffic Related Deaths and Serious Injuries: Day of Week,Safety,"Washington Traffic Safety Commission Coded Fatality Files (2022 Preliminary), WSDOT, Crash Data Division, Multi-Row data files (MRFF)",2022
 "Population, Housing Units and Jobs: Region",Growth,"OFM April 1 Official Estimates for King, Kitsap, Pierce & Snohomish counties and VISION 2050 Regional Growth Strategy",2005-2050
 "Population, Housing Units and Jobs: Near High Capacity Transit",Growth,"Office of Financial Management SAEP Program, PSRC Parcelization and Washington State Employment Securities Division QCEW",2010-2022
-Transit Boarding & Revenue-Hours: Region,Transit,FTA National Transit Database and PSRC SoundCast Activity Based Model,2005-2050
-Transit Boardings: Mode,Transit,FTA National Transit Database ,2005-2022
+Annual Transit Boarding & Revenue-Hours: Region,Transit,FTA National Transit Database and PSRC SoundCast Activity Based Model,2005-2050
+Year to Date Transit Boardings: Mode,Transit,FTA National Transit Database ,2019-2023
 Transit Boardings: Metropolitan Regions,Transit,FTA National Transit Database ,"2019, 2023"

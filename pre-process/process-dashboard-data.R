@@ -4,14 +4,33 @@ library(sf)
 
 wgs84 <- 4326
 current_year <- as.character(lubridate::year(Sys.Date()))
+pre_covid <- 2019
+metros <- c("Portland", "Bay Area", "San Diego", "Denver", "Atlanta","Washington DC", "Boston", "Miami" ,"Phoenix", "Austin", "Dallas")
 
 # NTD Transit Data --------------------------------------------------------
 transit_data <- process_ntd_data()
 forecast_data <- read_csv("C:/coding/rtp-dashboard/data/rtp-transit-metrics.csv", show_col_types = FALSE) |> mutate(date = lubridate::mdy(date)) |> mutate(year = as.character(year))
-transit_data <- bind_rows(transit_data, forecast_data)
-saveRDS(transit_data, "C:/coding/rtp-dashboard/data/transit_data.rds")
-rm(forecast_data)
 
+mpo_transit_pre_covid <- transit_data |> 
+  filter(geography_type=="Metro Areas" & variable=="All Transit Modes" & year==pre_covid & grouping=="YTD") |> 
+  rename(previous=estimate) |>
+  select("geography", "metric", "previous")
+
+mpo_transit_current <- transit_data |> 
+  filter(geography_type=="Metro Areas" & variable=="All Transit Modes" & year==current_year & grouping=="YTD") |> 
+  rename(current=estimate) 
+
+mpo_transit <- left_join(mpo_transit_current, mpo_transit_pre_covid, by=c("geography", "metric")) |>
+  mutate(estimate = current/previous) |>
+  select(-"previous", -"current") |>
+  filter(metric != "Revenue-Miles") |>
+  mutate(grouping = "COVID Recovery") |>
+  arrange(metric, estimate)
+
+transit_data <- bind_rows(transit_data, forecast_data, mpo_transit)
+saveRDS(transit_data, "C:/coding/rtp-dashboard/data/transit_data.rds")
+rm(forecast_data, mpo_transit_pre_covid, mpo_transit_current, mpo_transit)
+  
 # Census Commute Data -----------------------------------------------------
 commute_data <- process_commute_data(data_years = c(2021))
 saveRDS(commute_data, "C:/coding/rtp-dashboard/data/commute_data.rds")

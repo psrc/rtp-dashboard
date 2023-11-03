@@ -39,133 +39,82 @@ transit_metrics_server <- function(id) {
   moduleServer(id, function(input, output, session){
     ns <- session$ns
     
-    # Text and charts
+    # Text
     output$transit_metrics_region <- renderText({page_information(tbl=page_text, page_name="Transit", page_section = "Metrics-Region", page_info = "description")})
+    output$transit_metrics_mode <- renderText({page_information(tbl=page_text, page_name="Transit", page_section = "Metrics-Mode", page_info = "description")})
+    output$transit_metrics_mpo <- renderText({page_information(tbl=page_text, page_name="Transit", page_section = "Metrics-MPO", page_info = "description")})
     
+    # Charts
     output$chart_transit_boardings <- renderEcharts4r({echart_line_chart(df=transit_data |> 
                                                                            filter(grouping %in% c("Annual", "Forecast") & year>=base_year & geography == "Region" & variable == "All Transit Modes" & metric != "Revenue-Miles"),
                                                                          x='year', y='estimate', fill='grouping', tog = 'metric',
                                                                          esttype="number", color = "jewel", dec = 0)})
     
-    output$chart_boardings_mode <- renderPlot({static_facet_column_chart(t=data %>% filter(metric=="YTD Transit Boardings" & geography=="Region" & variable!="All Transit Modes" & data_year>as.character(as.integer(current_population_year)-5)), 
-                                                                         x="data_year", y="estimate", 
-                                                                         fill="data_year", facet="variable", 
-                                                                         est = "number",
-                                                                         color = "pgnobgy_10",
-                                                                         ncol=2, scales="free")})
+    output$chart_bus_ytd <- renderEcharts4r({echart_column_chart(df = transit_data |> 
+                                                                   filter(year >= pre_covid & geography == "Region" & grouping == "YTD" & metric == "Boardings" & variable =="Bus") |>
+                                                                   mutate(metric = paste(grouping, variable, metric)),
+                                                                 x='year', y='estimate', fill='metric', title='Bus', dec = 0, esttype = 'number', color = psrc_colors$obgnpgy_10[1])})
     
+    output$chart_crt_ytd <- renderEcharts4r({echart_column_chart(df = transit_data |> 
+                                                                   filter(year >= pre_covid & geography == "Region" & grouping == "YTD" & metric == "Boardings"  & variable =="Commuter Rail") |>
+                                                                   mutate(metric = paste(grouping, variable, metric)),
+                                                                 x='year', y='estimate', fill='metric', title='Commuter Rail', dec = 0, esttype = 'number', color = psrc_colors$obgnpgy_10[2])})
     
-    output$mpo_boardings_precovid_chart <- renderPlotly({interactive_bar_chart(t=mpo_transit_boardings_precovid,
-                                                                               y='geography', x='estimate', fill='plot_id',
-                                                                               est="number", dec=0, color='pgnobgy_5')})
+    output$chart_drt_ytd <- renderEcharts4r({echart_column_chart(df = transit_data |> 
+                                                                   filter(year >= pre_covid & geography == "Region" & grouping == "YTD" & metric == "Boardings"  & variable =="Demand Response") |>
+                                                                   mutate(metric = paste(grouping, variable, metric)), 
+                                                                 x='year', y='estimate', fill='metric', title='Demand Response', dec = 0, esttype = 'number', color = psrc_colors$obgnpgy_10[3])})
     
-    output$mpo_boardings_today_chart <- renderPlotly({interactive_bar_chart(t=mpo_transit_boardings_today,
-                                                                            y='geography', x='estimate', fill='plot_id',
-                                                                            est="number", dec=0, color='pgnobgy_5')})
+    output$chart_fry_ytd <- renderEcharts4r({echart_column_chart(df = transit_data |> 
+                                                                   filter(year >= pre_covid & geography == "Region" & grouping == "YTD" & metric == "Boardings"  & variable =="Ferry") |>
+                                                                   mutate(metric = paste(grouping, variable, metric)),
+                                                                 x='year', y='estimate', fill='metric', title='Ferry', dec = 0, esttype = 'number', color = psrc_colors$obgnpgy_10[4])})
+    
+    output$chart_lrt_ytd <- renderEcharts4r({echart_column_chart(df = transit_data |> 
+                                                                   filter(year >= pre_covid & geography == "Region" & grouping == "YTD" & metric == "Boardings"  & variable =="Rail") |>
+                                                                   mutate(metric = paste(grouping, variable, metric)),
+                                                                 x='year', y='estimate', fill='metric', title='Rail', dec = 0, esttype = 'number', color = psrc_colors$obgnpgy_10[5])})
+    
+    output$chart_van_ytd <- renderEcharts4r({echart_column_chart(df = transit_data |> 
+                                                                   filter(year >= pre_covid & geography == "Region" & grouping == "YTD" & metric == "Boardings"  & variable =="Vanpool") |>
+                                                                   mutate(metric = paste(grouping, variable, metric)),
+                                                                 x='year', y='estimate', fill='metric', title='Vanpool', dec = 0, esttype = 'number', color = psrc_colors$obgnpgy_10[6])})
+    
+    output$mpo_covid_chart <- renderEcharts4r({echart_bar_chart(df=transit_data |> filter(grouping == "COVID Recovery"), 
+                                                                title = "% Pre-COVID", tog = 'metric',
+                                                                y='estimate', x='geography', esttype="percent", dec=0, color = 'jewel')})
     
     # Tab layout
     output$metricstab <- renderUI({
       tagList(
         
-        h1("Regional Transit Performance"),
+        h1("Annual Regional Transit Performance"),
         textOutput(ns("transit_metrics_region")) |> withSpinner(color=load_clr),
-        strong(tags$div(class="chart_title","Annual Regional Transit Boardings")),
         fluidRow(column(12,echarts4rOutput(ns("chart_transit_boardings")))),
         tags$div(class="chart_source","Source: FTA National Transit Database"),
         hr(),
         
-        # Boardings by Mode
-        h1("Transit Boardings by Mode"),
-        br(),
-        strong(tags$div(class="chart_title","YTD Regional Transit Boardings by Mode")),
-        fluidRow(column(12,plotOutput(ns("chart_boardings_mode")))),
+        h1("Year to Date Transit Boardings by Mode"),
+        textOutput(ns("transit_metrics_mode")),
+        fluidRow(column(6,echarts4rOutput(ns("chart_bus_ytd"))),
+                 column(6,echarts4rOutput(ns("chart_crt_ytd")))),
+        fluidRow(column(6,echarts4rOutput(ns("chart_drt_ytd"))),
+                 column(6,echarts4rOutput(ns("chart_fry_ytd")))),
+        fluidRow(column(6,echarts4rOutput(ns("chart_lrt_ytd"))),
+                 column(6,echarts4rOutput(ns("chart_van_ytd")))),
         tags$div(class="chart_source","Source: FTA National Transit Database"),
         hr(),
         
-        # Boardings by Metro
         h1("Transit Boardings by Metropolitan Region"),
+        textOutput(ns("transit_metrics_mpo")),
         br(),
-        fluidRow(column(6,strong(tags$div(class="chart_title",paste0("YTD Transit Boardings: ",pre_covid)))),
-                 column(6,strong(tags$div(class="chart_title",paste0("YTD Transit Boardings: ",current_population_year))))),
-        fluidRow(column(6,plotlyOutput(ns("mpo_boardings_precovid_chart"))),
-                 column(6,plotlyOutput(ns("mpo_boardings_today_chart")))),
-        fluidRow(column(6,tags$div(class="chart_source","Source: FTA National Transit Database")),
-                 column(6,tags$div(class="chart_source","Source: FTA National Transit Database"))),
+        fluidRow(column(12,echarts4rOutput(ns("mpo_covid_chart"), height = "800px"))),
+        tags$div(class="chart_source","Source: FTA National Transit Database"),
+        br(),
         hr(style = "border-top: 1px solid #000000;")
       )
     })
     
-  })  # end moduleServer
-}
-
-revhours_ui <- function(id) {
-  ns <- NS(id)
-  
-  tagList(
-    uiOutput(ns("revhourstab"))
-  )
-}
-
-revhours_server <- function(id) {
-  moduleServer(id, function(input, output, session){
-    ns <- session$ns
-    
-    # Text and charts
-    output$chart_transit_hours <- renderPlotly({psrcplot:::make_interactive(p=static_line_chart(t=data %>% filter(metric=="Annual Transit Revenue-Hours" & geography=="Region" & variable =="All Transit Modes") %>% mutate(grouping=gsub("PSRC Region", "Observed",grouping)), 
-                                                                                                x='data_year', y='estimate', fill='grouping', est="number", 
-                                                                                                lwidth = 2,
-                                                                                                breaks = c("2000","2010","2020","2030","2040","2050"),
-                                                                                                color = "pgnobgy_5") + ggplot2::scale_y_continuous(limits=c(0,14000000), labels=scales::label_comma()))})
-    
-    output$chart_hours_mode <- renderPlot({static_facet_column_chart(t=data %>% filter(metric=="YTD Transit Revenue-Hours" & geography=="Region" & variable!="All Transit Modes" & data_year>as.character(as.integer(current_population_year)-5)), 
-                                                                     x="data_year", y="estimate", 
-                                                                     fill="data_year", facet="variable", 
-                                                                     est = "number",
-                                                                     color = "pgnobgy_10",
-                                                                     ncol=2, scales="free")})
-    
-    
-    output$mpo_hours_precovid_chart <- renderPlotly({interactive_bar_chart(t=mpo_transit_hours_precovid,
-                                                                           y='geography', x='estimate', fill='plot_id',
-                                                                           est="number", dec=0, color='pgnobgy_5')})
-    
-    output$mpo_hours_today_chart <- renderPlotly({interactive_bar_chart(t=mpo_transit_hours_today,
-                                                                        y='geography', x='estimate', fill='plot_id',
-                                                                        est="number", dec=0, color='pgnobgy_5')})
-    
-    # Tab layout
-    output$revhourstab <- renderUI({
-      tagList(
-        tags$div(class="page_goals","RTP Input: 66% More Revenue-Hours by 2050"),
-        
-        # Hours in Region
-        h1("Annual Transit Revenue-Hours in the PSRC Region"),
-        hr(),
-        strong(tags$div(class="chart_title","Annual Regional Transit Revenue-Hours")),
-        fluidRow(column(12,plotlyOutput(ns("chart_transit_hours")))),
-        tags$div(class="chart_source","Source: FTA National Transit Database"),
-        hr(),
-        
-        # Hours by Mode
-        h1("Transit Revenue-Hours by Mode"),
-        br(),
-        strong(tags$div(class="chart_title","YTD Regional Transit Revenue-Hours by Mode")),
-        fluidRow(column(12,plotOutput(ns("chart_hours_mode")))),
-        tags$div(class="chart_source","Source: FTA National Transit Database"),
-        hr(),
-        
-        # Hours by Metro
-        h1("Transit Revenue-Hours by Metropolitan Region"),
-        br(),
-        fluidRow(column(6,strong(tags$div(class="chart_title",paste0("YTD Transit Revenue-Hours: ",pre_covid)))),
-                 column(6,strong(tags$div(class="chart_title",paste0("YTD Transit  Revenue-Hours: ",current_population_year))))),
-        fluidRow(column(6,plotlyOutput(ns("mpo_hours_precovid_chart"))),
-                 column(6,plotlyOutput(ns("mpo_hours_today_chart")))),
-        fluidRow(column(6,tags$div(class="chart_source","Source: FTA National Transit Database")),
-                 column(6,tags$div(class="chart_source","Source: FTA National Transit Database"))),
-        hr(style = "border-top: 1px solid #000000;")
-      )
-    })
   })  # end moduleServer
 }
 
