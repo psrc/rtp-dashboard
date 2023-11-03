@@ -494,3 +494,50 @@ echart_pictorial <- function(df, x, y, tog, icon, color, title, dec=0) {
   
 }
 
+# Source Table ------------------------------------------------------------
+
+create_source_table <- function(d=source_info) {
+  
+  # Table with Titles as first row
+  t <- rbind(names(d), d)
+  
+  headerCallbackRemoveHeaderFooter <- c(
+    "function(thead, data, start, end, display){",
+    "  $('th', thead).css('display', 'none');",
+    "}"
+  )
+  
+  summary_tbl <- datatable(t,
+                           options = list(paging = FALSE,
+                                          pageLength = 30,
+                                          searching = FALSE,
+                                          dom = 't',
+                                          headerCallback = JS(headerCallbackRemoveHeaderFooter),
+                                          columnDefs = list(list(targets = c(0,3), className = 'dt-left'))),
+                           selection = 'none',
+                           callback = JS(
+                             "$('table.dataTable.no-footer').css('border-bottom', 'none');"
+                           ),
+                           class = 'row-border',
+                           filter = 'none',              
+                           rownames = FALSE,
+                           escape = FALSE
+  ) 
+  
+  # Add Section Breaks
+    
+  summary_tbl <- summary_tbl %>%
+    formatStyle(0:ncol(t), valueColumns = "Data Point",
+                `border-bottom` = styleEqual(c("Annual Vehicle Kilometers Traveled", 
+                                               "Traffic Related Deaths and Serious Injuries: Day of Week", 
+                                               "Population, Housing Units and Jobs: Near High Capacity Transit",
+                                               "Transit Boardings: Metropolitan Regions"), "solid 2px"))
+    
+  summary_tbl <- summary_tbl %>%
+    formatStyle(0:ncol(t), valueColumns = "Data Point",
+                `border-top` = styleEqual(c("Vehicle Registrations: Region"), "solid 2px"))
+  
+  return(summary_tbl)
+  
+}
+

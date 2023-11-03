@@ -1,0 +1,22 @@
+﻿Data Point,Subject,Source,Dates
+Vehicle Registrations: Region,Climate,Washington State Department of Licensing via the Washington State Open Data Portal: https://data.wa.gov/Transportation/Title-Transactions-by-Month/u4cd-bc3x,January 2017 - September 2023
+Vehicle Registrations: Census Tracts,Climate,Washington State Department of Licensing via the Washington State Open Data Portal: https://data.wa.gov/Transportation/Title-Transactions-by-Month/u4cd-bc3x,January 2023 - September 2023
+Daily Vehicle Miles Traveled: Region,Climate,Washington State Department of Transportation Highway Performance Monitoring Section and PSRC SoundCast Activity Based Model,2000 - 2050
+Daily Vehicle Miles Traveled: County,Climate,Washington State Department of Transportation Highway Performance Monitoring Section and PSRC SoundCast Activity Based Model,2000 - 2022
+Annual Vehicle Kilometers Traveled,Climate,https://intlcomparisons.org/printable-transportation/ and PSRC SoundCast Activity Based Model,2018
+Traffic Related Deaths and Serious Injuries: Region,Safety,"Washington Traffic Safety Commission Coded Fatality Files (2022 Preliminary), WSDOT, Crash Data Division, Multi-Row data files (MRFF)",2010 - 2022
+Traffic Related Deaths and Serious Injuries: Historically Disadvantaged Communities,Safety,"Washington Traffic Safety Commission Coded Fatality Files (2022 Preliminary), WSDOT, Crash Data Division, Multi-Row data files (MRFF)",2010 - 2022
+Traffic Related Deaths and Serious Injuries: County,Safety,"Washington Traffic Safety Commission Coded Fatality Files (2022 Preliminary), WSDOT, Crash Data Division, Multi-Row data files (MRFF)",2010 - 2022
+Traffic Related Deaths and Serious Injuries: Metropolitan Regions,Safety,"NHTSA Fatality Analysis Reporting System (FARS) Data, US Census Bureau American Community Survey (ACS) 5-year data Table B03002",2021
+Traffic Related Deaths: Race and Ethnicity,Safety,"Washington Traffic Safety Commission Coded Fatality Files (2022 Preliminary), US Census Bureau American Community Survey (ACS) 5-year data Table B03002",2021
+Traffic Related Deaths and Serious Injuries: Age Group,Safety,"Washington Traffic Safety Commission Coded Fatality Files (2022 Preliminary), WSDOT, Crash Data Division, Multi-Row data files (MRFF), US Census Bureau American Community Survey (ACS) 5-year data Table B01001",2021
+Traffic Related Deaths and Serious Injuries: Gender,Safety,"Washington Traffic Safety Commission Coded Fatality Files (2022 Preliminary), WSDOT, Crash Data Division, Multi-Row data files (MRFF), US Census Bureau American Community Survey (ACS) 5-year data Table B01001",2021
+Traffic Related Deaths and Serious Injuries: Mode,Safety,"Washington Traffic Safety Commission Coded Fatality Files (2022 Preliminary), WSDOT, Crash Data Division, Multi-Row data files (MRFF)",2022
+Traffic Related Deaths and Serious Injuries: Roadway Type,Safety,"Washington Traffic Safety Commission Coded Fatality Files (2022 Preliminary), WSDOT, Crash Data Division, Multi-Row data files (MRFF)",2022
+Traffic Related Deaths and Serious Injuries: Time of Day,Safety,"Washington Traffic Safety Commission Coded Fatality Files (2022 Preliminary), WSDOT, Crash Data Division, Multi-Row data files (MRFF)",2022
+Traffic Related Deaths and Serious Injuries: Day of Week,Safety,"Washington Traffic Safety Commission Coded Fatality Files (2022 Preliminary), WSDOT, Crash Data Division, Multi-Row data files (MRFF)",2022
+"Population, Housing Units and Jobs: Region",Growth,"OFM April 1 Official Estimates for King, Kitsap, Pierce & Snohomish counties and VISION 2050 Regional Growth Strategy",2005-2050
+"Population, Housing Units and Jobs: Near High Capacity Transit",Growth,"Office of Financial Management SAEP Program, PSRC Parcelization and Washington State Employment Securities Division QCEW",2010-2022
+Transit Boarding & Revenue-Hours: Region,Transit,FTA National Transit Database and PSRC SoundCast Activity Based Model,2005-2050
+Transit Boardings: Mode,Transit,FTA National Transit Database ,2005-2022
+Transit Boardings: Metropolitan Regions,Transit,FTA National Transit Database ,"2019, 2023"

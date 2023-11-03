@@ -98,6 +98,12 @@ shinyUI(
                       ), # End of Main Panel Fluid Row for Modes Tab
              ),# End of Tab Panel for Modes
     
+    tabPanel(title=icon("info-circle"),
+             value="Data-Source-Page",
+             hr(style = "border-top: 1px solid #000000;"),
+             source_ui('dataSource')),
+             hr(style = "border-top: 1px solid #000000;"),
+    
     tags$footer(footer_ui('psrcfooter'))
     
     ) # End of NavBar Page

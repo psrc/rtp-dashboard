@@ -67,7 +67,9 @@ shinyServer(function(input, output) {
   left_panel_server('leftTransit', page_nm = "Transit")
   transit_overview_server('transitOverview')
   transit_metrics_server('Metricstransit')
-  #revhours_server('Hourstransit')
   modeshare_server('Modetransit')
-
+  
+  # Data Sources
+  source_server('dataSource')
+  
 })    
