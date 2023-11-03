@@ -43,7 +43,7 @@ climate_zev_server <- function(id) {
     output$zev_tracts <- renderText({page_information(tbl=page_text, page_name="Climate", page_section = "ZEV-Tracts", page_info = "description")})
     
     output$ev_share_new_registrations_chart <- renderEcharts4r({echart_line_chart(df=climate_data |> 
-                                                                                    filter(geography == "Region" & metric == "new-vehicle-registrations" & variable != "Plug-in Hybrid Electric Vehicle") |>
+                                                                                    filter(geography == "Region" & metric == "vehicle-registrations" & variable != "Plug-in Hybrid Electric Vehicle") |>
                                                                                     mutate(plot_date = paste0(lubridate::month(date),"-",lubridate::year(date))),
                                                                                   x='plot_date', y='share', fill='variable', tog = 'grouping',
                                                                                   esttype="percent", color = "jewel", dec = 0)})

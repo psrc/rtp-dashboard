@@ -66,8 +66,8 @@ shinyServer(function(input, output) {
   
   left_panel_server('leftTransit', page_nm = "Transit")
   transit_overview_server('transitOverview')
-  boardings_server('Boardingstransit')
-  revhours_server('Hourstransit')
+  transit_metrics_server('Metricstransit')
+  #revhours_server('Hourstransit')
   modeshare_server('Modetransit')
 
 })    

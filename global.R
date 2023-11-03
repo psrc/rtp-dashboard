@@ -54,32 +54,19 @@ load_clr <- "#91268F"
 
 # Data via RDS files ------------------------------------------------------
 safety_data <- readRDS("data/collision_data.rds") |> mutate(data_year = as.character(lubridate::year(date)))
-commute_data <- readRDS("data/commute_data.rds") |> mutate(data_year = as.character(lubridate::year(date)))
-climate_data <- readRDS("data/ev_registrations.rds") |> mutate(data_year = as.character(lubridate::year(date)))
+commute_data <- readRDS("data/commute_data.rds")
+climate_data <- readRDS("data/vehicle_data.rds")
 ev_by_tract <- readRDS("data/ev_registration_by_tract.rds")
 vmt_data <- readRDS("data/vmt.rds")
 vkt_data <- readRDS("data/vkt.rds")
 pop_hsg_jobs <- readRDS("data/pop_hsg_jobs.rds")
 hct_growth <- readRDS("data/hct.rds") 
 efa_income <- readRDS("data/efa_income.rds")
+transit_data <- readRDS("data/transit_data.rds")
 
 # Data via CSV ------------------------------------------------------------
 data <- read_csv("data/rtp-dashboard-data.csv", show_col_types = FALSE) %>%
   mutate(data_year = as.character(lubridate::year(date)))
-
-boardings <- read_csv("data/rtp-transit-boardings.csv", show_col_types = FALSE) %>%
-  mutate(date = lubridate::mdy(date)) %>%
-  mutate(data_year = as.character(lubridate::year(date)))
-
-data <- bind_rows(data, boardings)
-rm(boardings)
-
-hours <- read_csv("data/rtp-transit-hours.csv", show_col_types = FALSE) %>%
-  mutate(date = lubridate::mdy(date)) %>%
-  mutate(data_year = as.character(lubridate::year(date)))
-
-data <- bind_rows(data, hours)
-rm(hours)
 
 # Create MPO Data for Charts ----------------------------------------------
 metros <- c("Portland", "Bay Area", "San Diego", "Denver", "Atlanta","Washington DC", "Boston", "Miami" ,"Phoenix", "Austin", "Dallas")
@@ -146,21 +133,26 @@ transit_years <- data %>% filter(metric=="Mode to Work" & geography=="Region" & 
 
 # Text Data ---------------------------------------------------------------
 
-transit_overview_1 <- paste0("The Regional Transportation Plan envisions an integrated system that supports the goals of VISION ",
-                             "2050, which calls for increased investment in transportation to support a growing population and ",
-                             "economy. VISION 2050 emphasizes investing in transportation projects and programs that support ",
-                             "local and regional growth centers and high-capacity transit station areas in particular. These policies ",
-                             "emphasize the importance of public transit to achieving the VISION 2050 regional growth strategy.")
-
-transit_overview_2 <- paste0("When people think of transit, most often they think of fixed-route rail or bus service that stops at specific ",
-                             "stations or stops on a schedule. For the purposes of this page, these types of transit services are referred to as ",
-                             "regular transit.")
-
-transit_overview_3 <- paste0("High-capacity transit in the region is provided by a variety of rail, bus rapid transit and ferry modes, ",
-                             "including: Sound Transit’s Link light rail, Tacoma Link, and Sounder commuter rail; Seattle’s two streetcar lines ",
-                             "and the historic 1962 monorail; Community Transit’s Swift and King County Metro’s RapidRide bus rapid transit services; ", 
-                             "and multimodal and passenger-only ferry services provided by the Washington State Ferries, Pierce County Ferries, ",
-                             "King County Metro and Kitsap Transit. Bus rapid transit (BRT) routes in the region are distinguished from other forms ",
-                             "of bus transit by a combination of features that include branded buses and stations, off-board fare payment, wider stop ","
-                             spacing than other local bus service, and other treatments such as transit signal priority and business access and transit (BAT) lanes.")
+# transit_overview_1 <- paste0("The Regional Transportation Plan envisions an integrated system that supports the goals of VISION ",
+#                              "2050, which calls for increased investment in transportation to support a growing population and ",
+#                              "economy. VISION 2050 emphasizes investing in transportation projects and programs that support ",
+#                              "local and regional growth centers and high-capacity transit station areas in particular. These policies ",
+#                              "emphasize the importance of public transit to achieving the VISION 2050 regional growth strategy.")
+# 
+# transit_overview_2 <- paste0("When people think of transit, most often they think of fixed-route rail or bus service that stops at specific ",
+#                              "stations or stops on a schedule. For the purposes of this page, these types of transit services are referred to as ",
+#                              "regular transit.")
+# 
+# transit_overview_3 <- paste0("High-capacity transit in the region is provided by a variety of rail, bus rapid transit and ferry modes, ",
+#                              "including: Sound Transit’s Link light rail, Tacoma Link, and Sounder commuter rail; Seattle’s two streetcar lines ",
+#                              "and the historic 1962 monorail; Community Transit’s Swift and King County Metro’s RapidRide bus rapid transit services; ", 
+#                              "and multimodal and passenger-only ferry services provided by the Washington State Ferries, Pierce County Ferries, ",
+#                              "King County Metro and Kitsap Transit. Bus rapid transit (BRT) routes in the region are distinguished from other forms ",
+#                              "of bus transit by a combination of features that include branded buses and stations, off-board fare payment, wider stop ","
+#                              spacing than other local bus service, and other treatments such as transit signal priority and business access and transit (BAT) lanes.")
+# 
+# transit_chart <- echart_line_chart(df=transit_data |> 
+#                                      filter(grouping %in% c("Annual", "Forecast") & year>=base_year & geography == "Region" & variable == "All Transit Modes" & metric != "Boardings-per-Hour"),
+#                                    x='year', y='estimate', fill='grouping', tog = 'metric',
+#                                    esttype="number", color = "jewel", dec = 0)
 

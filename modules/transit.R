@@ -12,25 +12,14 @@ transit_overview_server <- function(id) {
     ns <- session$ns
     
     # Text
-    output$transit_text_1 <- renderText({transit_overview_1})
-    
-    output$transit_text_2 <- renderText({transit_overview_2})
-    
-    output$transit_text_3 <- renderText({transit_overview_3})
+    output$transit_overview_text <- renderText({page_information(tbl=page_text, page_name="Transit", page_section = "Overview", page_info = "description")})
     
     # Overview UI
-    output$modeoverview <- renderUI({
+    output$transitoverview <- renderUI({
       tagList(
-        # Overview UI
-        tags$div(class="page_goals","RTP Outcome: Triple Transit Boardings by 2050"),
-        br(),
-        textOutput(ns("transit_text_1")),
-        br(),
-        textOutput(ns("transit_text_2")),
-        br(),
-        textOutput(ns("transit_text_3")),
-        br(), 
-        # div(img(src="st_northgate_trim.png", width = "100%", height = "100%", style = "padding-top: 0px; border-radius:0px 0 0px 0;", alt = "")),
+        tags$div(class="page_goals", "Plan Input: 66% More Revenue-Hours by 2050"),
+        tags$div(class="page_goals", "Plan Outcome: Triple Transit Boardings by 2050"),
+        textOutput(ns("transit_overview_text")),
         br()
       )
     })
@@ -38,24 +27,25 @@ transit_overview_server <- function(id) {
 }
 
 # Transit Tabs --------------------------------------------------------------------------------
-boardings_ui <- function(id) {
+transit_metrics_ui <- function(id) {
   ns <- NS(id)
   
   tagList(
-    uiOutput(ns("boardingstab"))
+    uiOutput(ns("metricstab"))
   )
 }
 
-boardings_server <- function(id) {
+transit_metrics_server <- function(id) {
   moduleServer(id, function(input, output, session){
     ns <- session$ns
     
     # Text and charts
-    output$chart_transit_boardings <- renderPlotly({psrcplot:::make_interactive(p=static_line_chart(t=data %>% filter(metric=="Annual Transit Boardings" & geography=="Region" & variable =="All Transit Modes") %>% mutate(grouping=gsub("PSRC Region", "Observed",grouping)), 
-                                                                                                    x='data_year', y='estimate', fill='grouping', est="number", 
-                                                                                                    lwidth = 2,
-                                                                                                    breaks = c("2000","2010","2020","2030","2040","2050"),
-                                                                                                    color = "pgnobgy_5") + ggplot2::scale_y_continuous(limits=c(0,800000000), labels=scales::label_comma()))})
+    output$transit_metrics_region <- renderText({page_information(tbl=page_text, page_name="Transit", page_section = "Metrics-Region", page_info = "description")})
+    
+    output$chart_transit_boardings <- renderEcharts4r({echart_line_chart(df=transit_data |> 
+                                                                           filter(grouping %in% c("Annual", "Forecast") & year>=base_year & geography == "Region" & variable == "All Transit Modes" & metric != "Revenue-Miles"),
+                                                                         x='year', y='estimate', fill='grouping', tog = 'metric',
+                                                                         esttype="number", color = "jewel", dec = 0)})
     
     output$chart_boardings_mode <- renderPlot({static_facet_column_chart(t=data %>% filter(metric=="YTD Transit Boardings" & geography=="Region" & variable!="All Transit Modes" & data_year>as.character(as.integer(current_population_year)-5)), 
                                                                          x="data_year", y="estimate", 
@@ -74,15 +64,13 @@ boardings_server <- function(id) {
                                                                             est="number", dec=0, color='pgnobgy_5')})
     
     # Tab layout
-    output$boardingstab <- renderUI({
+    output$metricstab <- renderUI({
       tagList(
-        tags$div(class="page_goals","RTP Outcome: Triple Transit Boardings by 2050"),
         
-        # Boardings in Region
-        h1("Annual Transit Boardings in the PSRC Region"),
-        hr(),
+        h1("Regional Transit Performance"),
+        textOutput(ns("transit_metrics_region")) |> withSpinner(color=load_clr),
         strong(tags$div(class="chart_title","Annual Regional Transit Boardings")),
-        fluidRow(column(12,plotlyOutput(ns("chart_transit_boardings")))),
+        fluidRow(column(12,echarts4rOutput(ns("chart_transit_boardings")))),
         tags$div(class="chart_source","Source: FTA National Transit Database"),
         hr(),
         

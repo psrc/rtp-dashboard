@@ -71,6 +71,19 @@ shinyUI(
                       ), # End of Main Panel Fluid Row for Growth Tab
              ),# End of Tab Panel for Growth
     
+    tabPanel(title=HTML("Transit"), 
+             value="Transit-Page",
+             banner_ui('transitBanner'),
+             fluidRow(column(4, style='padding-left:25px; padding-right:0px;', left_panel_ui('leftTransit')),
+                      column(8, style='padding-left:25px; padding-right:50px;',
+                             transit_overview_ui('transitOverview'),
+                             tabsetPanel(type = "tabs",
+                                         tabPanel("Boardings & Revenue-Hours", transit_metrics_ui('Metricstransit')),
+                                         tabPanel("Transit Share", modeshare_ui('Modetransit')))
+                      ), # End of Main Panel Transit
+             ), # End of Main Panel Fluid Row for Transit Tab
+    ),# End of Tab Panel for Transit
+    
     tabPanel(title=HTML("Walk,<br/>Bike & Roll"),
              value="Mode-Page",
              banner_ui('modeBanner'),
@@ -84,20 +97,6 @@ shinyUI(
                              ), # End of Main Panel Modes
                       ), # End of Main Panel Fluid Row for Modes Tab
              ),# End of Tab Panel for Modes
-    
-    tabPanel(title=HTML("Transit<br/>Performance"), 
-             value="Transit-Page",
-             banner_ui('transitBanner'),
-             fluidRow(column(4, style='padding-left:25px; padding-right:0px;', left_panel_ui('leftTransit')),
-                      column(8, style='padding-left:25px; padding-right:50px;',
-                             transit_overview_ui('transitOverview'),
-                             tabsetPanel(type = "tabs",
-                                         tabPanel("Boardings", boardings_ui('Boardingstransit')),
-                                         tabPanel("Revenue-Hours", revhours_ui('Hourstransit')),
-                                         tabPanel("Transit Share", modeshare_ui('Modetransit')))
-                             ), # End of Main Panel Transit
-                      ), # End of Main Panel Fluid Row for Transit Tab
-             ),# End of Tab Panel for Transit
     
     tags$footer(footer_ui('psrcfooter'))
     
