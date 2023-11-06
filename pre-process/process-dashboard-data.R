@@ -32,7 +32,7 @@ saveRDS(transit_data, "C:/coding/rtp-dashboard/data/transit_data.rds")
 rm(forecast_data, mpo_transit_pre_covid, mpo_transit_current, mpo_transit)
   
 # Census Commute Data -----------------------------------------------------
-commute_data <- process_commute_data(data_years = c(2021))
+commute_data <- process_commute_data(data_years = c(2011, 2016, 2021))
 saveRDS(commute_data, "C:/coding/rtp-dashboard/data/commute_data.rds")
 
 # Vehicle Registrations ------------------------------------------------------------

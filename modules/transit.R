@@ -130,110 +130,71 @@ modeshare_server <- function(id) {
   moduleServer(id, function(input, output, session){
     ns <- session$ns
     
-    # Text and charts
-    output$transit_ms_region_chart <- renderPlotly({psrcplot:::make_interactive(p=static_line_chart(t=data %>% filter(metric=="Mode to Work" & geography=="Region" & variable=="Public transportation") %>% mutate(date=as.character(date)), 
-                                                                                                    x='data_year', y='share', fill='variable', est="percent", 
-                                                                                                    lwidth = 2,
-                                                                                                    breaks = c("2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021"),
-                                                                                                    color='obgnpgy_10') + ggplot2::scale_y_continuous(limits=c(0,0.25), labels=scales::label_percent()))})
+    # Text 
+    output$transit_share_county_text <- renderText({page_information(tbl=page_text, page_name="Transit", page_section = "Mode-County", page_info = "description")})
+    output$transit_share_race_text <- renderText({page_information(tbl=page_text, page_name="Transit", page_section = "Mode-Race", page_info = "description")})
+    output$transit_share_metro_text <- renderText({page_information(tbl=page_text, page_name="Transit", page_section = "Mode-Metro", page_info = "description")})
+    output$transit_share_city_text <- renderText({page_information(tbl=page_text, page_name="Transit", page_section = "Mode-City", page_info = "description")})
     
-    output$transit_ms_king_chart <- renderPlotly({interactive_column_chart(t=data %>% filter(metric=="Mode to Work" & geography=="King County" & variable=="Public transportation") %>% mutate(date=as.character(date)),
-                                                                           y='share', x='data_year', fill='data_year',
-                                                                           est="percent", dec=0, color='obgnpgy_10')})
+    # charts
+    output$transit_ms_county_chart <- renderEcharts4r({echart_column_chart_timeline(df = commute_data |> 
+                                                                                      filter(variable == "Transit" & geography_type == "County" & metric == "commute-modes") |>
+                                                                                      mutate(year = factor(x=year, levels = yr_ord)) |>
+                                                                                      mutate(geography = factor(x=geography, levels = county_ord)) |>
+                                                                                      arrange(year, geography),
+                                                                                    x = "geography", y = "share", fill = "geography", tog = "year", 
+                                                                                    dec = 1, title = "", esttype = "percent", color = "jewel")})
+  
+    output$transit_ms_race_chart <- renderEcharts4r({echart_pictorial(df= commute_data |> 
+                                                                        filter(geography_type=="Race" & year == current_census_year & variable == "Transit") |>
+                                                                        mutate(grouping = str_wrap(grouping, 15)),
+                                                                      x="grouping", y="share", tog="variable", 
+                                                                      icon=fa_bus, 
+                                                                      color=psrc_colors$gnbopgy_5[[2]],
+                                                                      title="Race & Hispanic Origin", dec = 2, esttype = "percent")})
     
-    output$transit_ms_kitsap_chart <- renderPlotly({interactive_column_chart(t=data %>% filter(metric=="Mode to Work" & geography=="Kitsap County" & variable=="Public transportation") %>% mutate(date=as.character(date)),
-                                                                             y='share', x='data_year', fill='data_year',
-                                                                             est="percent", dec=0, color='obgnpgy_10')})
+    output$transit_ms_metro_chart <- renderEcharts4r({echart_bar_chart(df=commute_data |>
+                                                                         filter(geography_type == "Metro Areas" & variable == "Transit") |>
+                                                                         mutate(year = factor(x=year, levels=yr_ord)) |>
+                                                                         arrange(year, share), 
+                                                                       title = "Mode Share", tog = 'year',
+                                                                       y='share', x='geography', esttype="percent", dec=1, color = 'jewel')})
     
-    output$transit_ms_pierce_chart <- renderPlotly({interactive_column_chart(t=data %>% filter(metric=="Mode to Work" & geography=="Pierce County" & variable=="Public transportation") %>% mutate(date=as.character(date)),
-                                                                             y='share', x='data_year', fill='data_year',
-                                                                             est="percent", dec=0, color='obgnpgy_10')})
-    
-    output$transit_ms_snohomish_chart <- renderPlotly({interactive_column_chart(t=data %>% filter(metric=="Mode to Work" & geography=="Snohomish County" & variable=="Public transportation") %>% mutate(date=as.character(date)),
-                                                                                y='share', x='data_year', fill='data_year',
-                                                                                est="percent", dec=0, color='obgnpgy_10')})
-    
-    output$transit_ms_race_today_text <- renderText({paste0("Transit to Work: ",as.character(as.integer(current_census_year)))})
-    
-    
-    output$transit_ms_race_chart_today <- renderPlotly({interactive_column_chart(t=data %>% filter(metric=="Simplified Commute Mode" & variable=="Transit" & geography_type=="PSRC Region Race & Ethnicity" & data_year==current_census_year) %>% 
-                                                                                   mutate(grouping = gsub(" alone","", grouping)) %>%
-                                                                                   mutate(low_high=forcats::fct_reorder(grouping, -share)),
-                                                                                 y='share', x='low_high', fill='variable', moe='share_moe',
-                                                                                 est="percent", dec=0, color='blues_dec')})
-    
-    output$transit_ms_city_chart <- renderPlotly({interactive_bar_chart(t=data %>% filter(metric=="Mode to Work" & geography_type=="City" & variable=="Public transportation" & data_year==current_census_year) %>% 
-                                                                          mutate(low_high=forcats::fct_reorder(geography, -share)),
-                                                                        x='share', y='low_high', fill='variable',
-                                                                        est="percent", dec=0, color='pognbgy_5')})
-    
-    output$transit_ms_mpo_pre_text <- renderText({paste0("Transit to Work: ",as.character(as.integer(current_census_year)-5))})
-    
-    output$transit_ms_mpo_today_text <- renderText({paste0("Transit to Work: ",as.character(as.integer(current_census_year)))})
-    
-    output$transit_ms_mpo_chart_today <- renderPlotly({interactive_bar_chart(t=data %>% filter(metric=="Mode to Work" & geography_type=="Metro Regions" & variable=="Public transportation" & data_year==current_census_year) %>% 
-                                                                               mutate(low_high=forcats::fct_reorder(geography, -share)),
-                                                                             x='share', y='low_high', fill='variable',
-                                                                             est="percent", dec=0, color='gnbopgy_5')})
-    
-    output$transit_ms_mpo_chart_pre <- renderPlotly({interactive_bar_chart(t=data %>% filter(metric=="Mode to Work" & geography_type=="Metro Regions" & variable=="Public transportation" & data_year==as.character(as.integer(current_census_year)-5)) %>% 
-                                                                             mutate(low_high=forcats::fct_reorder(geography, -share)),
-                                                                           x='share', y='low_high', fill='variable',
-                                                                           est="percent", dec=0, color='obgnpgy_5')})
-    
+    output$transit_ms_city_chart <- renderEcharts4r({echart_multi_series_bar_chart(df=commute_data |>
+                                                                                     filter(geography_type == "City" & variable == "Transit" & year == current_census_year) |>
+                                                                                     arrange(share) |>
+                                                                                     mutate(estimate = share) |>
+                                                                                     mutate(metric = "Transit Share to Work"), 
+                                                                                   x = "geography", y='estimate', fill='metric', 
+                                                                                   esttype="percent", title="", dec=1, color = psrc_colors$pognbgy_5[[1]])})
     # Tab layout
     output$modesharetab <- renderUI({
       tagList(
-        tags$div(class="page_goals","Plan Outcome: 13% Transit Share by 2050"),
-        br(),
         
-        # Mode Share in Region
-        h1("Transit Mode Share to Work in the PSRC Region"),
-        hr(),
-        strong(tags$div(class="chart_title","Transit Mode Share to Work")),
-        fluidRow(column(12,plotlyOutput(ns("transit_ms_region_chart")))),
-        tags$div(class="chart_source","Source: ACS 1yr Data Table B08006 for King, Kitsap, Pierce and Snohomish counties"),
+        h1("Transit to Work: County"),
+        textOutput(ns("transit_share_county_text")) |> withSpinner(color=load_clr),
+        fluidRow(column(12,echarts4rOutput(ns("transit_ms_county_chart")))),
+        tags$div(class="chart_source","Source: ACS 5yr Data Table B08301 for King, Kitsap, Pierce and Snohomish counties"),
         hr(),
         
-        # Mode Share by County
-        h1("Transit Mode Share to Work by County"),
-        br(),
-        fluidRow(column(6,strong(tags$div(class="chart_title","Transit to Work: King County"))),
-                 column(6,strong(tags$div(class="chart_title","Transit to Work: Kitsap County")))),
-        fluidRow(column(6,plotlyOutput(ns("transit_ms_king_chart"))),
-                 column(6,plotlyOutput(ns("transit_ms_kitsap_chart")))),
-        fluidRow(column(6,strong(tags$div(class="chart_title","Transit to Work: Pierce County"))),
-                 column(6,strong(tags$div(class="chart_title","Transit to Work: Snohomish County")))),
-        fluidRow(column(6,plotlyOutput(ns("transit_ms_pierce_chart"))),
-                 column(6,plotlyOutput(ns("transit_ms_snohomish_chart")))),
-        tags$div(class="chart_source","Source: ACS 1yr Data Table B08006 for King, Kitsap, Pierce and Snohomish counties"),
+        h1("Transit to Work: Race & Ethnicity"),
+        textOutput(ns("transit_share_race_text")),
+        fluidRow(column(12,echarts4rOutput(ns("transit_ms_race_chart"), height = "600px"))),
+        tags$div(class="chart_source","Source: US Census Bureau 5-yr PUMS Variable JWTRNS for King, Kitsap, Pierce and Snohomish counties"),
+        hr(),
+
+        h1("Transit to Work: Metropolitan Region"),
+        textOutput(ns("transit_share_metro_text")),
+        fluidRow(column(12,echarts4rOutput(ns("transit_ms_metro_chart"), height = "600px"))),
+        tags$div(class="chart_source","Source: ACS 5yr Data Table B08301"),
         hr(),
         
-        # Mode Share by Race
-        h1("Transit Mode Share to Work by Race/Ethnicity"),
-        br(),
-        strong(tags$div(class="chart_title",textOutput(ns("transit_ms_race_today_text")))),
-        fluidRow(column(12,plotlyOutput(ns("transit_ms_race_chart_today")))),
-        tags$div(class="chart_source","Source: PUMS 5yr Data for King, Kitsap, Pierce and Snohomish counties"),
-        hr(),
-        
-        # Mode Share by City
-        h1("Transit Mode Share to Work by City"),
-        br(),
-        strong(tags$div(class="chart_title","Transit Mode Share to Work by City")),
-        fluidRow(column(12,plotlyOutput(ns("transit_ms_city_chart"), height = "800px"))),
-        tags$div(class="chart_source","Source: ACS 5yr Data Table B08006 by Place in King, Kitsap, Pierce and Snohomish counties"),
-        hr(),
-        
-        # Mode Share by Metro
-        h1("Transit Mode Share to Work by Metropolitan Region"),
-        br(),
-        fluidRow(column(6,strong(tags$div(class="chart_title",textOutput(ns("transit_ms_mpo_pre_text"))))),
-                 column(6,strong(tags$div(class="chart_title",textOutput(ns("transit_ms_mpo_today_text")))))),
-        fluidRow(column(6,plotlyOutput(ns("transit_ms_mpo_chart_pre"))),
-                 column(6,plotlyOutput(ns("transit_ms_mpo_chart_today")))),
-        tags$div(class="chart_source","Source: ACS 5yr Data Table B08006 by Counties in Metro Regions"),
-        hr(style = "border-top: 1px solid #000000;")
+        h1("Transit to Work: City"),
+        textOutput(ns("transit_share_city_text")),
+        fluidRow(column(12,echarts4rOutput(ns("transit_ms_city_chart"), height = "1000px"))),
+        tags$div(class="chart_source","Source: ACS 5yr Data Table B08301"),
+        hr()
+      
       )
     })
   })  # end moduleServer

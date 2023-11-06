@@ -79,7 +79,7 @@ shinyUI(
                              transit_overview_ui('transitOverview'),
                              tabsetPanel(type = "tabs",
                                          tabPanel("Boardings & Revenue-Hours", transit_metrics_ui('Metricstransit')),
-                                         tabPanel("Transit Share", modeshare_ui('Modetransit')))
+                                         tabPanel("Mode to Work", modeshare_ui('Modetransit')))
                       ), # End of Main Panel Transit
              ), # End of Main Panel Fluid Row for Transit Tab
     ),# End of Tab Panel for Transit
