@@ -11,7 +11,6 @@ library(tidyverse)
 
 # Packages for Chart Creation
 library(psrcplot)
-library(plotly)
 library(echarts4r)
 
 # Packages for Map Creation
@@ -73,25 +72,5 @@ hct_growth <- readRDS("data/hct.rds")
 efa_income <- readRDS("data/efa_income.rds")
 transit_data <- readRDS("data/transit_data.rds")
 
-# Data via CSV ------------------------------------------------------------
-data <- read_csv("data/rtp-dashboard-data.csv", show_col_types = FALSE) %>%
-  mutate(data_year = as.character(lubridate::year(date)))
-
-# Source information
+# Source Information ------------------------------------------------------------
 source_info <- read_csv("data/source_information.csv", show_col_types = FALSE)
-
-# Create MPO Data for Charts ----------------------------------------------
-metros <- c("Portland", "Bay Area", "San Diego", "Denver", "Atlanta","Washington DC", "Boston", "Miami" ,"Phoenix", "Austin", "Dallas")
-
-mpo_safety <- safety_data |> 
-  filter(geography_type=="Metro Regions" & variable=="Rate per 100k people" & data_year == current_census_year) |>
-  mutate(metric = case_when(
-    geography == "Seattle" ~ "PSRC",
-    geography %in% metros ~ "Comparable Metros")) |>
-  mutate(metric=replace_na(metric,"Other")) |>
-  arrange(estimate)
-
-mpo_order <- mpo_safety |> select(geography) |> pull()
-mpo_safety <- mpo_safety |> mutate(geography = factor(x=geography, levels=mpo_order))
-
-  

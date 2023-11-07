@@ -76,8 +76,11 @@ safety_geography_server <- function(id) {
                                                                               x='data_year', y='estimate', fill='metric', title='Snohomish County',
                                                                               dec = 1, esttype = 'number', color = psrc_colors$pognbgy_5)})
     
-    output$mpo_fatal_collisions_chart <- renderEcharts4r({echart_bar_chart(df=mpo_safety, title = "Traffic Deaths per 100,000 people", tog = 'variable',
-                                                                           y='estimate', x='geography', esttype="number", dec=1, color = 'jewel')})
+    output$mpo_fatal_collisions_chart <- renderEcharts4r({echart_bar_chart(df=safety_data |> 
+                                                                             filter(geography_type == "Metro Regions" & data_year == current_census_year) |>
+                                                                             arrange(estimate), 
+                                                                           title = "Traffic Related Deaths", tog = 'variable',
+                                                                           y='estimate', x='geography', esttype="number", dec=1, color = 'jewel')  })
     # Tab layout
     output$geographytab <- renderUI({
       tagList(

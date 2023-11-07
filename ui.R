@@ -41,7 +41,8 @@ shinyUI(
                              climate_overview_ui('climateOverview'),
                              tabsetPanel(type = "pills",
                                          tabPanel("Zero Emission Vehicles", climate_zev_ui('ZEVclimate')),
-                                         tabPanel("Vehicle Miles Traveled", climate_vmt_ui('VMTclimate')))
+                                         tabPanel("Vehicle Miles Traveled", climate_vmt_ui('VMTclimate')),
+                                         tabPanel("Work from Home", telework_ui('WFHmode')))
                              ), # End of Main Panel for Climate
                       ) # End of Main Panel Fluid Row for Climate Tab
              ), # End of Tab Panel for Climate
@@ -79,12 +80,12 @@ shinyUI(
                              transit_overview_ui('transitOverview'),
                              tabsetPanel(type = "tabs",
                                          tabPanel("Boardings & Revenue-Hours", transit_metrics_ui('Metricstransit')),
-                                         tabPanel("Mode to Work", modeshare_ui('Modetransit')))
+                                         tabPanel("Transit to Work", modeshare_ui('Modetransit')))
                       ), # End of Main Panel Transit
              ), # End of Main Panel Fluid Row for Transit Tab
     ),# End of Tab Panel for Transit
     
-    tabPanel(title=HTML("Walk,<br/>Bike & Roll"),
+    tabPanel(title=HTML("Walk & Bike"),
              value="Mode-Page",
              banner_ui('modeBanner'),
              fluidRow(column(4, style='padding-left:25px; padding-right:0px;', left_panel_ui('leftMode')),
@@ -92,8 +93,7 @@ shinyUI(
                              mode_overview_ui('modeOverview'),
                              tabsetPanel(type = "tabs",
                                          tabPanel("Walking", walk_ui('Walkmode')),
-                                         tabPanel("Biking", bike_ui('Bikemode')),
-                                         tabPanel("Work from Home", telework_ui('WFHmode')))
+                                         tabPanel("Biking", bike_ui('Bikemode')))
                              ), # End of Main Panel Modes
                       ), # End of Main Panel Fluid Row for Modes Tab
              ),# End of Tab Panel for Modes

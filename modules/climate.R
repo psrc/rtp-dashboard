@@ -150,3 +150,85 @@ climate_vmt_server <- function(id) {
     })
   })  # end moduleServer
 }
+
+telework_ui <- function(id) {
+  ns <- NS(id)
+  
+  tagList(
+    uiOutput(ns("teleworktab"))
+  )
+}
+
+telework_server <- function(id) {
+  moduleServer(id, function(input, output, session){
+    ns <- session$ns
+    
+    # Text
+    output$wfh_share_county_text <- renderText({page_information(tbl=page_text, page_name="Climate", page_section = "WFH-County", page_info = "description")})
+    output$wfh_share_race_text <- renderText({page_information(tbl=page_text, page_name="Climate", page_section = "WFH-Race", page_info = "description")})
+    output$wfh_share_metro_text <- renderText({page_information(tbl=page_text, page_name="Climate", page_section = "WFH-Metro", page_info = "description")})
+    output$wfh_share_city_text <- renderText({page_information(tbl=page_text, page_name="Climate", page_section = "WFH-City", page_info = "description")})
+    
+    # Charts
+    output$wfh_ms_county_chart <- renderEcharts4r({echart_column_chart_timeline(df = commute_data |> 
+                                                                                  filter(variable == "Work from Home" & geography_type == "County" & metric == "commute-modes") |>
+                                                                                  mutate(geography = str_wrap(geography, 10)) |>
+                                                                                  mutate(year = factor(x=year, levels = yr_ord)) |>
+                                                                                  mutate(geography = factor(x=geography, levels = county_ord)) |>
+                                                                                  arrange(year, geography),
+                                                                                x = "geography", y = "share", fill = "geography", tog = "year", 
+                                                                                dec = 1, title = "Work from Home", esttype = "percent", color = "jewel")})
+    
+    output$wfh_ms_race_chart <- renderEcharts4r({echart_pictorial(df= commute_data |> 
+                                                                    filter(geography_type=="Race" & year == current_census_year & variable == "Worked from home") |>
+                                                                    mutate(grouping = str_wrap(grouping, 15)),
+                                                                  x="grouping", y="share", tog="variable", 
+                                                                  icon=fa_wfh, 
+                                                                  color=psrc_colors$gnbopgy_5[[5]],
+                                                                  title="Race & Hispanic Origin", dec = 2, esttype = "percent")})
+    
+    output$wfh_ms_metro_chart <- renderEcharts4r({echart_bar_chart(df=commute_data |>
+                                                                     filter(geography_type == "Metro Areas" & variable == "Work from Home") |>
+                                                                     mutate(year = factor(x=year, levels=yr_ord)) |>
+                                                                     arrange(year, share), 
+                                                                   title = "Work from Home", tog = 'year',
+                                                                   y='share', x='geography', esttype="percent", dec=1, color = 'jewel')})
+    
+    output$wfh_ms_city_chart <- renderEcharts4r({echart_multi_series_bar_chart(df=commute_data |>
+                                                                                 filter(geography_type == "City" & variable == "Work from Home" & year == current_census_year) |>
+                                                                                 arrange(share) |>
+                                                                                 mutate(estimate = share) |>
+                                                                                 mutate(metric = "Work from Home"), 
+                                                                               x = "geography", y='estimate', fill='metric', 
+                                                                               esttype="percent", title="Work from Home", dec=1, color = psrc_colors$pognbgy_5[[5]])})
+    
+    # Tab layout
+    output$teleworktab <- renderUI({
+      tagList(
+        h1("Work from Home: County"),
+        textOutput(ns("wfh_share_county_text")) |> withSpinner(color=load_clr),
+        fluidRow(column(12,echarts4rOutput(ns("wfh_ms_county_chart")))),
+        tags$div(class="chart_source","Source: ACS 5yr Data Table B08301 for King, Kitsap, Pierce and Snohomish counties"),
+        hr(),
+        
+        h1("Work from Home: Race & Ethnicity"),
+        textOutput(ns("wfh_share_race_text")),
+        fluidRow(column(12,echarts4rOutput(ns("wfh_ms_race_chart"), height = "600px"))),
+        tags$div(class="chart_source","Source: US Census Bureau 5-yr PUMS Variable JWTRNS for King, Kitsap, Pierce and Snohomish counties"),
+        hr(),
+        
+        h1("Work from Home: Metropolitan Region"),
+        textOutput(ns("wfh_share_metro_text")),
+        fluidRow(column(12,echarts4rOutput(ns("wfh_ms_metro_chart"), height = "600px"))),
+        tags$div(class="chart_source","Source: ACS 5yr Data Table B08301"),
+        hr(),
+        
+        h1("Work from Home: City"),
+        textOutput(ns("wfh_share_city_text")),
+        fluidRow(column(12,echarts4rOutput(ns("wfh_ms_city_chart"), height = "1000px"))),
+        tags$div(class="chart_source","Source: ACS 5yr Data Table B08301"),
+        hr()
+      )
+    })
+  }) # end moduleServer
+}

@@ -191,27 +191,3 @@ bike_server <- function(id) {
     })
   }) # end moduleServer
 }
-
-telework_ui <- function(id) {
-  ns <- NS(id)
-  
-  tagList(
-    uiOutput(ns("teleworktab"))
-  )
-}
-
-telework_server <- function(id) {
-  moduleServer(id, function(input, output, session){
-    ns <- session$ns
-    
-    # Text and charts
-    
-    
-    # Tab layout
-    output$teleworktab <- renderUI({
-      tagList(
-        
-      )
-    })
-  }) # end moduleServer
-}

@@ -529,10 +529,11 @@ create_source_table <- function(d=source_info) {
     
   summary_tbl <- summary_tbl %>%
     formatStyle(0:ncol(t), valueColumns = "Data Point",
-                `border-bottom` = styleEqual(c("Annual Vehicle Kilometers Traveled", 
+                `border-bottom` = styleEqual(c("Work from Home: City", 
                                                "Traffic Related Deaths and Serious Injuries: Day of Week", 
                                                "Population, Housing Units and Jobs: Near High Capacity Transit",
-                                               "Transit Mode to Work: City"), "solid 2px"))
+                                               "Transit Mode to Work: City",
+                                               "Bike to Work: City"), "solid 2px"))
     
   summary_tbl <- summary_tbl %>%
     formatStyle(0:ncol(t), valueColumns = "Data Point",
