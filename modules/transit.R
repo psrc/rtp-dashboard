@@ -139,11 +139,12 @@ modeshare_server <- function(id) {
     # charts
     output$transit_ms_county_chart <- renderEcharts4r({echart_column_chart_timeline(df = commute_data |> 
                                                                                       filter(variable == "Transit" & geography_type == "County" & metric == "commute-modes") |>
+                                                                                      mutate(geography = str_wrap(geography, 10)) |>
                                                                                       mutate(year = factor(x=year, levels = yr_ord)) |>
                                                                                       mutate(geography = factor(x=geography, levels = county_ord)) |>
                                                                                       arrange(year, geography),
                                                                                     x = "geography", y = "share", fill = "geography", tog = "year", 
-                                                                                    dec = 1, title = "", esttype = "percent", color = "jewel")})
+                                                                                    dec = 1, title = "Transit to Work", esttype = "percent", color = "jewel")})
   
     output$transit_ms_race_chart <- renderEcharts4r({echart_pictorial(df= commute_data |> 
                                                                         filter(geography_type=="Race" & year == current_census_year & variable == "Transit") |>
@@ -157,7 +158,7 @@ modeshare_server <- function(id) {
                                                                          filter(geography_type == "Metro Areas" & variable == "Transit") |>
                                                                          mutate(year = factor(x=year, levels=yr_ord)) |>
                                                                          arrange(year, share), 
-                                                                       title = "Mode Share", tog = 'year',
+                                                                       title = "Transit to Work", tog = 'year',
                                                                        y='share', x='geography', esttype="percent", dec=1, color = 'jewel')})
     
     output$transit_ms_city_chart <- renderEcharts4r({echart_multi_series_bar_chart(df=commute_data |>
@@ -166,7 +167,7 @@ modeshare_server <- function(id) {
                                                                                      mutate(estimate = share) |>
                                                                                      mutate(metric = "Transit Share to Work"), 
                                                                                    x = "geography", y='estimate', fill='metric', 
-                                                                                   esttype="percent", title="", dec=1, color = psrc_colors$pognbgy_5[[1]])})
+                                                                                   esttype="percent", title="Transit to Work", dec=1, color = psrc_colors$pognbgy_5[[1]])})
     # Tab layout
     output$modesharetab <- renderUI({
       tagList(

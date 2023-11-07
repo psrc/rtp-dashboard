@@ -24,3 +24,7 @@ Transit Mode to Work: County,Transit,"ACS 5yr Data Table B08301 for King, Kitsap
 Transit Mode to Work: Race and Ethnicity,Transit,"US Census Bureau 5-yr PUMS Variable JWTRNS for King, Kitsap, Pierce and Snohomish counties",2021
 Transit Mode to Work: Metro Areas,Transit,ACS 5yr Data Table B08301 by county in each metro region,"2011, 2016, 2021"
 Transit Mode to Work: City,Transit,"ACS 5yr Data Table B08301 by place in King, Kitsap, Pierce and Snohomish counties.",2021
+Walk to Work: County,"Walk, Bike & Roll","ACS 5yr Data Table B08301 for King, Kitsap, Pierce and Snohomish counties","2011, 2016, 2021"
+Walk to Work: Race and Ethnicity,"Walk, Bike & Roll","US Census Bureau 5-yr PUMS Variable JWTRNS for King, Kitsap, Pierce and Snohomish counties",
+Walk to Work: Metro Areas,"Walk, Bike & Roll",ACS 5yr Data Table B08301 by county in each metro region,
+Walk to Work: City,"Walk, Bike & Roll","ACS 5yr Data Table B08301 by place in King, Kitsap, Pierce and Snohomish counties.",
