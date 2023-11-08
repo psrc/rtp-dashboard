@@ -85,7 +85,7 @@ shinyUI(
              ), # End of Main Panel Fluid Row for Transit Tab
     ),# End of Tab Panel for Transit
     
-    tabPanel(title=HTML("Walk & Bike"),
+    tabPanel(title=HTML("Walk &<br/>Bike"),
              value="Mode-Page",
              banner_ui('modeBanner'),
              fluidRow(column(4, style='padding-left:25px; padding-right:0px;', left_panel_ui('leftMode')),
@@ -97,6 +97,19 @@ shinyUI(
                              ), # End of Main Panel Modes
                       ), # End of Main Panel Fluid Row for Modes Tab
              ),# End of Tab Panel for Modes
+    
+    tabPanel(title=HTML("Travel<br/>Time"),
+             value="Time-Page",
+             banner_ui('timeBanner'),
+             fluidRow(column(4, style='padding-left:25px; padding-right:0px;', left_panel_ui('leftTime')),
+                      column(8, style='padding-left:25px; padding-right:50px;',
+                             time_overview_ui('timeOverview'),
+                             tabsetPanel(type = "tabs",
+                                         tabPanel("Travel Time", tt_ui('TTtime')))
+                      ), # End of Main Panel Time and Congestion
+             ), # End of Main Panel Fluid Row for Time Tab
+    ),# End of Tab Panel for Travel Time and Congestion
+    
     
     tabPanel(title=icon("info-circle"),
              value="Data-Source-Page",

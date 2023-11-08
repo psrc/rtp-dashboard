@@ -23,6 +23,7 @@ shinyServer(function(input, output) {
   climate_overview_server('climateOverview')
   climate_zev_server('ZEVclimate')
   climate_vmt_server('VMTclimate')
+  telework_server('WFHmode')
   
   # Growth Page
   banner_server('growthBanner', 
@@ -46,18 +47,6 @@ shinyServer(function(input, output) {
   safety_demographics_server('Demographicsafety')
   safety_other_server('Othersafety')
   
-  # Modes Page
-  banner_server('modeBanner', 
-                banner_title = "Alternative Modes of Transportation", 
-                banner_subtitle = "Regional Transportation Plan",
-                banner_url = "https://www.psrc.org/planning-2050/regional-transportation-plan")
-  
-  left_panel_server('leftMode', page_nm = "Modes")
-  mode_overview_server('modeOverview')
-  walk_server('Walkmode')
-  bike_server('Bikemode')
-  telework_server('WFHmode')
-  
   # Transit Page
   banner_server('transitBanner', 
                 banner_title = "Transit Performance", 
@@ -68,6 +57,27 @@ shinyServer(function(input, output) {
   transit_overview_server('transitOverview')
   transit_metrics_server('Metricstransit')
   modeshare_server('Modetransit')
+  
+  # Modes Page
+  banner_server('modeBanner', 
+                banner_title = "Alternative Modes of Transportation", 
+                banner_subtitle = "Regional Transportation Plan",
+                banner_url = "https://www.psrc.org/planning-2050/regional-transportation-plan")
+  
+  left_panel_server('leftMode', page_nm = "Modes")
+  mode_overview_server('modeOverview')
+  walk_server('Walkmode')
+  bike_server('Bikemode')
+  
+  # Travel Time Page
+  banner_server('timeBanner', 
+                banner_title = "Travel Time & Congestion", 
+                banner_subtitle = "Regional Transportation Plan",
+                banner_url = "https://www.psrc.org/planning-2050/regional-transportation-plan")
+  
+  left_panel_server('leftTime', page_nm = "Travel-Time")
+  time_overview_server('timeOverview')
+  tt_server('TTtime')
   
   # Data Sources
   source_server('dataSource')
