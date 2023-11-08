@@ -45,6 +45,7 @@ wgs84 <- 4326
 yr_ord <- c("2023", "2022", "2021", "2020", "2019", "2018", "2017", "2016", "2015", "2014", "2013", "2012", "2011", "2010")
 county_ord <- c("King\nCounty", "Kitsap\nCounty", "Pierce\nCounty", "Snohomish\nCounty", "Region")
 county_short_ord <- c("King", "Kitsap", "Pierce", "Snohomish", "Region")
+tod_ord <- c("Early\nMorning", "AM Peak", "Late\nMorning", "Afternoon", "Evening", "Overnight")
 
 # SVG values for ehcarts pictorial charts
 fa_user <- "path://M256 288A144 144 0 1 0 256 0a144 144 0 1 0 0 288zm-94.7 32C72.2 320 0 392.2 0 481.3c0 17 13.8 30.7 30.7 30.7H481.3c17 0 30.7-13.8 30.7-30.7C512 392.2 439.8 320 350.7 320H161.3z"

@@ -39,3 +39,5 @@ Bike to Work: City,Walk & Bike,"ACS 5yr Data Table B08301 by place in King, Kits
 Mean Travel Time to Work: County,Travel Time,"US Census Bureau 5-yr PUMS Variable JWMNP for King, Kitsap, Pierce and Snohomish counties","2011, 2016, 2021"
 Mean Travel Time to Work: Race and Ethnicity,Travel Time,"US Census Bureau 5-yr PUMS Variable JWMNP for King, Kitsap, Pierce and Snohomish counties",2021
 Hour or more Commute: Metro Areas,Travel Time,ACS 5yr Data Table B08303 by county in each metro region,"2011, 2016, 2021"
+Departure Time to Work: Region,Travel Time,"ACS 5yr Data Table B08011 for King, Kitsap, Pierce and Snohomish counties","2011, 2016, 2021"
+Departure Time to Work: County,Travel Time,"ACS 5yr Data Table B08011 for King, Kitsap, Pierce and Snohomish counties",2021

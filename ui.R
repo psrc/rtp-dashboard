@@ -78,7 +78,7 @@ shinyUI(
              fluidRow(column(4, style='padding-left:25px; padding-right:0px;', left_panel_ui('leftTransit')),
                       column(8, style='padding-left:25px; padding-right:50px;',
                              transit_overview_ui('transitOverview'),
-                             tabsetPanel(type = "tabs",
+                             tabsetPanel(type = "pills",
                                          tabPanel("Boardings & Revenue-Hours", transit_metrics_ui('Metricstransit')),
                                          tabPanel("Transit to Work", modeshare_ui('Modetransit')))
                       ), # End of Main Panel Transit
@@ -91,7 +91,7 @@ shinyUI(
              fluidRow(column(4, style='padding-left:25px; padding-right:0px;', left_panel_ui('leftMode')),
                       column(8, style='padding-left:25px; padding-right:50px;',
                              mode_overview_ui('modeOverview'),
-                             tabsetPanel(type = "tabs",
+                             tabsetPanel(type = "pills",
                                          tabPanel("Walking", walk_ui('Walkmode')),
                                          tabPanel("Biking", bike_ui('Bikemode')))
                              ), # End of Main Panel Modes
@@ -104,8 +104,9 @@ shinyUI(
              fluidRow(column(4, style='padding-left:25px; padding-right:0px;', left_panel_ui('leftTime')),
                       column(8, style='padding-left:25px; padding-right:50px;',
                              time_overview_ui('timeOverview'),
-                             tabsetPanel(type = "tabs",
-                                         tabPanel("Travel Time", tt_ui('TTtime')))
+                             tabsetPanel(type = "pills",
+                                         tabPanel("Travel Time", tt_ui('TTtime')),
+                                         tabPanel("Departure Time", dt_ui('DTtime')))
                       ), # End of Main Panel Time and Congestion
              ), # End of Main Panel Fluid Row for Time Tab
     ),# End of Tab Panel for Travel Time and Congestion

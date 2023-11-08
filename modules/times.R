@@ -25,7 +25,7 @@ time_overview_server <- function(id) {
   }) # end moduleServer
 }
 
-# Mode Tabs -----------------------------------------------------------------------------------
+# Travel Time Tabs -----------------------------------------------------------------------------------
 tt_ui <- function(id) {
   ns <- NS(id)
   
@@ -88,6 +88,93 @@ tt_server <- function(id) {
         fluidRow(column(12,echarts4rOutput(ns("tt_metro_chart"), height = "600px"))),
         tags$div(class="chart_source","Source: ACS 5yr Data Table B08303"),
         hr()
+        
+      )
+    })
+  }) # end moduleServer
+}
+
+dt_ui <- function(id) {
+  ns <- NS(id)
+  
+  tagList(
+    uiOutput(ns("dttab"))
+  )
+}
+
+dt_server <- function(id) {
+  moduleServer(id, function(input, output, session){
+    ns <- session$ns
+    
+    # Text
+    output$dt_region_text <- renderText({page_information(tbl=page_text, page_name="Travel-Times", page_section = "DT-Region", page_info = "description")})
+    output$dt_county_text <- renderText({page_information(tbl=page_text, page_name="Travel-Times", page_section = "DT-County", page_info = "description")})
+
+    # Charts
+    output$dt_region_chart <- renderEcharts4r({echart_column_chart_timeline(df = commute_data |> 
+                                                                              filter(geography == "Region" & metric == "departure-time" & variable != "Total") |>
+                                                                              mutate(variable = str_wrap(variable, width=10)) |>
+                                                                              mutate(year = factor(x=year, levels = yr_ord)) |>
+                                                                              mutate(variable = factor(x=variable, levels = tod_ord)) |>
+                                                                              arrange(year, variable),
+                                                                            x = "variable", y = "share", fill = "variable", tog = "year", 
+                                                                            dec = 1, title = "Departure Time to Work", esttype = "percent", color = "jewel")})
+    
+    output$dt_king_chart <- renderEcharts4r({echart_column_chart(df = commute_data |> 
+                                                                   filter(geography == "King County" & metric == "departure-time" & variable != "Total" & year == current_census_year) |>
+                                                                   mutate(variable = str_wrap(variable, width=10)) |>
+                                                                   mutate(year = factor(x=year, levels = yr_ord)) |>
+                                                                   mutate(variable = factor(x=variable, levels = tod_ord), estimate = share) |>
+                                                                   arrange(year, variable),
+                                                                 x='variable', y='estimate', fill='metric', title='King County',
+                                                                 dec = 1, esttype = 'percent', color = psrc_colors$pognbgy_5[[1]])})
+    
+    output$dt_kitsap_chart <- renderEcharts4r({echart_column_chart(df = commute_data |> 
+                                                                     filter(geography == "Kitsap County" & metric == "departure-time" & variable != "Total" & year == current_census_year) |>
+                                                                     mutate(variable = str_wrap(variable, width=10)) |>
+                                                                     mutate(year = factor(x=year, levels = yr_ord)) |>
+                                                                     mutate(variable = factor(x=variable, levels = tod_ord), estimate = share) |>
+                                                                     arrange(year, variable),
+                                                                   x='variable', y='estimate', fill='metric', title='Kitsap County',
+                                                                   dec = 1, esttype = 'percent', color = psrc_colors$pognbgy_5[[3]])})
+    
+    output$dt_pierce_chart <- renderEcharts4r({echart_column_chart(df = commute_data |>
+                                                                     filter(geography == "Pierce County" & metric == "departure-time" & variable != "Total" & year == current_census_year) |>
+                                                                     mutate(variable = str_wrap(variable, width=10)) |>
+                                                                     mutate(year = factor(x=year, levels = yr_ord)) |>
+                                                                     mutate(variable = factor(x=variable, levels = tod_ord), estimate = share) |>
+                                                                     arrange(year, variable),
+                                                                   x='variable', y='estimate', fill='metric', title='Pierce County',
+                                                                   dec = 1, esttype = 'percent', color = psrc_colors$pognbgy_5[[2]])})
+    
+    output$dt_snohomish_chart <- renderEcharts4r({echart_column_chart(df = commute_data |> 
+                                                                        filter(geography == "Snohomish County" & metric == "departure-time" & variable != "Total" & year == current_census_year) |>
+                                                                        mutate(variable = str_wrap(variable, width=10)) |>
+                                                                        mutate(year = factor(x=year, levels = yr_ord)) |>
+                                                                        mutate(variable = factor(x=variable, levels = tod_ord), estimate = share) |>
+                                                                        arrange(year, variable),
+                                                                      x='variable', y='estimate', fill='metric', title='Snohomish County',
+                                                                      dec = 1, esttype = 'percent', color = psrc_colors$pognbgy_5[[4]])})
+    
+    # Tab layout
+    output$dttab <- renderUI({
+      tagList(
+        
+        h1("Region"),
+        textOutput(ns("dt_region_text")) |> withSpinner(color=load_clr),
+        fluidRow(column(12,echarts4rOutput(ns("dt_region_chart")))),
+        tags$div(class="chart_source","Source: ACS 5yr Data Table B08011 for King, Kitsap, Pierce and Snohomish counties"),
+        hr(),
+        
+        h1("County"),
+        textOutput(ns("dt_county_text")),
+        br(),
+        fluidRow(column(6,echarts4rOutput(ns("dt_king_chart"))),
+                 column(6,echarts4rOutput(ns("dt_kitsap_chart")))),
+        fluidRow(column(6,echarts4rOutput(ns("dt_pierce_chart"))),
+                 column(6,echarts4rOutput(ns("dt_snohomish_chart")))),
+        tags$div(class="chart_source","Source: ACS 5yr Data Table B08011 for King, Kitsap, Pierce and Snohomish counties"),
+        hr(style = "border-top: 1px solid #000000;"),
         
       )
     })

@@ -78,6 +78,7 @@ shinyServer(function(input, output) {
   left_panel_server('leftTime', page_nm = "Travel-Time")
   time_overview_server('timeOverview')
   tt_server('TTtime')
+  dt_server('DTtime')
   
   # Data Sources
   source_server('dataSource')
