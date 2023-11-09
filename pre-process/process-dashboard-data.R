@@ -5,6 +5,7 @@ library(sf)
 wgs84 <- 4326
 current_year <- as.character(lubridate::year(Sys.Date()))
 pre_covid <- 2019
+current_ntd_mo <- "September"
 metros <- c("Portland", "Bay Area", "San Diego", "Denver", "Atlanta","Washington DC", "Boston", "Miami" ,"Phoenix", "Austin", "Dallas")
 
 # NTD Transit Data --------------------------------------------------------
