@@ -77,4 +77,3 @@ transit_data <- readRDS("data/transit_data.rds")
 
 # Source Information ------------------------------------------------------------
 source_info <- read_csv("data/source_information.csv", show_col_types = FALSE)
-

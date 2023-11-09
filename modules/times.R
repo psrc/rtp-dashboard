@@ -109,6 +109,8 @@ dt_server <- function(id) {
     # Text
     output$dt_region_text <- renderText({page_information(tbl=page_text, page_name="Travel-Times", page_section = "DT-Region", page_info = "description")})
     output$dt_county_text <- renderText({page_information(tbl=page_text, page_name="Travel-Times", page_section = "DT-County", page_info = "description")})
+    output$dt_race_text <- renderText({page_information(tbl=page_text, page_name="Travel-Times", page_section = "DT-Race", page_info = "description")})
+    output$dt_metro_text <- renderText({page_information(tbl=page_text, page_name="Travel-Times", page_section = "DT-Metro", page_info = "description")})
 
     # Charts
     output$dt_region_chart <- renderEcharts4r({echart_column_chart_timeline(df = commute_data |> 
@@ -156,6 +158,25 @@ dt_server <- function(id) {
                                                                       x='variable', y='estimate', fill='metric', title='Snohomish County',
                                                                       dec = 1, esttype = 'percent', color = psrc_colors$pognbgy_5[[4]])})
     
+    output$dt_race_chart <- renderEcharts4r({echart_column_chart(df = commute_data |> 
+                                                                   filter(geography_type == "Race" & metric == "Departure Time Bins" & variable != "Total" & year == current_census_year) |>
+                                                                   mutate(variable = str_wrap(variable, width=10)) |>
+                                                                   mutate(grouping = str_wrap(grouping, 15)) |>
+                                                                   mutate(variable = factor(x=variable, levels = tod_ord)) |>
+                                                                   mutate(metric=variable, estimate=share) |>
+                                                                   arrange(desc(grouping), metric), 
+                                                                 x='grouping', y='estimate', fill='metric', title=paste0('Departure Time to Work: ',current_census_year),
+                                                                 dec = 0, esttype = 'percent', color = psrc_colors$gnbopgy_10) |> e_flip_coords()})
+    
+    output$dt_metro_chart <- renderEcharts4r({echart_column_chart(df = commute_data |> 
+                                                                    filter(geography_type == "Metro Areas" & metric == "departure-time" & variable != "Total" & year == current_census_year) |>
+                                                                    mutate(variable = str_wrap(variable, width=10)) |>
+                                                                    mutate(variable = factor(x=variable, levels = tod_ord)) |>
+                                                                    mutate(metric=variable, estimate=share) |>
+                                                                    arrange(geography, metric), 
+                                                                  x='geography', y='estimate', fill='metric', title=paste0('Departure Time to Work: ',current_census_year),
+                                                                  dec = 0, esttype = 'percent', color = psrc_colors$gnbopgy_10)})
+    
     # Tab layout
     output$dttab <- renderUI({
       tagList(
@@ -164,7 +185,7 @@ dt_server <- function(id) {
         textOutput(ns("dt_region_text")) |> withSpinner(color=load_clr),
         fluidRow(column(12,echarts4rOutput(ns("dt_region_chart")))),
         tags$div(class="chart_source","Source: ACS 5yr Data Table B08011 for King, Kitsap, Pierce and Snohomish counties"),
-        hr(),
+        hr(style = "border-top: 1px solid #000000;"),
         
         h1("County"),
         textOutput(ns("dt_county_text")),
@@ -175,6 +196,18 @@ dt_server <- function(id) {
                  column(6,echarts4rOutput(ns("dt_snohomish_chart")))),
         tags$div(class="chart_source","Source: ACS 5yr Data Table B08011 for King, Kitsap, Pierce and Snohomish counties"),
         hr(style = "border-top: 1px solid #000000;"),
+        
+        h1("Race & Ethnicity"),
+        textOutput(ns("dt_race_text")),
+        fluidRow(column(12,echarts4rOutput(ns("dt_race_chart"), height = "600px"))),
+        tags$div(class="chart_source","Source: US Census Bureau 5-yr PUMS Variable JWDP for King, Kitsap, Pierce and Snohomish counties"),
+        hr(style = "border-top: 1px solid #000000;"),
+        
+        h1("Metropolitan Region"),
+        textOutput(ns("dt_metro_text")),
+        fluidRow(column(12,echarts4rOutput(ns("dt_metro_chart")))),
+        tags$div(class="chart_source","Source: ACS 5yr Data Table B08011"),
+        hr(style = "border-top: 1px solid #000000;")
         
       )
     })
