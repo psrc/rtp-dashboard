@@ -83,4 +83,11 @@ shinyServer(function(input, output) {
   # Data Sources
   source_server('dataSource')
   
+  # Data Download
+  output$downloadData <- downloadHandler(
+    filename = "PSRC RTP Monitoring Data Download.xlsx",
+    content = function(file) {saveWorkbook(create_public_spreadsheet(download_table_list), file = file)},
+    contentType = "application/Excel"
+  )
+  
 })    
