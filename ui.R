@@ -119,6 +119,8 @@ shinyUI(
              source_ui('dataSource')),
              hr(style = "border-top: 1px solid #000000;"),
     
+    tabPanel(downloadLink('downloadData', label = HTML("Download<br/>Data"))),
+    
     tags$footer(footer_ui('psrcfooter'))
     
     ) # End of NavBar Page

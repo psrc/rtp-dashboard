@@ -80,7 +80,7 @@ congestion_data <- readRDS("data/congestion_data.rds")
 source_info <- read_csv("data/source_information.csv", show_col_types = FALSE)
 
 # Data Download Table List ------------------------------------------------------
-download_table_list <- list("Data Sources" = source_info,
+download_table_list <- list("Sources" = source_info,
                             "Climate-ZEV" = climate_data %>% filter(metric == "vehicle-registrations"),
                             "Climate-VMT" = bind_rows(vmt_data, vkt_data),
                             "Climate-WFH" = commute_data %>% filter(variable %in% c("Work from Home", "Worked from home")),
@@ -91,15 +91,15 @@ download_table_list <- list("Data Sources" = source_info,
                             "Safety-Demographics" = safety_data %>% filter(geography_type %in% c("Race",
                                                                                                  "Age Group",
                                                                                                  "Gender")),
-                            "Safety-Other Metrics" = safety_data %>% filter(geography_type %in% c("Mode",
-                                                                                                  "Time of Day",
-                                                                                                  "Day of Week",
-                                                                                                  "Roadway Type")),
+                            "Safety-Other" = safety_data %>% filter(geography_type %in% c("Mode",
+                                                                                          "Time of Day",
+                                                                                          "Day of Week",
+                                                                                          "Roadway Type")),
                             "Growth" = bind_rows(pop_hsg_jobs, hct_growth),
-                            "Transit-Boardings & Revenue-Hours" = transit_data,
-                            "Transit-Transit to Work" = commute_data %>% filter(variable == "Transit"),
+                            "Transit-Boardings" = transit_data,
+                            "Transit-Mode" = commute_data %>% filter(variable == "Transit"),
                             "Walking" = commute_data %>% filter(variable %in% c("Walk", "Walked")),
                             "Biking" = commute_data %>% filter(variable %in% c("Bike", "Bicycle")),
-                            "Travel Time-Travel Time" = commute_data %>% filter(metric %in% c("Mean Commute Time", "commute-times")),
-                            "Travel Time-Departure Time" = commute_data %>% filter(metric %in% c("departure-time", "Departure Time Bins"))
+                            "Time-Travel-Time" = commute_data %>% filter(metric %in% c("Mean Commute Time", "commute-times")),
+                            "Time-Departure-Time" = commute_data %>% filter(metric %in% c("departure-time", "Departure Time Bins"))
                             )
