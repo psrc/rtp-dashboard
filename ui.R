@@ -106,7 +106,8 @@ shinyUI(
                              time_overview_ui('timeOverview'),
                              tabsetPanel(type = "pills",
                                          tabPanel("Travel Time", tt_ui('TTtime')),
-                                         tabPanel("Departure Time", dt_ui('DTtime')))
+                                         tabPanel("Departure Time", dt_ui('DTtime')),
+                                         tabPanel("Congestion", congestion_ui('Congestiontime')))
                       ), # End of Main Panel Time and Congestion
              ), # End of Main Panel Fluid Row for Time Tab
     ),# End of Tab Panel for Travel Time and Congestion

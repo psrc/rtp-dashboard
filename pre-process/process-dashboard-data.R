@@ -5,7 +5,6 @@ library(sf)
 wgs84 <- 4326
 current_year <- as.character(lubridate::year(Sys.Date()))
 pre_covid <- 2019
-current_ntd_mo <- "September"
 metros <- c("Portland", "Bay Area", "San Diego", "Denver", "Atlanta","Washington DC", "Boston", "Miami" ,"Phoenix", "Austin", "Dallas")
 
 # NTD Transit Data --------------------------------------------------------
@@ -58,6 +57,10 @@ saveRDS(tracts, "C:/coding/rtp-dashboard/data/tracts.rds")
 efa_income <- read_csv("data/efa_income_tracts.csv", show_col_types = FALSE) |> select(GEOID) |> pull()
 efa_income_lyr <- tracts |> filter(GEOID10 %in% efa_income) |> st_union() |> st_sf() 
 saveRDS(efa_income_lyr, "C:/coding/rtp-dashboard/data/efa_income.rds")
+
+# Travel Time -------------------------------------------------------------
+congested_lanes_miles <- process_npmrds_data()
+saveRDS(congested_lanes_miles, "C:/coding/rtp-dashboard/data/congestion_data.rds")
 
 # VMT Data ----------------------------------------------------------------
 vmt <- read_csv("data/vmt-data.csv", show_col_types = FALSE) |>

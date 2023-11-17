@@ -79,6 +79,7 @@ shinyServer(function(input, output) {
   time_overview_server('timeOverview')
   tt_server('TTtime')
   dt_server('DTtime')
+  congestion_server('Congestiontime')
   
   # Data Sources
   source_server('dataSource')

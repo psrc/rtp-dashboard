@@ -74,6 +74,7 @@ pop_hsg_jobs <- readRDS("data/pop_hsg_jobs.rds")
 hct_growth <- readRDS("data/hct.rds") 
 efa_income <- readRDS("data/efa_income.rds")
 transit_data <- readRDS("data/transit_data.rds")
+congestion_data <- readRDS("data/congestion_data.rds")
 
 # Source Information ------------------------------------------------------------
 source_info <- read_csv("data/source_information.csv", show_col_types = FALSE)

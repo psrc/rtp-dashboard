@@ -213,3 +213,43 @@ dt_server <- function(id) {
     })
   }) # end moduleServer
 }
+
+congestion_ui <- function(id) {
+  ns <- NS(id)
+  
+  tagList(
+    uiOutput(ns("congestiontab"))
+  )
+}
+
+congestion_server <- function(id) {
+  moduleServer(id, function(input, output, session){
+    ns <- session$ns
+    
+    # Text
+    output$congestion_region_text <- renderText({page_information(tbl=page_text, page_name="Travel-Times", page_section = "Congestion-Region", page_info = "description")})
+
+    # Charts
+    output$congestion_region_chart <- renderEcharts4r({echart_column_chart_toggle(df = congestion_data |> 
+                                                                                    filter(geography_type == "Region" & grouping %in% c("Heavy", "Severe") & variable %in% c("AM Peak Period", "Midday", "PM Peak Period")) |>
+                                                                                    mutate(data_year = paste0(lubridate::month(date, label=TRUE), "-", year)),
+                                                                                  x = "data_year", y = "share", fill = "grouping", tog = "variable" , 
+                                                                                  dec = 0, title = "% of NHS", esttype = "percent", color = psrc_colors$pognbgy_5)})
+    
+
+    
+    # Tab layout
+    output$congestiontab <- renderUI({
+      tagList(
+        
+        h1("Region"),
+        textOutput(ns("congestion_region_text")) |> withSpinner(color=load_clr),
+        fluidRow(column(12,echarts4rOutput(ns("congestion_region_chart")))),
+        tags$div(class="chart_source","Source: National Performance Management Research Data Set"),
+        hr(style = "border-top: 1px solid #000000;")
+        
+      )
+    })
+  }) # end moduleServer
+}
+
