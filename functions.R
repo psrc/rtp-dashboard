@@ -846,3 +846,48 @@ echart_column_chart_toggle <- function(df, x, y, fill, tog, title, dec, esttype,
   return(c)
   
 }
+
+# Create Roadway Map ------------------------------------------------------
+create_roadway_map <- function(congestion_lyr, tod) {
+  
+  heavy_lyr <- congestion_lyr |> filter(date == max(date)) |> select("roadway", estimate=all_of(tod)) |> filter(estimate > 0.25 & estimate <= 0.50)
+  heavy_lbl <- paste0("<b>",paste0("Speed Ratio: "), "</b>", prettyNum(round(heavy_lyr$estimate*100, 0), big.mark = ","),"%") %>% lapply(htmltools::HTML)
+  
+  severe_lyr <- congestion_lyr |> filter(date == max(date)) |> select("roadway", estimate=all_of(tod)) |> filter(estimate <= 0.25)
+  severe_lbl <- paste0("<b>",paste0("Speed Ratio: "), "</b>", prettyNum(round(severe_lyr$estimate*100, 0), big.mark = ","),"%") %>% lapply(htmltools::HTML)
+  
+  roadway_map <- leaflet() |>
+    
+    addProviderTiles(providers$CartoDB.Positron) |>
+    
+    addLayersControl(baseGroups = c("Base Map"),
+                     overlayGroups = c("Heavy", "Severe"),
+                     options = layersControlOptions(collapsed = TRUE)) |>
+    
+    addEasyButton(easyButton(
+      icon="fa-globe", title="Region",
+      onClick=JS("function(btn, map){map.setView([47.615,-122.257],8.5); }"))) |>
+    
+    addPolylines(data = heavy_lyr,
+                 color = "#91268F",
+                 weight = 3,
+                 fillColor = "#91268F",
+                 group = "Heavy",
+                 label = heavy_lbl) |>
+    
+    addPolylines(data = severe_lyr,
+                 color = "#F05A28",
+                 weight = 3,
+                 fillColor = "#F05A28",
+                 group = "Severe",
+                 label = severe_lbl) |>
+    
+    addLegend(colors=c("#91268F", "#F05A28"),
+              labels=c("Heavy", "Severe"),
+              position = "bottomright",
+              title = "Congestion")
+  
+  return(roadway_map)
+  
+}
+

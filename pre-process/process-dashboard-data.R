@@ -62,6 +62,9 @@ saveRDS(efa_income_lyr, "C:/coding/rtp-dashboard/data/efa_income.rds")
 congested_lanes_miles <- process_npmrds_data()
 saveRDS(congested_lanes_miles, "C:/coding/rtp-dashboard/data/congestion_data.rds")
 
+congestion_map_data <- map_npmrds_data()
+saveRDS(congestion_map_data, "C:/coding/rtp-dashboard/data/congestion_map_data.rds")
+
 # VMT Data ----------------------------------------------------------------
 vmt <- read_csv("data/vmt-data.csv", show_col_types = FALSE) |>
   mutate(date = lubridate::mdy(date)) |>

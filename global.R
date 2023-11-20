@@ -75,6 +75,7 @@ hct_growth <- readRDS("data/hct.rds")
 efa_income <- readRDS("data/efa_income.rds")
 transit_data <- readRDS("data/transit_data.rds")
 congestion_data <- readRDS("data/congestion_data.rds")
+congestion_map_data <- readRDS("data/congestion_map_data.rds")
 
 # Source Information ------------------------------------------------------------
 source_info <- read_csv("data/source_information.csv", show_col_types = FALSE)
@@ -103,3 +104,5 @@ download_table_list <- list("Sources" = source_info,
                             "Time-Travel-Time" = commute_data %>% filter(metric %in% c("Mean Commute Time", "commute-times")),
                             "Time-Departure-Time" = commute_data %>% filter(metric %in% c("departure-time", "Departure Time Bins"))
                             )
+
+

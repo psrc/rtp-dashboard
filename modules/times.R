@@ -228,6 +228,7 @@ congestion_server <- function(id) {
     
     # Text
     output$congestion_region_text <- renderText({page_information(tbl=page_text, page_name="Travel-Times", page_section = "Congestion-Region", page_info = "description")})
+    output$congestion_rooadways_text <- renderText({page_information(tbl=page_text, page_name="Travel-Times", page_section = "Congestion-Roadways", page_info = "description")})
 
     # Charts
     output$congestion_region_chart <- renderEcharts4r({echart_column_chart_toggle(df = congestion_data |> 
@@ -236,7 +237,8 @@ congestion_server <- function(id) {
                                                                                   x = "data_year", y = "share", fill = "grouping", tog = "variable" , 
                                                                                   dec = 0, title = "% of NHS", esttype = "percent", color = psrc_colors$pognbgy_5)})
     
-
+    output$am_peak_map <- renderLeaflet({create_roadway_map(congestion_lyr = congestion_map_data, tod = "am_peak")})
+    output$pm_peak_map <- renderLeaflet({create_roadway_map(congestion_lyr = congestion_map_data, tod = "pm_peak")})
     
     # Tab layout
     output$congestiontab <- renderUI({
@@ -245,6 +247,13 @@ congestion_server <- function(id) {
         h1("Region"),
         textOutput(ns("congestion_region_text")) |> withSpinner(color=load_clr),
         fluidRow(column(12,echarts4rOutput(ns("congestion_region_chart")))),
+        tags$div(class="chart_source","Source: National Performance Management Research Data Set"),
+        hr(style = "border-top: 1px solid #000000;"),
+        
+        h1("Roadway Congestion"),
+        textOutput(ns("congestion_roadways_text")),
+        fluidRow(column(6,leafletOutput(ns("am_peak_map"))),
+                 column(6, leafletOutput(ns("pm_peak_map")))),
         tags$div(class="chart_source","Source: National Performance Management Research Data Set"),
         hr(style = "border-top: 1px solid #000000;")
         

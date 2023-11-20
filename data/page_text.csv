@@ -51,4 +51,5 @@ Travel-Times,DT-County,Departure time by county
 Travel-Times,DT-Race,Departure time by Race & Ethnicity
 Travel-Times,DT-Metro,Departure time by Metro Area
 Travel-Times,Congestion-Region,Congestion by time of day in the region
+Travel-Times,Congestion-Roadways,Am and PM Congestion by facility
 Source,Overview,"The data in this dashboard is updated throughout the year as new data is released. The dashboard and data prep scripts are all written in R and the code is available via GitHub and is available for use by others interested in adapting it for their own use . The code for the dashboard is available at ""https://github.com/psrc/rtp-dashboard"" and a package for data summarization for the PSRC region is available at ""https://github.com/psrc/psrcrtp"". The table below lists the relevant data sources for all tables and figures in the dashboard."
