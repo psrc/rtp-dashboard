@@ -26,7 +26,8 @@ source_server <- function(id) {
       tagList(
         
         # Source Data
-        tags$div(class="page_goals", "RTP Dashboard Data Sources"),
+        fluidRow(column(8, tags$div(class="page_goals", "RTP Dashboard Data Sources")),
+                 column(4, "Download Data: ", downloadLink('downloadData', label = icon("download")))),
         textOutput(ns("source_overview_text")) |> withSpinner(color=load_clr),
         br(),
         strong(tags$div(class="chart_title","Data Sources")),
