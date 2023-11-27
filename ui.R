@@ -4,7 +4,7 @@ shinyUI(
     
     id = "RTP-Dashboard",
     tags$style("@import url(https://use.fontawesome.com/releases/v6.3.0/css/all.css);"),
-    title = tags$a(div(tags$img(src='psrc-logo.png',
+    title = tags$a(div(tags$img(src='footer-logo.png',
                              style="margin-top: -30px; padding-left: 40px;",
                              height = "80")
                              ), href="https://www.psrc.org", target="_blank"),
@@ -112,6 +112,15 @@ shinyUI(
              ), # End of Main Panel Fluid Row for Time Tab
     ),# End of Tab Panel for Travel Time and Congestion
     
+    tabPanel(title=HTML("Projects"), 
+             value="Projects-Page",
+             banner_ui('projectsBanner'),
+             fluidRow(column(4, style='padding-left:25px; padding-right:0px;', left_panel_ui('leftProjects')),
+                      column(8, style='padding-left:25px; padding-right:50px;',
+                             projects_overview_ui('projectsOverview')
+                      ), # End of Main Panel for Projects
+             ), # End of Main Panel Fluid Row for Projects Tab
+    ),# End of Tab Panel for Projects
     
     tabPanel(title=icon("info-circle"),
              value="Data-Source-Page",

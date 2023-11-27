@@ -81,6 +81,15 @@ shinyServer(function(input, output) {
   dt_server('DTtime')
   congestion_server('Congestiontime')
   
+  # Projects Page
+  banner_server('projectsBanner', 
+                banner_title = "Funding", 
+                banner_subtitle = "Programs at PSRC",
+                banner_url = "https://www.psrc.org/our-work/funding")
+  
+  left_panel_server('leftProjects', page_nm = "Projects")
+  projects_overview_server('projectsOverview')
+  
   # Data Sources
   source_server('dataSource')
   

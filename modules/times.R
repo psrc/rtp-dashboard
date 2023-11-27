@@ -228,7 +228,7 @@ congestion_server <- function(id) {
     
     # Text
     output$congestion_region_text <- renderText({page_information(tbl=page_text, page_name="Travel-Times", page_section = "Congestion-Region", page_info = "description")})
-    output$congestion_rooadways_text <- renderText({page_information(tbl=page_text, page_name="Travel-Times", page_section = "Congestion-Roadways", page_info = "description")})
+    output$congestion_roadways_text <- renderText({page_information(tbl=page_text, page_name="Travel-Times", page_section = "Congestion-Roadways", page_info = "description")})
 
     # Charts
     output$congestion_region_chart <- renderEcharts4r({echart_column_chart_toggle(df = congestion_data |> 
@@ -252,6 +252,8 @@ congestion_server <- function(id) {
         
         h1("Roadway Congestion"),
         textOutput(ns("congestion_roadways_text")),
+        fluidRow(column(6, tags$div(class="chart_title","AM Peak")),
+                 column(6, tags$div(class="chart_title","PM Peak"))),
         fluidRow(column(6,leafletOutput(ns("am_peak_map"))),
                  column(6, leafletOutput(ns("pm_peak_map")))),
         tags$div(class="chart_source","Source: National Performance Management Research Data Set"),
