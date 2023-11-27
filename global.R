@@ -63,6 +63,21 @@ load_clr <- "#91268F"
 
 transit_modes <- c("Bus", "Commuter Rail", "Ferry", "Rail", "Vanpool")
 
+# color for funded/not funded chart
+stp_colors <- c("#91268F", "#F05A28", "#8CC63E", "#00A7A0", "#EB4584", "#4C4C4C",
+                "#E3C9E3", "#FBD6C9", "#E2F1CF", "#BFE9E7", "#FFBCD9", "#BCBEC0")
+
+cmaq_colors <- c("#91268F", "#F05A28", "#8CC63E", "#00A7A0", "#EB4584", "#EB4584", "#4C4C4C",
+                "#E3C9E3", "#FBD6C9", "#E2F1CF", "#BFE9E7", "#FFBCD9", "#FFBCD9", "#BCBEC0")
+
+# Items to use to fill chart
+stp_plot_buckets <- c("center_Yes", "access_Yes", "equity_Yes", "safety_Yes", "climate_Yes", "readiness_Yes",
+                      "center_No", "access_No", "equity_No", "safety_No", "climate_No", "readiness_No")
+
+cmaq_plot_buckets <- c("center_Yes", "access_Yes", "equity_Yes", "safety_Yes", "climate_Yes", "waehd_Yes", "readiness_Yes", 
+                       "center_No", "access_No", "equity_No", "safety_No", "climate_No", "waehd_No", "readiness_No")
+
+
 # Data via RDS files ------------------------------------------------------
 safety_data <- readRDS("data/collision_data.rds") |> mutate(data_year = as.character(lubridate::year(date)))
 commute_data <- readRDS("data/commute_data.rds")
@@ -76,6 +91,8 @@ efa_income <- readRDS("data/efa_income.rds")
 transit_data <- readRDS("data/transit_data.rds")
 congestion_data <- readRDS("data/congestion_data.rds")
 congestion_map_data <- readRDS("data/congestion_map_data.rds")
+stp <- readRDS("data/stp.rds")
+cmaq <- readRDS("data/cmaq.rds")
 
 # Source Information ------------------------------------------------------------
 source_info <- read_csv("data/source_information.csv", show_col_types = FALSE)

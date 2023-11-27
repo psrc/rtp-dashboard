@@ -891,3 +891,46 @@ create_roadway_map <- function(congestion_lyr, tod) {
   
 }
 
+# Simple Charts -----------------------------------------------------------
+echart_column_chart_simple <- function(df, x, fill, color) {
+  
+  # Set padding for charts
+  top_padding <- 25
+  bottom_padding <- 75
+  
+  # Create the most basic chart
+  c <- df |>
+    echarts4r::e_charts_(x, timeline = FALSE) |>
+    e_toolbox_feature("dataView") |>
+    e_toolbox_feature("saveAsImage")
+  
+  # Add a bar for each series
+  for (s in fill) {
+    
+    c <- c |> echarts4r::e_bar_(s, name = s, stack = x)
+    
+  }
+  
+  c <- c |>
+    echarts4r::e_color(color) |>
+    echarts4r::e_grid(left = '15%', top = top_padding, bottom = bottom_padding) |>
+    echarts4r::e_x_axis(axisTick=list(show = FALSE)) |>
+    echarts4r::e_show_loading() |>
+    echarts4r::e_legend(show = FALSE, bottom=0) |>
+    echarts4r::e_tooltip(trigger = "item")
+  
+  return(c)
+  
+}
+
+# Bar Chart ---------------------------------------------------------------
+echart_bar_chart_simple <- function(df, x, fill, color) {
+  
+  c <- echart_column_chart_simple(df=df, x=x, fill=fill, color=color)
+  
+  c <- c %>%
+    e_flip_coords()
+  
+  return(c)
+  
+}

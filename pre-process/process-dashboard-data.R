@@ -141,3 +141,27 @@ hct <- hct |> mutate(metric = factor(x=metric, levels = c("Population", "Housing
 
 saveRDS(hct, "C:/coding/rtp-dashboard/data/hct.rds")
 
+# Project Data ------------------------------------------------------------
+funding_ord <- c("Yes", "No")
+stp_buckets <- c("center", "access", "equity", "safety", "climate", "readiness")
+cmaq_buckets <- c("center", "access", "equity", "safety", "climate", "waehd", "readiness")
+
+projects <- read_csv("C:/coding/funding/data/fhwa_scoring.csv", show_col_types = FALSE)
+
+stp <- projects |> 
+  filter(process=="STP") |> 
+  select(-"waehd") |>
+  pivot_wider(names_from = funded, values_from = all_of(stp_buckets)) |>
+  arrange(desc(project_id)) |>
+  mutate(project_id = as.character(project_id))
+
+cmaq <- projects |> 
+  filter(process=="CMAQ") |> 
+  pivot_wider(names_from = funded, values_from = all_of(cmaq_buckets)) |>
+  arrange(desc(project_id)) |>
+  mutate(project_id = as.character(project_id))
+
+saveRDS(stp, "C:/coding/rtp-dashboard/data/stp.rds")
+saveRDS(cmaq, "C:/coding/rtp-dashboard/data/cmaq.rds")
+
+

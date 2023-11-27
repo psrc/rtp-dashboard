@@ -89,6 +89,7 @@ shinyServer(function(input, output) {
   
   left_panel_server('leftProjects', page_nm = "Projects")
   projects_overview_server('projectsOverview')
+  project_selection_server('Projectsselection')
   
   # Data Sources
   source_server('dataSource')

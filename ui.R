@@ -2,6 +2,11 @@ shinyUI(
   
   navbarPage(
     
+    tags$style(HTML("
+    .tabbable > .nav > li > a {background-color: #005753;  color:white}
+    .tabbable > .nav > li.active > a {background-color: #91268F; color:white}
+  ")),
+    
     id = "RTP-Dashboard",
     tags$style("@import url(https://use.fontawesome.com/releases/v6.3.0/css/all.css);"),
     title = tags$a(div(tags$img(src='footer-logo.png',
@@ -117,7 +122,9 @@ shinyUI(
              banner_ui('projectsBanner'),
              fluidRow(column(4, style='padding-left:25px; padding-right:0px;', left_panel_ui('leftProjects')),
                       column(8, style='padding-left:25px; padding-right:50px;',
-                             projects_overview_ui('projectsOverview')
+                             projects_overview_ui('projectsOverview'),
+                             tabsetPanel(type = "pills",
+                                         tabPanel(HTML("2022 FHWA<br/>Project Selection"), project_selection_ui('Projectsselection')))
                       ), # End of Main Panel for Projects
              ), # End of Main Panel Fluid Row for Projects Tab
     ),# End of Tab Panel for Projects
