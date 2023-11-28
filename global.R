@@ -77,6 +77,8 @@ stp_plot_buckets <- c("center_Yes", "access_Yes", "equity_Yes", "safety_Yes", "c
 cmaq_plot_buckets <- c("center_Yes", "access_Yes", "equity_Yes", "safety_Yes", "climate_Yes", "waehd_Yes", "readiness_Yes", 
                        "center_No", "access_No", "equity_No", "safety_No", "climate_No", "waehd_No", "readiness_No")
 
+fhwa_cols <- c("project_id", "sponsor", "title", "phase", "category", "funding_request", "total")
+
 
 # Data via RDS files ------------------------------------------------------
 safety_data <- readRDS("data/collision_data.rds") |> mutate(data_year = as.character(lubridate::year(date)))

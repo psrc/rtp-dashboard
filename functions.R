@@ -934,3 +934,31 @@ echart_bar_chart_simple <- function(df, x, fill, color) {
   return(c)
   
 }
+
+# Tables ------------------------------------------------------------------
+
+create_project_table <- function(df, data_cols, currency_cols) {
+  
+  num_cols <- length(data_cols) + 1
+  clean_names <- str_replace_all(data_cols, "_", " ")
+  clean_names <- str_to_title(clean_names)
+  clean_names <- c(clean_names, "Funded")
+  
+  tbl <- df |> 
+    mutate(Funded = case_when(
+      is.na(center_Yes) ~ "No",
+      !(is.na(center_Yes)) ~ "Yes")) |>
+    select(all_of(data_cols), "Funded") |>
+    arrange(as.integer(project_id))
+
+  final_tbl <- datatable(tbl,
+                         colnames = clean_names,
+                         options = list(pageLength = 15,
+                                        columnDefs = list(list(className = 'dt-center', targets=1:num_cols-1))),
+                         filter = 'none',
+                         rownames = FALSE) |>
+    formatCurrency(currency_cols, "$", digits = 0)
+  
+  return(final_tbl)
+  
+}
