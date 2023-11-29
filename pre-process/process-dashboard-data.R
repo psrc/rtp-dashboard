@@ -146,7 +146,8 @@ funding_ord <- c("Yes", "No")
 stp_buckets <- c("center", "access", "equity", "safety", "climate", "readiness")
 cmaq_buckets <- c("center", "access", "equity", "safety", "climate", "waehd", "readiness")
 
-projects <- read_csv("C:/coding/funding/data/fhwa_scoring.csv", show_col_types = FALSE)
+projects <- read_csv("data/fhwa_scoring.csv", show_col_types = FALSE)
+projects_lyr <- st_read("data/2022_FHWA_regional_mapped_revised.shp") |> st_transform(crs = wgs84)
 
 stp <- projects |> 
   filter(process=="STP") |> 
@@ -161,7 +162,14 @@ cmaq <- projects |>
   arrange(desc(project_id)) |>
   mutate(project_id = as.character(project_id))
 
+prj_lyr <- left_join(projects_lyr, projects, by=c("process", "project_id")) |> select("process", "project_id", "sponsor", "title", "description", "funded")
+cmaq_lyr <- prj_lyr |> filter(process == "CMAQ")
+stp_lyr <- prj_lyr |> filter(process == "STP")
+
 saveRDS(stp, "C:/coding/rtp-dashboard/data/stp.rds")
 saveRDS(cmaq, "C:/coding/rtp-dashboard/data/cmaq.rds")
+saveRDS(stp_lyr, "C:/coding/rtp-dashboard/data/stp_lyr.rds")
+saveRDS(cmaq_lyr, "C:/coding/rtp-dashboard/data/cmaq_lyr.rds")
+
 
 

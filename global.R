@@ -95,6 +95,8 @@ congestion_data <- readRDS("data/congestion_data.rds")
 congestion_map_data <- readRDS("data/congestion_map_data.rds")
 stp <- readRDS("data/stp.rds")
 cmaq <- readRDS("data/cmaq.rds")
+stp_lyr <- readRDS("data/stp_lyr.rds")
+cmaq_lyr <- readRDS("data/cmaq_lyr.rds")
 
 # Source Information ------------------------------------------------------------
 source_info <- read_csv("data/source_information.csv", show_col_types = FALSE)
