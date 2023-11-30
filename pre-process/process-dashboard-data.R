@@ -162,7 +162,7 @@ cmaq <- projects |>
   arrange(desc(project_id)) |>
   mutate(project_id = as.character(project_id))
 
-prj_lyr <- left_join(projects_lyr, projects, by=c("process", "project_id")) |> select("process", "project_id", "sponsor", "title", "description", "funded")
+prj_lyr <- left_join(projects_lyr, projects, by=c("process", "project_id")) |> select("process", "project_id", "sponsor", "title", "description", "funding_request", "funded")
 cmaq_lyr <- prj_lyr |> filter(process == "CMAQ")
 stp_lyr <- prj_lyr |> filter(process == "STP")
 

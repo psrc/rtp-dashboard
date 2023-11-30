@@ -84,6 +84,54 @@ create_share_map<- function(lyr, title, efa_lyr, efa_title, colors="Blues", dec=
   
 }
 
+# Create Project Map ------------------------------------------------------
+create_project_map <- function(project_lyr) {
+  
+  funded_projects <- project_lyr |> filter(funded == "Yes")
+  
+  funded_project_lbl <- paste0("<b>", paste0("Project #: "), "</b>", funded_projects$project_id, "</br>",
+                               "<b>", paste0("Project Sponsor: "), "</b>", funded_projects$sponsor, "</br>",
+                               "<b>", paste0("Request: "), "</b>", "$", prettyNum(round(funded_projects$funding_request, 0), big.mark = ","), "</br>",
+                               "<b>", paste0("Funded: "), "</b>", funded_projects$funded) %>% lapply(htmltools::HTML)
+  
+  unfunded_projects <- project_lyr |> filter(funded == "No")
+  
+  unfunded_project_lbl <- paste0("<b>", paste0("Project #: "), "</b>", unfunded_projects$project_id, "</br>",
+                                 "<b>", paste0("Project Sponsor: "), "</b>", unfunded_projects$sponsor, "</br>",
+                                 "<b>", paste0("Request: "), "</b>", "$", prettyNum(round(unfunded_projects$funding_request, 0), big.mark = ","), "</br>",
+                                 "<b>", paste0("Funded: "), "</b>", unfunded_projects$funded) %>% lapply(htmltools::HTML)
+  
+  
+  project_map <- leaflet(options = leafletOptions(zoomControl=FALSE)) |>
+    
+    addProviderTiles(providers$CartoDB.Positron) |>
+    
+    addLayersControl(baseGroups = c("Base Map"),
+                     overlayGroups = c("Funded", "Not Funded"),
+                     options = layersControlOptions(collapsed = TRUE)) |>
+    
+    addEasyButton(easyButton(
+      icon="fa-globe", title="Region",
+      onClick=JS("function(btn, map){map.setView([47.615,-122.257],8.5); }"))) |>
+    
+    addPolylines(data = funded_projects,
+                 color = "#630460",
+                 weight = 4,
+                 fillColor = "#630460",
+                 group = "Funded",
+                 label = funded_project_lbl) |>
+    
+    addPolylines(data = unfunded_projects,
+                 color = "#AD5CAB",
+                 weight = 4,
+                 fillColor = "#AD5CAB",
+                 group = "Not Funded",
+                 label = unfunded_project_lbl) 
+  
+  return(project_map)
+  
+}
+
 # Line Charts -------------------------------------------------------------
 echart_line_chart <- function(df, x, y, fill, tog, dec, esttype, color, y_min=0) {
   
