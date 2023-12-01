@@ -52,8 +52,8 @@ project_selection_server <- function(id) {
     output$project_selection_stp_table <- renderDataTable({create_project_table(df=stp, data_cols = fhwa_cols, currency_cols = "funding_request")}) 
     
     # Maps
-    output$project_selection_cmaq_map <- renderLeaflet({create_project_map(project_lyr=cmaq_lyr)})
-    output$project_selection_stp_map <- renderLeaflet({create_project_map(project_lyr=stp_lyr)})
+    output$project_selection_cmaq_map <- renderLeaflet({create_project_selection_map(project_lyr=cmaq_lyr)})
+    output$project_selection_stp_map <- renderLeaflet({create_project_selection_map(project_lyr=stp_lyr)})
     
     # Tab layout
     output$project_selectiontab <- renderUI({
@@ -75,6 +75,55 @@ project_selection_server <- function(id) {
         br(),
         fluidRow(column(12,dataTableOutput(ns("project_selection_stp_table")))),
         tags$div(class="chart_source","Source: 2022 PSRC Project Selection Process"),
+        hr(style = "border-top: 1px solid #000000;")
+        
+      )
+    })
+  }) # end moduleServer
+}
+
+tip_ui <- function(id) {
+  ns <- NS(id)
+  
+  tagList(
+    uiOutput(ns("tiptab"))
+  )
+}
+
+tip_server <- function(id) {
+  moduleServer(id, function(input, output, session){
+    ns <- session$ns
+    
+    # Text
+    output$tip_text <- renderText({page_information(tbl=page_text, page_name="Projects", page_section = "TIP-Region", page_info = "description")})
+    
+    # Charts
+    output$tip_chart <- renderEcharts4r({echart_column_chart_timeline(df = tip_projects |>
+                                                                        select("Projects", Cost="Total Cost", `# of Projects`="Total Projects") |>
+                                                                        pivot_longer(cols = !Projects),
+                                                                      x = "Projects", y = "value", fill = "Projects", tog = "name", 
+                                                                      dec = 0, title = "TIP Projects", esttype = "number", color = "jewel")})
+    
+    # Tables
+    output$tip_table <- renderDataTable({create_tip_table(df=tip_lyr |> st_drop_geometry())})
+    
+    # Maps
+    output$tip_map <- renderLeaflet({create_tip_map(project_lyr = tip_lyr)})
+    
+    # Tab layout
+    output$tiptab <- renderUI({
+      tagList(
+        
+        h1("Transportation Improvement Program (TIP)"),
+        textOutput(ns("tip_text")) |> withSpinner(color=load_clr),
+        br(),
+        fluidRow(column(12,echarts4rOutput(ns("tip_chart")))),
+        br(),
+        fluidRow(column(12,leafletOutput(ns("tip_map"), height = "600px"))),
+        br(),
+        fluidRow(column(12,dataTableOutput(ns("tip_table")))),
+        br(),
+        tags$div(class="chart_source","Source: 2023-2026 Regional TIP"),
         hr(style = "border-top: 1px solid #000000;")
         
       )

@@ -124,7 +124,8 @@ shinyUI(
                       column(8, style='padding-left:25px; padding-right:50px;',
                              projects_overview_ui('projectsOverview'),
                              tabsetPanel(type = "pills",
-                                         tabPanel(HTML("2022 FHWA<br/>Project Selection"), project_selection_ui('Projectsselection')))
+                                         tabPanel(HTML("2022 FHWA<br/>Project Selection"), project_selection_ui('Projectsselection')),
+                                         tabPanel(HTML("2023-2026 <br/>Regional TIP"), tip_ui('Projectstip')))
                       ), # End of Main Panel for Projects
              ), # End of Main Panel Fluid Row for Projects Tab
     ),# End of Tab Panel for Projects

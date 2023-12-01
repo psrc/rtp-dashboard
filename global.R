@@ -78,7 +78,8 @@ cmaq_plot_buckets <- c("center_Yes", "access_Yes", "equity_Yes", "safety_Yes", "
                        "center_No", "access_No", "equity_No", "safety_No", "climate_No", "waehd_No", "readiness_No")
 
 fhwa_cols <- c("project_id", "sponsor", "title", "phase", "category", "funding_request", "total_points")
-
+tip_cols <- c("TIP ID", "Phase", "Funding Type", "Total Project Cost", "Federal Funding", "State Funding", "Local Funding", "Projected Obligation Date")
+tip_currency_cols <- c("Total Project Cost", "Federal Funding", "State Funding", "Local Funding")
 
 # Data via RDS files ------------------------------------------------------
 safety_data <- readRDS("data/collision_data.rds") |> mutate(data_year = as.character(lubridate::year(date)))
@@ -97,6 +98,8 @@ stp <- readRDS("data/stp.rds")
 cmaq <- readRDS("data/cmaq.rds")
 stp_lyr <- readRDS("data/stp_lyr.rds")
 cmaq_lyr <- readRDS("data/cmaq_lyr.rds")
+tip_lyr <- readRDS("data/tip_lyr.rds")
+tip_projects  <- readRDS("data/tip_projects_by_type.rds")
 
 # Source Information ------------------------------------------------------------
 source_info <- read_csv("data/source_information.csv", show_col_types = FALSE)
@@ -125,5 +128,4 @@ download_table_list <- list("Sources" = source_info,
                             "Time-Travel-Time" = commute_data %>% filter(metric %in% c("Mean Commute Time", "commute-times")),
                             "Time-Departure-Time" = commute_data %>% filter(metric %in% c("departure-time", "Departure Time Bins"))
                             )
-
 

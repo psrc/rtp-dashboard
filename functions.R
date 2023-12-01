@@ -26,7 +26,7 @@ page_information <- function(tbl, page_name, page_section=NULL, page_info) {
   
 }
 
-# Share Map -------------------------------------------------------------
+# Maps -------------------------------------------------------------
 create_share_map<- function(lyr, title, efa_lyr, efa_title, colors="Blues", dec=0) {
   
   # Replace any NaNs with zero in the share column
@@ -84,8 +84,7 @@ create_share_map<- function(lyr, title, efa_lyr, efa_title, colors="Blues", dec=
   
 }
 
-# Create Project Map ------------------------------------------------------
-create_project_map <- function(project_lyr) {
+create_project_selection_map <- function(project_lyr) {
   
   funded_projects <- project_lyr |> filter(funded == "Yes")
   
@@ -126,9 +125,224 @@ create_project_map <- function(project_lyr) {
                  weight = 4,
                  fillColor = "#AD5CAB",
                  group = "Not Funded",
-                 label = unfunded_project_lbl) 
+                 label = unfunded_project_lbl)
   
   return(project_map)
+  
+}
+
+create_tip_map <- function(project_lyr) {
+  
+  nonmotorized_projects <- project_lyr |> filter(Projects == "Pedestrian / Bicycle")
+  its_projects <- project_lyr |> filter(Projects == "ITS")
+  transit_projects <- project_lyr |> filter(Projects == "Transit")
+  ferry_projects <- project_lyr |> filter(Projects == "Ferry")
+  preservation_projects <- project_lyr |> filter(Projects == "Roadway Preservation")
+  bridge_projects <- project_lyr |> filter(Projects == "Bridges")
+  roadway_projects <- project_lyr |> filter(Projects == "Roadways")
+  intersection_projects <- project_lyr |> filter(Projects == "Intersections")
+  safety_projects <- project_lyr |> filter(Projects == "Safety")
+  other_projects <- project_lyr |> filter(Projects == "Other")
+  
+  safety_lbl <- paste0("<b>", paste0("TIP ID: "), "</b>", safety_projects$`TIP ID`, "</br>",
+                       "<b>", paste0("Project Sponsor: "), "</b>", safety_projects$Sponsor, "</br>",
+                       "<b>", paste0("Project Type: "), "</b>", safety_projects$Projects, "</br>",
+                       "<b>", paste0("Cost: "), "</b>", "$", prettyNum(round(safety_projects$`Total Project Cost`, 0), big.mark = ","), "</br>",
+                       "<b>", paste0("Completion Year: "), "</b>", safety_projects$`Estimated Completion Year`) %>% lapply(htmltools::HTML)
+  
+  preservation_lbl <- paste0("<b>", paste0("TIP ID: "), "</b>", preservation_projects$`TIP ID`, "</br>",
+                             "<b>", paste0("Project Sponsor: "), "</b>", preservation_projects$Sponsor, "</br>",
+                             "<b>", paste0("Project Type: "), "</b>", preservation_projects$Projects, "</br>",
+                             "<b>", paste0("Cost: "), "</b>", "$", prettyNum(round(preservation_projects$`Total Project Cost`, 0), big.mark = ","), "</br>",
+                             "<b>", paste0("Completion Year: "), "</b>", preservation_projects$`Estimated Completion Year`) %>% lapply(htmltools::HTML)
+  
+  bridge_lbl <- paste0("<b>", paste0("TIP ID: "), "</b>", bridge_projects$`TIP ID`, "</br>",
+                       "<b>", paste0("Project Sponsor: "), "</b>", bridge_projects$Sponsor, "</br>",
+                       "<b>", paste0("Project Type: "), "</b>", bridge_projects$Projects, "</br>",
+                       "<b>", paste0("Cost: "), "</b>", "$", prettyNum(round(bridge_projects$`Total Project Cost`, 0), big.mark = ","), "</br>",
+                       "<b>", paste0("Completion Year: "), "</b>", bridge_projects$`Estimated Completion Year`) %>% lapply(htmltools::HTML)
+  
+  nonmotorized_lbl <- paste0("<b>", paste0("TIP ID: "), "</b>", nonmotorized_projects$`TIP ID`, "</br>",
+                             "<b>", paste0("Project Sponsor: "), "</b>", nonmotorized_projects$Sponsor, "</br>",
+                             "<b>", paste0("Project Type: "), "</b>", nonmotorized_projects$Projects, "</br>",
+                             "<b>", paste0("Cost: "), "</b>", "$", prettyNum(round(nonmotorized_projects$`Total Project Cost`, 0), big.mark = ","), "</br>",
+                             "<b>", paste0("Completion Year: "), "</b>", nonmotorized_projects$`Estimated Completion Year`) %>% lapply(htmltools::HTML)
+  
+  its_lbl <- paste0("<b>", paste0("TIP ID: "), "</b>", its_projects$`TIP ID`, "</br>",
+                    "<b>", paste0("Project Sponsor: "), "</b>", its_projects$Sponsor, "</br>",
+                    "<b>", paste0("Project Type: "), "</b>", its_projects$Projects, "</br>",
+                    "<b>", paste0("Cost: "), "</b>", "$", prettyNum(round(its_projects$`Total Project Cost`, 0), big.mark = ","), "</br>",
+                    "<b>", paste0("Completion Year: "), "</b>", its_projects$`Estimated Completion Year`) %>% lapply(htmltools::HTML)
+
+  
+  intersection_lbl <- paste0("<b>", paste0("TIP ID: "), "</b>", intersection_projects$`TIP ID`, "</br>",
+                             "<b>", paste0("Project Sponsor: "), "</b>", intersection_projects$Sponsor, "</br>",
+                             "<b>", paste0("Project Type: "), "</b>", intersection_projects$Projects, "</br>",
+                             "<b>", paste0("Cost: "), "</b>", "$", prettyNum(round(intersection_projects$`Total Project Cost`, 0), big.mark = ","), "</br>",
+                             "<b>", paste0("Completion Year: "), "</b>", intersection_projects$`Estimated Completion Year`) %>% lapply(htmltools::HTML)
+  
+  transit_lbl <- paste0("<b>", paste0("TIP ID: "), "</b>", transit_projects$`TIP ID`, "</br>",
+                        "<b>", paste0("Project Sponsor: "), "</b>", transit_projects$Sponsor, "</br>",
+                        "<b>", paste0("Project Type: "), "</b>", transit_projects$Projects, "</br>",
+                        "<b>", paste0("Cost: "), "</b>", "$", prettyNum(round(transit_projects$`Total Project Cost`, 0), big.mark = ","), "</br>",
+                        "<b>", paste0("Completion Year: "), "</b>", transit_projects$`Estimated Completion Year`) %>% lapply(htmltools::HTML)
+  
+  ferry_lbl <- paste0("<b>", paste0("TIP ID: "), "</b>", ferry_projects$`TIP ID`, "</br>",
+                      "<b>", paste0("Project Sponsor: "), "</b>", ferry_projects$Sponsor, "</br>",
+                      "<b>", paste0("Project Type: "), "</b>", ferry_projects$Projects, "</br>",
+                      "<b>", paste0("Cost: "), "</b>", "$", prettyNum(round(ferry_projects$`Total Project Cost`, 0), big.mark = ","), "</br>",
+                      "<b>", paste0("Completion Year: "), "</b>", ferry_projects$`Estimated Completion Year`) %>% lapply(htmltools::HTML)
+  
+  other_lbl <- paste0("<b>", paste0("TIP ID: "), "</b>", other_projects$`TIP ID`, "</br>",
+                      "<b>", paste0("Project Sponsor: "), "</b>", other_projects$Sponsor, "</br>",
+                      "<b>", paste0("Project Type: "), "</b>", other_projects$Projects, "</br>",
+                      "<b>", paste0("Cost: "), "</b>", "$", prettyNum(round(other_projects$`Total Project Cost`, 0), big.mark = ","), "</br>",
+                      "<b>", paste0("Completion Year: "), "</b>", other_projects$`Estimated Completion Year`) %>% lapply(htmltools::HTML)
+  
+  roadway_lbl <- paste0("<b>", paste0("TIP ID: "), "</b>", roadway_projects$`TIP ID`, "</br>",
+                        "<b>", paste0("Project Sponsor: "), "</b>", roadway_projects$Sponsor, "</br>",
+                        "<b>", paste0("Project Type: "), "</b>", roadway_projects$Projects, "</br>",
+                        "<b>", paste0("Cost: "), "</b>", "$", prettyNum(round(roadway_projects$`Total Project Cost`, 0), big.mark = ","), "</br>",
+                        "<b>", paste0("Completion Year: "), "</b>", roadway_projects$`Estimated Completion Year`) %>% lapply(htmltools::HTML)
+  
+  project_map <- leaflet(options = leafletOptions(zoomControl=FALSE)) |>
+    
+    addProviderTiles(providers$CartoDB.Positron) |>
+    
+    addLayersControl(baseGroups = c("Base Map"),
+                     overlayGroups = c("Safety", "Roadway Preservation", "Bridges", 
+                                       "Pedestrian / Bicycle", "ITS", "Intersections",
+                                       "Transit", "Ferry", "Other",
+                                       "Roadways", "Legend"),
+                     options = layersControlOptions(collapsed = TRUE)) |>
+    
+    addEasyButton(easyButton(
+      icon="fa-globe", title="Region",
+      onClick=JS("function(btn, map){map.setView([47.615,-122.257],8.5); }"))) |>
+    
+    addPolylines(data = safety_projects,
+                 color = "#630460",
+                 weight = 4,
+                 fillColor = "#630460",
+                 group = "Safety",
+                 label = safety_lbl) |>
+    
+    addPolylines(data = preservation_projects,
+                 color = "#9f3913",
+                 weight = 4,
+                 fillColor = "#9f3913",
+                 group = "Roadway Preservation",
+                 label = preservation_lbl) |>
+    
+    addPolylines(data = bridge_projects,
+                 color = "#588527",
+                 weight = 4,
+                 fillColor = "#588527",
+                 group = "Bridges",
+                 label = bridge_lbl) |>
+    
+    addPolylines(data = nonmotorized_projects,
+                 color = "#00716c",
+                 weight = 4,
+                 fillColor = "#00716c",
+                 group = "Pedestrian / Bicycle",
+                 label = nonmotorized_lbl) |>
+    
+    addPolylines(data = its_projects,
+                 color = "#EB4584",
+                 weight = 4,
+                 fillColor = "#EB4584",
+                 group = "ITS",
+                 label = its_lbl) |>
+    
+    addPolylines(data = intersection_projects,
+                 color = "#AD5CAB",
+                 weight = 4,
+                 fillColor = "#AD5CAB",
+                 group = "Intersections",
+                 label = intersection_lbl) |>
+    
+    addPolylines(data = transit_projects,
+                 color = "#F4835E",
+                 weight = 4,
+                 fillColor = "#F4835E",
+                 group = "Transit",
+                 label = transit_lbl) |>
+    
+    addPolylines(data = ferry_projects,
+                 color = "#A9D46E",
+                 weight = 4,
+                 fillColor = "#A9D46E",
+                 group = "Ferry",
+                 label = ferry_lbl) |>
+    
+    addPolylines(data = other_projects,
+                 color = "#40BDB8",
+                 weight = 4,
+                 fillColor = "#40BDB8",
+                 group = "Other",
+                 label = other_lbl) |>
+    
+    addPolylines(data = roadway_projects,
+                 color = "#3e4040",
+                 weight = 4,
+                 fillColor = "#3e4040",
+                 group = "Roadway",
+                 label = roadway_lbl) |>
+    
+    addLegend(colors=c("#630460", "#9f3913", "#588527", "#00716c", "#EB4584", "#AD5CAB", "#F4835E", "#A9D46E", "#40BDB8", "#3e4040"),
+              labels=c("Safety", "Preservation", "Bridges", "Pedestrian / Bicycle", "ITS", "Intersections", "Transit", "Ferry", "Other", "Roadway"),
+              position = "topleft",
+              group = "Legend",
+              title = "Project Types") |>
+    
+    setView(lng = -122.257, lat = 47.615, zoom = 8.5)
+    
+  
+  return(project_map)
+  
+}
+
+create_roadway_map <- function(congestion_lyr, tod) {
+  
+  heavy_lyr <- congestion_lyr |> filter(date == max(date)) |> select("roadway", estimate=all_of(tod)) |> filter(estimate > 0.25 & estimate <= 0.50)
+  heavy_lbl <- paste0("<b>",paste0("Speed Ratio: "), "</b>", prettyNum(round(heavy_lyr$estimate*100, 0), big.mark = ","),"%") %>% lapply(htmltools::HTML)
+  
+  severe_lyr <- congestion_lyr |> filter(date == max(date)) |> select("roadway", estimate=all_of(tod)) |> filter(estimate <= 0.25)
+  severe_lbl <- paste0("<b>",paste0("Speed Ratio: "), "</b>", prettyNum(round(severe_lyr$estimate*100, 0), big.mark = ","),"%") %>% lapply(htmltools::HTML)
+  
+  roadway_map <- leaflet() |>
+    
+    addProviderTiles(providers$CartoDB.Positron) |>
+    
+    addLayersControl(baseGroups = c("Base Map"),
+                     overlayGroups = c("Heavy", "Severe"),
+                     options = layersControlOptions(collapsed = TRUE)) |>
+    
+    addEasyButton(easyButton(
+      icon="fa-globe", title="Region",
+      onClick=JS("function(btn, map){map.setView([47.615,-122.257],8.5); }"))) |>
+    
+    addPolylines(data = heavy_lyr,
+                 color = "#91268F",
+                 weight = 3,
+                 fillColor = "#91268F",
+                 group = "Heavy",
+                 label = heavy_lbl) |>
+    
+    addPolylines(data = severe_lyr,
+                 color = "#F05A28",
+                 weight = 3,
+                 fillColor = "#F05A28",
+                 group = "Severe",
+                 label = severe_lbl) |>
+    
+    addLegend(colors=c("#91268F", "#F05A28"),
+              labels=c("Heavy", "Severe"),
+              position = "bottomright",
+              title = "Congestion")
+  
+  return(roadway_map)
   
 }
 
@@ -543,55 +757,6 @@ echart_pictorial <- function(df, x, y, tog, icon, color, title, dec=0, esttype="
   
 }
 
-# Source Table ------------------------------------------------------------
-
-create_source_table <- function(d=source_info) {
-  
-  # Table with Titles as first row
-  t <- rbind(names(d), d)
-  
-  headerCallbackRemoveHeaderFooter <- c(
-    "function(thead, data, start, end, display){",
-    "  $('th', thead).css('display', 'none');",
-    "}"
-  )
-  
-  summary_tbl <- datatable(t,
-                           options = list(paging = FALSE,
-                                          pageLength = 30,
-                                          searching = FALSE,
-                                          dom = 't',
-                                          headerCallback = JS(headerCallbackRemoveHeaderFooter),
-                                          columnDefs = list(list(targets = c(0,3), className = 'dt-left'))),
-                           selection = 'none',
-                           callback = JS(
-                             "$('table.dataTable.no-footer').css('border-bottom', 'none');"
-                           ),
-                           class = 'row-border',
-                           filter = 'none',              
-                           rownames = FALSE,
-                           escape = FALSE
-  ) 
-  
-  # Add Section Breaks
-    
-  summary_tbl <- summary_tbl %>%
-    formatStyle(0:ncol(t), valueColumns = "Data Point",
-                `border-bottom` = styleEqual(c("Work from Home: City", 
-                                               "Traffic Related Deaths and Serious Injuries: Day of Week", 
-                                               "Population, Housing Units and Jobs: Near High Capacity Transit",
-                                               "Transit Mode to Work: City",
-                                               "Bike to Work: City",
-                                               "Departure Time to Work: Metro Areas"), "solid 2px"))
-    
-  summary_tbl <- summary_tbl %>%
-    formatStyle(0:ncol(t), valueColumns = "Data Point",
-                `border-top` = styleEqual(c("Vehicle Registrations: Region"), "solid 2px"))
-  
-  return(summary_tbl)
-  
-}
-
 echart_column_chart_timeline <- function(df, x, y, fill, tog, title, dec, esttype, color) {
   
   # If the value is a percentage, round differently
@@ -895,50 +1060,6 @@ echart_column_chart_toggle <- function(df, x, y, fill, tog, title, dec, esttype,
   
 }
 
-# Create Roadway Map ------------------------------------------------------
-create_roadway_map <- function(congestion_lyr, tod) {
-  
-  heavy_lyr <- congestion_lyr |> filter(date == max(date)) |> select("roadway", estimate=all_of(tod)) |> filter(estimate > 0.25 & estimate <= 0.50)
-  heavy_lbl <- paste0("<b>",paste0("Speed Ratio: "), "</b>", prettyNum(round(heavy_lyr$estimate*100, 0), big.mark = ","),"%") %>% lapply(htmltools::HTML)
-  
-  severe_lyr <- congestion_lyr |> filter(date == max(date)) |> select("roadway", estimate=all_of(tod)) |> filter(estimate <= 0.25)
-  severe_lbl <- paste0("<b>",paste0("Speed Ratio: "), "</b>", prettyNum(round(severe_lyr$estimate*100, 0), big.mark = ","),"%") %>% lapply(htmltools::HTML)
-  
-  roadway_map <- leaflet() |>
-    
-    addProviderTiles(providers$CartoDB.Positron) |>
-    
-    addLayersControl(baseGroups = c("Base Map"),
-                     overlayGroups = c("Heavy", "Severe"),
-                     options = layersControlOptions(collapsed = TRUE)) |>
-    
-    addEasyButton(easyButton(
-      icon="fa-globe", title="Region",
-      onClick=JS("function(btn, map){map.setView([47.615,-122.257],8.5); }"))) |>
-    
-    addPolylines(data = heavy_lyr,
-                 color = "#91268F",
-                 weight = 3,
-                 fillColor = "#91268F",
-                 group = "Heavy",
-                 label = heavy_lbl) |>
-    
-    addPolylines(data = severe_lyr,
-                 color = "#F05A28",
-                 weight = 3,
-                 fillColor = "#F05A28",
-                 group = "Severe",
-                 label = severe_lbl) |>
-    
-    addLegend(colors=c("#91268F", "#F05A28"),
-              labels=c("Heavy", "Severe"),
-              position = "bottomright",
-              title = "Congestion")
-  
-  return(roadway_map)
-  
-}
-
 # Simple Charts -----------------------------------------------------------
 echart_column_chart_simple <- function(df, x, fill, color) {
   
@@ -1008,5 +1129,69 @@ create_project_table <- function(df, data_cols, currency_cols) {
     formatCurrency(currency_cols, "$", digits = 0)
   
   return(final_tbl)
+  
+}
+
+create_tip_table <- function(df, data_cols=tip_cols, currency_cols=tip_currency_cols) {
+  
+  num_cols <- length(data_cols)
+  
+  tbl <- df |> select(all_of(data_cols)) |> arrange(`TIP ID`)
+  
+  final_tbl <- datatable(tbl,
+                         options = list(pageLength = 15,
+                                        columnDefs = list(list(className = 'dt-center', targets=1:num_cols-1))),
+                         filter = 'none',
+                         rownames = FALSE) |>
+    formatCurrency(currency_cols, "$", digits = 0)
+  
+  return(final_tbl)
+  
+}
+
+create_source_table <- function(d=source_info) {
+  
+  # Table with Titles as first row
+  t <- rbind(names(d), d)
+  
+  headerCallbackRemoveHeaderFooter <- c(
+    "function(thead, data, start, end, display){",
+    "  $('th', thead).css('display', 'none');",
+    "}"
+  )
+  
+  summary_tbl <- datatable(t,
+                           options = list(paging = FALSE,
+                                          pageLength = 30,
+                                          searching = FALSE,
+                                          dom = 't',
+                                          headerCallback = JS(headerCallbackRemoveHeaderFooter),
+                                          columnDefs = list(list(targets = c(0,3), className = 'dt-left'))),
+                           selection = 'none',
+                           callback = JS(
+                             "$('table.dataTable.no-footer').css('border-bottom', 'none');"
+                           ),
+                           class = 'row-border',
+                           filter = 'none',              
+                           rownames = FALSE,
+                           escape = FALSE
+  ) 
+  
+  # Add Section Breaks
+  
+  summary_tbl <- summary_tbl %>%
+    formatStyle(0:ncol(t), valueColumns = "Data Point",
+                `border-bottom` = styleEqual(c("Work from Home: City", 
+                                               "Traffic Related Deaths and Serious Injuries: Day of Week", 
+                                               "Population, Housing Units and Jobs: Near High Capacity Transit",
+                                               "Transit Mode to Work: City",
+                                               "Bike to Work: City",
+                                               "Departure Time to Work: Metro Areas"), "solid 2px"))
+  
+  summary_tbl <- summary_tbl %>%
+    formatStyle(0:ncol(t), valueColumns = "Data Point",
+                `border-top` = styleEqual(c("Vehicle Registrations: Region"), "solid 2px"))
+  
+  return(summary_tbl)
   
 }

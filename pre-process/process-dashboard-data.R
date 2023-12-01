@@ -171,5 +171,58 @@ saveRDS(cmaq, "C:/coding/rtp-dashboard/data/cmaq.rds")
 saveRDS(stp_lyr, "C:/coding/rtp-dashboard/data/stp_lyr.rds")
 saveRDS(cmaq_lyr, "C:/coding/rtp-dashboard/data/cmaq_lyr.rds")
 
+# TIP Data ----------------------------------------------------------------
+bike_ped_projects <- c("Sidewalk", "Bike Lanes", "Regional Trail (Separate Facility)", "Non-Regional Trail (Separate Facility)", "Other -- nonmotorized")
+its_projects <- c("ITS")
+transit_projects <-c("Other -- Transit", "Transit Center or Station -- new or expansion", "New/Relocated Transit Alignment", "Service Expansion", "Operations -- Transit", 
+                     "Transit Center or Station -- maintenance", "Park and Ride (new facility or expansion)")
+ferry_projects <- c("New/Relocated/Expanded terminal", "Terminal preservation", "Other -- Ferry" )
+preservation_projects <- c("Preservation/Maintenance/Reconstruction", "Resurfacing")
+bridge_projects <- c("Bridge Rehabilitation", "Bridge Replacement", "New Bridge or Bridge Widening")
+roadway_projects <- c("Minor Interchange -- GP", "Major Widening -- GP", "New Facility -- Roadway", "Minor Widening -- Nonmodelable",  
+                      "Major Interchange -- GP", "Other -- Roadway", "Major Widening -- HOV", "Minor Widening -- Modelable", "Relocation -- Roadway")
+intersection_projects <-c("Single Intersection -- Roadway", "Multiple Intersections -- Roadway")
+safety_projects <- c("Safety -- Roadway")
+other_projects  <-c("Study or Planning Activity", "Environmental Improvement -- Roadway", "Other -- Special")
 
+tip_lyr <- st_read("https://services6.arcgis.com/GWxg6t7KXELn1thE/arcgis/rest/services/TIP_Projects/FeatureServer/0/query?where=0=0&outFields=*&f=pgeojson") |>
+  select(`TIP ID`="ProjNo", Sponsor="PlaceShort", Description="ProjDesc", `Estimated Completion Year`="EstComplet", `Total Project Cost`="TotCost", `Project Type`="ImproveTyp", "Phase", `Funding Type`="FedFundSou", `Federal Funding`="FedFundAmo", `State Funding`="StateFundA", `Local Funding`="LocalFundA", `Projected Obligation Date`="ObYear") |>
+  mutate(Projects = case_when(
+    `Project Type` %in% bike_ped_projects ~ "Pedestrian / Bicycle",
+    `Project Type` %in% its_projects ~ "ITS",
+    `Project Type` %in% transit_projects ~ "Transit",
+    `Project Type` %in% ferry_projects ~ "Ferry",
+    `Project Type` %in% preservation_projects ~ "Roadway Preservation",
+    `Project Type` %in% bridge_projects ~ "Bridges",
+    `Project Type` %in% roadway_projects ~ "Roadways",
+    `Project Type` %in% intersection_projects ~ "Intersections",
+    `Project Type` %in% safety_projects ~ "Safety",
+    `Project Type` %in% other_projects ~ "Other")) |>
+  mutate(`Total Project Cost` = as.integer(`Total Project Cost`))
 
+tip_projects_by_type <- tip_lyr |> 
+  st_drop_geometry() |>
+  drop_na() |>
+  mutate(`Total Projects` = 1) |>
+  mutate(`Federal Project` = case_when(
+    `Federal Funding`==0 ~0, 
+    `Federal Funding` >0 ~1)) |>
+  mutate(`State Project` = case_when(
+    `State Funding`==0 ~0, 
+    `State Funding` >0 ~1)) |>
+  mutate(`Local Project` = case_when(
+    `Local Funding`==0 ~0, 
+    `Local Funding` >0 ~1)) |>
+  group_by(Projects) |>
+  summarise(`Total Cost` = sum(`Total Project Cost`),
+            `Total Projects` = sum(`Total Projects`),
+            `Federal Funding` = sum(`Federal Funding`),
+            `Federal Project` = sum(`Federal Project`),
+            `State Funding` = sum(`State Funding`),
+            `State Project` = sum(`State Project`),
+            `Local Funding` = sum(`State Funding`),
+            `Local Project` = sum(`Local Project`)) |>
+  as_tibble()
+
+saveRDS(tip_lyr, "C:/coding/rtp-dashboard/data/tip_lyr.rds")
+saveRDS(tip_projects_by_type, "C:/coding/rtp-dashboard/data/tip_projects_by_type.rds")
