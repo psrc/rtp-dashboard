@@ -1195,3 +1195,48 @@ create_source_table <- function(d=source_info) {
   return(summary_tbl)
   
 }
+
+create_summary_table <- function(d=summary_info) {
+  
+  # Table with Titles as first row
+  t <- rbind(names(d), d)
+  
+  headerCallbackRemoveHeaderFooter <- c(
+    "function(thead, data, start, end, display){",
+    "  $('th', thead).css('display', 'none');",
+    "}"
+  )
+  
+  summary_tbl <- datatable(t,
+                           options = list(paging = FALSE,
+                                          pageLength = 30,
+                                          searching = FALSE,
+                                          dom = 't',
+                                          headerCallback = JS(headerCallbackRemoveHeaderFooter),
+                                          columnDefs = list(list(targets = c(0,2), className = 'dt-left'))),
+                           selection = 'none',
+                           callback = JS(
+                             "$('table.dataTable.no-footer').css('border-bottom', 'none');"
+                           ),
+                           class = 'row-border',
+                           filter = 'none',              
+                           rownames = FALSE,
+                           escape = FALSE
+  ) 
+  
+  # Add Section Breaks
+  
+  summary_tbl <- summary_tbl %>%
+    formatStyle(0:ncol(t), valueColumns = "Data Point",
+                `border-bottom` = styleEqual(c("Working from Home", 
+                                               "Traffic Related Deaths: Race and Ethnicity", 
+                                               "Population, Housing Units and Jobs",
+                                               "Transit Service Hours"), "solid 2px"))
+  
+  summary_tbl <- summary_tbl %>%
+    formatStyle(0:ncol(t), valueColumns = "Data Point",
+                `border-top` = styleEqual(c("Decarbonization of the Transportation Fleet"), "solid 2px"))
+  
+  return(summary_tbl)
+  
+}

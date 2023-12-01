@@ -103,6 +103,7 @@ tip_projects  <- readRDS("data/tip_projects_by_type.rds")
 
 # Source Information ------------------------------------------------------------
 source_info <- read_csv("data/source_information.csv", show_col_types = FALSE)
+summary_info <- read_csv("data/summary_information.csv", show_col_types = FALSE)
 
 # Data Download Table List ------------------------------------------------------
 download_table_list <- list("Sources" = source_info,

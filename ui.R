@@ -31,8 +31,6 @@ shinyUI(
              banner_ui('overviewBanner'),
              fluidRow(column(4, style='padding-left:25px; padding-right:0px;', left_panel_ui('leftOverview')),
                       column(8, style='padding-left:25px; padding-right:50px;',
-                             hr(),
-                             tags$div(class="page_goals", "This is the Development Version of the APP"),
                              dashboard_overview_ui('Mainoverview'),
                              ), # end of second fluid row for main overview page
                       ) # end of second fluid row for main overview page
