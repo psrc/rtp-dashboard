@@ -1,15 +1,20 @@
 library(tidyverse)
 library(psrcrtp)
 library(sf)
+library(here)
 
 wgs84 <- 4326
 current_year <- as.character(lubridate::year(Sys.Date()))
 pre_covid <- 2019
 metros <- c("Portland", "Bay Area", "San Diego", "Denver", "Atlanta","Washington DC", "Boston", "Miami" ,"Phoenix", "Austin", "Dallas")
 
+rtp_network_url <- "X:/DSA/rtp-dashboard/"
+rtp_local_url <- "C:/coding/"
+rtp_dashboard_url <- "C:/coding/rtp-dashboard/data/"
+
 # NTD Transit Data --------------------------------------------------------
 transit_data <- process_ntd_data()
-forecast_data <- read_csv("C:/coding/rtp-dashboard/data/rtp-transit-metrics.csv", show_col_types = FALSE) |> mutate(date = lubridate::mdy(date)) |> mutate(year = as.character(year))
+forecast_data <- read_csv(here(rtp_network_url, "PSRC/rtp-transit-metrics.csv"), show_col_types = FALSE) |> mutate(date = lubridate::mdy(date)) |> mutate(year = as.character(year))
 
 mpo_transit_pre_covid <- transit_data |> 
   filter(geography_type=="Metro Areas" & variable=="All Transit Modes" & year==pre_covid & grouping=="YTD") |> 
@@ -28,51 +33,52 @@ mpo_transit <- left_join(mpo_transit_current, mpo_transit_pre_covid, by=c("geogr
   arrange(metric, estimate)
 
 transit_data <- bind_rows(transit_data, forecast_data, mpo_transit)
-saveRDS(transit_data, "C:/coding/rtp-dashboard/data/transit_data.rds")
+saveRDS(transit_data, here(rtp_dashboard_url, "transit_data.rds"))
 rm(forecast_data, mpo_transit_pre_covid, mpo_transit_current, mpo_transit)
   
 # Census Commute Data -----------------------------------------------------
 commute_data <- process_commute_data(data_years = c(2011, 2016, 2021))
-saveRDS(commute_data, "C:/coding/rtp-dashboard/data/commute_data.rds")
+saveRDS(commute_data, here(rtp_dashboard_url, "commute_data.rds"))
 
 # Vehicle Registrations ------------------------------------------------------------
-vehicle_data <- process_vehicle_registration_data(dol_registration_file="C:/coding/Vehicle_Title_Transactions.csv")
-saveRDS(vehicle_data, "C:/coding/rtp-dashboard/data/vehicle_data.rds")
+vehicle_data <- process_vehicle_registration_data(dol_registration_file=here(rtp_local_url, "Vehicle_Title_Transactions.csv"))
+vehicle_data <- vehicle_data |> filter(variable != "Non-Powered")|> filter(variable != "FCEV (Fuel Cell Electric Vehicle)")
+saveRDS(vehicle_data, here(rtp_dashboard_url, "vehicle_data.rds"))
 
 # Vehicle Registrations on Census Tracts for Mapping ----------------------
 tracts <- st_read("https://services6.arcgis.com/GWxg6t7KXELn1thE/arcgis/rest/services/Census_Tracts_2020/FeatureServer/0/query?where=0=0&outFields=*&f=pgeojson") |> select(geography="geoid20")
 registrations <- vehicle_data |> filter(geography_type == "Tract" & year == current_year & variable == "Battery Electric Vehicle" & grouping == "New") 
 tract_registrations <- left_join(tracts, registrations, by=c("geography"))
-saveRDS(tract_registrations, "C:/coding/rtp-dashboard/data/ev_registration_by_tract.rds")
+saveRDS(tract_registrations, here(rtp_dashboard_url, "ev_registration_by_tract.rds"))
 rm(tracts, registrations)
 
 # Safety Data -------------------------------------------------------------
 collision_data <- process_safety_data()
-saveRDS(collision_data, "C:/coding/rtp-dashboard/data/collision_data.rds")
+saveRDS(collision_data, here(rtp_dashboard_url, "collision_data.rds"))
 
 # Shapefiles --------------------------------------------------------------
 tracts <- st_read("https://services6.arcgis.com/GWxg6t7KXELn1thE/arcgis/rest/services/tract2010_nowater/FeatureServer/0/query?where=0=0&outFields=*&f=pgeojson")
-saveRDS(tracts, "C:/coding/rtp-dashboard/data/tracts.rds")
+saveRDS(tracts, here(rtp_dashboard_url, "tracts.rds"))
 
-efa_income <- read_csv("data/efa_income_tracts.csv", show_col_types = FALSE) |> select(GEOID) |> pull()
+efa_income <- read_csv(here(rtp_network_url,"PSRC/efa_income_tracts.csv"), show_col_types = FALSE) |> select(GEOID) |> pull()
 efa_income_lyr <- tracts |> filter(GEOID10 %in% efa_income) |> st_union() |> st_sf() 
-saveRDS(efa_income_lyr, "C:/coding/rtp-dashboard/data/efa_income.rds")
+saveRDS(efa_income_lyr, here(rtp_dashboard_url, "efa_income.rds"))
 
 # Travel Time -------------------------------------------------------------
 congested_lanes_miles <- process_npmrds_data()
-saveRDS(congested_lanes_miles, "C:/coding/rtp-dashboard/data/congestion_data.rds")
+saveRDS(congested_lanes_miles, here(rtp_dashboard_url, "congestion_data.rds"))
 
 congestion_map_data <- map_npmrds_data()
-saveRDS(congestion_map_data, "C:/coding/rtp-dashboard/data/congestion_map_data.rds")
+saveRDS(congestion_map_data, here(rtp_dashboard_url, "congestion_map_data.rds"))
 
 # VMT Data ----------------------------------------------------------------
-vmt <- read_csv("data/vmt-data.csv", show_col_types = FALSE) |>
+vmt <- read_csv(here(rtp_network_url, "PSRC/vmt-data.csv"), show_col_types = FALSE) |>
   mutate(date = lubridate::mdy(date)) |>
   mutate(data_year = as.character(lubridate::year(date)))
 
-saveRDS(vmt, "C:/coding/rtp-dashboard/data/vmt.rds")
+saveRDS(vmt, here(rtp_dashboard_url, "vmt.rds"))
 
-vkt_data <- read_csv("data/vkt-data.csv", show_col_types = FALSE) |> 
+vkt_data <- read_csv(here(rtp_network_url, "PSRC/vkt-data.csv"), show_col_types = FALSE) |> 
   mutate(plot_id=as.character(plot_id), metric="Annual Kilometers per Capita", geography=str_wrap(geography, 15)) |> 
   rename(estimate = "vkt") |>
   arrange(estimate)
@@ -80,74 +86,27 @@ vkt_data <- read_csv("data/vkt-data.csv", show_col_types = FALSE) |>
 vkt_order <- vkt_data |> select("geography") |> distinct() |> pull()
 vkt_data <- vkt_data |> mutate(geography = factor(x=geography, levels=vkt_order))
 
-saveRDS(vkt_data, "C:/coding/rtp-dashboard/data/vkt.rds")
+saveRDS(vkt_data, here(rtp_dashboard_url, "vkt.rds"))
 
 # People, Housing and Jobs ------------------------------------------------
-pop <- read_csv("data/rtp-dashboard-data.csv", show_col_types = FALSE) |>
-  mutate(data_year = as.character(lubridate::year(date))) |>
-  filter(grouping %in% c("Population") & geography == "Region") |>
-  mutate(grouping = variable, variable = metric, metric = "Population") |>
-  select(-"moe", -"share_moe", -"estimate_moe") |>
-  mutate(variable = str_remove_all(variable, " Population"))
-  
-hsg <- read_csv("data/rtp-dashboard-data.csv", show_col_types = FALSE) |>
-  mutate(data_year = as.character(lubridate::year(date))) |>
-  filter(variable == "Total Housing Units" & geography == "Region") |>
-  mutate(variable = metric, metric = "Housing Units") |>
-  select(-"moe", -"share_moe", -"estimate_moe")
+pop <- regional_population_data() |> filter(!(variable == "Forecast" & year <2018) & grouping == "Total")
+hsg <- regional_housing_data() |> filter(!(variable == "Forecast" & year <2018) & grouping == "Total")
+jobs <- jobs_data() |> filter(grouping == "Total" & !(variable == "Forecast" & year <2018))
+jobs_hct <- jobs_near_hct() |> filter(grouping == "Change" & variable == "in station area")
+pop_hsg_hct <- pop_hsg_near_hct() |> filter(grouping == "Change" & variable == "in station area")
 
-jobs <- read_csv("data/rtp-dashboard-data.csv", show_col_types = FALSE) |>
-  mutate(data_year = as.character(lubridate::year(date))) |>
-  filter(grouping=="Total Employment" & geography == "Region") |>
-  mutate(grouping = variable, variable = metric, metric = "Jobs") |>
-  select(-"moe", -"share_moe", -"estimate_moe") |>
-  mutate(variable = str_remove_all(variable, " Employment"))
+pop_hsg_jobs <- bind_rows(pop_hsg_hct, jobs_hct, pop, hsg, jobs) |> 
+  mutate(metric = factor(x=metric, levels = c("Population", "Housing Units",  "Jobs", "Population near HCT", "Housing Units near HCT", "Jobs near HCT")))
 
-pop_hsg_jobs <- bind_rows(pop, hsg, jobs) |> mutate(metric = factor(x=metric, levels = c("Population", "Housing Units",  "Jobs")))
-rm(pop, hsg, jobs)
-
-saveRDS(pop_hsg_jobs, "C:/coding/rtp-dashboard/data/pop_hsg_jobs.rds")
-
-# Growth Near HCT ---------------------------------------------------------
-hct <- read_csv("data/rtp-dashboard-data.csv", show_col_types = FALSE) |>
-  mutate(data_year = as.character(lubridate::year(date))) |>
-  filter(grouping=="Growth Near High Capacity Transit" & geography=="Inside HCT Area") |>
-  mutate(grouping=variable, variable = "HCT Growth", geography = "Near HCT") |>
-  select(-"moe", -"share_moe", -"estimate_moe") 
-
-hct_total_jobs <- data |> 
-  filter(metric=="Total Employment", variable=="Inside HCT Area") |>
-  mutate(grouping="Total", variable = "HCT Growth", geography = "Near HCT", metric = "Jobs", geography_type = "Region") |>
-  select(-"moe", -"share_moe", -"estimate_moe") 
-
-total_job_change <- data %>% filter(metric=="Total Employment", variable=="Region") |>
-  mutate(total = (estimate-lag(estimate))) |>
-  select(date, data_year, geography, total)
-
-hct_job_change <- data %>% filter(metric=="Total Employment", variable=="Inside HCT Area") |>
-  mutate(hct = (estimate-lag(estimate))) |>
-  select(date, data_year, geography, hct)
-
-job_change <- left_join(total_job_change, hct_job_change, by=c("date","data_year", "geography")) |>
-  mutate(share=hct/total) |>
-  rename(estimate=hct) |>
-  mutate(variable = "HCT Growth", geography_type="Region", metric="Jobs", grouping="Change", geography="Near HCT") |>
-  select(-total) |>
-  drop_na()
-
-hct <- bind_rows(hct, hct_total_jobs, job_change)
-rm(hct_total_jobs, total_job_change, hct_job_change, job_change)
-hct <- hct |> mutate(metric = factor(x=metric, levels = c("Population", "Housing Units",  "Jobs")))
-
-saveRDS(hct, "C:/coding/rtp-dashboard/data/hct.rds")
+saveRDS(pop_hsg_jobs, here(rtp_dashboard_url, "pop_hsg_jobs.rds"))
 
 # Project Data ------------------------------------------------------------
 funding_ord <- c("Yes", "No")
 stp_buckets <- c("center", "access", "equity", "safety", "climate", "readiness")
 cmaq_buckets <- c("center", "access", "equity", "safety", "climate", "waehd", "readiness")
 
-projects <- read_csv("data/fhwa_scoring.csv", show_col_types = FALSE)
-projects_lyr <- st_read("data/2022_FHWA_regional_mapped_revised.shp") |> st_transform(crs = wgs84)
+projects <- read_csv(here(rtp_network_url, "PSRC/fhwa_scoring.csv"), show_col_types = FALSE)
+projects_lyr <- st_read(here(rtp_network_url, "PSRC/2022_FHWA_regional_mapped_revised.shp")) |> st_transform(crs = wgs84) 
 
 stp <- projects |> 
   filter(process=="STP") |> 
@@ -166,10 +125,10 @@ prj_lyr <- left_join(projects_lyr, projects, by=c("process", "project_id")) |> s
 cmaq_lyr <- prj_lyr |> filter(process == "CMAQ")
 stp_lyr <- prj_lyr |> filter(process == "STP")
 
-saveRDS(stp, "C:/coding/rtp-dashboard/data/stp.rds")
-saveRDS(cmaq, "C:/coding/rtp-dashboard/data/cmaq.rds")
-saveRDS(stp_lyr, "C:/coding/rtp-dashboard/data/stp_lyr.rds")
-saveRDS(cmaq_lyr, "C:/coding/rtp-dashboard/data/cmaq_lyr.rds")
+saveRDS(stp, here(rtp_dashboard_url, "stp.rds"))
+saveRDS(cmaq, here(rtp_dashboard_url, "cmaq.rds"))
+saveRDS(stp_lyr, here(rtp_dashboard_url, "stp_lyr.rds"))
+saveRDS(cmaq_lyr, here(rtp_dashboard_url, "cmaq_lyr.rds"))
 
 # TIP Data ----------------------------------------------------------------
 bike_ped_projects <- c("Sidewalk", "Bike Lanes", "Regional Trail (Separate Facility)", "Non-Regional Trail (Separate Facility)", "Other -- nonmotorized")
@@ -224,5 +183,5 @@ tip_projects_by_type <- tip_lyr |>
             `Local Project` = sum(`Local Project`)) |>
   as_tibble()
 
-saveRDS(tip_lyr, "C:/coding/rtp-dashboard/data/tip_lyr.rds")
-saveRDS(tip_projects_by_type, "C:/coding/rtp-dashboard/data/tip_projects_by_type.rds")
+saveRDS(tip_lyr, here(rtp_dashboard_url, "tip_lyr.rds"))
+saveRDS(tip_projects_by_type, here(rtp_dashboard_url, "tip_projects_by_type.rds"))

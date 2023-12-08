@@ -89,7 +89,6 @@ ev_by_tract <- readRDS("data/ev_registration_by_tract.rds")
 vmt_data <- readRDS("data/vmt.rds")
 vkt_data <- readRDS("data/vkt.rds")
 pop_hsg_jobs <- readRDS("data/pop_hsg_jobs.rds")
-hct_growth <- readRDS("data/hct.rds") 
 efa_income <- readRDS("data/efa_income.rds")
 transit_data <- readRDS("data/transit_data.rds")
 congestion_data <- readRDS("data/congestion_data.rds")
@@ -121,7 +120,7 @@ download_table_list <- list("Sources" = source_info,
                                                                                           "Time of Day",
                                                                                           "Day of Week",
                                                                                           "Roadway Type")),
-                            "Growth" = bind_rows(pop_hsg_jobs, hct_growth),
+                            "Growth" = pop_hsg_jobs,
                             "Transit-Boardings" = transit_data,
                             "Transit-Mode" = commute_data %>% filter(variable == "Transit"),
                             "Walking" = commute_data %>% filter(variable %in% c("Walk", "Walked")),
@@ -129,4 +128,3 @@ download_table_list <- list("Sources" = source_info,
                             "Time-Travel-Time" = commute_data %>% filter(metric %in% c("Mean Commute Time", "commute-times")),
                             "Time-Departure-Time" = commute_data %>% filter(metric %in% c("departure-time", "Departure Time Bins"))
                             )
-

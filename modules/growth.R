@@ -45,13 +45,13 @@ growth_server <- function(id) {
     output$growth_hct_text <- renderText({page_information(tbl=page_text, page_name="Growth", page_section = "Population-HCT", page_info = "description")})
 
     # Charts
-    output$chart_region_growth <- renderEcharts4r({echart_line_chart(df=pop_hsg_jobs |> filter(grouping=="Total" & data_year>=base_year),
-                                                                     x='data_year', y='estimate', fill='variable', tog = 'metric',
+    output$chart_region_growth <- renderEcharts4r({echart_line_chart(df=pop_hsg_jobs |> filter(grouping=="Total" & year>=base_year),
+                                                                     x='year', y='estimate', fill='variable', tog = 'metric',
                                                                      esttype="number", color = "jewel", dec = 0)})
     
     
-    output$chart_hct_growth <- renderEcharts4r({echart_line_chart(df=hct_growth |> filter(grouping=="Change" & data_year>=base_year),
-                                                                  x='data_year', y='share', fill='geography', tog = 'metric',
+    output$chart_hct_growth <- renderEcharts4r({echart_line_chart(df=pop_hsg_jobs |> filter(grouping=="Change" & year>=base_year),
+                                                                  x='year', y='share', fill='geography', tog = 'metric',
                                                                   esttype="percent", color = "jewel", dec = 0)})
     
     # Tab layout
