@@ -180,7 +180,7 @@ telework_server <- function(id) {
                                                                                 dec = 1, title = "Work from Home", esttype = "percent", color = "jewel")})
     
     output$wfh_ms_race_chart <- renderEcharts4r({echart_pictorial(df= commute_data |> 
-                                                                    filter(geography_type=="Race" & year == current_census_year & variable == "Worked from home") |>
+                                                                    filter(geography_type=="Race" & year == current_pums_year & variable == "Worked from home") |>
                                                                     mutate(grouping = str_wrap(grouping, 15)),
                                                                   x="grouping", y="share", tog="variable", 
                                                                   icon=fa_wfh, 

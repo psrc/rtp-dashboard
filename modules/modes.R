@@ -55,7 +55,7 @@ walk_server <- function(id) {
                                                                                  dec = 1, title = "Walk to Work", esttype = "percent", color = "jewel")})
     
     output$walk_ms_race_chart <- renderEcharts4r({echart_pictorial(df= commute_data |> 
-                                                                     filter(geography_type=="Race" & year == current_census_year & variable == "Walked") |>
+                                                                     filter(geography_type=="Race" & year == current_pums_year & variable == "Walked") |>
                                                                      mutate(grouping = str_wrap(grouping, 15)),
                                                                    x="grouping", y="share", tog="variable", 
                                                                    icon=fa_walking, 
@@ -139,7 +139,7 @@ bike_server <- function(id) {
                                                                                  dec = 1, title = "Bike to Work", esttype = "percent", color = "jewel")})
     
     output$bike_ms_race_chart <- renderEcharts4r({echart_pictorial(df= commute_data |> 
-                                                                     filter(geography_type=="Race" & year == current_census_year & variable == "Bicycle") |>
+                                                                     filter(geography_type=="Race" & year == current_pums_year & variable == "Bicycle") |>
                                                                      mutate(grouping = str_wrap(grouping, 15)),
                                                                    x="grouping", y="share", tog="variable", 
                                                                    icon=fa_biking, 

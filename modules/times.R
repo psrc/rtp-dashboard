@@ -53,7 +53,7 @@ tt_server <- function(id) {
                                                                             dec = 1, title = "Travel Time to Work", esttype = "number", color = "jewel")})
     
     output$tt_race_chart <- renderEcharts4r({echart_pictorial(df= commute_data |> 
-                                                                filter(metric == "Mean Commute Time" & geography_type == "Race" & year == current_census_year) |>
+                                                                filter(metric == "Mean Commute Time" & geography_type == "Race" & year == current_pums_year) |>
                                                                 mutate(grouping = str_wrap(grouping, 15)),
                                                               x="grouping", y="estimate", tog="variable", 
                                                               icon=fa_car, 
@@ -159,7 +159,7 @@ dt_server <- function(id) {
                                                                       dec = 1, esttype = 'percent', color = psrc_colors$pognbgy_5[[4]])})
     
     output$dt_race_chart <- renderEcharts4r({echart_column_chart(df = commute_data |> 
-                                                                   filter(geography_type == "Race" & metric == "Departure Time Bins" & variable != "Total" & year == current_census_year) |>
+                                                                   filter(geography_type == "Race" & metric == "Departure Time Bins" & variable != "Total" & year == current_pums_year) |>
                                                                    mutate(variable = str_wrap(variable, width=10)) |>
                                                                    mutate(grouping = str_wrap(grouping, 15)) |>
                                                                    mutate(variable = factor(x=variable, levels = tod_ord)) |>

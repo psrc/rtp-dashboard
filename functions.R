@@ -41,24 +41,19 @@ create_share_map<- function(lyr, title, efa_lyr, efa_title, colors="Blues", dec=
   bins <- c(0, breaks)
   pal <- colorBin(colors, domain = lyr$share, bins = bins)
   
-  labels <- paste0("<b>",paste0(title,": "), "</b>", prettyNum(round(lyr$share*100, dec), big.mark = ","),"%") %>% lapply(htmltools::HTML)
+  labels <- paste0("<b>",paste0(title,": "), "</b>", prettyNum(round(lyr$share*100, dec), big.mark = ","),"%") |> lapply(htmltools::HTML)
   
-  working_map <- leaflet(data = lyr) %>% 
-    addProviderTiles(providers$CartoDB.Positron) %>%
+  working_map <- leaflet(data = lyr) |>
+    
+    addProviderTiles(providers$CartoDB.Positron) |>
+    
     addLayersControl(baseGroups = c("Base Map"),
                      overlayGroups = c(title,"Equity Focus Area"),
-                     options = layersControlOptions(collapsed = TRUE)) %>%
-    addPolygons(data = efa_lyr,
-                fillColor = "#91268F",
-                weight = 0,
-                opacity = 0,
-                color = "#91268F",
-                dashArray = "1",
-                fillOpacity = 0.5,
-                group = "Equity Focus Area") %>% 
+                     options = layersControlOptions(collapsed = TRUE)) |>
+    
     addPolygons(fillColor = pal(lyr$share),
-                weight = 1.0,
-                opacity = 1,
+                weight = 0.5,
+                opacity = 0,
                 color = "white",
                 dashArray = "3",
                 fillOpacity = 0.7,
@@ -73,7 +68,17 @@ create_share_map<- function(lyr, title, efa_lyr, efa_title, colors="Blues", dec=
                   style = list("font-weight" = "normal", padding = "3px 8px"),
                   textsize = "15px",
                   direction = "auto"),
-                group = title) %>%
+                group = title) |>
+    
+    addPolygons(data = efa_lyr,
+                fillColor = "#91268F",
+                fillOpacity = 0,
+                weight = 1,
+                opacity = 1,
+                color = "#91268F",
+                dashArray = "3",
+                group = "Equity Focus Area") |> 
+    
     addLegend(colors=c("#91268F"),
               labels=c("Yes"),
               group = "Equity Focus Area",

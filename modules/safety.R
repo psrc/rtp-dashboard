@@ -77,7 +77,7 @@ safety_geography_server <- function(id) {
                                                                               dec = 1, esttype = 'number', color = psrc_colors$pognbgy_5)})
     
     output$mpo_fatal_collisions_chart <- renderEcharts4r({echart_bar_chart(df=safety_data |> 
-                                                                             filter(geography_type == "Metro Regions" & data_year == current_census_year) |>
+                                                                             filter(geography_type == "Metro Regions" & data_year == current_pums_year) |>
                                                                              arrange(estimate), 
                                                                            title = "Traffic Related Deaths", tog = 'variable',
                                                                            y='estimate', x='geography', esttype="number", dec=1, color = 'jewel')  })
@@ -147,7 +147,7 @@ safety_demographics_server <- function(id) {
     
     
     output$demographics_race_chart <- renderEcharts4r({echart_pictorial(df= safety_data |> 
-                                                                          filter(geography_type=="Race" & data_year == current_census_year & variable == "Rate per 100k people") |>
+                                                                          filter(geography_type=="Race" & data_year == current_pums_year & variable == "Rate per 100k people") |>
                                                                           mutate(grouping = str_wrap(grouping, 15)),
                                                                         x="grouping", y="estimate", tog="variable", 
                                                                         icon=fa_user, color=psrc_colors$gnbopgy_5,
@@ -157,7 +157,7 @@ safety_demographics_server <- function(id) {
                                                                                 x='grouping', y='estimate', fill='metric', title='Total Injuries',
                                                                                 dec = 1, esttype = 'number', color = psrc_colors$gnbopgy_5)})
     
-    output$demographics_age_rate_chart <- renderEcharts4r({echart_column_chart(df = safety_data |> filter(geography_type == "Age Group" & data_year == current_census_year & variable == "Rate per 100k people"),
+    output$demographics_age_rate_chart <- renderEcharts4r({echart_column_chart(df = safety_data |> filter(geography_type == "Age Group" & data_year == current_pums_year & variable == "Rate per 100k people"),
                                                                                x='grouping', y='estimate', fill='metric', title='Rate per 100k people',
                                                                                dec = 1, esttype = 'number', color = psrc_colors$gnbopgy_5)})
     
@@ -165,7 +165,7 @@ safety_demographics_server <- function(id) {
                                                                                    x='grouping', y='estimate', fill='metric', title='Total Injuries',
                                                                                    dec = 1, esttype = 'number', color = psrc_colors$gnbopgy_5)})
     
-    output$demographics_gender_rate_chart <- renderEcharts4r({echart_column_chart(df = safety_data |> filter(geography_type == "Gender" & data_year == current_census_year & variable == "Rate per 100k people"),
+    output$demographics_gender_rate_chart <- renderEcharts4r({echart_column_chart(df = safety_data |> filter(geography_type == "Gender" & data_year == current_pums_year & variable == "Rate per 100k people"),
                                                                                   x='grouping', y='estimate', fill='metric', title='Rate per 100k people',
                                                                                   dec = 1, esttype = 'number', color = psrc_colors$gnbopgy_5)})
     

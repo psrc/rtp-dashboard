@@ -147,7 +147,7 @@ modeshare_server <- function(id) {
                                                                                     dec = 1, title = "Transit to Work", esttype = "percent", color = "jewel")})
   
     output$transit_ms_race_chart <- renderEcharts4r({echart_pictorial(df= commute_data |> 
-                                                                        filter(geography_type=="Race" & year == current_census_year & variable == "Transit") |>
+                                                                        filter(geography_type=="Race" & year == current_pums_year & variable == "Transit") |>
                                                                         mutate(grouping = str_wrap(grouping, 15)),
                                                                       x="grouping", y="share", tog="variable", 
                                                                       icon=fa_bus, 
