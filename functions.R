@@ -354,10 +354,10 @@ create_roadway_map <- function(congestion_lyr, tod) {
 # Line Charts -------------------------------------------------------------
 echart_line_chart <- function(df, x, y, fill, tog, dec, esttype, color, y_min=0) {
   
-  if (color == "blues") {chart_color <- psrcplot::psrc_colors$blues_inc}
-  if (color == "greens") {chart_color <- psrcplot::psrc_colors$greens_inc}
-  if (color == "oranges") {chart_color <- psrcplot::psrc_colors$oranges_inc}
-  if (color == "purples") {chart_color <- psrcplot::psrc_colors$purples_inc}
+  if (color == "blues") {chart_color <- psrcplot::psrc_colors$pognbgy_5[[4]]}
+  if (color == "greens") {chart_color <- psrcplot::psrc_colors$pognbgy_5[[3]]}
+  if (color == "oranges") {chart_color <- psrcplot::psrc_colors$pognbgy_5[[2]]}
+  if (color == "purples") {chart_color <- psrcplot::psrc_colors$pognbgy_5[[1]]}
   if (color == "jewel") {chart_color <- psrcplot::psrc_colors$pognbgy_5}
   
   # Determine the number of Series to Plot
@@ -909,46 +909,6 @@ echart_column_chart_timeline <- function(df, x, y, fill, tog, title, dec, esttyp
   
 }
 
-# Data Download -----------------------------------------------------------
-create_public_spreadsheet <- function(table_list) {
-  
-  hs <- createStyle(
-    fontColour = "black",
-    border = "bottom",
-    fgFill = "#00a7a0",
-    halign = "center",
-    valign = "center",
-    textDecoration = "bold"
-  )
-  
-  table_idx <- 1
-  sheet_idx <- 1
-  
-  wb <- createWorkbook()
-  
-  for (i in table_list) {
-    for (j in names(table_list)) {
-      if (names(table_list)[table_idx] == j) {
-        
-        addWorksheet(wb, sheetName = j)
-        writeDataTable(wb, sheet = sheet_idx, x = i, tableStyle = "none", headerStyle = hs, withFilter = FALSE)
-        setColWidths(wb, sheet = sheet_idx, cols = 1:length(i), widths = "auto")
-        freezePane(wb, sheet = sheet_idx, firstRow = TRUE)
-        
-      } else {next}
-    }
-    if (table_idx < length(table_list)) {
-      
-      table_idx <- table_idx + 1
-      sheet_idx <- sheet_idx + 1
-      
-    } else {break}
-  }
-  
-  return(wb)
-
-}
-
 echart_column_chart_toggle <- function(df, x, y, fill, tog, title, dec, esttype, color) {
   
   # Determine the number of series to plot (fill values)
@@ -963,7 +923,7 @@ echart_column_chart_toggle <- function(df, x, y, fill, tog, title, dec, esttype,
   # Pivot Wider so that multiple values can be plotted on the X-Axis
   tbl <- tbl |>
     dplyr::select(tidyselect::all_of(c(x, y, fill, tog))) |>
-    tidyr::pivot_wider(names_from = all_of(fill), values_from = all_of(y))
+    tidyr::pivot_wider(names_from = metric, values_from = estimate)
   
   # Set padding for charts
   top_padding <- 100
@@ -976,20 +936,6 @@ echart_column_chart_toggle <- function(df, x, y, fill, tog, title, dec, esttype,
     echarts4r::e_charts_(x, timeline = TRUE) |>
     e_toolbox_feature("dataView") |>
     e_toolbox_feature("saveAsImage")
-  
-  # Add a bar for each series
-  for (s in fill_values) {
-    
-    c <- c |> echarts4r::e_bar_(s, name = s, stack = x)
-    
-  }
-  
-  c <- c |>
-    echarts4r::e_color(color) |>
-    echarts4r::e_grid(left = '15%', top = top_padding, bottom = bottom_padding) |>
-    echarts4r::e_x_axis(axisTick=list(show = FALSE)) |>
-    echarts4r::e_show_loading() |>
-    echarts4r::e_legend(show = TRUE, bottom=0)
   
   # Add in the Timeseries Selector
   c <- c |>
@@ -1014,6 +960,24 @@ echart_column_chart_toggle <- function(df, x, y, fill, tog, title, dec, esttype,
                                                itemStyle = list (color='#BCBEC0')),
                                emphasis = list(label = list(show=FALSE),
                                                itemStyle = list (color='#4C4C4C')))
+  
+  # Add a bar for each series
+  for (s in fill_values) {
+    
+    c <- c |> echarts4r::e_bar_(s, name = s, stack = x)
+    
+  }
+  
+  c <- c |>
+    echarts4r::e_color(color) |>
+    echarts4r::e_grid(left = '15%', top = top_padding, bottom = bottom_padding) |>
+    echarts4r::e_x_axis(axisTick=list(show = FALSE)) |>
+    echarts4r::e_show_loading() |>
+    echarts4r::e_legend(show = TRUE, bottom=0) |>
+    echarts4r::e_title(top = title_padding,
+                       left = 'center',
+                       textStyle = list(fontSize = 14),
+                       text=title) 
   
   # Format the Axis and Hover Text
   if (esttype == "percent") {
@@ -1063,6 +1027,46 @@ echart_column_chart_toggle <- function(df, x, y, fill, tog, title, dec, esttype,
   
   return(c)
   
+}
+
+# Data Download -----------------------------------------------------------
+create_public_spreadsheet <- function(table_list) {
+  
+  hs <- createStyle(
+    fontColour = "black",
+    border = "bottom",
+    fgFill = "#00a7a0",
+    halign = "center",
+    valign = "center",
+    textDecoration = "bold"
+  )
+  
+  table_idx <- 1
+  sheet_idx <- 1
+  
+  wb <- createWorkbook()
+  
+  for (i in table_list) {
+    for (j in names(table_list)) {
+      if (names(table_list)[table_idx] == j) {
+        
+        addWorksheet(wb, sheetName = j)
+        writeDataTable(wb, sheet = sheet_idx, x = i, tableStyle = "none", headerStyle = hs, withFilter = FALSE)
+        setColWidths(wb, sheet = sheet_idx, cols = 1:length(i), widths = "auto")
+        freezePane(wb, sheet = sheet_idx, firstRow = TRUE)
+        
+      } else {next}
+    }
+    if (table_idx < length(table_list)) {
+      
+      table_idx <- table_idx + 1
+      sheet_idx <- sheet_idx + 1
+      
+    } else {break}
+  }
+  
+  return(wb)
+
 }
 
 # Simple Charts -----------------------------------------------------------

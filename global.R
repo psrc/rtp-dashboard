@@ -36,9 +36,10 @@ page_text <- read_csv("data/page_text.csv", show_col_types = FALSE)
 base_year <- "2005"
 pre_covid <- "2019"
 current_population_year <- "2022"
-current_jobs_year <- "2021"
+current_jobs_year <- "2022"
 current_census_year <- "2022"
-current_pums_year <- "2021"
+current_pums_year <- "2022"
+current_fars_year <- "2021"
 current_vmt_year <- 2021
 
 wgs84 <- 4326
@@ -129,3 +130,4 @@ download_table_list <- list("Sources" = source_info,
                             "Time-Travel-Time" = commute_data %>% filter(metric %in% c("Mean Commute Time", "commute-times")),
                             "Time-Departure-Time" = commute_data %>% filter(metric %in% c("departure-time", "Departure Time Bins"))
                             )
+

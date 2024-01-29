@@ -44,9 +44,17 @@ safety_geography_server <- function(id) {
     output$geography_mpo <- renderText({page_information(tbl=page_text, page_name="Safety", page_section = "Geography-MPO", page_info = "description")})
     output$geography_hdc <- renderText({page_information(tbl=page_text, page_name="Safety", page_section = "Geography-HDC", page_info = "description")})
 
-    output$region_collisions_chart <- renderEcharts4r({echart_line_chart(df=safety_data |> filter(geography == "Region" & geography_type == "Region"),
-                                                                        x='data_year', y='estimate', fill='metric', tog = 'variable',
-                                                                        esttype="number", color = "jewel", dec = 1)})
+    output$region_serious_collisions_chart <- renderEcharts4r({echart_line_chart(df=safety_data |> filter(geography == "Region" & geography_type == "Region" & metric == "Serious Injury") |> 
+                                                                                   mutate(variable = gsub("Rate per 100k people", "Rate", variable)) |>
+                                                                                   mutate(variable = factor(variable, levels = c("Total", "Rate"))),
+                                                                                 x='data_year', y='estimate', fill='metric', tog = 'variable',
+                                                                                 esttype="number", color = "oranges", dec = 1)})
+    
+    output$region_fatal_collisions_chart <- renderEcharts4r({echart_line_chart(df=safety_data |> filter(geography == "Region" & geography_type == "Region" & metric == "Traffic Related Deaths") |> 
+                                                                                 mutate(variable = gsub("Rate per 100k people", "Rate", variable)) |>
+                                                                                 mutate(variable = factor(variable, levels = c("Total", "Rate"))),
+                                                                               x='data_year', y='estimate', fill='metric', tog = 'variable',
+                                                                               esttype="number", color = "purples", dec = 1)})
     
     output$geography_hdc_fatal_chart <- renderEcharts4r({echart_column_chart(df = safety_data |> 
                                                                                filter(geography_type == "Historically Disadvantaged Community" & variable == "Total" & metric == "Traffic Related Deaths" & grouping != "Other") |>
@@ -54,30 +62,47 @@ safety_geography_server <- function(id) {
                                                                              x='data_year', y='estimate', fill='metric', title='Traffic Related Deaths',
                                                                              dec = 0, esttype = 'number', color = psrc_colors$gnbopgy_5)})
     
+    # output$geography_hdc_serious_chart <- renderEcharts4r({echart_column_chart_toggle(df = safety_data |> 
+    #                                                                                     filter(geography_type == "Historically Disadvantaged Community" & metric == "Serious Injury"& grouping != "Other") |>
+    #                                                                                     mutate(metric=grouping) |> 
+    #                                                                                     mutate(variable = gsub("Rate per 100k people", "Rate", variable)) |>
+    #                                                                                     mutate(variable = factor(variable, levels = c("Rate", "Total"))),
+    #                                                                                   x='data_year', y='estimate', fill='metric', tog="variable", title='Serious Injury',
+    #                                                                            dec = 0, esttype = 'number', color = psrc_colors$gnbopgy_5)})
+    
     output$geography_hdc_serious_chart <- renderEcharts4r({echart_column_chart(df = safety_data |> 
-                                                                              filter(geography_type == "Historically Disadvantaged Community" & variable == "Total" & metric == "Serious Injury"& grouping != "Other") |>
-                                                                              mutate(metric=grouping),
-                                                                            x='data_year', y='estimate', fill='metric', title='Serious Injury',
-                                                                            dec = 0, esttype = 'number', color = psrc_colors$gnbopgy_5)})
+                                                                             filter(geography_type == "Historically Disadvantaged Community" & variable == "Total" & metric == "Serious Injury"& grouping != "Other") |>
+                                                                             mutate(metric=grouping),
+                                                                           x='data_year', y='estimate', fill='metric', title='Serious Injury',
+                                                                           dec = 0, esttype = 'number', color = psrc_colors$gnbopgy_5)})
     
-    output$king_collisions_chart <- renderEcharts4r({echart_column_chart(df = safety_data |> filter(variable == "Total" & geography_type == "County" & geography == "King" & (data_year >= as.integer(current_population_year)-5 & data_year <= current_population_year)),
-                                                                         x='data_year', y='estimate', fill='metric', title='King County',
-                                                                         dec = 1, esttype = 'number', color = psrc_colors$pognbgy_5)})
+    output$king_collisions_chart <- renderEcharts4r({echart_column_chart_toggle(df = safety_data |> filter(geography_type == "County" & geography == "King" & (data_year >= as.integer(current_population_year)-5 & data_year <= current_population_year)) |> 
+                                                                                  mutate(variable = gsub("Rate per 100k people", "Rate", variable)) |>
+                                                                                  mutate(variable = factor(variable, levels = c("Rate", "Total"))),
+                                                                                x='data_year', y='estimate', fill='metric', tog="variable", title='King County',
+                                                                                dec = 1, esttype = 'number', color = psrc_colors$pognbgy_5)})
     
-    output$kitsap_collisions_chart <- renderEcharts4r({echart_column_chart(df = safety_data |> filter(variable == "Total" & geography_type == "County" & geography == "Kitsap" & (data_year >= as.integer(current_population_year)-5 & data_year <= current_population_year)),
-                                                                           x='data_year', y='estimate', fill='metric', title='Kitsap County',
+    
+    output$kitsap_collisions_chart <- renderEcharts4r({echart_column_chart_toggle(df = safety_data |> filter(geography_type == "County" & geography == "Kitsap" & (data_year >= as.integer(current_population_year)-5 & data_year <= current_population_year)) |> 
+                                                                                    mutate(variable = gsub("Rate per 100k people", "Rate", variable)) |>
+                                                                                    mutate(variable = factor(variable, levels = c("Rate", "Total"))),
+                                                                           x='data_year', y='estimate', fill='metric', tog="variable", title='Kitsap County',
                                                                            dec = 1, esttype = 'number', color = psrc_colors$pognbgy_5)})
     
-    output$pierce_collisions_chart <- renderEcharts4r({echart_column_chart(df = safety_data |> filter(variable == "Total" & geography_type == "County" & geography == "Pierce" & (data_year >= as.integer(current_population_year)-5 & data_year <= current_population_year)),
-                                                                           x='data_year', y='estimate', fill='metric', title='Pierce County',
+    output$pierce_collisions_chart <- renderEcharts4r({echart_column_chart_toggle(df = safety_data |> filter(geography_type == "County" & geography == "Pierce" & (data_year >= as.integer(current_population_year)-5 & data_year <= current_population_year)) |> 
+                                                                                    mutate(variable = gsub("Rate per 100k people", "Rate", variable)) |>
+                                                                                    mutate(variable = factor(variable, levels = c("Rate", "Total"))),
+                                                                           x='data_year', y='estimate', fill='metric', tog="variable", title='Pierce County',
                                                                            dec = 1, esttype = 'number', color = psrc_colors$pognbgy_5)})
     
-    output$snohomish_collisions_chart <- renderEcharts4r({echart_column_chart(df = safety_data |> filter(variable == "Total" & geography_type == "County" & geography == "Snohomish" & (data_year >= as.integer(current_population_year)-5 & data_year <= current_population_year)),
-                                                                              x='data_year', y='estimate', fill='metric', title='Snohomish County',
+    output$snohomish_collisions_chart <- renderEcharts4r({echart_column_chart_toggle(df = safety_data |> filter(geography_type == "County" & geography == "Snohomish" & (data_year >= as.integer(current_population_year)-5 & data_year <= current_population_year)) |> 
+                                                                                       mutate(variable = gsub("Rate per 100k people", "Rate", variable)) |>
+                                                                                       mutate(variable = factor(variable, levels = c("Rate", "Total"))),
+                                                                              x='data_year', y='estimate', fill='metric', tog="variable", title='Snohomish County',
                                                                               dec = 1, esttype = 'number', color = psrc_colors$pognbgy_5)})
     
     output$mpo_fatal_collisions_chart <- renderEcharts4r({echart_bar_chart(df=safety_data |> 
-                                                                             filter(geography_type == "Metro Regions" & data_year == current_pums_year) |>
+                                                                             filter(geography_type == "Metro Regions" & data_year == current_fars_year) |>
                                                                              arrange(estimate), 
                                                                            title = "Traffic Related Deaths", tog = 'variable',
                                                                            y='estimate', x='geography', esttype="number", dec=1, color = 'jewel')  })
@@ -88,7 +113,8 @@ safety_geography_server <- function(id) {
         h1("Region"),
         textOutput(ns("geography_region")) |> withSpinner(color=load_clr),
         br(),
-        fluidRow(column(12,echarts4rOutput(ns("region_collisions_chart")))),
+        fluidRow(column(6,echarts4rOutput(ns("region_fatal_collisions_chart"))),
+                 column(6,echarts4rOutput(ns("region_serious_collisions_chart")))),
         tags$div(class="chart_source","Fatalities: Washington Traffic Safety Commission Coded Fatality Files (2022 Preliminary)"),
         tags$div(class="chart_source","Serious Injuries: WSDOT, Crash Data Division, Multi-Row data files (MRFF)"),
         hr(style = "border-top: 1px solid #000000;"),
@@ -147,7 +173,7 @@ safety_demographics_server <- function(id) {
     
     
     output$demographics_race_chart <- renderEcharts4r({echart_pictorial(df= safety_data |> 
-                                                                          filter(geography_type=="Race" & data_year == current_pums_year & variable == "Rate per 100k people") |>
+                                                                          filter(geography_type=="Race" & data_year == current_fars_year & variable == "Rate per 100k people") |>
                                                                           mutate(grouping = str_wrap(grouping, 15)),
                                                                         x="grouping", y="estimate", tog="variable", 
                                                                         icon=fa_user, color=psrc_colors$gnbopgy_5,
@@ -245,37 +271,83 @@ safety_demographics_server <- function(id) {
         
         output$other_tod_fatal_chart <- renderEcharts4r({echart_column_chart(df = safety_data |> 
                                                                                filter(geography_type == "Time of Day" & variable == "Total" & metric == "Traffic Related Deaths" & grouping != "Other") |>
-                                                                               mutate(metric=grouping),
+                                                                               mutate(tod = case_when(
+                                                                                 grouping %in% c("AM Peak", "Midday", "PM Peak") ~ "before 6pm",
+                                                                                 grouping %in% c("Evening", "Overnight") ~ "after 6pm")) |>
+                                                                               mutate(metric=tod) |>
+                                                                               select("data_year", "estimate", "metric") |>
+                                                                               group_by(data_year, metric) |>
+                                                                               summarise(estimate = sum(estimate)) |>
+                                                                               as_tibble(),
                                                                              x='data_year', y='estimate', fill='metric', title='Traffic Related Deaths',
                                                                              dec = 0, esttype = 'number', color = psrc_colors$gnbopgy_5)})
         
         output$other_tod_serious_chart <- renderEcharts4r({echart_column_chart(df = safety_data |> 
                                                                                  filter(geography_type == "Time of Day" & variable == "Total" & metric == "Serious Injury" & grouping != "Other") |>
-                                                                                 mutate(metric=grouping),
+                                                                                 mutate(tod = case_when(
+                                                                                   grouping %in% c("AM Peak", "Midday", "PM Peak") ~ "before 6pm",
+                                                                                   grouping %in% c("Evening", "Overnight") ~ "after 6pm")) |>
+                                                                                 mutate(metric=tod) |>
+                                                                                 select("data_year", "estimate", "metric") |>
+                                                                                 group_by(data_year, metric) |>
+                                                                                 summarise(estimate = sum(estimate)) |>
+                                                                                 as_tibble(),
                                                                                x='data_year', y='estimate', fill='metric', title='Serious Injury',
                                                                                dec = 0, esttype = 'number', color = psrc_colors$gnbopgy_5)})
         
         output$other_dow_fatal_chart <- renderEcharts4r({echart_column_chart(df = safety_data |> 
                                                                                filter(geography_type == "Day of Week" & variable == "Total" & metric == "Traffic Related Deaths" & grouping != "Other") |>
-                                                                               mutate(metric=grouping),
+                                                                               mutate(dow = case_when(
+                                                                                 grouping %in% c("Mon", "Tue", "Wed", "Thu") ~ "Sun-Thu",
+                                                                                 grouping %in% c("Fri", "Sat", "Sun") ~ "Fri-Sat")) |>
+                                                                               mutate(metric=dow) |>
+                                                                               select("data_year", "estimate", "metric") |>
+                                                                               group_by(data_year, metric) |>
+                                                                               summarise(estimate = sum(estimate)) |>
+                                                                               as_tibble(),
                                                                              x='data_year', y='estimate', fill='metric', title='Traffic Related Deaths',
                                                                              dec = 0, esttype = 'number', color = psrc_colors$gnbopgy_5)})
         
         output$other_dow_serious_chart <- renderEcharts4r({echart_column_chart(df = safety_data |> 
                                                                                  filter(geography_type == "Day of Week" & variable == "Total" & metric == "Serious Injury" & grouping != "Other") |>
-                                                                                 mutate(metric=grouping),
+                                                                                 mutate(dow = case_when(
+                                                                                   grouping %in% c("Mon", "Tue", "Wed", "Thu") ~ "Sun-Thu",
+                                                                                   grouping %in% c("Fri", "Sat", "Sun") ~ "Fri-Sat")) |>
+                                                                                 mutate(metric=dow) |>
+                                                                                 select("data_year", "estimate", "metric") |>
+                                                                                 group_by(data_year, metric) |>
+                                                                                 summarise(estimate = sum(estimate)) |>
+                                                                                 as_tibble(),
                                                                                x='data_year', y='estimate', fill='metric', title='Serious Injury',
                                                                                dec = 0, esttype = 'number', color = psrc_colors$gnbopgy_5)})
         
         output$other_roadway_fatal_chart <- renderEcharts4r({echart_column_chart(df = safety_data |> 
                                                                                    filter(geography_type == "Roadway Type" & variable == "Total" & metric == "Traffic Related Deaths" & grouping != "Other") |>
-                                                                                   mutate(metric=grouping),
+                                                                                   mutate(fac = case_when(
+                                                                                     grouping %in% c("Interstate") ~ "Freeway",
+                                                                                     grouping %in% c("Principal Arterial", "Minor Arterial") ~ "Arterial",
+                                                                                     grouping %in% c("Collector", "Local Road") ~ "Local",
+                                                                                     grouping %in% c("Unknown", "Not Reported", "Not in State Inventory") ~ "Misc")) |>
+                                                                                   mutate(metric=fac) |>
+                                                                                   select("data_year", "estimate", "metric") |>
+                                                                                   group_by(data_year, metric) |>
+                                                                                   summarise(estimate = sum(estimate)) |>
+                                                                                   as_tibble(),
                                                                                  x='data_year', y='estimate', fill='metric', title='Traffic Related Deaths',
                                                                                  dec = 0, esttype = 'number', color = psrc_colors$gnbopgy_5)})
         
         output$other_roadway_serious_chart <- renderEcharts4r({echart_column_chart(df = safety_data |> 
                                                                                      filter(geography_type == "Roadway Type" & variable == "Total" & metric == "Serious Injury" & grouping != "Other") |>
-                                                                                     mutate(metric=grouping),
+                                                                                     mutate(fac = case_when(
+                                                                                       grouping %in% c("State Route") ~ "State",
+                                                                                       grouping %in% c("City Street") ~ "City",
+                                                                                       grouping %in% c("County Road") ~ "County",
+                                                                                       grouping %in% c("Miscellaneous Trafficway") ~ "Misc")) |>
+                                                                                     mutate(metric=fac) |>
+                                                                                     select("data_year", "estimate", "metric") |>
+                                                                                     group_by(data_year, metric) |>
+                                                                                     summarise(estimate = sum(estimate)) |>
+                                                                                     as_tibble(),
                                                                                    x='data_year', y='estimate', fill='metric', title='Serious Injury',
                                                                                    dec = 0, esttype = 'number', color = psrc_colors$gnbopgy_5)})
         
