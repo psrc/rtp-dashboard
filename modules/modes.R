@@ -17,7 +17,7 @@ mode_overview_server <- function(id) {
     # Overview UI
     output$modeoverview <- renderUI({
       tagList(
-        tags$div(class="page_goals", "Plan Output: 21% More Walking & Biking by 2050"),
+        tags$div(class="page_goals", "Plan Outcome: 21% More Walking & Biking by 2050"),
         textOutput(ns("modes_overview_text")),
         br()
       )

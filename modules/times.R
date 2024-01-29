@@ -17,7 +17,7 @@ time_overview_server <- function(id) {
     # Overview UI
     output$timeoverview <- renderUI({
       tagList(
-        tags$div(class="page_goals", "Plan Output: 7% reduction in Annual Delay per Household"),
+        tags$div(class="page_goals", "Plan Outcome: 7% reduction in Annual Delay per Household"),
         textOutput(ns("time_overview_text")),
         br()
       )

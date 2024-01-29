@@ -42,12 +42,12 @@ Modes,Bike-County,"In 2022, approximately 0.8% of people biked to work in the ce
 Modes,Bike-Race,"Due to the small sample size associated with biking to work, several data points are lacking sufficient data to highlight differences. "
 Modes,Bike-Metro,The Seattle area had similar bike to work levels as Boston and New York City. Portland Oregon is the only large metro region in the country to have a bike to work share over 2%
 Modes,Bike-City,The City of Seattle has a bike to work share close to 3%.
-Travel-Times,Overview,"Strategic investments, combined with an increasing set of travel options, help to minimize the overall level of congestion growth in the region. Although the overall amount of delay for all vehicle modes if forecasted to increases between 2018 and 2050 , growth in congestion per household is estimated to be approximately 7% lower in 2050 than it was in 2018."
-Travel-Times,TT-County,"In 2021, King County had the lowest average commute time to work at approximately 29 minutes."
-Travel-Times,TT-Race,There are not noticeable differences in travel time to work by Race & Ethnicity with most average approximately 30 minutes per day.
-Travel-Times,TT-Metro,The Seattle area ranked #9 for the most people with a commute of at least an hour in 2021.
-Travel-Times,DT-Region,"In 2021 almost 40% or workers departed for work in the AM Peak (7am to 9am) followed by 29% of workers leaving for work in the Early Morning (5am to 7am). In all, 68% of all workers departed for work in the morning."
-Travel-Times,DT-County,Departure time by county
+Travel-Times,Overview,"Strategic investments in the Regional Transportation Plan, combined with an increasingly diverse set of travel options, help to minimize growth in regional congestion levels. Although the overall amount of delay for all vehicle modes is forecasted to increase between 2018 and 2050, growth in congestion per household is estimated to be approximately 7% lower in 2050 than it was in 2018."
+Travel-Times,TT-County,"Regional mean travel time to work has gradually increased since 2011.  In 2021, King and Kitsap counties had the lowest average commute time to work at approximately 29 minutes for each. "
+Travel-Times,TT-Race,There are not noticeable differences in travel time to work by Race & Ethnicity with most averaging approximately 30 minutes per day.
+Travel-Times,TT-Metro,"The Seattle area ranked #9 for the most people with a commute of at least an hour in 2022, up from #12 in 2011."
+Travel-Times,DT-Region,"In 2021 39% or workers departed for work in the AM Peak (7am to 9am) followed by 29% of workers leaving for work in the Early Morning (5am to 7am). In all, 68% of all workers departed for work befire 9 am in the morning."
+Travel-Times,DT-County,"Kitsap, Pierce, and Snohomish counties have many more early morning departure times than King County, reflecting longer distances traveled for work commutes in those counties."
 Travel-Times,DT-Race,Departure time by Race & Ethnicity
 Travel-Times,DT-Metro,Departure time by Metro Area
 Travel-Times,Congestion-Region,Congestion by time of day in the region
