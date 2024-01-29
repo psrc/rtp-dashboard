@@ -653,7 +653,8 @@ echart_bar_chart <- function(df, x, y, tog, title, dec, esttype, color) {
   
   c <- c |> 
     echarts4r::e_grid(left = '20%', top = top_padding, bottom = bottom_padding) %>%
-    echarts4r::e_x_axis(axisTick=list(show = FALSE)) %>%
+    echarts4r::e_x_axis(axisTick=list(show = FALSE),
+                        axisLabel = list(interval = 0)) %>%
     echarts4r::e_show_loading() %>%
     echarts4r::e_legend(show = FALSE)
   
@@ -943,8 +944,8 @@ echart_column_chart_toggle <- function(df, x, y, fill, tog, title, dec, esttype,
                                tooltip = list(show=FALSE),
                                axis_type = "category",
                                top = 15,
-                               right = 200,
-                               left = 200,
+                               right = 100,
+                               left = 100,
                                #currentIndex = 2,
                                controlStyle=FALSE,
                                lineStyle=FALSE,

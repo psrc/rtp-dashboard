@@ -225,7 +225,7 @@ telework_server <- function(id) {
         
         h1("Work from Home: City"),
         textOutput(ns("wfh_share_city_text")),
-        fluidRow(column(12,echarts4rOutput(ns("wfh_ms_city_chart"), height = "1000px"))),
+        fluidRow(column(12,echarts4rOutput(ns("wfh_ms_city_chart"), height = "1200px"))),
         tags$div(class="chart_source","Source: ACS 5yr Data Table B08301"),
         hr()
       )
