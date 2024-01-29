@@ -130,4 +130,3 @@ download_table_list <- list("Sources" = source_info,
                             "Time-Travel-Time" = commute_data %>% filter(metric %in% c("Mean Commute Time", "commute-times")),
                             "Time-Departure-Time" = commute_data %>% filter(metric %in% c("departure-time", "Departure Time Bins"))
                             )
-

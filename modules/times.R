@@ -233,8 +233,9 @@ congestion_server <- function(id) {
     # Charts
     output$congestion_region_chart <- renderEcharts4r({echart_column_chart_toggle(df = congestion_data |> 
                                                                                     filter(geography_type == "Region" & grouping %in% c("Heavy", "Severe") & variable %in% c("AM Peak Period", "Midday", "PM Peak Period")) |>
-                                                                                    mutate(data_year = paste0(lubridate::month(date, label=TRUE), "-", year)),
-                                                                                  x = "data_year", y = "share", fill = "grouping", tog = "variable" , 
+                                                                                    mutate(data_year = paste0(lubridate::month(date, label=TRUE), "-", year)) |>
+                                                                                    mutate(metric = grouping, estimate=share),
+                                                                                  x = "data_year", y = "estimate", fill = "metric", tog = "variable" , 
                                                                                   dec = 0, title = "% of NHS", esttype = "percent", color = psrc_colors$pognbgy_5)})
     
     output$am_peak_map <- renderLeaflet({create_roadway_map(congestion_lyr = congestion_map_data, tod = "am_peak")})
