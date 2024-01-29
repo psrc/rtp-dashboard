@@ -170,11 +170,11 @@ bike_server <- function(id) {
         tags$div(class="chart_source","Source: ACS 5yr Data Table B08301 for King, Kitsap, Pierce and Snohomish counties"),
         hr(),
         
-        h1("Bike to Work: Race & Ethnicity"),
-        textOutput(ns("bike_share_race_text")),
-        fluidRow(column(12,echarts4rOutput(ns("bike_ms_race_chart"), height = "600px"))),
-        tags$div(class="chart_source","Source: US Census Bureau 5-yr PUMS Variable JWTRNS for King, Kitsap, Pierce and Snohomish counties"),
-        hr(),
+        # h1("Bike to Work: Race & Ethnicity"),
+        # textOutput(ns("bike_share_race_text")),
+        # fluidRow(column(12,echarts4rOutput(ns("bike_ms_race_chart"), height = "600px"))),
+        # tags$div(class="chart_source","Source: US Census Bureau 5-yr PUMS Variable JWTRNS for King, Kitsap, Pierce and Snohomish counties"),
+        # hr(),
         
         h1("Bike to Work: Metropolitan Region"),
         textOutput(ns("bike_share_metro_text")),
