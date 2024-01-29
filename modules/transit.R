@@ -17,7 +17,6 @@ transit_overview_server <- function(id) {
     # Overview UI
     output$transitoverview <- renderUI({
       tagList(
-        tags$div(class="page_goals", "Plan Input: 66% More Revenue-Hours by 2050"),
         tags$div(class="page_goals", "Plan Outcome: Triple Transit Boardings by 2050"),
         textOutput(ns("transit_overview_text")),
         br()
