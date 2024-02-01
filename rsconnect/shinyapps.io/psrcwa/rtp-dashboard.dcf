@@ -1,11 +1,9 @@
 name: rtp-dashboard
-title:
+title: RTP Dashboard
 username:
 account: psrcwa
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 7234735
-bundleId: 6909392
+bundleId: 8204632
 url: https://psrcwa.shinyapps.io/rtp-dashboard/
-when: 1677803102.60629
-lastSyncTime: 1677803102.60633
