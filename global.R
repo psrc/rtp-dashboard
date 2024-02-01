@@ -4,471 +4,129 @@
 library(shiny)
 library(shinydashboard)
 library(bs4Dash)
+library(shinycssloaders)
 
 # Packages for Data Cleaning/Processing
 library(tidyverse)
 
 # Packages for Chart Creation
 library(psrcplot)
-#library(ggplot2)
-#library(scales)
-library(plotly)
+library(echarts4r)
 
 # Packages for Map Creation
 library(sf)
 library(leaflet)
 
 # Packages for Table Creation
-#library(DT)
+library(DT)
 
-install_psrc_fonts()
+# Package for Excel Data Creation
+library(openxlsx)
+
+# Run Modules Files ---------------------------------------------------------------------------
+module_files <- list.files('modules', full.names = TRUE)
+sapply(module_files, source)
+source("functions.R")
+
+# Page Information --------------------------------------------------------
+left_panel_info <- read_csv("data/left_panel_information.csv", show_col_types = FALSE)
+page_text <- read_csv("data/page_text.csv", show_col_types = FALSE)
 
 # Inputs ---------------------------------------------------------------
 base_year <- "2005"
 pre_covid <- "2019"
 current_population_year <- "2022"
-current_jobs_year <- "2021"
+current_jobs_year <- "2022"
+current_census_year <- "2022"
+current_pums_year <- "2022"
+current_fars_year <- "2021"
 current_vmt_year <- 2021
 
 wgs84 <- 4326
 
-data <- read_csv("data/rtp-dashboard-data.csv", show_col_types = FALSE) %>%
-  mutate(data_year = as.character(lubridate::year(date)))
-
-total_job_change <- data %>% filter(metric=="Total Employment", variable=="Region") %>%
-  mutate(total = (estimate-lag(estimate))) %>%
-  select(date, data_year, geography, total)
-
-hct_job_change <- data %>% filter(metric=="Total Employment", variable=="Inside HCT Area") %>%
-  mutate(hct = (estimate-lag(estimate))) %>%
-  select(date, data_year, geography, hct)
-
-job_change <- left_join(total_job_change, hct_job_change, by=c("date","data_year", "geography")) %>%
-  mutate(share=hct/total) %>%
-  rename(estimate=hct) %>%
-  mutate(variable="Inside HCT Area", geography_type="PSRC Region", metric="Employment Growth Inside HCT Area", grouping="Change") %>%
-  select(-total) %>%
-  drop_na()
-
-data <-bind_rows(data, job_change)
-
-rm(total_job_change, hct_job_change, job_change)
-
-vmt <- read_csv("data/vmt-data.csv", show_col_types = FALSE) %>%
-  mutate(date = lubridate::mdy(date)) %>%
-  mutate(data_year = as.character(lubridate::year(date)))
-
-data <- bind_rows(data, vmt)
-rm(vmt)
-
-boardings <- read_csv("data/rtp-transit-boardings.csv", show_col_types = FALSE) %>%
-  mutate(date = lubridate::mdy(date)) %>%
-  mutate(data_year = as.character(lubridate::year(date)))
-
-data <- bind_rows(data, boardings)
-rm(boardings)
-
-hours <- read_csv("data/rtp-transit-hours.csv", show_col_types = FALSE) %>%
-  mutate(date = lubridate::mdy(date)) %>%
-  mutate(data_year = as.character(lubridate::year(date)))
-
-data <- bind_rows(data, hours)
-rm(hours)
-
-vkt_data <- read_csv("data/vkt-data.csv", show_col_types = FALSE) %>% 
-  mutate(plot_id=as.character(plot_id)) %>% 
-  arrange(desc(vkt))
-
-vkt_order <- vkt_data %>% select(geography) %>% distinct %>% pull()
-vkt_data <- vkt_data %>% mutate(geography = factor(x=geography, levels=vkt_order))
-
-efa_income <- read_csv("data/efa_income_tracts.csv", show_col_types = FALSE) %>% select(GEOID) %>% pull()
-
-zipcodes <- st_read("data/psrc_zipcodes.shp") %>% st_transform(wgs84)
-
-tracts <- st_read("https://services6.arcgis.com/GWxg6t7KXELn1thE/arcgis/rest/services/tract2010_nowater/FeatureServer/0/query?where=0=0&outFields=*&f=pgeojson")
-
-# Functions ---------------------------------------------------------------
-create_share_map<- function(lyr, title, colors="Blues", dec=0) {
-  
-  # Determine Bins
-  rng <- range(lyr$share)
-  max_bin <- max(abs(rng))
-  round_to <- 10^floor(log10(max_bin))
-  max_bin <- ceiling(max_bin/round_to)*round_to
-  breaks <- (max_bin*c(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.8, 1))
-  bins <- c(0, breaks)
-  pal <- colorBin(colors, domain = lyr$share, bins = bins)
-  
-  labels <- paste0("<b>",paste0(title,": "), "</b>", prettyNum(round(lyr$share*100, dec), big.mark = ","),"%") %>% lapply(htmltools::HTML)
-  
-  working_map <- leaflet(data = lyr) %>% 
-    addProviderTiles(providers$CartoDB.Positron) %>%
-    addLayersControl(baseGroups = c("Base Map"),
-                     overlayGroups = c(title,"Equity Focus Area"),
-                     options = layersControlOptions(collapsed = TRUE)) %>%
-    addPolygons(data = efa_tracts,
-                fillColor = "#91268F",
-                weight = 0,
-                opacity = 0,
-                color = "#91268F",
-                dashArray = "1",
-                fillOpacity = 0.5,
-                group = "Equity Focus Area") %>% 
-    addPolygons(fillColor = pal(lyr$share),
-                weight = 1.0,
-                opacity = 1,
-                color = "white",
-                dashArray = "3",
-                fillOpacity = 0.7,
-                highlight = highlightOptions(
-                  weight =5,
-                  color = "76787A",
-                  dashArray ="",
-                  fillOpacity = 0.7,
-                  bringToFront = TRUE),
-                label = labels,
-                labelOptions = labelOptions(
-                  style = list("font-weight" = "normal", padding = "3px 8px"),
-                  textsize = "15px",
-                  direction = "auto"),
-                group = title) %>%
-    addLegend(colors=c("#91268F"),
-              labels=c("Yes"),
-              group = "Equity Focus Area",
-              position = "bottomright",
-              title = "Equity Focus Area: Income")
-  
-  return(working_map)
-  
-}
-
-# Create MPO Data for Charts ----------------------------------------------
-metros <- c("Portland", "Bay Area", "San Diego", "Denver", "Atlanta","Washington DC", "Boston", "Miami" ,"Phoenix", "Austin", "Dallas")
-
-safety_min_year <- data %>% 
-  filter(geography_type=="Metro Regions" & metric=="5yr Fatality Rate" & variable=="Fatalities per 100,000 People") %>%
-  select(date) %>%
-  distinct() %>% 
-  pull() %>%
-  min() %>%
-  lubridate::year()
-
-safety_max_year <- data %>% 
-  filter(geography_type=="Metro Regions" & metric=="5yr Fatality Rate" & variable=="Fatalities per 100,000 People") %>%
-  select(date) %>%
-  distinct() %>% 
-  pull() %>%
-  max() %>%
-  lubridate::year()
-
-mpo_safety_tbl_min <- data %>% 
-  filter(geography_type=="Metro Regions" & metric=="5yr Fatality Rate" & variable=="Fatalities per 100,000 People" & lubridate::year(date)==safety_min_year) %>%
-  mutate(plot_id = case_when(
-    geography == "Seattle" ~ "PSRC",
-    geography %in% metros ~ "Comparable Metros")) %>%
-  mutate(plot_id=replace_na(plot_id,"Other")) %>%
-  arrange(desc(estimate))
-
-mpo_order <- mpo_safety_tbl_min %>% select(geography) %>% pull()
-mpo_safety_tbl_min <- mpo_safety_tbl_min %>% mutate(geography = factor(x=geography, levels=mpo_order))
-
-mpo_safety_tbl_max <- data %>% 
-  filter(geography_type=="Metro Regions" & metric=="5yr Fatality Rate" & variable=="Fatalities per 100,000 People" & lubridate::year(date)==safety_max_year) %>%
-  mutate(plot_id = case_when(
-    geography == "Seattle" ~ "PSRC",
-    geography %in% metros ~ "Comparable Metros")) %>%
-  mutate(plot_id=replace_na(plot_id,"Other")) %>%
-  arrange(desc(estimate))
-
-mpo_order <- mpo_safety_tbl_max %>% select(geography) %>% pull()
-mpo_safety_tbl_max <- mpo_safety_tbl_max %>% mutate(geography = factor(x=geography, levels=mpo_order))
-
-mpo_transit_boardings_precovid <- data %>% 
-  filter(geography_type=="Metro Regions" & metric=="YTD Transit Boardings" & variable=="All Transit Modes" & lubridate::year(date)==pre_covid & geography!="New York City") %>%
-  mutate(plot_id = case_when(
-    geography == "Seattle" ~ "PSRC",
-    geography %in% metros ~ "Comparable Metros")) %>%
-  mutate(plot_id=replace_na(plot_id,"Other")) %>%
-  arrange(desc(estimate))
-
-mpo_order <- mpo_transit_boardings_precovid %>% select(geography) %>% pull()
-mpo_transit_boardings_precovid <- mpo_transit_boardings_precovid %>% mutate(geography = factor(x=geography, levels=mpo_order))
-
-mpo_transit_boardings_today <- data %>% 
-  filter(geography_type=="Metro Regions" & metric=="YTD Transit Boardings" & variable=="All Transit Modes" & lubridate::year(date)==current_population_year & geography!="New York City") %>%
-  mutate(plot_id = case_when(
-    geography == "Seattle" ~ "PSRC",
-    geography %in% metros ~ "Comparable Metros")) %>%
-  mutate(plot_id=replace_na(plot_id,"Other")) %>%
-  arrange(desc(estimate))
-
-mpo_order <- mpo_transit_boardings_today %>% select(geography) %>% pull()
-mpo_transit_boardings_today <- mpo_transit_boardings_today %>% mutate(geography = factor(x=geography, levels=mpo_order))
-
-mpo_transit_hours_precovid <- data %>% 
-  filter(geography_type=="Metro Regions" & metric=="YTD Transit Revenue-Hours" & variable=="All Transit Modes" & lubridate::year(date)==pre_covid & geography!="New York City") %>%
-  mutate(plot_id = case_when(
-    geography == "Seattle" ~ "PSRC",
-    geography %in% metros ~ "Comparable Metros")) %>%
-  mutate(plot_id=replace_na(plot_id,"Other")) %>%
-  arrange(desc(estimate))
-
-mpo_order <- mpo_transit_hours_precovid %>% select(geography) %>% pull()
-mpo_transit_hours_precovid <- mpo_transit_hours_precovid %>% mutate(geography = factor(x=geography, levels=mpo_order))
-
-mpo_transit_hours_today <- data %>% 
-  filter(geography_type=="Metro Regions" & metric=="YTD Transit Revenue-Hours" & variable=="All Transit Modes" & lubridate::year(date)==current_population_year & geography!="New York City") %>%
-  mutate(plot_id = case_when(
-    geography == "Seattle" ~ "PSRC",
-    geography %in% metros ~ "Comparable Metros")) %>%
-  mutate(plot_id=replace_na(plot_id,"Other")) %>%
-  arrange(desc(estimate))
-
-mpo_order <- mpo_transit_hours_today %>% select(geography) %>% pull()
-mpo_transit_hours_today <- mpo_transit_hours_today %>% mutate(geography = factor(x=geography, levels=mpo_order))
-
-# Population Data for Text ---------------------------------------------------------
-vision_pop_today <- data %>% filter(lubridate::year(date)==current_population_year & metric=="Forecast Population" & variable=="Total" & geography=="Region") %>% select(estimate) %>% pull()
-actual_pop_today <- data %>% filter(lubridate::year(date)==current_population_year & metric=="Observed Population" & variable=="Total" & geography=="Region") %>% select(estimate) %>% pull()
-population_delta <- actual_pop_today - vision_pop_today
-actual_pop_hct_today <- data %>% filter(lubridate::year(date)==current_population_year & grouping=="Growth Near High Capacity Transit" & geography=="Inside HCT Area" & variable=="Change" & metric=="Population") %>% select(share) %>% pull()
-
-# Housing Data for Text ---------------------------------------------------------
-vision_housing_today <- data %>% filter(lubridate::year(date)==current_population_year & metric=="Forecast" & variable=="Total Housing Units" & geography=="Region") %>% select(estimate) %>% pull()
-actual_housing_today <- data %>% filter(lubridate::year(date)==current_population_year & metric=="Observed" & variable=="Total Housing Units" & geography=="Region" & grouping=="Total") %>% select(estimate) %>% pull()
-housing_delta <- actual_housing_today - vision_housing_today
-actual_housing_hct_today <- data %>% filter(lubridate::year(date)==current_population_year & grouping=="Growth Near High Capacity Transit" & geography=="Inside HCT Area" & variable=="Change" & metric=="Housing Units") %>% select(share) %>% pull()
-
-# Employment Data for Text ------------------------------------------------
-vision_jobs_today <- data %>% filter(lubridate::year(date)==current_jobs_year & metric=="Forecast Employment" & variable=="Total") %>% select(estimate) %>% pull()
-actual_jobs_today <- data %>% filter(lubridate::year(date)==current_jobs_year & metric=="Observed Employment" & variable=="Total") %>% select(estimate) %>% pull()
-jobs_delta <- actual_jobs_today - vision_jobs_today
-actual_jobs_hct_today <- data %>% filter(lubridate::year(date)==current_jobs_year & metric=="Employment Growth Inside HCT Area" & variable=="Inside HCT Area") %>% select(share) %>% pull()
-
-# Vehicle Registration Data for Text --------------------------------------
-min_ev_date <- data %>% filter(metric=="New Vehicle Registrations" & geography=="Region") %>% select(date) %>% pull() %>% min()
-max_ev_date <- data %>% filter(metric=="New Vehicle Registrations" & geography=="Region") %>% select(date) %>% pull() %>% max()
-
-evs_previous <- 1 - (data %>% filter(metric=="New Vehicle Registrations" & geography=="Region" & date==min_ev_date & variable=="ICE (Internal Combustion Engine)") %>% select(share) %>% pull())
-evs_today <- 1 - (data %>% filter(metric=="New Vehicle Registrations" & geography=="Region" & date==max_ev_date & variable=="ICE (Internal Combustion Engine)") %>% select(share) %>% pull())
-
-ev_zips <- data %>% 
-  filter(metric=="New Vehicle Registrations" & geography_type=="Zipcode" & date==max_ev_date & variable!="ICE (Internal Combustion Engine)") %>%
-  select(geography, estimate, share) %>%
-  group_by(geography) %>%
-  summarise(estimate=sum(estimate), share=sum(share)) %>%
-  as_tibble()
-
-ev_zipcodes <- left_join(zipcodes, ev_zips, by=c("zipcode"="geography")) %>% 
-  mutate(share = replace_na(share, 0)) %>%
-  select(zipcode, share)
-
-efa_tracts <- tracts %>% 
-  filter(GEOID10 %in% efa_income) %>%
-  st_union() %>%
-  st_sf() 
-
-min_transit_years <- data %>% filter(metric=="Mode to Work" & geography=="Region") %>% select(data_year) %>% pull() %>% unique() %>% min()
-max_min_transit_years <- as.character(as.integer(min_transit_years)+5)
-transit_years <- data %>% filter(metric=="Mode to Work" & geography=="Region" & data_year>=max_min_transit_years) %>% select(data_year) %>% pull() %>% unique()
-
-# Text Data ---------------------------------------------------------------
-growth_overview_1 <- paste("The region's vision for 2050 is to provide exceptional quality of life, opportunity for all, ",
-                           "connected communities, a spectacular natural environment, and an innovative, thriving economy.")
-
-growth_overview_2 <- paste("Over the next 30 years, the central Puget Sound region will add another million and a half people, ",
-                           "reaching a population of 5.8 million. How can we ensure that all residents benefit from the region’s ",
-                           "thriving communities, strong economy and healthy environment as population grows? ",
-                           "Local counties, cities, Tribes and other partners have worked together with PSRC to develop VISION 2050.")
-
-growth_overview_3 <- paste("VISION 2050’s multicounty planning policies, actions, and regional growth strategy guide how and where ",
-                           "the region grows through 2050. The plan informs updates to the Regional Transportation Plan ",
-                           "and Regional Economic Strategy. VISION 2050 also sets the stage for updates to countywide planning ",
-                           "policies and local comprehensive plans done by cities and counties.")
-
-housing_overview_1 <-paste("The region is expected to grow by 830,000 households by the year 2050. ",
-                           "Meeting the housing needs of all households at a range of income levels is ",
-                           "integral to creating a region that is livable for all residents, economically ",
-                           "prosperous and environmentally sustainable.")
-
-housing_overview_2 <-paste("By providing data, guidance, and technical assistance, ",
-                           "PSRC supports jurisdictions in their efforts to adopt best ",
-                           "housing practices and establish coordinated local housing and affordable housing targets.")
-
-safety_caption <- paste0("Safety impacts every aspect of the transportation system, covering all modes and encompassing a ",
-                         "variety of attributes from facility design to security to personal behavior. The Federal Highway ",
-                         "Administration (FHWA) refers to the Four E’s of safety: engineering, enforcement, education and ",
-                         "emergency medical services. Many organizations and jurisdictions have implemented programs ",
-                         "and projects aimed at improving safety and reducing deaths and serious injuries. All seek to ",
-                         "achieve the long-term goal of zero fatalities and serious injuries.")
-
-fatal_trends_caption <- paste0("The total number of crashes that resulted in fatalities in the ",
-                               "Puget Sound region between ",
-                               safety_min_year,
-                               " and ",
-                               safety_max_year,
-                               " are shown below. After a decrease in the early part of the decade, there was a ",
-                               "significant increase between 2013 and 2016, followed by a leveling-out through ",
-                               safety_max_year,
-                               ".")
-
-pop_vision_caption <- paste0("In VISION 2050 forecasts, the population in ",
-                             current_population_year, 
-                             " was forecasted to be ", 
-                             prettyNum(round(vision_pop_today,-3), big.mark = ","),
-                             ". The observed population in 2022 was  ",
-                             prettyNum(round(actual_pop_today,-3), big.mark = ","), 
-                             ", a difference of ",
-                             prettyNum(round(population_delta,-3), big.mark = ","),
-                             " people.")
-pop_hct_caption <- paste0("In VISION 2050, the population growth goal is for ",
-                          "65% of population growth to be near high-capacity transit. ",
-                          "In ",
-                          current_population_year, 
-                          ", the observed share of population growth near HCT was ",
-                          prettyNum(round(actual_pop_hct_today*100,0), big.mark = ","),
-                          "%.")
-
-housing_vision_caption <- paste0("In VISION 2050 forecasts, the total housing units in the PSRC region in ",
-                             current_population_year, 
-                             " was forecasted to be ", 
-                             prettyNum(round(vision_housing_today,-3), big.mark = ","),
-                             ". The observed housing units in ",
-                             current_population_year,
-                             " were ",
-                             prettyNum(round(actual_housing_today,-3), big.mark = ","), 
-                             ", a difference of ",
-                             prettyNum(round(housing_delta,-3), big.mark = ","),
-                             " housing units.")
-
-housing_hct_caption <- paste0("In VISION 2050, the population growth goal is for ",
-                              "65% of population growth to be near high-capacity transit. ",
-                              "There is no specific goal for housing unit shares near ",
-                              "high-capacity transit however household sizes near stations ",
-                              "tend to be smaller and hence will likely require slight more units ",
-                              "near transit. In ",
-                              current_population_year, 
-                              ", the observed share of housing unit growth near HCT was ",
-                              prettyNum(round(actual_housing_hct_today*100,0), big.mark = ","),
-                              "%.")
-
-jobs_vision_caption <- paste0("Job growth Between ",base_year," and ", current_population_year,
-                             " has been significantly impacted by the COVID-19 pandemic. In VISION 2050 forecasts, the total employment in ",
-                             current_jobs_year, 
-                             " was forecasted to be ", 
-                             prettyNum(round(vision_jobs_today,-3), big.mark = ","),
-                             ". The observed employment at the end of 2021 was  ",
-                             prettyNum(round(actual_jobs_today,-3), big.mark = ","), 
-                             ", a difference of ",
-                             prettyNum(round(jobs_delta,-3), big.mark = ","),
-                             " jobs.")
-
-employment_hct_caption <- paste0("In VISION 2050, the employment growth goal is for ",
-                          "75% of job growth to be near high-capacity transit. ",
-                          "In ",
-                          current_population_year, 
-                          ", the observed share of job growth near HCT was ",
-                          prettyNum(round(actual_jobs_hct_today*100,0), big.mark = ","),
-                          "%.")
-
-employment_overview <- paste("Over the next 30 years, the central Puget Sound region will add another million jobs, reaching an employment total of 3.3 million jobs by 2050.", 
-                             "How can we ensure that all residents benefit from the region’s strong economy?",
-                             "Local counties, cities, Tribes and other partners have worked together with PSRC to develop")
-
-climate_overview_1 <- paste0("Climate change is a primary focus of VISION 2050, with a goal for the region to substantially reduce ",
-                          "emissions of greenhouse gases that contribute to climate change in accordance with the goals of the ", 
-                          "Puget Sound Clean Air Agency (50% below 1990 levels by 2030 and 80% below 1990 levels by 2050) ", 
-                          "as well as to prepare for climate change impacts.")
-
-climate_overview_2 <- paste0("The challenges to meeting this goal are great.", 
-                             "In 1990, the region was home to approximately 2.75 million people and almost 1.37 million jobs, ",
-                             "with travel of almost 62 million miles a day (an average of 22.6 miles per capita). ",
-                             "By 2050, the region is expected to grow to more than 5.82 million people (more than double from 1990) ",
-                             "and more than 3.16 million jobs.")
-
-climate_overview_3 <- paste0("There are numerous solutions required to reach the regional climate goals ",
-                             "– no one solution will get us there, and all are necessary for success. ",
-                             "The Regional Transportation Plan includes the adopted Four-Part Greenhouse Gas Strategy, ",
-                             "recognizing that decisions and investments in the categories of Land Use, Transportation Choices, ",
-                             "Pricing and Technology/Decarbonization are the primary factors that influence greenhouse gas emissions ",
-                             "from on-road transportation and are factors for which PSRC’s planning efforts have either direct or indirect influence. ",
-                             "The plan identifies ongoing work to advance actions within each category, as well as necessary future steps to ensure full implementation.")
-
-climate_overview_4 <- paste0("With full implementation of the Greenhouse Gas Strategy, the region is on track to achieve the climate ",
-                             "goals with a forecasted -83% reduction in GHG emissions below 1990 levels by 2050. The figure below ",
-                             "highlights the impacts of the various steps required to meet the regional climate goals.")
-
-ev_registration_caption <- paste0("Decarbonization of the transporation fleet is an important part of the Four-Part Greenhouse Gas Strategy. ",
-                                  "In ", lubridate::month(min_ev_date, label=TRUE, abbr = FALSE), " of ", lubridate::year(min_ev_date),
-                                  " electric and hybrid vehicles made up approximately ", round(evs_previous*100,0), "% of all new vehicle registrations. ",
-                                  "By ", lubridate::month(max_ev_date, label=TRUE, abbr = FALSE), " of ", lubridate::year(max_ev_date),
-                                  ", electric and hybrid vehicles made up approximately ", round(evs_today*100,0), "% of all new vehicle registrations.")
-ev_zipcode_caption <- paste0("Electric vehicle registrations are all the across the Puget Sound Region but some of the highest levels of ",
-                              "market penetration are in the Seattle, Bellevue and Redmond area. There are noticable areas in Kitsap, Pierce and ",
-                              "Snohomish counties that have lower ZEV registration levels and they tend to overlap with areas of lower incomes.")
-
-vmt_caption <- paste0("Vehicle miles traveled peaked in the late 1990’s at around 24 miles per person per day. In 2018, the ",
-                      "average miles driven per day had reduced to about 21 miles per day. Over the next thirty years, the ",
-                      "average distance driven per capita is forecasted to reduce even further to approximately 18 miles per ",
-                      "day per person, helping the region to contribute to goals of reducing VMT per capita.")
-
-vmt_county_caption <- paste0("Vehicle miles driven vary greatly across the region as well as by equity focus areas. For ",
-                             "example, even though the average resident of the region travels almost 18 miles per day in 2050, people of ",
-                             "lower incomes travel about 15 miles per day and people living in regional growth centers travel around 7 miles per day")
-
-vkt_caption <- paste0("Under VISION 2050, growth between 2018 and 2050 is focused near high-capacity transit stations. ",
-                      "The majority of these investments are located in the VISION 2050 regional geographies of ",
-                      "Metropolitan Cities, Core Cities and High-Capacity Transit Communities, the most urbanized and ",
-                      "densely developed parts of the region. As shown below, driving in these places is more like many ",
-                      "European countries than to other parts of the United States by 2050.")
-
-safety_overview_1 <- paste0("Safety was one of the key policy focus areas identified by PSRC’s Transportation Policy Board early in ",
-                            "the development of the RTP and is a cross-cutting issue addressed throughout all relevant sections of ",
-                            "the plan. VISION 2050 set a goal for the region to have a “sustainable, equitable, affordable, safe, and ",
-                            "efficient multimodal transportation system, with specific emphasis on an integrated regional transit ",
-                            "network that supports the Regional Growth Strategy and promotes vitality of the economy, ",
-                            "environment, and health.” In addition, VISION 2050 adopted the following policy related to safety:")
-
-safety_overview_2 <- paste0("MPP T-4: Improve the safety of the transportation system and, in the long term, achieve the ",
-                            "state’s goal of zero deaths and serious injuries.")
-
-safety_overview_3 <- paste0("In 2019, the State of Washington adopted the Target Zero plan with the goal to reduce the number of ",
-                            "traffic deaths and serious injuries on Washington's roadways to zero by the year 2030. The RTP will ",
-                            "implement the region’s safety goals through a Safe Systems Approach.")
-
-safety_overview_4 <- paste0("Safety impacts every aspect of the transportation system, covering all modes and encompassing a ",
-                            "variety of attributes from facility design to security to personal behavior. The Federal Highway ",
-                            "Administration (FHWA) refers to the Four E’s of safety: engineering, enforcement, education and emergency medical services.")
-
-safety_overview_5 <- paste0("Many organizations and jurisdictions have implemented programs and projects aimed at improving ",
-                            "safety and reducing deaths and serious injuries. All seek to achieve the long-term goal of zero fatalities ",
-                            "and serious injuries.")
-
-
-fatal_county_caption <- paste0("Trends in Fatal collisions vary across the region's counties. Although King and Kitsap counties have seen ",
-                             "slight reductions in fatal collisions in 2020, there were still more fatalaities than 2015.",
-                             "Pierce and Snohomich counties but experienced small increases in traffic realted deaths in 2020.")
-
-fatal_mpo_caption <- paste0("The Puget Sound region had the fifth lowest fatal accident rate per 100,000 people in 2020 among the 27 largest MPO regions, down slightly since ",
-                            "2010. Some the regions with rates lower than the PSRC region include New York and Boston. One region similar is size to PSRC with one of the lowest ",
-                            "rates are the Twin Cities. The highest fatality rates amongst MPO regions are in Florida.")
-
-transit_overview_1 <- paste0("The Regional Transportation Plan envisions an integrated system that supports the goals of VISION ",
-                             "2050, which calls for increased investment in transportation to support a growing population and ",
-                             "economy. VISION 2050 emphasizes investing in transportation projects and programs that support ",
-                             "local and regional growth centers and high-capacity transit station areas in particular. These policies ",
-                             "emphasize the importance of public transit to achieving the VISION 2050 regional growth strategy.")
-
-transit_overview_2 <- paste0("When people think of transit, most often they think of fixed-route rail or bus service that stops at specific ",
-                             "stations or stops on a schedule. For the purposes of this page, these types of transit services are referred to as ",
-                             "regular transit.")
-
-transit_overview_3 <- paste0("High-capacity transit in the region is provided by a variety of rail, bus rapid transit and ferry modes, ",
-                             "including: Sound Transit’s Link light rail, Tacoma Link, and Sounder commuter rail; Seattle’s two streetcar lines ",
-                             "and the historic 1962 monorail; Community Transit’s Swift and King County Metro’s RapidRide bus rapid transit services; ", 
-                             "and multimodal and passenger-only ferry services provided by the Washington State Ferries, Pierce County Ferries, ",
-                             "King County Metro and Kitsap Transit. Bus rapid transit (BRT) routes in the region are distinguished from other forms ",
-                             "of bus transit by a combination of features that include branded buses and stations, off-board fare payment, wider stop ","
-                             spacing than other local bus service, and other treatments such as transit signal priority and business access and transit (BAT) lanes.")
-
+yr_ord <- c("2023", "2022", "2021", "2020", "2019", "2018", "2017", "2016", "2015", "2014", "2013", "2012", "2011", "2010")
+county_ord <- c("King\nCounty", "Kitsap\nCounty", "Pierce\nCounty", "Snohomish\nCounty", "Region")
+county_short_ord <- c("King", "Kitsap", "Pierce", "Snohomish", "Region")
+tod_ord <- c("Early\nMorning", "AM Peak", "Late\nMorning", "Afternoon", "Evening", "Overnight")
+
+# SVG values for ehcarts pictorial charts
+fa_user <- "path://M256 288A144 144 0 1 0 256 0a144 144 0 1 0 0 288zm-94.7 32C72.2 320 0 392.2 0 481.3c0 17 13.8 30.7 30.7 30.7H481.3c17 0 30.7-13.8 30.7-30.7C512 392.2 439.8 320 350.7 320H161.3z"
+fa_wfh <- "path://M218.3 8.5c12.3-11.3 31.2-11.3 43.4 0l208 192c6.7 6.2 10.3 14.8 10.3 23.5H336c-19.1 0-36.3 8.4-48 21.7V208c0-8.8-7.2-16-16-16H208c-8.8 0-16 7.2-16 16v64c0 8.8 7.2 16 16 16h64V416H112c-26.5 0-48-21.5-48-48V256H32c-13.2 0-25-8.1-29.8-20.3s-1.6-26.2 8.1-35.2l208-192zM352 304V448H544V304H352zm-48-16c0-17.7 14.3-32 32-32H560c17.7 0 32 14.3 32 32V448h32c8.8 0 16 7.2 16 16c0 26.5-21.5 48-48 48H544 352 304c-26.5 0-48-21.5-48-48c0-8.8 7.2-16 16-16h32V288z"
+fa_bus <- "path://M224 0C348.8 0 448 35.2 448 80V96 416c0 17.7-14.3 32-32 32v32c0 17.7-14.3 32-32 32H352c-17.7 0-32-14.3-32-32V448H128v32c0 17.7-14.3 32-32 32H64c-17.7 0-32-14.3-32-32l0-32c-17.7 0-32-14.3-32-32V96 80C0 35.2 99.2 0 224 0zM64 128V256c0 17.7 14.3 32 32 32H352c17.7 0 32-14.3 32-32V128c0-17.7-14.3-32-32-32H96c-17.7 0-32 14.3-32 32zM80 400a32 32 0 1 0 0-64 32 32 0 1 0 0 64zm288 0a32 32 0 1 0 0-64 32 32 0 1 0 0 64z"
+fa_house <- "path://M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"
+fa_walking <- "path://M160 48a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zM126.5 199.3c-1 .4-1.9 .8-2.9 1.2l-8 3.5c-16.4 7.3-29 21.2-34.7 38.2l-2.6 7.8c-5.6 16.8-23.7 25.8-40.5 20.2s-25.8-23.7-20.2-40.5l2.6-7.8c11.4-34.1 36.6-61.9 69.4-76.5l8-3.5c20.8-9.2 43.3-14 66.1-14c44.6 0 84.8 26.8 101.9 67.9L281 232.7l21.4 10.7c15.8 7.9 22.2 27.1 14.3 42.9s-27.1 22.2-42.9 14.3L247 287.3c-10.3-5.2-18.4-13.8-22.8-24.5l-9.6-23-19.3 65.5 49.5 54c5.4 5.9 9.2 13 11.2 20.8l23 92.1c4.3 17.1-6.1 34.5-23.3 38.8s-34.5-6.1-38.8-23.3l-22-88.1-70.7-77.1c-14.8-16.1-20.3-38.6-14.7-59.7l16.9-63.5zM68.7 398l25-62.4c2.1 3 4.5 5.8 7 8.6l40.7 44.4-14.5 36.2c-2.4 6-6 11.5-10.6 16.1L54.6 502.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L68.7 398z"
+fa_biking <- "path://M400 96a48 48 0 1 0 0-96 48 48 0 1 0 0 96zm27.2 64l-61.8-48.8c-17.3-13.6-41.7-13.8-59.1-.3l-83.1 64.2c-30.7 23.8-28.5 70.8 4.3 91.6L288 305.1V416c0 17.7 14.3 32 32 32s32-14.3 32-32V288c0-10.7-5.3-20.7-14.2-26.6L295 232.9l60.3-48.5L396 217c5.7 4.5 12.7 7 20 7h64c17.7 0 32-14.3 32-32s-14.3-32-32-32H427.2zM56 384a72 72 0 1 1 144 0A72 72 0 1 1 56 384zm200 0A128 128 0 1 0 0 384a128 128 0 1 0 256 0zm184 0a72 72 0 1 1 144 0 72 72 0 1 1 -144 0zm200 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z"
+fa_car <- "path://M135.2 117.4L109.1 192H402.9l-26.1-74.6C372.3 104.6 360.2 96 346.6 96H165.4c-13.6 0-25.7 8.6-30.2 21.4zM39.6 196.8L74.8 96.3C88.3 57.8 124.6 32 165.4 32H346.6c40.8 0 77.1 25.8 90.6 64.3l35.2 100.5c23.2 9.6 39.6 32.5 39.6 59.2V400v48c0 17.7-14.3 32-32 32H448c-17.7 0-32-14.3-32-32V400H96v48c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32V400 256c0-26.7 16.4-49.6 39.6-59.2zM128 288a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zm288 32a32 32 0 1 0 0-64 32 32 0 1 0 0 64z"
+
+#my_logo <- fontawesome::fa("car")
+
+# color for page loading spinner
+load_clr <- "#91268F"
+
+transit_modes <- c("Bus", "Commuter Rail", "Ferry", "Rail", "Vanpool")
+
+# color for funded/not funded chart
+stp_colors <- c("#91268F", "#F05A28", "#8CC63E", "#00A7A0", "#EB4584", "#4C4C4C",
+                "#E3C9E3", "#FBD6C9", "#E2F1CF", "#BFE9E7", "#FFBCD9", "#BCBEC0")
+
+cmaq_colors <- c("#91268F", "#F05A28", "#8CC63E", "#00A7A0", "#EB4584", "#EB4584", "#4C4C4C",
+                "#E3C9E3", "#FBD6C9", "#E2F1CF", "#BFE9E7", "#FFBCD9", "#FFBCD9", "#BCBEC0")
+
+# Items to use to fill chart
+stp_plot_buckets <- c("center_Yes", "access_Yes", "equity_Yes", "safety_Yes", "climate_Yes", "readiness_Yes",
+                      "center_No", "access_No", "equity_No", "safety_No", "climate_No", "readiness_No")
+
+cmaq_plot_buckets <- c("center_Yes", "access_Yes", "equity_Yes", "safety_Yes", "climate_Yes", "waehd_Yes", "readiness_Yes", 
+                       "center_No", "access_No", "equity_No", "safety_No", "climate_No", "waehd_No", "readiness_No")
+
+fhwa_cols <- c("project_id", "sponsor", "title", "phase", "category", "funding_request", "total_points")
+tip_cols <- c("TIP ID", "Phase", "Funding Type", "Total Project Cost", "Federal Funding", "State Funding", "Local Funding", "Projected Obligation Date")
+tip_currency_cols <- c("Total Project Cost", "Federal Funding", "State Funding", "Local Funding")
+
+# Data via RDS files ------------------------------------------------------
+safety_data <- readRDS("data/collision_data.rds") |> mutate(data_year = as.character(lubridate::year(date)))
+commute_data <- readRDS("data/commute_data.rds")
+climate_data <- readRDS("data/vehicle_data.rds")
+ev_by_tract <- readRDS("data/ev_registration_by_tract.rds")
+vmt_data <- readRDS("data/vmt.rds")
+vkt_data <- readRDS("data/vkt.rds")
+pop_hsg_jobs <- readRDS("data/pop_hsg_jobs.rds")
+efa_income <- readRDS("data/efa_income.rds")
+transit_data <- readRDS("data/transit_data.rds")
+congestion_data <- readRDS("data/congestion_data.rds")
+congestion_map_data <- readRDS("data/congestion_map_data.rds")
+stp <- readRDS("data/stp.rds")
+cmaq <- readRDS("data/cmaq.rds")
+stp_lyr <- readRDS("data/stp_lyr.rds")
+cmaq_lyr <- readRDS("data/cmaq_lyr.rds")
+tip_lyr <- readRDS("data/tip_lyr.rds")
+tip_projects  <- readRDS("data/tip_projects_by_type.rds")
+
+# Source Information ------------------------------------------------------------
+source_info <- read_csv("data/source_information.csv", show_col_types = FALSE)
+summary_info <- read_csv("data/summary_information.csv", show_col_types = FALSE)
+
+# Data Download Table List ------------------------------------------------------
+download_table_list <- list("Sources" = source_info,
+                            "Climate-ZEV" = climate_data %>% filter(metric == "vehicle-registrations"),
+                            "Climate-VMT" = bind_rows(vmt_data, vkt_data),
+                            "Climate-WFH" = commute_data %>% filter(variable %in% c("Work from Home", "Worked from home")),
+                            "Safety-Geography" = safety_data %>% filter(geography_type %in% c("Region",
+                                                                                              "County",
+                                                                                              "Historically Disadvantaged Community",
+                                                                                              "Metro Regions")),
+                            "Safety-Demographics" = safety_data %>% filter(geography_type %in% c("Race",
+                                                                                                 "Age Group",
+                                                                                                 "Gender")),
+                            "Safety-Other" = safety_data %>% filter(geography_type %in% c("Mode",
+                                                                                          "Time of Day",
+                                                                                          "Day of Week",
+                                                                                          "Roadway Type")),
+                            "Growth" = pop_hsg_jobs,
+                            "Transit-Boardings" = transit_data,
+                            "Transit-Mode" = commute_data %>% filter(variable == "Transit"),
+                            "Walking" = commute_data %>% filter(variable %in% c("Walk", "Walked")),
+                            "Biking" = commute_data %>% filter(variable %in% c("Bike", "Bicycle")),
+                            "Time-Travel-Time" = commute_data %>% filter(metric %in% c("Mean Commute Time", "commute-times")),
+                            "Time-Departure-Time" = commute_data %>% filter(metric %in% c("departure-time", "Departure Time Bins"))
+                            )
