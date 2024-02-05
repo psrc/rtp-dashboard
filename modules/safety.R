@@ -48,27 +48,19 @@ safety_geography_server <- function(id) {
                                                                                    mutate(variable = gsub("Rate per 100k people", "Rate", variable)) |>
                                                                                    mutate(variable = factor(variable, levels = c("Total", "Rate"))),
                                                                                  x='data_year', y='estimate', fill='metric', tog = 'variable',
-                                                                                 esttype="number", color = "oranges", dec = 1)})
+                                                                                 esttype="number", color = psrc_colors$pognbgy_5[[2]], dec = 1)})
     
     output$region_fatal_collisions_chart <- renderEcharts4r({echart_line_chart(df=safety_data |> filter(geography == "Region" & geography_type == "Region" & metric == "Traffic Related Deaths") |> 
                                                                                  mutate(variable = gsub("Rate per 100k people", "Rate", variable)) |>
                                                                                  mutate(variable = factor(variable, levels = c("Total", "Rate"))),
                                                                                x='data_year', y='estimate', fill='metric', tog = 'variable',
-                                                                               esttype="number", color = "purples", dec = 1)})
+                                                                               esttype="number", color = psrc_colors$pognbgy_5[[1]], dec = 1)})
     
     output$geography_hdc_fatal_chart <- renderEcharts4r({echart_column_chart(df = safety_data |> 
                                                                                filter(geography_type == "Historically Disadvantaged Community" & variable == "Total" & metric == "Traffic Related Deaths" & grouping != "Other") |>
                                                                                mutate(metric=grouping),
                                                                              x='data_year', y='estimate', fill='metric', title='Traffic Related Deaths',
                                                                              dec = 0, esttype = 'number', color = psrc_colors$gnbopgy_5)})
-    
-    # output$geography_hdc_serious_chart <- renderEcharts4r({echart_column_chart_toggle(df = safety_data |> 
-    #                                                                                     filter(geography_type == "Historically Disadvantaged Community" & metric == "Serious Injury"& grouping != "Other") |>
-    #                                                                                     mutate(metric=grouping) |> 
-    #                                                                                     mutate(variable = gsub("Rate per 100k people", "Rate", variable)) |>
-    #                                                                                     mutate(variable = factor(variable, levels = c("Rate", "Total"))),
-    #                                                                                   x='data_year', y='estimate', fill='metric', tog="variable", title='Serious Injury',
-    #                                                                            dec = 0, esttype = 'number', color = psrc_colors$gnbopgy_5)})
     
     output$geography_hdc_serious_chart <- renderEcharts4r({echart_column_chart(df = safety_data |> 
                                                                              filter(geography_type == "Historically Disadvantaged Community" & variable == "Total" & metric == "Serious Injury"& grouping != "Other") |>

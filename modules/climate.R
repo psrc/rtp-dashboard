@@ -46,7 +46,7 @@ climate_zev_server <- function(id) {
                                                                                     filter(geography == "Region" & metric == "vehicle-registrations" & variable != "Plug-in Hybrid Electric Vehicle") |>
                                                                                     mutate(plot_date = paste0(lubridate::month(date),"-",lubridate::year(date))),
                                                                                   x='plot_date', y='share', fill='variable', tog = 'grouping',
-                                                                                  esttype="percent", color = "jewel", dec = 0)})
+                                                                                  esttype="percent", color = psrc_colors$pognbgy_5, dec = 0)})
     
     output$ev_tract_map <- renderLeaflet({create_share_map(lyr=ev_by_tract, title="ZEV Share", 
                                                            efa_lyr=efa_income, 
@@ -94,7 +94,7 @@ climate_vmt_server <- function(id) {
 
     output$chart_region_vmt <- renderEcharts4r({echart_line_chart(df=vmt_data |> filter(data_year >= 2000 & geography == "Region"),
                                                               x='data_year', y='estimate', fill='variable', tog = 'grouping',
-                                                              esttype="number", color = "jewel", dec = 0)})
+                                                              esttype="number", color = psrc_colors$pognbgy_5, dec = 0)})
     
     output$king_vmt_chart <- renderEcharts4r({echart_column_chart(df = vmt_data |> filter(data_year >= 2000 & geography == "King" & variable == "Observed"),
                                                                   x='data_year', y='estimate', fill='metric', title='King County',

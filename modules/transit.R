@@ -47,7 +47,7 @@ transit_metrics_server <- function(id) {
     output$chart_transit_boardings <- renderEcharts4r({echart_line_chart(df=transit_data |> 
                                                                            filter(grouping %in% c("Annual", "Forecast") & year>=base_year & geography == "Region" & variable == "All Transit Modes" & metric != "Revenue-Miles"),
                                                                          x='year', y='estimate', fill='grouping', tog = 'metric',
-                                                                         esttype="number", color = "jewel", dec = 0)})
+                                                                         esttype="number", color = psrc_colors$pognbgy_5, dec = 0)})
     
     output$chart_bus_ytd <- renderEcharts4r({echart_column_chart(df = transit_data |> 
                                                                    filter(year >= pre_covid & geography == "Region" & grouping == "YTD" & metric == "Boardings" & variable =="Bus") |>

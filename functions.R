@@ -351,65 +351,30 @@ create_roadway_map <- function(congestion_lyr, tod) {
   
 }
 
-# Line Charts -------------------------------------------------------------
-echart_line_chart <- function(df, x, y, fill, tog, dec, esttype, color, y_min=0) {
-  
-  if (color == "blues") {chart_color <- psrcplot::psrc_colors$pognbgy_5[[4]]}
-  if (color == "greens") {chart_color <- psrcplot::psrc_colors$pognbgy_5[[3]]}
-  if (color == "oranges") {chart_color <- psrcplot::psrc_colors$pognbgy_5[[2]]}
-  if (color == "purples") {chart_color <- psrcplot::psrc_colors$pognbgy_5[[1]]}
-  if (color == "jewel") {chart_color <- psrcplot::psrc_colors$pognbgy_5}
-  
-  # Determine the number of Series to Plot
-  bar_fill_values <- df %>% 
-    select(all_of(fill)) %>% 
-    dplyr::distinct() %>% 
-    dplyr::pull() %>% 
-    unique
-  
-  chart_fill <- as.character(bar_fill_values)
-  
-  top_padding <- 100
-  title_padding <- 75
-  bottom_padding <- 75
-  
-  # If the value is a percentage, round differently
-  ifelse(esttype == "percent", num_dec <- 4, num_dec <- dec)
-  
-  # Create the most basic chart
-  chart_df <- df %>%
-    dplyr::filter(.data[[fill]] %in% chart_fill) %>%
-    dplyr::mutate(!!y:= round(.data[[y]], num_dec)) %>%
-    dplyr::select(tidyselect::all_of(fill), tidyselect::all_of(x), tidyselect::all_of(y), tidyselect::all_of(tog)) %>%
-    tidyr::pivot_wider(names_from = tidyselect::all_of(fill), values_from = tidyselect::all_of(y))
-  
-  c <- chart_df %>%
-    dplyr::group_by(.data[[tog]]) %>%
-    echarts4r::e_charts_(x, timeline = TRUE) %>%
-    e_toolbox_feature("dataView") %>%
-    e_toolbox_feature("saveAsImage")
-  
-  for(fill_items in chart_fill) {
-    c <- c %>%
-      echarts4r::e_line_(fill_items, smooth = FALSE)
-  }
-  
-  c <- c %>% 
-    echarts4r::e_color(chart_color) %>%
-    echarts4r::e_grid(left = '15%', top = top_padding, bottom = bottom_padding) %>%
-    echarts4r::e_x_axis(axisTick=list(show = FALSE)) %>%
-    echarts4r::e_show_loading() %>%
-    echarts4r::e_legend(show = TRUE, bottom=0)
-  
-  # Add in the Timeseries Selector
-  c <- c %>%
+
+# echart helper Functions --------------------------------------------------------
+tooltip_js <- "
+      function(params, ticket, callback) {
+      var fmt = new Intl.NumberFormat('en',
+      {\"style\":\"percent\",\"minimumFractionDigits\":0,\"maximumFractionDigits\":0,\"currency\":\"USD\"});\n
+      var idx = 0;\n
+      if (params.name == params.value[0]) {\n
+      idx = 1;\n        }\n
+      return(params.seriesName + '<br>' + 
+      params.marker + ' ' +\n
+      params.name + ': ' + fmt.format(parseFloat(params.value[idx]))
+      )
+      }"
+
+timeline_opts <- function(e, right_toggle, left_toggle) {
+  e |>
     echarts4r::e_timeline_opts(autoPlay = FALSE,
                                tooltip = list(show=FALSE),
                                axis_type = "category",
                                top = 15,
-                               right = 200,
-                               left = 200,
-                               #currentIndex = 2,
+                               right = right_toggle,
+                               left = left_toggle,
+                               currentIndex = 0,
                                controlStyle=FALSE,
                                lineStyle=FALSE,
                                label = list(show=TRUE,
@@ -425,52 +390,85 @@ echart_line_chart <- function(df, x, y, fill, tog, dec, esttype, color, y_min=0)
                                emphasis = list(label = list(show=FALSE),
                                                itemStyle = list (color='#4C4C4C')))
   
-  # Format the Axis and Hover Text
-  if (esttype == "percent") {
-    c <- c %>%
-      echarts4r::e_y_axis(formatter = echarts4r::e_axis_formatter("percent", digits = dec)) %>%
-      echarts4r::e_tooltip(trigger = "item", formatter =  echarts4r::e_tooltip_item_formatter("percent", digits = 0)) %>%
-      echarts4r::e_tooltip(formatter =  htmlwidgets::JS("
-      function(params, ticket, callback) {
-      var fmt = new Intl.NumberFormat('en',
-      {\"style\":\"percent\",\"minimumFractionDigits\":1,\"maximumFractionDigits\":1,\"currency\":\"USD\"});\n
-      var idx = 0;\n
-      if (params.name == params.value[0]) {\n
-      idx = 1;\n        }\n
-      return(params.seriesName + '<br>' + 
-      params.marker + ' ' +\n
-      params.name + ': ' + fmt.format(parseFloat(params.value[idx]))
-      )
-      }")
-      )
+} 
+
+format_opts <- function(e, esttype, dec) {
+  if(esttype == "number") {
+    e <- e |> echarts4r::e_tooltip(trigger = "item")
     
-  } # end of percent format
-  
-  if (esttype == "currency") {
-    c <- c %>%
-      echarts4r::e_y_axis(formatter = echarts4r::e_axis_formatter(style="currency", digits = dec, currency = "USD")) %>%
-      echarts4r::e_tooltip(trigger = "item", formatter =  echarts4r::e_tooltip_item_formatter(style="currency", digits = 0, currency = "USD")) %>%
-      echarts4r::e_tooltip(formatter =  htmlwidgets::JS("
-      function(params, ticket, callback) {
-      var fmt = new Intl.NumberFormat('en',
-      {\"style\":\"currency\",\"minimumFractionDigits\":0,\"maximumFractionDigits\":0,\"currency\":\"USD\"});\n
-      var idx = 0;\n
-      if (params.name == params.value[0]) {\n
-      idx = 1;\n        }\n
-      return('<strong>' + params.seriesName '<br>' + 
-      params.marker + ' ' +\n
-      params.name + ': ' + fmt.format(parseFloat(params.value[idx]))
-      )
-      }")
-      )
+  } else {
     
-  } # end of currency format
+    if(esttype == "currency") {
+      curr <- "USD"
+    } else {
+      curr <- NULL
+    }
+    
+    e <- e |>
+      echarts4r::e_y_axis(formatter = echarts4r::e_axis_formatter(esttype, digits = dec)) |>
+      echarts4r::e_tooltip(trigger = "item",
+                           formatter =  echarts4r::e_tooltip_item_formatter(style = esttype, digits = 0, currency = curr)) |>
+      echarts4r::e_tooltip(formatter =  htmlwidgets::JS(tooltip_js))
+  }
+  return(e)
+}
+
+e_basics <- function(e, top_padding, bottom_padding, legend) {
+  e <- e |>
+    echarts4r::e_grid(left = '15%', top = top_padding, bottom = bottom_padding) |>
+    echarts4r::e_x_axis(axisTick=list(show = FALSE)) |>
+    echarts4r::e_show_loading()
   
-  if (esttype == "number") {
-    c <- c %>%
-      echarts4r::e_tooltip(trigger = "item")
+  if(legend == TRUE) {
+    e <- e |> 
+      echarts4r::e_legend(show = TRUE, bottom=0)
+  } else {
+    e <- e |> 
+      echarts4r::e_legend(show = FALSE)
   }
   
+  return(e)
+}
+
+# echart chart functions --------------------------------------------------
+echart_line_chart <- function(df, x, y, fill, esttype, color, tog=NULL, dec=0, y_min=0, top_padding=100, title_padding=75, bottom_padding=75, legend=TRUE, right_toggle = 200, left_toggle = 200) {
+  
+  # If tog is set to NULL (no timeline is needed to toggle data) then set tog = fill so that base functions work
+  ifelse(is.null(tog), toggle <- fill, toggle <- tog)
+  
+  # Determine the number of Series to Plot
+  chart_fill <- df |> select(all_of(fill)) |> distinct() |> pull() |> unique() |> as.character()
+  
+  # If the value is a percentage, round differently
+  ifelse(esttype == "percent", num_dec <- 4, num_dec <- dec)
+  
+  # Format the tibble so that each series is in its own column - necessary to assigning colors in echarts via a palette
+  chart_df <- df |>
+    filter(.data[[fill]] %in% chart_fill) |>
+    mutate(!!y:= round(.data[[y]], num_dec)) |>
+    select(all_of(fill), all_of(x), all_of(y), all_of(toggle)) |>
+    pivot_wider(names_from = all_of(fill), values_from = all_of(y))
+  
+  # Create a basic chart 
+  c <- chart_df |>
+    group_by(.data[[toggle]]) |>
+    e_charts_(x, timeline = TRUE) |>
+    e_toolbox_feature("dataView") |>
+    e_toolbox_feature("saveAsImage")
+  
+  # Add in a series for each line to plot
+  for(fill_items in chart_fill) {
+    c <- c |> e_line_(fill_items, smooth = FALSE)
+  }
+  
+  # Set series colors and set the basics for padding and leged
+  c <- c |> e_color(color) |> e_basics(top_padding, bottom_padding, legend = legend)
+  
+  # Add in the Timeseries Selector
+  c <- timeline_opts(c, right_toggle, left_toggle)
+  
+  # Format the Axis and Hover Text
+  c <- format_opts(c, esttype, dec)
   c <- c |> echarts4r::e_y_axis(min=y_min)
   
   return(c)

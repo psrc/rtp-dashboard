@@ -47,12 +47,12 @@ growth_server <- function(id) {
     # Charts
     output$chart_region_growth <- renderEcharts4r({echart_line_chart(df=pop_hsg_jobs |> filter(grouping=="Total" & year>=base_year),
                                                                      x='year', y='estimate', fill='variable', tog = 'metric',
-                                                                     esttype="number", color = "jewel", dec = 0)})
+                                                                     esttype="number", color = psrc_colors$pognbgy_5, dec = 0)})
     
     
     output$chart_hct_growth <- renderEcharts4r({echart_line_chart(df=pop_hsg_jobs |> filter(grouping=="Change" & year>=base_year),
                                                                   x='year', y='share', fill='geography', tog = 'metric',
-                                                                  esttype="percent", color = "jewel", dec = 0)})
+                                                                  esttype="percent", color = psrc_colors$pognbgy_5, dec = 0)})
     
     # Tab layout
     output$growthtab <- renderUI({
