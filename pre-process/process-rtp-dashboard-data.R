@@ -4,13 +4,13 @@ library(sf)
 library(here)
 
 wgs84 <- 4326
-current_year <- "2023"
+current_year <- "2024"
 pre_covid <- 2019
 metros <- c("Portland", "Bay Area", "San Diego", "Denver", "Atlanta","Washington DC", "Boston", "Miami" ,"Phoenix", "Austin", "Dallas")
 
 rtp_network_url <- "X:/DSA/rtp-dashboard/"
 rtp_local_url <- "C:/coding/"
-rtp_dashboard_url <- "C:/coding/rtp-dashboard/data/"
+rtp_dashboard_url <- "C:/Users/GGibson/GitHub/PSRC/rtp-dashboard/data/"
 
 # NTD Transit Data --------------------------------------------------------
 transit_data <- process_ntd_data()

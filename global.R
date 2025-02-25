@@ -35,16 +35,16 @@ page_text <- read_csv("data/page_text.csv", show_col_types = FALSE)
 # Inputs ---------------------------------------------------------------
 base_year <- "2005"
 pre_covid <- "2019"
-current_population_year <- "2022"
-current_jobs_year <- "2022"
-current_census_year <- "2022"
-current_pums_year <- "2022"
+current_population_year <- "2024"
+current_jobs_year <- "2023"
+current_census_year <- "2023"
+current_pums_year <- "2023"
 current_fars_year <- "2021"
 current_vmt_year <- 2021
 
 wgs84 <- 4326
 
-yr_ord <- c("2023", "2022", "2021", "2020", "2019", "2018", "2017", "2016", "2015", "2014", "2013", "2012", "2011", "2010")
+yr_ord <- c("2024", "2023", "2022", "2021", "2020", "2019", "2018", "2017", "2016", "2015", "2014", "2013", "2012", "2011", "2010")
 county_ord <- c("King\nCounty", "Kitsap\nCounty", "Pierce\nCounty", "Snohomish\nCounty", "Region")
 county_short_ord <- c("King", "Kitsap", "Pierce", "Snohomish", "Region")
 tod_ord <- c("Early\nMorning", "AM Peak", "Late\nMorning", "Afternoon", "Evening", "Overnight")

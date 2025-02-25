@@ -4,10 +4,10 @@ Vehicle Registrations: Census Tracts,Climate,Washington State Department of Lice
 Daily Vehicle Miles Traveled: Region,Climate,Washington State Department of Transportation Highway Performance Monitoring Section and PSRC SoundCast Activity Based Model,2000 - 2050
 Daily Vehicle Miles Traveled: County,Climate,Washington State Department of Transportation Highway Performance Monitoring Section and PSRC SoundCast Activity Based Model,2000 - 2022
 Annual Vehicle Kilometers Traveled,Climate,https://intlcomparisons.org/printable-transportation/ and PSRC SoundCast Activity Based Model,2018
-Work from Home: County,Climate,"ACS 5yr Data Table B08301 for King, Kitsap, Pierce and Snohomish counties","2011, 2016, 2021"
-Work from Home: Race and Ethnicity,Climate,"US Census Bureau 5-yr PUMS Variable JWTRNS for King, Kitsap, Pierce and Snohomish counties",2021
-Work from Home: Metro Areas,Climate,ACS 5yr Data Table B08301 by county in each metro region,"2011, 2016, 2021"
-Work from Home: City,Climate,"ACS 5yr Data Table B08301 by place in King, Kitsap, Pierce and Snohomish counties.",2021
+Work from Home: County,Climate,"ACS 5yr Data Table B08301 for King, Kitsap, Pierce and Snohomish counties","2013, 2018, 2023"
+Work from Home: Race and Ethnicity,Climate,"US Census Bureau 5-yr PUMS Variable JWTRNS for King, Kitsap, Pierce and Snohomish counties",2023
+Work from Home: Metro Areas,Climate,ACS 5yr Data Table B08301 by county in each metro region,"2013, 2018, 2023"
+Work from Home: City,Climate,"ACS 5yr Data Table B08301 by place in King, Kitsap, Pierce and Snohomish counties.",2023
 Traffic Related Deaths and Serious Injuries: Region,Safety,"Washington Traffic Safety Commission Coded Fatality Files (2022 Preliminary), WSDOT, Crash Data Division, Multi-Row data files (MRFF)",2010 - 2022
 Traffic Related Deaths and Serious Injuries: Historically Disadvantaged Communities,Safety,"Washington Traffic Safety Commission Coded Fatality Files (2022 Preliminary), WSDOT, Crash Data Division, Multi-Row data files (MRFF)",2010 - 2022
 Traffic Related Deaths and Serious Injuries: County,Safety,"Washington Traffic Safety Commission Coded Fatality Files (2022 Preliminary), WSDOT, Crash Data Division, Multi-Row data files (MRFF)",2010 - 2022
@@ -20,26 +20,26 @@ Traffic Related Deaths and Serious Injuries: Roadway Type,Safety,"Washington Tra
 Traffic Related Deaths and Serious Injuries: Time of Day,Safety,"Washington Traffic Safety Commission Coded Fatality Files (2022 Preliminary), WSDOT, Crash Data Division, Multi-Row data files (MRFF)",2022
 Traffic Related Deaths and Serious Injuries: Day of Week,Safety,"Washington Traffic Safety Commission Coded Fatality Files (2022 Preliminary), WSDOT, Crash Data Division, Multi-Row data files (MRFF)",2022
 "Population, Housing Units and Jobs: Region",Growth,"OFM April 1 Official Estimates for King, Kitsap, Pierce & Snohomish counties and VISION 2050 Regional Growth Strategy",2005-2050
-"Population, Housing Units and Jobs: Near High Capacity Transit",Growth,"Office of Financial Management SAEP Program, PSRC Parcelization and Washington State Employment Securities Division QCEW",2010-2022
+"Population, Housing Units and Jobs: Near High Capacity Transit",Growth,"Office of Financial Management SAEP Program, PSRC Parcelization and Washington State Employment Securities Division QCEW",2010-2023/2024
 Annual Transit Boarding & Revenue-Hours: Region,Transit,FTA National Transit Database and PSRC SoundCast Activity Based Model,2005-2050
-Year to Date Transit Boardings: Mode,Transit,FTA National Transit Database ,2019-2023
-Transit Boardings: Metropolitan Regions,Transit,FTA National Transit Database ,"2019, 2023"
-Transit Mode to Work: County,Transit,"ACS 5yr Data Table B08301 for King, Kitsap, Pierce and Snohomish counties","2011, 2016, 2021"
-Transit Mode to Work: Race and Ethnicity,Transit,"US Census Bureau 5-yr PUMS Variable JWTRNS for King, Kitsap, Pierce and Snohomish counties",2021
-Transit Mode to Work: Metro Areas,Transit,ACS 5yr Data Table B08301 by county in each metro region,"2011, 2016, 2021"
-Transit Mode to Work: City,Transit,"ACS 5yr Data Table B08301 by place in King, Kitsap, Pierce and Snohomish counties.",2021
-Walk to Work: County,Walk & Bike,"ACS 5yr Data Table B08301 for King, Kitsap, Pierce and Snohomish counties","2011, 2016, 2021"
-Walk to Work: Race and Ethnicity,Walk & Bike,"US Census Bureau 5-yr PUMS Variable JWTRNS for King, Kitsap, Pierce and Snohomish counties",2021
-Walk to Work: Metro Areas,Walk & Bike,ACS 5yr Data Table B08301 by county in each metro region,"2011, 2016, 2021"
-Walk to Work: City,Walk & Bike,"ACS 5yr Data Table B08301 by place in King, Kitsap, Pierce and Snohomish counties.",2021
-Bike to Work: County,Walk & Bike,"ACS 5yr Data Table B08301 for King, Kitsap, Pierce and Snohomish counties","2011, 2016, 2021"
-Bike to Work: Race and Ethnicity,Walk & Bike,"US Census Bureau 5-yr PUMS Variable JWTRNS for King, Kitsap, Pierce and Snohomish counties",2021
-Bike to Work: Metro Areas,Walk & Bike,ACS 5yr Data Table B08301 by county in each metro region,"2011, 2016, 2021"
-Bike to Work: City,Walk & Bike,"ACS 5yr Data Table B08301 by place in King, Kitsap, Pierce and Snohomish counties.",2021
-Mean Travel Time to Work: County,Travel Time,"US Census Bureau 5-yr PUMS Variable JWMNP for King, Kitsap, Pierce and Snohomish counties","2011, 2016, 2021"
-Mean Travel Time to Work: Race and Ethnicity,Travel Time,"US Census Bureau 5-yr PUMS Variable JWMNP for King, Kitsap, Pierce and Snohomish counties",2021
-Hour or more Commute: Metro Areas,Travel Time,ACS 5yr Data Table B08303 by county in each metro region,"2011, 2016, 2021"
-Departure Time to Work: Region,Travel Time,"ACS 5yr Data Table B08011 for King, Kitsap, Pierce and Snohomish counties","2011, 2016, 2021"
-Departure Time to Work: County,Travel Time,"ACS 5yr Data Table B08011 for King, Kitsap, Pierce and Snohomish counties",2021
-Departure Time to Work: Race and Ethnicity,Travel Time,"US Census Bureau 5-yr PUMS Variable JWDP for King, Kitsap, Pierce and Snohomish counties",2021
-Departure Time to Work: Metro Areas,Travel Time,ACS 5yr Data Table B08011 by county in each metro region,2021
+Year to Date Transit Boardings: Mode,Transit,FTA National Transit Database ,2019-2024
+Transit Boardings: Metropolitan Regions,Transit,FTA National Transit Database ,"2019, 2024"
+Transit Mode to Work: County,Transit,"ACS 5yr Data Table B08301 for King, Kitsap, Pierce and Snohomish counties","2013, 2018, 2023"
+Transit Mode to Work: Race and Ethnicity,Transit,"US Census Bureau 5-yr PUMS Variable JWTRNS for King, Kitsap, Pierce and Snohomish counties",2023
+Transit Mode to Work: Metro Areas,Transit,ACS 5yr Data Table B08301 by county in each metro region,"2013, 2018, 2023"
+Transit Mode to Work: City,Transit,"ACS 5yr Data Table B08301 by place in King, Kitsap, Pierce and Snohomish counties.",2023
+Walk to Work: County,Walk & Bike,"ACS 5yr Data Table B08301 for King, Kitsap, Pierce and Snohomish counties","2013, 2018, 2023"
+Walk to Work: Race and Ethnicity,Walk & Bike,"US Census Bureau 5-yr PUMS Variable JWTRNS for King, Kitsap, Pierce and Snohomish counties",2023
+Walk to Work: Metro Areas,Walk & Bike,ACS 5yr Data Table B08301 by county in each metro region,"2013, 2018, 2023"
+Walk to Work: City,Walk & Bike,"ACS 5yr Data Table B08301 by place in King, Kitsap, Pierce and Snohomish counties.",2023
+Bike to Work: County,Walk & Bike,"ACS 5yr Data Table B08301 for King, Kitsap, Pierce and Snohomish counties","2013, 2018, 2023"
+Bike to Work: Race and Ethnicity,Walk & Bike,"US Census Bureau 5-yr PUMS Variable JWTRNS for King, Kitsap, Pierce and Snohomish counties",2023
+Bike to Work: Metro Areas,Walk & Bike,ACS 5yr Data Table B08301 by county in each metro region,"2013, 2018, 2023"
+Bike to Work: City,Walk & Bike,"ACS 5yr Data Table B08301 by place in King, Kitsap, Pierce and Snohomish counties.",2023
+Mean Travel Time to Work: County,Travel Time,"US Census Bureau 5-yr PUMS Variable JWMNP for King, Kitsap, Pierce and Snohomish counties","2013, 2018, 2023"
+Mean Travel Time to Work: Race and Ethnicity,Travel Time,"US Census Bureau 5-yr PUMS Variable JWMNP for King, Kitsap, Pierce and Snohomish counties",2023
+Hour or more Commute: Metro Areas,Travel Time,ACS 5yr Data Table B08303 by county in each metro region,"2013, 2018, 2023"
+Departure Time to Work: Region,Travel Time,"ACS 5yr Data Table B08011 for King, Kitsap, Pierce and Snohomish counties","2013, 2018, 2023"
+Departure Time to Work: County,Travel Time,"ACS 5yr Data Table B08011 for King, Kitsap, Pierce and Snohomish counties",2023
+Departure Time to Work: Race and Ethnicity,Travel Time,"US Census Bureau 5-yr PUMS Variable JWDP for King, Kitsap, Pierce and Snohomish counties",2023
+Departure Time to Work: Metro Areas,Travel Time,ACS 5yr Data Table B08011 by county in each metro region,2023
