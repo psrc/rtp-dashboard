@@ -86,7 +86,7 @@ tip_currency_cols <- c("Total Project Cost", "Federal Funding", "State Funding",
 # Data via RDS files ------------------------------------------------------
 safety_data <- readRDS("data/collision_data.rds") |> mutate(data_year = as.character(lubridate::year(date)))
 commute_data <- readRDS("data/commute_data.rds")
-climate_data <- readRDS("data/vehicle_data.rds")
+climate_data <- readRDS("data/vehicle_data.rds") |> drop_na() |> filter(variable != "Not Applicable")
 ev_by_tract <- readRDS("data/ev_registration_by_tract.rds")
 vmt_data <- readRDS("data/vmt.rds")
 vkt_data <- readRDS("data/vkt.rds")

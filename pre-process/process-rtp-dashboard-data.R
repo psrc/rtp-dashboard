@@ -9,8 +9,8 @@ pre_covid <- 2019
 metros <- c("Portland", "Bay Area", "San Diego", "Denver", "Atlanta","Washington DC", "Boston", "Miami" ,"Phoenix", "Austin", "Dallas")
 
 rtp_network_url <- "X:/DSA/rtp-dashboard/"
-rtp_local_url <- "C:/coding/"
-rtp_dashboard_url <- "C:/Users/GGibson/GitHub/PSRC/rtp-dashboard/data/"
+rtp_local_url <- "C:/Users/chelmann/OneDrive - Puget Sound Regional Council/coding"
+rtp_dashboard_url <- "C:/Users/chelmann/OneDrive - Puget Sound Regional Council/coding/rtp-dashboard/data"
 
 # NTD Transit Data --------------------------------------------------------
 transit_data <- process_ntd_data()
