@@ -1,8 +1,8 @@
 ﻿Data Point,Subject,Source,Dates
-Vehicle Registrations: Region,Climate,Washington State Department of Licensing via the Washington State Open Data Portal: https://data.wa.gov/Transportation/Title-Transactions-by-Month/u4cd-bc3x,January 2017 - September 2023
-Vehicle Registrations: Census Tracts,Climate,Washington State Department of Licensing via the Washington State Open Data Portal: https://data.wa.gov/Transportation/Title-Transactions-by-Month/u4cd-bc3x,January 2023 - September 2023
+Vehicle Registrations: Region,Climate,Washington State Department of Licensing via the Washington State Open Data Portal: https://data.wa.gov/Transportation/Title-Transactions-by-Month/u4cd-bc3x,January 2017 - January 2025
+Vehicle Registrations: Census Tracts,Climate,Washington State Department of Licensing via the Washington State Open Data Portal: https://data.wa.gov/Transportation/Title-Transactions-by-Month/u4cd-bc3x,January 2017 - January 2025
 Daily Vehicle Miles Traveled: Region,Climate,Washington State Department of Transportation Highway Performance Monitoring Section and PSRC SoundCast Activity Based Model,2000 - 2050
-Daily Vehicle Miles Traveled: County,Climate,Washington State Department of Transportation Highway Performance Monitoring Section and PSRC SoundCast Activity Based Model,2000 - 2022
+Daily Vehicle Miles Traveled: County,Climate,Washington State Department of Transportation Highway Performance Monitoring Section and PSRC SoundCast Activity Based Model,2000 - 2023
 Annual Vehicle Kilometers Traveled,Climate,https://intlcomparisons.org/printable-transportation/ and PSRC SoundCast Activity Based Model,2018
 Work from Home: County,Climate,"ACS 5yr Data Table B08301 for King, Kitsap, Pierce and Snohomish counties","2013, 2018, 2023"
 Work from Home: Race and Ethnicity,Climate,"US Census Bureau 5-yr PUMS Variable JWTRNS for King, Kitsap, Pierce and Snohomish counties",2023
