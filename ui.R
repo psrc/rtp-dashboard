@@ -22,7 +22,7 @@ shinyUI(
                            .navbar {min-height:25px !important;}'))
              ),
     
-    windowTitle = "RTP Dashboard - Development Version", 
+    windowTitle = "PSRC Regional Transportation Plan Dashboard", 
     theme = "styles.css",
     position = "fixed-top",
              
