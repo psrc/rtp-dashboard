@@ -2,9 +2,76 @@
 
 footer_ui <- function(id) {
   ns <- NS(id)
-  
+
   tagList( 
-    uiOutput(ns('afooter'))
+    
+    card(
+      
+      layout_columns(
+        col_widths = c(2,7,3),
+        
+        card_body(tags$img(src='footer-logo.png', style="margin-top: 0x; padding-left: 0px; padding-right: 0px;", class = "responsive-image", alt = "PSRC logo"), class = "footer_panel"),
+        
+        card_body(
+          tags$div(class = "footer_heading", HTML(paste0("About PSRC<br>", tags$div(class = "footer_about", psrc_mission)))),
+        ),
+        
+        card_body(
+          tags$div(class = "footer_heading", HTML(
+            paste0(
+              "Connect with PSRC<br>", 
+              tags$div(
+                class = "psrc-location", 
+                style = "display: flex; align-items: top;",
+                icon("location-dot", class = "m-connect-loc"), 
+                div(
+                  div("1201 Third Avenue, Suite 500"), 
+                  "Seattle, WA 98101-3055")
+                ),
+              tags$div(class = "psrc-phone", 
+                       style = "display: flex; align-items: center;", 
+                       icon("phone-volume", class = "m-connect"), 
+                       "206-464-7090"
+                       ),
+              tags$a(class = "psrc_email",
+                     icon("envelope", class = "m-connect"), 
+                     href = paste0("mailto:","info@psrc.org","?"), 
+                     "info@psrc.org")
+              ))),
+        ),
+      ),
+      
+      card_footer(
+        layout_columns(
+          col_widths = c(9,3),
+          card_body(div(
+            a(class = "footer_url", 
+              href="https://www.facebook.com/PugetSoundRegionalCouncil", 
+              icon("facebook", class = "soc-connect"),
+              span("Link to PSRC's Facebook page", class = "sr-only"), 
+              target="_blank"),
+            a(class = "footer_url", 
+              href="https://twitter.com/SoundRegion", 
+              icon("x-twitter", class = "soc-connect"),
+              span("Link to PSRC's Twitter feed", class = "sr-only"),
+              target="_blank"),
+            a(class = "footer_url", 
+              href="https://www.instagram.com/soundregion/", 
+              icon("instagram", class = "soc-connect"), 
+              span("Link to PSRC's Instagram feed", class = "sr-only"),
+              target="_blank"),
+            a(class = "footer_url", 
+              href="https://www.linkedin.com/company/soundregion", 
+              icon("linkedin", class = "soc-connect"), 
+              span("Link to PSRC's LinkedIn feed", class = "sr-only"),
+              target="_blank")
+          )),
+          
+          tags$div(class = "footer_about", "Dashboard by", tags$div(class = "footer_url", "PSRC Data Science")),
+        ),
+        class = "footer_footer"),
+      class = "footer_panel"
+    )
   )
   
 }
@@ -13,45 +80,6 @@ footer_server <- function(id) {
   
   moduleServer(id, function(input, output, session) { 
     ns <- session$ns
-    
-    output$afooter <- renderUI({
-      mission <- "Our mission is to advance solutions to achieve a thriving, racially equitable, 
-      and sustainable central Puget Sound region through leadership, visionary planning, and collaboration."
-      
-      region_tag <- HTML("<br/>We rely on your input to keep the Puget Sound region healthy and vibrant as it grows.")
-      
-      bs4Jumbotron(
-        
-        title =  strong(div(class="footer_title",
-                            
-                            fluidRow(column(1, div(img(src = "footer-logo.png", width = "100%", height = "100%"))),
-                                     column(11, region_tag)),
-                            hr(),
-                            fluidRow(column(5, "Our Mission"),
-                                     column(7, HTML("&emsp;Our Values")))
-        )),
-        lead = div(class="footer_mission",  
-                   fluidRow(column(5, mission),
-                            column(7, HTML("&emsp;Lead with <b>Racial Equity</b> &emsp;&emsp;&emsp; Pursue <b>Excellence</b><br/>
-                                           &emsp;Act with <b>Professionalism</b> &emsp;&emsp; Serve as <b>Stewards</b><br/>
-                                           &emsp;Foster <b>Collaboration</b> &emsp;&emsp;&emsp;&emsp; Cultivate a <b>Fulfilling Workplace</b>")),
-                            
-                   ),
-                   hr(),
-        ),
-        
-        strong(a(class = "footer_title", "Connect with PSRC: ")),
-        a(class = "footer_url", href="https://www.facebook.com/PugetSoundRegionalCouncil", icon("facebook"), target="_blank"),
-        a(class = "footer_url", href="https://twitter.com/SoundRegion", icon("twitter"), target="_blank"),
-        a(class = "footer_url", href="https://www.instagram.com/soundregion/", icon("instagram"), target="_blank"),
-        a(class = "footer_url", href="https://www.linkedin.com/company/soundregion", icon("linkedin"), target="_blank"),
-        a(class = "footer_url", href="mailto:info@psrc.org?", icon("envelope")),
-        
-        status = "info",
-        btnName = NULL
-      )
-      
-    })
     
   }) # end moduleServer
   

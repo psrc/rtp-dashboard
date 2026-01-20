@@ -2,16 +2,26 @@
 
 # Packages for Interactive Web application
 library(shiny)
-library(shinydashboard)
-library(bs4Dash)
+library(bslib)
+#library(shinydashboard)
+#library(bs4Dash)
 library(shinycssloaders)
 
 # Packages for Data Cleaning/Processing
-library(tidyverse)
+library(dplyr)
+library(readr)
+library(purrr)
+library(lubridate)
+library(stringr)
+library(tidyr)
 
 # Packages for Chart Creation
-library(psrcplot)
-library(echarts4r)
+library(ggplot2)
+library(plotly)
+library(scales)
+library(htmlwidgets)
+#library(psrcplot)
+#library(echarts4r)
 
 # Packages for Map Creation
 library(sf)
@@ -130,3 +140,21 @@ download_table_list <- list("Sources" = source_info,
                             "Time-Travel-Time" = commute_data %>% filter(metric %in% c("Mean Commute Time", "commute-times")),
                             "Time-Departure-Time" = commute_data %>% filter(metric %in% c("departure-time", "Departure Time Bins"))
                             )
+
+transit_links <- c("Community Transit" = "https://www.communitytransit.org/",
+                   "Everett Transit" = "https://everetttransit.org/",
+                   "King County Metro" = "https://kingcounty.gov/en/dept/metro",
+                   "Kitsap Transit" = "https://www.kitsaptransit.com/",
+                   "Pierce Transit" = "https://www.piercetransit.org/",
+                   "Pierce County Ferry" = "https://www.piercecountywa.gov/1793/Ferry",
+                   "Sound Transit" = "https://www.soundtransit.org/",
+                   "Washington State Ferries" = "https://wsdot.wa.gov/travel/washington-state-ferries",
+                   "Transit Planning at PSRC" = "https://www.psrc.org/our-work/transit"
+)
+
+links_withtags <- withTags(
+  map2(transit_links[1:8], names(transit_links)[1:8], 
+       ~div(class = "links-container", tags$a(class = "links", href = .x, .y, tabindex="0", target = "_blank")))
+)
+
+psrc_mission <- "Our mission is to advance solutions to achieve a thriving, racially equitable, and sustainable central Puget Sound region through leadership, visionary planning, and collaboration."
