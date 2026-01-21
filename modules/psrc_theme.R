@@ -277,5 +277,10 @@ psrc_theme <- bs_theme(bg = "white",
                        font-weight: 200 !important;
                        }
                        
+                       .page_goals {
+                       font-size: 18pt;
+                       color: #F05A28;
+                       }
+                       
 
                        ")

@@ -113,5 +113,14 @@ shinyServer(function(input, output) {
   overview_server('OVERVIEW')
   output$howto_text <- renderUI({HTML(page_information(tbl=page_text, page_name="Overview", page_section = "Overview-HowTo", page_info = "description"))})
   
+  # Climate Page -----------------------------------------------------------
+  
+  #climate_server('OVERVIEW')
+  output$climate_overview <- renderUI({HTML(page_information(tbl=page_text, page_name="Climate", page_section = "Overview", page_info = "description"))})
+  output$climate_registrations_region <- renderUI({HTML(page_information(tbl=page_text, page_name="Climate", page_section = "RegistrationsRegion", page_info = "description"))})
+  value_box_registrations_server('REGIONregistrationvaluebox', df=region_registrations)
+  
+  
+  
 }) # end of shinyServer function 
 

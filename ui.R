@@ -167,7 +167,7 @@ shinyUI(
       });
     ")),
       
-      position = c("static-top"),
+      navbar_options = navbar_options(position = c("static-top")),
       
       title = tags$a(div(tags$img(src='psrc-logo.png', style="margin-top: 10px; padding-left: 20px; padding-right: 30px;", height = "65", alt = "Link to PSRC Homepage")), href="https://www.psrc.org", target="_blank"),
       fillable = FALSE,
@@ -179,21 +179,35 @@ shinyUI(
                 h2("What is in this dashboard?"),
                 htmlOutput("howto_text")),
       
-      # nav_panel("Region", 
-      #           card_body(
-      #             selectizeInput(
-      #               "RegionMetric",
-      #               label = "Select a Transit Metric:",
-      #               choices = ntd_metric_list,
-      #               selected = "Boardings",
-      #               options = list(dropdownParent = 'body')
-      #             ),
-      #             class = "selection_panel"
-      #           ),
+      nav_panel("Climate", 
+                
+                tags$div(class="page_goals", "Goal: 80% below 1990 GHG Emissions by 2050"),
+                htmlOutput("climate_overview"),
+      
+                hr(style = "border-top: 1px solid #000000;"),
+                
+                card_body(
+                  h1("Zero Emission Vehicles"),
+                  class = "selection_panel"
+                  ),
+                
+                br(),
+                
+                htmlOutput("climate_registrations_region"),
+                
+                br(),br(),
+                
+                withSpinner(value_box_registrations_ui('REGIONregistrationvaluebox'), color=load_clr, size = 1.5, caption = "Please wait, updating data"),
+
+                hr(style = "border-top: 1px solid #000000;"),
+                h2("Vehicle Registrations in the PSRC Region"),
+                
+              
+                hr(style = "border-top: 1px solid #000000;"),
+              
+      ),
+      
       #           
-      #           hr(style = "border-top: 1px solid #000000;"),
-      #           h1("Regionwide Transit Summary"),
-      #           withSpinner(value_box_ntd_ui('REGIONvaluebox'), color=load_clr, size = 1.5, caption = "Please wait, updating data"),
       #           hr(style = "border-top: 1px solid #000000;"),
       #           h2("Regionwide Transit Trends"),
       #           bar_chart_ui('REGIONbarchart'),

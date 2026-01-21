@@ -51,6 +51,7 @@ current_census_year <- "2023"
 current_pums_year <- "2023"
 current_fars_year <- "2021"
 current_vmt_year <- 2021
+current_registration_year <- "2025"
 
 wgs84 <- 4326
 
@@ -158,3 +159,24 @@ links_withtags <- withTags(
 )
 
 psrc_mission <- "Our mission is to advance solutions to achieve a thriving, racially equitable, and sustainable central Puget Sound region through leadership, visionary planning, and collaboration."
+
+# Vehicle Registration Summary Data ---------------------------------------
+region_type <- climate_data |>
+  filter(geography_type == "Region" & metric == "vehicle-registrations") |>
+  group_by(year, variable) |>
+  summarise(estimate = sum(estimate)) |>
+  as_tibble()
+
+region_total <- climate_data |>
+  filter(geography_type == "Region" & metric == "vehicle-registrations") |>
+  group_by(year) |>
+  summarise(total = sum(estimate)) |>
+  as_tibble()
+
+region_registrations <- left_join(region_type, region_total, by = c("year")) |>
+  mutate(share = estimate / total) |>
+  filter(year == current_registration_year)
+
+rm(region_type, region_total)
+
+
