@@ -36,7 +36,6 @@ library(openxlsx)
 # Run Modules Files ---------------------------------------------------------------------------
 module_files <- list.files('modules', full.names = TRUE)
 sapply(module_files, source)
-source("functions.R")
 
 # Page Information --------------------------------------------------------
 left_panel_info <- read_csv("data/left_panel_information.csv", show_col_types = FALSE)
@@ -178,5 +177,3 @@ region_registrations <- left_join(region_type, region_total, by = c("year")) |>
   filter(year == current_registration_year)
 
 rm(region_type, region_total)
-
-

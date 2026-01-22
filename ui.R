@@ -198,24 +198,15 @@ shinyUI(
                 br(),br(),
                 
                 withSpinner(value_box_registrations_ui('REGIONregistrationvaluebox'), color=load_clr, size = 1.5, caption = "Please wait, updating data"),
-
                 hr(style = "border-top: 1px solid #000000;"),
-                h2("Vehicle Registrations in the PSRC Region"),
                 
-              
+                h2("Vehicle Registrations in the PSRC Region"),
+                line_chart_ui('REGISTRATIONSlinechart'),
                 hr(style = "border-top: 1px solid #000000;"),
               
       ),
       
-      #           
-      #           hr(style = "border-top: 1px solid #000000;"),
-      #           h2("Regionwide Transit Trends"),
-      #           bar_chart_ui('REGIONbarchart'),
-      #           hr(style = "border-top: 1px solid #000000;"),
-      #           card_body(h3("Insights & Analysis"), htmlOutput("region_insights_text"), class = "insights_panel"),
-      #           hr(style = "border-top: 1px solid #000000;")
-      # ),
-      # 
+
       # nav_panel("Mode", 
       #           card_body(
       #             selectizeInput(

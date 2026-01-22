@@ -119,8 +119,7 @@ shinyServer(function(input, output) {
   output$climate_overview <- renderUI({HTML(page_information(tbl=page_text, page_name="Climate", page_section = "Overview", page_info = "description"))})
   output$climate_registrations_region <- renderUI({HTML(page_information(tbl=page_text, page_name="Climate", page_section = "RegistrationsRegion", page_info = "description"))})
   value_box_registrations_server('REGIONregistrationvaluebox', df=region_registrations)
-  
-  
-  
-}) # end of shinyServer function 
+  line_chart_server('REGISTRATIONSlinechart', df=climate_data, m="vehicle-registrations", v=c("Battery Electric Vehicle", "Hybrid Electric Vehicle", "Internal Combustion Engine", "Plug-in Hybrid Electric Vehicle"), g="Region", color = c("#8CC63E", "#F05A28", "#91268F", "#00A7A0"), d = "yes")
 
+})  
+  
