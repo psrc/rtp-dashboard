@@ -12,6 +12,36 @@ rtp_network_url <- "X:/DSA/rtp-dashboard/"
 rtp_local_url <- "C:/Users/chelmann/OneDrive - Puget Sound Regional Council/coding"
 rtp_dashboard_url <- "C:/Users/chelmann/OneDrive - Puget Sound Regional Council/coding/rtp-dashboard/data"
 
+# Vehicle Registrations ------------------------------------------------------------
+vehicle_data <- process_vehicle_registration_data(dol_registration_file=here(rtp_local_url, "Vehicle_Title_Transactions.csv"))
+vehicle_data <- vehicle_data |> filter(variable != "Non-Powered")|> filter(variable != "FCEV (Fuel Cell Electric Vehicle)")
+saveRDS(vehicle_data, here(rtp_dashboard_url, "vehicle_data.rds"))
+
+# Vehicle Registrations on Census Tracts for Mapping ----------------------
+tracts <- st_read("https://services6.arcgis.com/GWxg6t7KXELn1thE/arcgis/rest/services/Census_Tracts_2020/FeatureServer/0/query?where=0=0&outFields=*&f=pgeojson") |> select(geography="geoid20")
+registrations <- vehicle_data |> filter(geography_type == "Tract" & year == "2025" & variable == "Battery Electric Vehicle" & grouping == "New") 
+tract_registrations <- left_join(tracts, registrations, by=c("geography"))
+saveRDS(tract_registrations, here(rtp_dashboard_url, "ev_registration_by_tract.rds"))
+rm(tracts, registrations)
+
+# VMT Data ----------------------------------------------------------------
+vmt <- read_csv(here(rtp_network_url, "PSRC/vmt-data.csv"), show_col_types = FALSE) |>
+  mutate(date = lubridate::mdy(date)) |>
+  mutate(data_year = as.character(lubridate::year(date)))
+
+saveRDS(vmt, here(rtp_dashboard_url, "vmt.rds"))
+
+vkt_data <- read_csv(here(rtp_network_url, "PSRC/vkt-data.csv"), show_col_types = FALSE) |> 
+  mutate(plot_id=as.character(plot_id), metric="Annual Kilometers per Capita", geography=str_wrap(geography, 15)) |> 
+  rename(estimate = "vkt") |>
+  arrange(estimate)
+
+vkt_order <- vkt_data |> select("geography") |> distinct() |> pull()
+vkt_data <- vkt_data |> mutate(geography = factor(x=geography, levels=vkt_order))
+
+saveRDS(vkt_data, here(rtp_dashboard_url, "vkt.rds"))
+
+
 # NTD Transit Data --------------------------------------------------------
 transit_data <- process_ntd_data()
 forecast_data <- read_csv(here(rtp_network_url, "PSRC/rtp-transit-metrics.csv"), show_col_types = FALSE) |> mutate(date = lubridate::mdy(date)) |> mutate(year = as.character(year))
@@ -40,17 +70,6 @@ rm(forecast_data, mpo_transit_pre_covid, mpo_transit_current, mpo_transit)
 commute_data <- process_commute_data(data_years = c(2012, 2017, 2022))
 saveRDS(commute_data, here(rtp_dashboard_url, "commute_data.rds"))
 
-# Vehicle Registrations ------------------------------------------------------------
-vehicle_data <- process_vehicle_registration_data(dol_registration_file=here(rtp_local_url, "Vehicle_Title_Transactions.csv"))
-vehicle_data <- vehicle_data |> filter(variable != "Non-Powered")|> filter(variable != "FCEV (Fuel Cell Electric Vehicle)")
-saveRDS(vehicle_data, here(rtp_dashboard_url, "vehicle_data.rds"))
-
-# Vehicle Registrations on Census Tracts for Mapping ----------------------
-tracts <- st_read("https://services6.arcgis.com/GWxg6t7KXELn1thE/arcgis/rest/services/Census_Tracts_2020/FeatureServer/0/query?where=0=0&outFields=*&f=pgeojson") |> select(geography="geoid20")
-registrations <- vehicle_data |> filter(geography_type == "Tract" & year == "2023" & variable == "Battery Electric Vehicle" & grouping == "New") 
-tract_registrations <- left_join(tracts, registrations, by=c("geography"))
-saveRDS(tract_registrations, here(rtp_dashboard_url, "ev_registration_by_tract.rds"))
-rm(tracts, registrations)
 
 # Safety Data -------------------------------------------------------------
 collision_data <- process_safety_data()
@@ -71,22 +90,6 @@ saveRDS(congested_lanes_miles, here(rtp_dashboard_url, "congestion_data.rds"))
 congestion_map_data <- map_npmrds_data()
 saveRDS(congestion_map_data, here(rtp_dashboard_url, "congestion_map_data.rds"))
 
-# VMT Data ----------------------------------------------------------------
-vmt <- read_csv(here(rtp_network_url, "PSRC/vmt-data.csv"), show_col_types = FALSE) |>
-  mutate(date = lubridate::mdy(date)) |>
-  mutate(data_year = as.character(lubridate::year(date)))
-
-saveRDS(vmt, here(rtp_dashboard_url, "vmt.rds"))
-
-vkt_data <- read_csv(here(rtp_network_url, "PSRC/vkt-data.csv"), show_col_types = FALSE) |> 
-  mutate(plot_id=as.character(plot_id), metric="Annual Kilometers per Capita", geography=str_wrap(geography, 15)) |> 
-  rename(estimate = "vkt") |>
-  arrange(estimate)
-
-vkt_order <- vkt_data |> select("geography") |> distinct() |> pull()
-vkt_data <- vkt_data |> mutate(geography = factor(x=geography, levels=vkt_order))
-
-saveRDS(vkt_data, here(rtp_dashboard_url, "vkt.rds"))
 
 # People, Housing and Jobs ------------------------------------------------
 pop <- regional_population_data() |> filter(!(variable == "Forecast" & year <2018) & grouping == "Total")

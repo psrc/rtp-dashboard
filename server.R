@@ -115,11 +115,73 @@ shinyServer(function(input, output) {
   
   # Climate Page -----------------------------------------------------------
   
-  #climate_server('OVERVIEW')
   output$climate_overview <- renderUI({HTML(page_information(tbl=page_text, page_name="Climate", page_section = "Overview", page_info = "description"))})
   output$climate_registrations_region <- renderUI({HTML(page_information(tbl=page_text, page_name="Climate", page_section = "RegistrationsRegion", page_info = "description"))})
+  output$climate_registrations_tract <- renderUI({HTML(page_information(tbl=page_text, page_name="Climate", page_section = "RegistrationsTract", page_info = "description"))})
+  
+  # Vehicle Registrations
   value_box_registrations_server('REGIONregistrationvaluebox', df=region_registrations)
-  line_chart_server('REGISTRATIONSlinechart', df=climate_data, m="vehicle-registrations", v=c("Battery Electric Vehicle", "Hybrid Electric Vehicle", "Internal Combustion Engine", "Plug-in Hybrid Electric Vehicle"), g="Region", color = c("#8CC63E", "#F05A28", "#91268F", "#00A7A0"), d = "yes")
-
+  
+  line_chart_server('REGISTRATIONSlinechart', 
+                    df = climate_data, 
+                    m = c("vehicle-registrations"),
+                    v = c("Battery Electric Vehicle", "Hybrid Electric Vehicle", "Internal Combustion Engine", "Plug-in Hybrid Electric Vehicle"), 
+                    g = c("Region"), 
+                    color = c("#8CC63E", "#F05A28", "#91268F", "#00A7A0"), 
+                    d = "yes",
+                    ch = c("New", "Used"),
+                    s = "Source: Washington State Department of Licensing",
+                    x = "date",
+                    y = "share",
+                    f = "variable",
+                    p = "yes",
+                    dp = 1)
+  
+  output$ev_tract_map <- renderLeaflet({create_share_map(lyr=ev_by_tract, title="ZEV Share", efa_lyr=efa_income, efa_title="Equiy Focus Area: Income")})
+  
+  # Region Vehicle Miles Traveled
+  line_chart_server('VMTlinechart', 
+                    df = vmt_data, 
+                    m = c("Vehicle Miles Traveled"), 
+                    v = c("Observed", "Forecast"), 
+                    g = c("Region"),
+                    color = c("#91268F", "#F05A28"), 
+                    d = "no",
+                    ch = c("Total", "per Capita"),
+                    s = "Source: Washington State Department of Transportation HPMS and SoundCast Model",
+                    x = "data_year",
+                    y = "estimate",
+                    f = "variable",
+                    p = "no",
+                    dp = 1)
+  
+  output$climate_vmt_region <- renderUI({HTML(page_information(tbl=page_text, page_name="Climate", page_section = "VMTRegion", page_info = "description"))})
+  value_box_vmt_server('VMTvaluebox', df=vmt_data)
+  
+  # County Vehicle Miles Traveled
+  column_chart_counties_server('VMTcounty',
+                            df = vmt_data,
+                            v = c("Observed"),
+                            ch = c("Total", "per Capita"),
+                            s = "Source: Washington State Department of Transportation Highway Performance Monitoring System")
+  
+  output$climate_vmt_county <- renderUI({HTML(page_information(tbl=page_text, page_name="Climate", page_section = "VMTCounty", page_info = "description"))})
+  
+  # National Vehicle Kilometers Traveled Annual Comparison
+  
+  output$climate_vkt_compare <- renderUI({HTML(page_information(tbl=page_text, page_name="Climate", page_section = "VKTCompare", page_info = "description"))})
+  
+  bar_chart_server('VKTcompare',
+                   df = vkt_data,
+                   x = "geography",
+                   y = "estimate",
+                   f = "plot_id",
+                   color = c("#8CC63E", "#F05A28", "#00A7A0","#999999", "#91268F"),
+                   h = "600px",
+                   s = "Source: Washington State Department of Transportation Highway Performance Monitoring System, SoundCast")
+  
+  
+  
 })  
   
+# df, m, v, g, color, d, ch, s, x, y, f, p

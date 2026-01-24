@@ -200,8 +200,45 @@ shinyUI(
                 withSpinner(value_box_registrations_ui('REGIONregistrationvaluebox'), color=load_clr, size = 1.5, caption = "Please wait, updating data"),
                 hr(style = "border-top: 1px solid #000000;"),
                 
-                h2("Vehicle Registrations in the PSRC Region"),
+                h2("New Vehicle Registrations in the PSRC Region"),
                 line_chart_ui('REGISTRATIONSlinechart'),
+                hr(style = "border-top: 1px solid #000000;"),
+                
+                h2("New Registrations by Census Tract"),
+                htmlOutput("climate_registrations_tract"),
+                
+                card(full_screen = FALSE,
+                     leafletOutput("ev_tract_map")
+                ),
+                
+                hr(style = "border-top: 1px solid #000000;"),
+                
+                card_body(
+                  h1("Vehicle Miles Traveled"),
+                  class = "selection_panel"
+                ),
+                
+                br(),
+                
+                htmlOutput("climate_vmt_region"),
+                
+                br(),br(),
+                
+                value_box_vmt_ui('VMTvaluebox'),
+                hr(style = "border-top: 1px solid #000000;"),
+                
+                h2("Daily Vehicle Miles Traveled in the PSRC Region"),
+                line_chart_ui('VMTlinechart'),
+                hr(style = "border-top: 1px solid #000000;"),
+                
+                h2("Daily Vehicle Miles Traveled by County"),
+                htmlOutput("climate_vmt_county"),
+                column_chart_counties_ui('VMTcounty'),
+                hr(style = "border-top: 1px solid #000000;"),
+                
+                h2("Vehicle Kilometers Traveled Comparison"),
+                htmlOutput("climate_vkt_compare"),
+                bar_chart_ui('VKTcompare'),
                 hr(style = "border-top: 1px solid #000000;"),
               
       ),

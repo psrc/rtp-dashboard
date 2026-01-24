@@ -11,10 +11,10 @@ value_box_registrations_server <- function(id, df) {
     ns <- session$ns
     
     # Box Titles
-    output$bev_title <- renderUI(paste0(current_registration_year, " Electric Vehicle share of all vehicle registrations"))
-    output$hev_title <- renderUI(paste0(current_registration_year, " Hybrid Vehicle share of all vehicle registrations"))
-    output$phev_title <- renderUI(paste0(current_registration_year, " Plug-In Hybrid Vehicle share of all vehicle registrations"))
-    output$ic_title <- renderUI(paste0(current_registration_year, " Internal-Combustion Vehicle share of all vehicle registrations"))
+    output$bev_title <- renderUI(paste0(current_registration_year, " Electric Vehicle share of all vehicle purchases"))
+    output$hev_title <- renderUI(paste0(current_registration_year, " Hybrid Vehicle share of all vehicle purchases"))
+    output$phev_title <- renderUI(paste0(current_registration_year, " Plug-In Hybrid Vehicle share of all vehicle purchases"))
+    output$ic_title <- renderUI(paste0(current_registration_year, " Internal-Combustion Vehicle share of all vehicle purchases"))
     
     # Box Values
     output$bev_value <- renderText({paste0(round((df |> filter(variable == "Battery Electric Vehicle") |> select("share") |> pull())*100, 1), "%")})
@@ -68,7 +68,75 @@ value_box_registrations_server <- function(id, df) {
   
 }
 
+value_box_vmt_ui <- function(id) {
+  ns <- NS(id)
+  
+  tagList(
+    uiOutput(ns("summary_boxes"))
+  )
+}
 
+value_box_vmt_server <- function(id, df) {
+  moduleServer(id, function(input, output, session){
+    ns <- session$ns
+    
+    # Box Titles
+    output$base_title <- renderUI(paste0(climate_base_year, " daily vehicle miles per capita"))
+    output$vision_title <- renderUI(paste0(climate_vision_year, " daily vehicle miles per capita"))
+    output$current_title <- renderUI(paste0(climate_vmt_year, " daily vehicle miles per capita"))
+    output$horizon_title <- renderUI(paste0(climate_horizon_year, " daily vehicle miles per capita"))
+    
+    # Box Values
+    output$base_value <- renderText({paste0(round((df |> filter(data_year == climate_base_year & grouping == "per Capita" & variable == "Observed" & geography == "Region") |> select("estimate") |> pull())*1, 1))})
+    output$vision_value <- renderText({paste0(round((df |> filter(data_year == climate_vision_year & grouping == "per Capita" & variable == "Observed" & geography == "Region") |> select("estimate") |> pull())*1, 1))})
+    output$current_value <- renderText({paste0(round((df |> filter(data_year == climate_vmt_year & grouping == "per Capita" & variable == "Observed" & geography == "Region") |> select("estimate") |> pull())*1, 1))})
+    output$horizon_value <- renderText({paste0(round((df |> filter(data_year == climate_horizon_year & grouping == "per Capita" & variable == "Forecast" & geography == "Region") |> select("estimate") |> pull())*1, 1))})
+    
+    # Tab layout
+    output$summary_boxes <- renderUI({
+      tagList(
+        
+        layout_column_wrap(
+          width = 1/4,
+          value_box(
+            title = htmlOutput(ns("base_title")), 
+            value = textOutput(ns("base_value")),
+            theme = value_box_theme(bg = "#EDF9FF", fg = "#0B4B6E"), 
+            showcase = NULL, showcase_layout = "left center",
+            full_screen = FALSE, fill = TRUE, height = NULL, align = "center",
+            class = "value-box-outcomes"
+          ),
+          value_box(
+            title = htmlOutput(ns("vision_title")), 
+            value = textOutput(ns("vision_value")),
+            theme = value_box_theme(bg = "#EDF9FF", fg = "#0B4B6E"),
+            showcase = NULL, showcase_layout = "left center",
+            full_screen = FALSE, fill = TRUE, height = NULL, align = "center",
+            class = "value-box-outcomes"
+          ),
+          value_box(
+            title = htmlOutput(ns("current_title")), 
+            value = textOutput(ns("current_value")),
+            theme = value_box_theme(bg = "#EDF9FF", fg = "#0B4B6E"),
+            showcase = NULL, showcase_layout = "left center",
+            full_screen = FALSE, fill = TRUE, height = NULL, align = "center",
+            class = "value-box-outcomes"
+          ),
+          value_box(
+            title = htmlOutput(ns("horizon_title")), 
+            value = textOutput(ns("horizon_value")),
+            theme = value_box_theme(bg = "#EDF9FF", fg = "#0B4B6E"),
+            showcase = NULL, showcase_layout = "left center",
+            full_screen = FALSE, fill = TRUE, height = NULL, align = "center",
+            class = "value-box-outcomes"
+          )
+        )
+      ) 
+      
+    })  # end renderui
+  }) # end module server
+  
+}
 
 
 

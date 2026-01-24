@@ -49,8 +49,13 @@ current_jobs_year <- "2023"
 current_census_year <- "2023"
 current_pums_year <- "2023"
 current_fars_year <- "2021"
-current_vmt_year <- 2021
+
 current_registration_year <- "2025"
+
+climate_base_year <- 1990
+climate_vision_year <- 2018
+climate_vmt_year <- 2024
+climate_horizon_year <- 2050
 
 wgs84 <- 4326
 
@@ -94,12 +99,14 @@ tip_cols <- c("TIP ID", "Phase", "Funding Type", "Total Project Cost", "Federal 
 tip_currency_cols <- c("Total Project Cost", "Federal Funding", "State Funding", "Local Funding")
 
 # Data via RDS files ------------------------------------------------------
-safety_data <- readRDS("data/collision_data.rds") |> mutate(data_year = as.character(lubridate::year(date)))
-commute_data <- readRDS("data/commute_data.rds")
 climate_data <- readRDS("data/vehicle_data.rds") |> drop_na() |> filter(variable != "Not Applicable")
 ev_by_tract <- readRDS("data/ev_registration_by_tract.rds")
-vmt_data <- readRDS("data/vmt.rds")
+vmt_data <- readRDS("data/vmt.rds") |> mutate(data_year = as.numeric(data_year))
 vkt_data <- readRDS("data/vkt.rds")
+
+
+safety_data <- readRDS("data/collision_data.rds") |> mutate(data_year = as.character(lubridate::year(date)))
+commute_data <- readRDS("data/commute_data.rds")
 pop_hsg_jobs <- readRDS("data/pop_hsg_jobs.rds")
 efa_income <- readRDS("data/efa_income.rds")
 transit_data <- readRDS("data/transit_data.rds")

@@ -124,7 +124,7 @@ psrc_column_chart <- function(df, x, y, fill, colors, labels=scales::label_comma
               aes(x=.data[[x]],
                   y=.data[[y]],
                   fill=.data[[fill]],
-                  text = paste0(.data[[x]], " ", .data[[fill]], ": ", format(round(.data[[y]], dec), nsmall=0, big.mark=","))))  + 
+                  text = paste0(.data[[x]], ": ", format(round(.data[[y]], dec), nsmall=0, big.mark=","))))  + 
     geom_bar(position=pos, stat="identity", na.rm=TRUE) +
     scale_fill_manual(values = colors) +
     scale_y_continuous(labels = labels, expand=expansion(mult = c(0, .2)))  +   # expand is to accommodate value labels
@@ -139,8 +139,45 @@ psrc_column_chart <- function(df, x, y, fill, colors, labels=scales::label_comma
   return (c)
 }
 
-psrc_line_chart <- function(df, x, y, fill, lwidth=1, colors, ymin =0, ymax = 1, labels=scales::label_comma(), dec=0, breaks=NULL, title=NULL, source=NULL, legend = TRUE, chart_style=psrc_infogram_style(), is_date = "no") {
+psrc_bar_chart <- function(df, x, y, fill, colors, labels=scales::label_comma(), dec=0, chart_style=psrc_infogram_style(), title=NULL, source=NULL, pos="dodge", legend = TRUE) {
   
+  c <- ggplot(data=df,
+              aes(x=.data[[x]],
+                  y=.data[[y]],
+                  fill=.data[[fill]],
+                  text = paste0(.data[[x]], ": ", format(round(.data[[y]], dec), nsmall=0, big.mark=","))))  + 
+    geom_bar(position=pos, stat="identity", na.rm=TRUE) +
+    scale_fill_manual(values = colors) +
+    scale_y_continuous(labels = labels, expand=expansion(mult = c(0, .2)))  +   # expand is to accommodate value labels
+    labs(title=title, caption=source) +
+    chart_style
+  
+  c <- c + coord_flip()
+  
+  if (legend == FALSE) {
+    
+    c <- c + theme(legend.position = "none")
+  }
+  
+  return (c)
+}
+
+psrc_line_chart <- function(df, x, y, fill, lwidth=1, colors, dec=0, breaks=NULL, title=NULL, source=NULL, legend = TRUE, chart_style=psrc_infogram_style(), is_date = "no", is_percent = "no") {
+  
+  # Set the axis labels, maximum value for y axis and hoverlabel options
+  if (is_percent == "yes") {
+    l <- scales::label_percent()
+    ymax <- 1
+    suff <- "%"
+    fact <- 100
+    }
+  else {
+    l <- scales::label_comma()
+    ymax <- df |> select(all_of(y)) |> pull() |> max()
+    suff <- ""
+    fact <- 1
+    }
+
   if (is_date == "yes") {
     
     c <- ggplot(data=df,
@@ -148,13 +185,13 @@ psrc_line_chart <- function(df, x, y, fill, lwidth=1, colors, ymin =0, ymax = 1,
                     y=.data[[y]],
                     group=.data[[fill]],
                     color=.data[[fill]],
-                    text = paste0(.data[[fill]], ": ", format(round(.data[[y]]*100, dec), nsmall=0, big.mark=","), "%")))  + 
+                    text = paste0(.data[[fill]], ": ", format(round(.data[[y]]*fact, dec), nsmall=0, big.mark=","), suff)))  + 
       geom_line(linewidth=lwidth, linejoin = "round", na.rm=TRUE) +
       geom_point(fill = "white", shape = 21, stroke = 0.5) +
       scale_color_manual(values = colors)  +
-      scale_y_continuous(labels = labels, limits = c(ymin, ymax))  +   
+      scale_y_continuous(labels = l, limits = c(0, ymax))  +   
       labs(title=title, caption=source) +
-      scale_x_date(date_breaks = "6 month", date_labels =  "%b %Y") +
+      scale_x_date(date_breaks = "12 month", date_labels =  "%b %Y") +
       chart_style
     
   } else {
@@ -164,11 +201,11 @@ psrc_line_chart <- function(df, x, y, fill, lwidth=1, colors, ymin =0, ymax = 1,
                     y=.data[[y]],
                     group=.data[[fill]],
                     color=.data[[fill]],
-                    text = paste0(.data[[fill]], ": ", format(round(.data[[y]]*100, dec), nsmall=0, big.mark=","), "%")))  + 
+                    text = paste0(.data[[fill]], ": ", format(round(.data[[y]]*fact, dec), nsmall=0, big.mark=","), suff)))  + 
       geom_line(linewidth=lwidth, linejoin = "round", na.rm=TRUE) +
       geom_point(fill = "white", shape = 21, stroke = 0.5) +
       scale_color_manual(values = colors)  +
-      scale_y_continuous(labels = labels, limits = c(ymin, ymax))  +   
+      scale_y_continuous(labels = l, limits = c(0, ymax))  +   
       labs(title=title, caption=source) +
       scale_x_continuous(n.breaks=breaks) +
       chart_style
