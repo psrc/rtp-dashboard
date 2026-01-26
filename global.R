@@ -57,6 +57,11 @@ climate_vision_year <- 2018
 climate_vmt_year <- 2024
 climate_horizon_year <- 2050
 
+wfh_base_year <- 2013
+wfh_vision_year <- 2018
+wfh_vmt_year <- 2023
+wfh_horizon_year <- 2050
+
 wgs84 <- 4326
 
 yr_ord <- c("2024", "2023", "2022", "2021", "2020", "2019", "2018", "2017", "2016", "2015", "2014", "2013", "2012", "2011", "2010")
@@ -80,28 +85,10 @@ load_clr <- "#91268F"
 
 transit_modes <- c("Bus", "Commuter Rail", "Ferry", "Rail", "Vanpool")
 
-# color for funded/not funded chart
-stp_colors <- c("#91268F", "#F05A28", "#8CC63E", "#00A7A0", "#EB4584", "#4C4C4C",
-                "#E3C9E3", "#FBD6C9", "#E2F1CF", "#BFE9E7", "#FFBCD9", "#BCBEC0")
-
-cmaq_colors <- c("#91268F", "#F05A28", "#8CC63E", "#00A7A0", "#EB4584", "#EB4584", "#4C4C4C",
-                "#E3C9E3", "#FBD6C9", "#E2F1CF", "#BFE9E7", "#FFBCD9", "#FFBCD9", "#BCBEC0")
-
-# Items to use to fill chart
-stp_plot_buckets <- c("center_Yes", "access_Yes", "equity_Yes", "safety_Yes", "climate_Yes", "readiness_Yes",
-                      "center_No", "access_No", "equity_No", "safety_No", "climate_No", "readiness_No")
-
-cmaq_plot_buckets <- c("center_Yes", "access_Yes", "equity_Yes", "safety_Yes", "climate_Yes", "waehd_Yes", "readiness_Yes", 
-                       "center_No", "access_No", "equity_No", "safety_No", "climate_No", "waehd_No", "readiness_No")
-
-fhwa_cols <- c("project_id", "sponsor", "title", "phase", "category", "funding_request", "total_points")
-tip_cols <- c("TIP ID", "Phase", "Funding Type", "Total Project Cost", "Federal Funding", "State Funding", "Local Funding", "Projected Obligation Date")
-tip_currency_cols <- c("Total Project Cost", "Federal Funding", "State Funding", "Local Funding")
-
 # Data via RDS files ------------------------------------------------------
 climate_data <- readRDS("data/vehicle_data.rds") |> drop_na() |> filter(variable != "Not Applicable")
 ev_by_tract <- readRDS("data/ev_registration_by_tract.rds")
-vmt_data <- readRDS("data/vmt.rds") |> mutate(data_year = as.numeric(data_year))
+vmt_data <- readRDS("data/vmt.rds")
 vkt_data <- readRDS("data/vkt.rds")
 
 
@@ -112,12 +99,6 @@ efa_income <- readRDS("data/efa_income.rds")
 transit_data <- readRDS("data/transit_data.rds")
 congestion_data <- readRDS("data/congestion_data.rds")
 congestion_map_data <- readRDS("data/congestion_map_data.rds")
-stp <- readRDS("data/stp.rds")
-cmaq <- readRDS("data/cmaq.rds")
-stp_lyr <- readRDS("data/stp_lyr.rds")
-cmaq_lyr <- readRDS("data/cmaq_lyr.rds")
-tip_lyr <- readRDS("data/tip_lyr.rds")
-tip_projects  <- readRDS("data/tip_projects_by_type.rds")
 
 # Source Information ------------------------------------------------------------
 source_info <- read_csv("data/source_information.csv", show_col_types = FALSE)
@@ -148,21 +129,6 @@ download_table_list <- list("Sources" = source_info,
                             "Time-Departure-Time" = commute_data %>% filter(metric %in% c("departure-time", "Departure Time Bins"))
                             )
 
-transit_links <- c("Community Transit" = "https://www.communitytransit.org/",
-                   "Everett Transit" = "https://everetttransit.org/",
-                   "King County Metro" = "https://kingcounty.gov/en/dept/metro",
-                   "Kitsap Transit" = "https://www.kitsaptransit.com/",
-                   "Pierce Transit" = "https://www.piercetransit.org/",
-                   "Pierce County Ferry" = "https://www.piercecountywa.gov/1793/Ferry",
-                   "Sound Transit" = "https://www.soundtransit.org/",
-                   "Washington State Ferries" = "https://wsdot.wa.gov/travel/washington-state-ferries",
-                   "Transit Planning at PSRC" = "https://www.psrc.org/our-work/transit"
-)
-
-links_withtags <- withTags(
-  map2(transit_links[1:8], names(transit_links)[1:8], 
-       ~div(class = "links-container", tags$a(class = "links", href = .x, .y, tabindex="0", target = "_blank")))
-)
 
 psrc_mission <- "Our mission is to advance solutions to achieve a thriving, racially equitable, and sustainable central Puget Sound region through leadership, visionary planning, and collaboration."
 

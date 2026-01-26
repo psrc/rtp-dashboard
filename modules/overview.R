@@ -18,10 +18,10 @@ overview_server <- function(id) {
     
     output$summary_table <- renderDataTable(create_summary_table(d=summary_info))
     
-    links_withtags <- withTags(
-      map2(transit_links[1:8], names(transit_links)[1:8], 
-           ~div(class = "links-container", tags$a(class = "links", href = .x, .y, tabindex="0", target = "_blank")))
-    )
+    # links_withtags <- withTags(
+    #   map2(transit_links[1:8], names(transit_links)[1:8], 
+    #        ~div(class = "links-container", tags$a(class = "links", href = .x, .y, tabindex="0", target = "_blank")))
+    # )
     
     # Overview UI
     output$overview <- renderUI({

@@ -68,7 +68,7 @@ value_box_registrations_server <- function(id, df) {
   
 }
 
-value_box_vmt_ui <- function(id) {
+value_box_ui <- function(id) {
   ns <- NS(id)
   
   tagList(
@@ -76,21 +76,21 @@ value_box_vmt_ui <- function(id) {
   )
 }
 
-value_box_vmt_server <- function(id, df) {
+value_box_server <- function(id, df, by, bv, vy, vv, cy, cv, hy, hv, gr, ge, me, ti, fac, dec, s, val) {
   moduleServer(id, function(input, output, session){
     ns <- session$ns
     
     # Box Titles
-    output$base_title <- renderUI(paste0(climate_base_year, " daily vehicle miles per capita"))
-    output$vision_title <- renderUI(paste0(climate_vision_year, " daily vehicle miles per capita"))
-    output$current_title <- renderUI(paste0(climate_vmt_year, " daily vehicle miles per capita"))
-    output$horizon_title <- renderUI(paste0(climate_horizon_year, " daily vehicle miles per capita"))
+    output$base_title <- renderUI(paste0(by, " ",ti))
+    output$vision_title <- renderUI(paste0(vy, " ",ti))
+    output$current_title <- renderUI(paste0(cy, " ",ti))
+    output$horizon_title <- renderUI(paste0(hy, " ",ti))
     
     # Box Values
-    output$base_value <- renderText({paste0(round((df |> filter(data_year == climate_base_year & grouping == "per Capita" & variable == "Observed" & geography == "Region") |> select("estimate") |> pull())*1, 1))})
-    output$vision_value <- renderText({paste0(round((df |> filter(data_year == climate_vision_year & grouping == "per Capita" & variable == "Observed" & geography == "Region") |> select("estimate") |> pull())*1, 1))})
-    output$current_value <- renderText({paste0(round((df |> filter(data_year == climate_vmt_year & grouping == "per Capita" & variable == "Observed" & geography == "Region") |> select("estimate") |> pull())*1, 1))})
-    output$horizon_value <- renderText({paste0(round((df |> filter(data_year == climate_horizon_year & grouping == "per Capita" & variable == "Forecast" & geography == "Region") |> select("estimate") |> pull())*1, 1))})
+    output$base_value <- renderText({paste0(round((df |> filter(year == by & grouping == gr & variable == bv & geography == ge & metric == me) |> select(all_of(val)) |> pull())*fac, dec), s)})
+    output$vision_value <- renderText({paste0(round((df |> filter(year == vy & grouping == gr & variable == vv & geography == ge & metric == me) |> select(all_of(val)) |> pull())*fac, dec), s)})
+    output$current_value <- renderText({paste0(round((df |> filter(year == cy & grouping == gr & variable == cv & geography == ge & metric == me) |> select(all_of(val)) |> pull())*fac, dec), s)})
+    output$horizon_value <- renderText({paste0(round((df |> filter(year == hy & grouping == gr & variable == hv & geography == ge & metric == me) |> select(all_of(val)) |> pull())*fac, dec), s)})
     
     # Tab layout
     output$summary_boxes <- renderUI({

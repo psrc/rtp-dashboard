@@ -1,29 +1,6 @@
 # # Define server logic
 # shinyServer(function(input, output) {
 #   
-#   # Footer
-#   footer_server('psrcfooter')
-#   
-#   # Main Overview Page
-#   banner_server('overviewBanner', 
-#                 banner_title = "RTP Performance Dashboard", 
-#                 banner_subtitle = "Planning for 2050",
-#                 banner_url = "https://www.psrc.org/planning-2050")
-#   
-#   left_panel_server('leftOverview', page_nm = "Overview")
-#   dashboard_overview_server('Mainoverview')
-#   
-#   # Climate Page
-#   banner_server('climateBanner', 
-#                 banner_title = "Addressing Climate Change", 
-#                 banner_subtitle = "Regional Transportation Plan",
-#                 banner_url = "https://www.psrc.org/planning-2050/regional-transportation-plan")
-#   
-#   left_panel_server('leftClimate', page_nm = "Climate")
-#   climate_overview_server('climateOverview')
-#   climate_zev_server('ZEVclimate')
-#   climate_vmt_server('VMTclimate')
-#   telework_server('WFHmode')
 #   
 #   # Growth Page
 #   banner_server('growthBanner', 
@@ -149,14 +126,32 @@ shinyServer(function(input, output) {
                     d = "no",
                     ch = c("Total", "per Capita"),
                     s = "Source: Washington State Department of Transportation HPMS and SoundCast Model",
-                    x = "data_year",
+                    x = "year",
                     y = "estimate",
                     f = "variable",
                     p = "no",
                     dp = 1)
   
   output$climate_vmt_region <- renderUI({HTML(page_information(tbl=page_text, page_name="Climate", page_section = "VMTRegion", page_info = "description"))})
-  value_box_vmt_server('VMTvaluebox', df=vmt_data)
+  
+  value_box_server('VMTvaluebox', 
+                   df = vmt_data,
+                   by = climate_base_year,
+                   bv = "Observed",
+                   vy = climate_vision_year,
+                   vv = "Observed",
+                   cy = climate_vmt_year,
+                   cv = "Observed",
+                   hy = climate_horizon_year,
+                   hv = "Forecast",
+                   gr = "per Capita",
+                   ge = "Region",
+                   me = "Vehicle Miles Traveled",
+                   ti = "daily vehicle miles per capita",
+                   fac = 1,
+                   dec = 1,
+                   s = "",
+                   val = "estimate")
   
   # County Vehicle Miles Traveled
   column_chart_counties_server('VMTcounty',
@@ -181,7 +176,43 @@ shinyServer(function(input, output) {
                    s = "Source: Washington State Department of Transportation Highway Performance Monitoring System, SoundCast")
   
   
+  # Work from Home
+  
+  output$climate_wfh_region <- renderUI({HTML(page_information(tbl=page_text, page_name="Climate", page_section = "WFHRegion", page_info = "description"))})
+  
+  value_box_server('WFHvaluebox', 
+                   df = commute_data,
+                   by = wfh_base_year,
+                   bv = "Work from Home",
+                   vy = wfh_vision_year,
+                   vv = "Work from Home",
+                   cy = wfh_vmt_year,
+                   cv = "Work from Home",
+                   hy = wfh_horizon_year,
+                   hv = "Work from Home",
+                   gr = "All",
+                   ge = "Region",
+                   me = "commute-modes",
+                   ti = "share of workers who worked from home",
+                   fac = 100,
+                   dec = 0,
+                   s = "%",
+                   val = "share")
+  
+  column_chart_server('WFHcounty',
+                      df = commute_data,
+                      v = "Work from Home",
+                      ch = c(2023, 2018, 2013),
+                      s = "Source: ACS 5yr Data Table B08301 for King, Kitsap, Pierce and Snohomish counties",
+                      me = "commute-modes",
+                      gr = "All",
+                      gt = "County",
+                      val = "share",
+                      p = "yes",
+                      dp = 1)
+  
+  
+  #df, v, ch, s, me,gr, gt
   
 })  
   
-# df, m, v, g, color, d, ch, s, x, y, f, p

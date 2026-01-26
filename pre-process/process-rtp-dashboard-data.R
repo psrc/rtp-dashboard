@@ -27,7 +27,7 @@ rm(tracts, registrations)
 # VMT Data ----------------------------------------------------------------
 vmt <- read_csv(here(rtp_network_url, "PSRC/vmt-data.csv"), show_col_types = FALSE) |>
   mutate(date = lubridate::mdy(date)) |>
-  mutate(data_year = as.character(lubridate::year(date)))
+  mutate(year = lubridate::year(date))
 
 saveRDS(vmt, here(rtp_dashboard_url, "vmt.rds"))
 
@@ -40,6 +40,10 @@ vkt_order <- vkt_data |> select("geography") |> distinct() |> pull()
 vkt_data <- vkt_data |> mutate(geography = factor(x=geography, levels=vkt_order))
 
 saveRDS(vkt_data, here(rtp_dashboard_url, "vkt.rds"))
+
+# Census Commute Data -----------------------------------------------------
+commute_data <- process_commute_data(data_years = c(2013, 2018, 2023))
+saveRDS(commute_data, here(rtp_dashboard_url, "commute_data.rds"))
 
 
 # NTD Transit Data --------------------------------------------------------
@@ -66,9 +70,6 @@ transit_data <- bind_rows(transit_data, forecast_data, mpo_transit)
 saveRDS(transit_data, here(rtp_dashboard_url, "transit_data.rds"))
 rm(forecast_data, mpo_transit_pre_covid, mpo_transit_current, mpo_transit)
   
-# Census Commute Data -----------------------------------------------------
-commute_data <- process_commute_data(data_years = c(2012, 2017, 2022))
-saveRDS(commute_data, here(rtp_dashboard_url, "commute_data.rds"))
 
 
 # Safety Data -------------------------------------------------------------

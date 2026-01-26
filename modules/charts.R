@@ -103,19 +103,19 @@ column_chart_counties_server <- function(id, df, v, ch, s) {
     
     # Charts & Maps
     output$king_chart <- renderPlotly({
-      p <- psrc_make_interactive(psrc_column_chart(df = king_df(), x = "data_year", y = "estimate", fill = "geography", colors = c("#91268F")), legend=TRUE)
+      p <- psrc_make_interactive(psrc_column_chart(df = king_df(), x = "year", y = "estimate", fill = "geography", colors = c("#91268F")), legend=TRUE)
     })
     
     output$kitsap_chart <- renderPlotly({
-      p <- psrc_make_interactive(psrc_column_chart(df = kitsap_df(), x = "data_year", y = "estimate", fill = "geography", colors = c("#8CC63E")), legend=TRUE)
+      p <- psrc_make_interactive(psrc_column_chart(df = kitsap_df(), x = "year", y = "estimate", fill = "geography", colors = c("#8CC63E")), legend=TRUE)
     })
     
     output$pierce_chart <- renderPlotly({
-      p <- psrc_make_interactive(psrc_column_chart(df = pierce_df(), x = "data_year", y = "estimate", fill = "geography", colors = c("#F05A28")), legend=TRUE)
+      p <- psrc_make_interactive(psrc_column_chart(df = pierce_df(), x = "year", y = "estimate", fill = "geography", colors = c("#F05A28")), legend=TRUE)
     })
     
     output$snohomish_chart <- renderPlotly({
-      p <- psrc_make_interactive(psrc_column_chart(df = snohomish_df(), x = "data_year", y = "estimate", fill = "geography", colors = c("#00A7A0")), legend=TRUE)
+      p <- psrc_make_interactive(psrc_column_chart(df = snohomish_df(), x = "year", y = "estimate", fill = "geography", colors = c("#00A7A0")), legend=TRUE)
     })
     
     # Tab layout
@@ -137,6 +137,63 @@ column_chart_counties_server <- function(id, df, v, ch, s) {
             plotlyOutput(ns("kitsap_chart")),
             plotlyOutput(ns("pierce_chart")),
             plotlyOutput(ns("snohomish_chart"))
+            
+          ),
+          
+        ),
+        
+        br(),
+        
+        tags$div(class = "chart_source", s),
+        
+      )
+    }) 
+  })  # end moduleServer
+}
+
+column_chart_ui <- function(id) {
+  ns <- NS(id)
+  
+  tagList(
+    uiOutput(ns("columnchart"))
+  )
+}
+
+column_chart_server <- function(id, df, v, ch, s, me, gr, gt, val, p, dp) {
+  moduleServer(id, function(input, output, session){
+    ns <- session$ns
+    
+    chart_metric <- reactive({input$WFHyear})
+    
+    county_df <- reactive({df |> filter(metric == me & variable == v & grouping == gr & year == chart_metric() & geography_type == gt)})
+    
+    # Charts & Maps
+    output$county_chart <- renderPlotly({
+      p <- psrc_make_interactive(psrc_column_chart(df = county_df(), 
+                                                   x = "geography", 
+                                                   y = val, 
+                                                   fill = "geography", 
+                                                   is_percent = p,
+                                                   dec = dp,
+                                                   colors = c("#91268F", "#8CC63E", "#F05A28", "#00A7A0", "#4C4C4C")), legend=TRUE)
+    })
+    
+    # Tab layout
+    output$columnchart <- renderUI({
+      tagList(
+        
+        card(
+          full_screen = FALSE,
+          
+          layout_column_wrap(
+            width = 1,
+            radioButtons(ns("WFHyear"), label = NULL, choices = ch, inline = TRUE)
+          ),
+          
+          layout_columns(
+            
+            col_widths = c(12),
+            plotlyOutput(ns("county_chart"))
             
           ),
           

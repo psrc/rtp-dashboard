@@ -36,19 +36,6 @@
 #                       ) # end of second fluid row for main overview page
 #              ), # end of tabpanel for Overview
 #              
-#     tabPanel(title="Climate", 
-#              value="Climate-Page",
-#              banner_ui('climateBanner'),
-#              fluidRow(column(4, style='padding-left:25px; padding-right:0px;', left_panel_ui('leftClimate')),
-#                       column(8, style='padding-left:25px; padding-right:50px;', 
-#                              climate_overview_ui('climateOverview'),
-#                              tabsetPanel(type = "pills",
-#                                          tabPanel("Zero Emission Vehicles", climate_zev_ui('ZEVclimate')),
-#                                          tabPanel("Vehicle Miles Traveled", climate_vmt_ui('VMTclimate')),
-#                                          tabPanel("Work from Home", telework_ui('WFHmode')))
-#                              ), # End of Main Panel for Climate
-#                       ) # End of Main Panel Fluid Row for Climate Tab
-#              ), # End of Tab Panel for Climate
 #     
 #     tabPanel(title="Safety", 
 #              value = "Safety-Page",
@@ -224,7 +211,7 @@ shinyUI(
                 
                 br(),br(),
                 
-                value_box_vmt_ui('VMTvaluebox'),
+                value_box_ui('VMTvaluebox'),
                 hr(style = "border-top: 1px solid #000000;"),
                 
                 h2("Daily Vehicle Miles Traveled in the PSRC Region"),
@@ -239,6 +226,25 @@ shinyUI(
                 h2("Vehicle Kilometers Traveled Comparison"),
                 htmlOutput("climate_vkt_compare"),
                 bar_chart_ui('VKTcompare'),
+                
+                hr(style = "border-top: 1px solid #000000;"),
+                
+                card_body(
+                  h1("Work from Home"),
+                  class = "selection_panel"
+                ),
+                
+                br(),
+                
+                htmlOutput("climate_wfh_region"),
+                
+                br(),br(),
+                
+                value_box_ui('WFHvaluebox'),
+                hr(style = "border-top: 1px solid #000000;"),
+                
+                h2("Work from Home shares by County"),
+                column_chart_ui('WFHcounty'),
                 hr(style = "border-top: 1px solid #000000;"),
               
       ),

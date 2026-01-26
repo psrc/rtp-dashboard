@@ -118,16 +118,28 @@ psrc_infogram_style <- function() {
   )
 }
 
-psrc_column_chart <- function(df, x, y, fill, colors, labels=scales::label_comma(), dec=0, chart_style=psrc_infogram_style(), title=NULL, source=NULL, pos="dodge", legend = TRUE) {
+psrc_column_chart <- function(df, x, y, fill, colors, dec=0, chart_style=psrc_infogram_style(), title=NULL, source=NULL, pos="dodge", legend = TRUE, is_percent = "no") {
+  
+  # Set the axis labels, maximum value for y axis and hoverlabel options
+  if (is_percent == "yes") {
+    l <- scales::label_percent()
+    suff <- "%"
+    fact <- 100
+  }
+  else {
+    l <- scales::label_comma()
+    suff <- ""
+    fact <- 1
+  }
   
   c <- ggplot(data=df,
               aes(x=.data[[x]],
                   y=.data[[y]],
                   fill=.data[[fill]],
-                  text = paste0(.data[[x]], ": ", format(round(.data[[y]], dec), nsmall=0, big.mark=","))))  + 
+                  text = paste0(.data[[x]], ": ", format(round(.data[[y]]*fact, dec), nsmall=0, big.mark=","), suff)))  + 
     geom_bar(position=pos, stat="identity", na.rm=TRUE) +
     scale_fill_manual(values = colors) +
-    scale_y_continuous(labels = labels, expand=expansion(mult = c(0, .2)))  +   # expand is to accommodate value labels
+    scale_y_continuous(labels = l, expand=expansion(mult = c(0, .2)))  +   # expand is to accommodate value labels
     labs(title=title, caption=source) +
     chart_style
   
@@ -139,16 +151,28 @@ psrc_column_chart <- function(df, x, y, fill, colors, labels=scales::label_comma
   return (c)
 }
 
-psrc_bar_chart <- function(df, x, y, fill, colors, labels=scales::label_comma(), dec=0, chart_style=psrc_infogram_style(), title=NULL, source=NULL, pos="dodge", legend = TRUE) {
+psrc_bar_chart <- function(df, x, y, fill, colors, dec=0, chart_style=psrc_infogram_style(), title=NULL, source=NULL, pos="dodge", legend = TRUE, is_percent = "no") {
+  
+  # Set the axis labels, maximum value for y axis and hoverlabel options
+  if (is_percent == "yes") {
+    l <- scales::label_percent()
+    suff <- "%"
+    fact <- 100
+  }
+  else {
+    l <- scales::label_comma()
+    suff <- ""
+    fact <- 1
+  }
   
   c <- ggplot(data=df,
               aes(x=.data[[x]],
                   y=.data[[y]],
                   fill=.data[[fill]],
-                  text = paste0(.data[[x]], ": ", format(round(.data[[y]], dec), nsmall=0, big.mark=","))))  + 
+                  text = paste0(.data[[x]], ": ", format(round(.data[[y]]*fact, dec), nsmall=0, big.mark=","), suff)))  + 
     geom_bar(position=pos, stat="identity", na.rm=TRUE) +
     scale_fill_manual(values = colors) +
-    scale_y_continuous(labels = labels, expand=expansion(mult = c(0, .2)))  +   # expand is to accommodate value labels
+    scale_y_continuous(labels = l, expand=expansion(mult = c(0, 0)))  +   # expand is to accommodate value labels
     labs(title=title, caption=source) +
     chart_style
   
