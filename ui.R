@@ -246,6 +246,11 @@ shinyUI(
                 h2("Work from Home shares by County"),
                 column_chart_ui('WFHcounty'),
                 hr(style = "border-top: 1px solid #000000;"),
+                
+                h2("Work from Home shares by Race & Ethnicity"),
+                htmlOutput("climate_wfh_race"),
+                mepeople_chart_ui('WFHrace'),
+                hr(style = "border-top: 1px solid #000000;"),
               
       ),
       

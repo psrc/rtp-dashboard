@@ -241,6 +241,55 @@ psrc_line_chart <- function(df, x, y, fill, lwidth=1, colors, dec=0, breaks=NULL
   
 }
 
+psrc_mepeople_chart <- function(df, per_icons, val, grp, icon_pth, data_max, chart_style=psrc_infogram_style()) {
+  
+  df <- df |>
+    mutate(icon = icon_pth, !!grp := reorder(.data[[grp]], .data[[val]])) |>
+    select(all_of(grp), all_of(val), "icon")
+  
+  df_people <- df |>
+    mutate(n_icons = round(.data[[val]] * 100/per_icons)) |>
+    uncount(n_icons) |>
+    group_by(.data[[grp]]) |>
+    mutate(x = row_number()*per_icons) |>
+    ungroup()
+  
+  df_labels <- df_people |>
+   mutate(!!val := round(.data[[val]],3)) |>
+   group_by(.data[[grp]]) |>
+   filter(x == max(x)) |>
+   ungroup() |>
+   mutate(label = scales::percent(.data[[val]]))
+  
+  c <- ggplot(df_people, aes(
+    x = x, 
+    y = .data[[grp]], 
+    image = icon)) +
+    geom_image(size = 0.08) +
+    geom_text(
+     data = df_labels,
+     aes(x = x + 3,
+         y = .data[[grp]],
+         label = label),
+     hjust = 0,
+     vjust = 0.5,
+     size = 6,
+     fontface = "bold"
+    ) +
+    scale_x_continuous(
+      limits = c(0,data_max), 
+      breaks = seq(0, data_max, data_max/5), 
+      labels = scales::percent_format(scale = 1)) +
+    chart_style +
+    theme(
+      panel.grid.major.y = element_blank(),
+      axis.text = element_text(size=16, color="black"),
+    )
+  
+  return(c)
+  
+}
+
 psrc_make_interactive <- function(plot_obj, legend=FALSE, hover=y) {
   
   c <- plotly::ggplotly(plot_obj, tooltip = "text")

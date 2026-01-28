@@ -207,3 +207,59 @@ column_chart_server <- function(id, df, v, ch, s, me, gr, gt, val, p, dp) {
     }) 
   })  # end moduleServer
 }
+
+mepeople_chart_ui <- function(id) {
+  ns <- NS(id)
+  
+  tagList(
+    uiOutput(ns("mepeoplechart"))
+  )
+}
+
+mepeople_chart_server <- function(id, df, ch, s, me, v, gt, val, grp, icon_pth, data_max, per_icons) {
+  moduleServer(id, function(input, output, session){
+    ns <- session$ns
+    
+    chart_metric <- reactive({input$WFHRACEyear})
+    
+    county_df <- reactive({df |> filter(metric == me & variable == v & year == chart_metric() & geography_type == gt)})
+    
+    # Charts & Maps
+    output$county_chart <- renderPlot({
+      p <- psrc_mepeople_chart(df = county_df(), 
+                               val = val,
+                               grp = grp,
+                               icon_pth = icon_pth,
+                               data_max = data_max,
+                               per_icons = per_icons)
+      p})
+    
+    # Tab layout
+    output$mepeoplechart <- renderUI({
+      tagList(
+        
+        card(
+          full_screen = FALSE,
+          
+          layout_column_wrap(
+            width = 1,
+            radioButtons(ns("WFHRACEyear"), label = NULL, choices = ch, inline = TRUE)
+          ),
+          
+          layout_columns(
+            
+            col_widths = c(12),
+            plotOutput(ns("county_chart"), height = "400px")
+            
+          ),
+          
+        ),
+        
+        br(),
+        
+        tags$div(class = "chart_source", s),
+        
+      )
+    }) 
+  })  # end moduleServer
+}

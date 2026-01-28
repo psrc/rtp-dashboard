@@ -211,8 +211,24 @@ shinyServer(function(input, output) {
                       p = "yes",
                       dp = 1)
   
+  output$climate_wfh_race <- renderUI({HTML(page_information(tbl=page_text, page_name="Climate", page_section = "WFHRace", page_info = "description"))})
+
+  mepeople_chart_server('WFHrace',
+                      df = commute_data,
+                      ch = c(2023, 2018, 2013),
+                      s = "Source: US Census Bureau 5-yr PUMS Variable JWTRNS for King, Kitsap, Pierce and Snohomish counties",
+                      me = "Commute Mode",
+                      v = "Worked from home",
+                      gt = "Race",
+                      val = "share",
+                      grp = "grouping",
+                      icon_pth = "www/house-laptop-solid-full.png",
+                      data_max = 50,
+                      per_icons = 3)
   
-  #df, v, ch, s, me,gr, gt
+  
   
 })  
+
+
   
