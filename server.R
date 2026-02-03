@@ -173,6 +173,9 @@ shinyServer(function(input, output) {
                    f = "plot_id",
                    color = c("#8CC63E", "#F05A28", "#00A7A0","#999999", "#91268F"),
                    h = "600px",
+                   ch = c("2024"),
+                   p = "no",
+                   d = 0,
                    s = "Source: Washington State Department of Transportation Highway Performance Monitoring System, SoundCast")
   
   
@@ -222,10 +225,21 @@ shinyServer(function(input, output) {
                       gt = "Race",
                       val = "share",
                       grp = "grouping",
-                      icon_pth = "www/house-laptop-solid-full.png",
+                      icon_pth = "www/house-laptop-solid-full.svg",
+                      icon_clr = "#4C4C4C",
                       data_max = 50,
                       per_icons = 3)
   
+  output$climate_wfh_metro <- renderUI({HTML(page_information(tbl=page_text, page_name="Climate", page_section = "WFHMetro", page_info = "description"))})
+  
+  # bar_chart_server('WFHmetro',
+  #                  df = commute_data,
+  #                  x = "geography",
+  #                  y = "estimate",
+  #                  f = "plot_id",
+  #                  color = c("#8CC63E", "#F05A28", "#00A7A0","#999999", "#91268F"),
+  #                  h = "600px",
+  #                  s = "Source: Washington State Department of Transportation Highway Performance Monitoring System, SoundCast")
   
   
 })  

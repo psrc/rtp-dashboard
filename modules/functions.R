@@ -241,7 +241,7 @@ psrc_line_chart <- function(df, x, y, fill, lwidth=1, colors, dec=0, breaks=NULL
   
 }
 
-psrc_mepeople_chart <- function(df, per_icons, val, grp, icon_pth, data_max, chart_style=psrc_infogram_style()) {
+psrc_mepeople_chart <- function(df, per_icons, val, grp, icon_pth, icon_clr, data_max, chart_style=psrc_infogram_style()) {
   
   df <- df |>
     mutate(icon = icon_pth, !!grp := reorder(.data[[grp]], .data[[val]])) |>
@@ -265,7 +265,10 @@ psrc_mepeople_chart <- function(df, per_icons, val, grp, icon_pth, data_max, cha
     x = x, 
     y = .data[[grp]], 
     image = icon)) +
-    geom_image(size = 0.08) +
+    geom_image(
+      image = icon_pth,
+      size = 0.08,
+      color = icon_clr) +
     geom_text(
      data = df_labels,
      aes(x = x + 3,

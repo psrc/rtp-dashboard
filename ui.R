@@ -192,12 +192,17 @@ shinyUI(
                 hr(style = "border-top: 1px solid #000000;"),
                 
                 h2("New Registrations by Census Tract"),
-                htmlOutput("climate_registrations_tract"),
                 
                 card(full_screen = FALSE,
-                     leafletOutput("ev_tract_map")
-                ),
-                
+                  
+                  layout_columns(
+                  
+                  col_widths = c(6,6),
+                  htmlOutput("climate_registrations_tract"),
+                  leafletOutput("ev_tract_map")
+                  
+                )),
+
                 hr(style = "border-top: 1px solid #000000;"),
                 
                 card_body(
@@ -250,6 +255,11 @@ shinyUI(
                 h2("Work from Home shares by Race & Ethnicity"),
                 htmlOutput("climate_wfh_race"),
                 mepeople_chart_ui('WFHrace'),
+                hr(style = "border-top: 1px solid #000000;"),
+                
+                h2("Work from Home shares by Metropolitan Region"),
+                htmlOutput("climate_wfh_metro"),
+                #bar_chart_ui('WFHmetro'),
                 hr(style = "border-top: 1px solid #000000;"),
               
       ),

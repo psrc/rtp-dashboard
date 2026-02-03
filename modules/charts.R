@@ -7,14 +7,15 @@ bar_chart_ui <- function(id) {
   )
 }
 
-bar_chart_server <- function(id, df, x, y, f, color, s, h) {
+bar_chart_server <- function(id, df, x, y, f, color, s, h, ch, p, d) {
   moduleServer(id, function(input, output, session){
     ns <- session$ns
     
     # Charts & Maps
     output$bar_chart <- renderPlotly({
       
-      p <- psrc_make_interactive(psrc_bar_chart(df = df, x = x, y = y, fill = f, colors = color), legend=TRUE)
+      chart_metric <- reactive({input$BARyear})
+      p <- psrc_make_interactive(psrc_bar_chart(df = df, x = x, y = y, fill = f, colors = color, is_percent = p, dec = d), legend=TRUE)
       
     })
     
@@ -24,7 +25,13 @@ bar_chart_server <- function(id, df, x, y, f, color, s, h) {
         
         card(
           full_screen = FALSE,
-          height = h,
+          
+          layout_column_wrap(
+            width = 1,
+            radioButtons(ns("BARyear"), label = NULL, choices = ch, inline = TRUE)
+          ),
+          
+          #height = h,
           plotlyOutput(ns("bar_chart"))
         ),
 
@@ -216,7 +223,7 @@ mepeople_chart_ui <- function(id) {
   )
 }
 
-mepeople_chart_server <- function(id, df, ch, s, me, v, gt, val, grp, icon_pth, data_max, per_icons) {
+mepeople_chart_server <- function(id, df, ch, s, me, v, gt, val, grp, icon_pth, icon_clr, data_max, per_icons) {
   moduleServer(id, function(input, output, session){
     ns <- session$ns
     
@@ -230,6 +237,7 @@ mepeople_chart_server <- function(id, df, ch, s, me, v, gt, val, grp, icon_pth, 
                                val = val,
                                grp = grp,
                                icon_pth = icon_pth,
+                               icon_clr = icon_clr,
                                data_max = data_max,
                                per_icons = per_icons)
       p})
