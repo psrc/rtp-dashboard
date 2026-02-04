@@ -11,12 +11,12 @@ bar_chart_server <- function(id, df, x, y, f, color, s, h, ch, p, d) {
   moduleServer(id, function(input, output, session){
     ns <- session$ns
     
+    chart_metric <- reactive({input$BARyear})
+    filtered_df <- reactive({df |> filter(year == chart_metric())})
+    
     # Charts & Maps
     output$bar_chart <- renderPlotly({
-      
-      chart_metric <- reactive({input$BARyear})
-      p <- psrc_make_interactive(psrc_bar_chart(df = df, x = x, y = y, fill = f, colors = color, is_percent = p, dec = d), legend=TRUE)
-      
+      p <- psrc_make_interactive(psrc_bar_chart(df = filtered_df(), x = x, y = y, fill = f, colors = color, is_percent = p, dec = d), legend=TRUE)
     })
     
     # Tab layout
@@ -31,8 +31,7 @@ bar_chart_server <- function(id, df, x, y, f, color, s, h, ch, p, d) {
             radioButtons(ns("BARyear"), label = NULL, choices = ch, inline = TRUE)
           ),
           
-          #height = h,
-          plotlyOutput(ns("bar_chart"))
+          plotlyOutput(ns("bar_chart"), height = h)
         ),
 
         br(),

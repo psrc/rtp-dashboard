@@ -153,6 +153,8 @@ psrc_column_chart <- function(df, x, y, fill, colors, dec=0, chart_style=psrc_in
 
 psrc_bar_chart <- function(df, x, y, fill, colors, dec=0, chart_style=psrc_infogram_style(), title=NULL, source=NULL, pos="dodge", legend = TRUE, is_percent = "no") {
   
+  df <- df |> mutate(!!x := fct_reorder(.data[[x]], .data[[y]], .desc = FALSE))
+  
   # Set the axis labels, maximum value for y axis and hoverlabel options
   if (is_percent == "yes") {
     l <- scales::label_percent()

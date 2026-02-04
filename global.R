@@ -12,6 +12,7 @@ library(purrr)
 library(lubridate)
 library(stringr)
 library(tidyr)
+library(forcats)
 
 # Packages for Chart Creation
 library(ggplot2)
@@ -41,22 +42,28 @@ page_text <- read_csv("data/page_text.csv", show_col_types = FALSE)
 # Inputs ---------------------------------------------------------------
 base_year <- "2005"
 pre_covid <- "2019"
+
 current_population_year <- "2024"
 current_jobs_year <- "2023"
-current_census_year <- "2023"
+
+current_census_year <- "2024"
 current_pums_year <- "2023"
+
 current_fars_year <- "2021"
 
 current_registration_year <- "2025"
+
+acs_yrs <- c(2024, 2019, 2014)
+pums_yrs <- c(2023, 2019, 2014)
 
 climate_base_year <- 1990
 climate_vision_year <- 2018
 climate_vmt_year <- 2024
 climate_horizon_year <- 2050
 
-wfh_base_year <- 2013
-wfh_vision_year <- 2018
-wfh_vmt_year <- 2023
+wfh_base_year <- 2014
+wfh_vision_year <- 2019
+wfh_vmt_year <- 2024
 wfh_horizon_year <- 2050
 
 wgs84 <- 4326
@@ -72,14 +79,15 @@ load_clr <- "#91268F"
 transit_modes <- c("Bus", "Commuter Rail", "Ferry", "Rail", "Vanpool")
 
 # Data via RDS files ------------------------------------------------------
-climate_data <- readRDS("data/vehicle_data.rds") |> drop_na() |> filter(variable != "Not Applicable")
+climate_data <- readRDS("data/vehicle_data.rds")
 ev_by_tract <- readRDS("data/ev_registration_by_tract.rds")
 vmt_data <- readRDS("data/vmt.rds")
-vkt_data <- readRDS("data/vkt.rds")
+vkt_data <- readRDS("data/vkt.rds") |> mutate(year = 2024)
+commute_data <- readRDS("data/commute_data.rds")
 
 
 safety_data <- readRDS("data/collision_data.rds") |> mutate(data_year = as.character(lubridate::year(date)))
-commute_data <- readRDS("data/commute_data.rds")
+
 pop_hsg_jobs <- readRDS("data/pop_hsg_jobs.rds")
 efa_income <- readRDS("data/efa_income.rds")
 transit_data <- readRDS("data/transit_data.rds")
@@ -117,32 +125,3 @@ download_table_list <- list("Sources" = source_info,
 
 
 psrc_mission <- "Our mission is to advance solutions to achieve a thriving, racially equitable, and sustainable central Puget Sound region through leadership, visionary planning, and collaboration."
-
-# Vehicle Registration Summary Data ---------------------------------------
-region_type <- climate_data |>
-  filter(geography_type == "Region" & metric == "vehicle-registrations") |>
-  group_by(year, variable) |>
-  summarise(estimate = sum(estimate)) |>
-  as_tibble()
-
-region_total <- climate_data |>
-  filter(geography_type == "Region" & metric == "vehicle-registrations") |>
-  group_by(year) |>
-  summarise(total = sum(estimate)) |>
-  as_tibble()
-
-region_registrations <- left_join(region_type, region_total, by = c("year")) |>
-  mutate(share = estimate / total) |>
-  filter(year == current_registration_year)
-
-rm(region_type, region_total)
-
-
-
-
-
- 
-
-
-
-

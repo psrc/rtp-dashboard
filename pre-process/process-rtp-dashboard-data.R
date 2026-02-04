@@ -1,21 +1,189 @@
 library(tidyverse)
+library(psrccensus)
 library(psrcrtp)
+library(psrcelmer)
+library(tidycensus)
 library(sf)
 library(here)
 
 wgs84 <- 4326
 current_year <- "2024"
 pre_covid <- 2019
+
+acs_data_yrs <- c(2014, 2019, 2024)
+pums_data_yrs <- c(2014, 2019, 2023)
+
 metros <- c("Portland", "Bay Area", "San Diego", "Denver", "Atlanta","Washington DC", "Boston", "Miami" ,"Phoenix", "Austin", "Dallas")
 
 rtp_network_url <- "X:/DSA/rtp-dashboard/"
 rtp_local_url <- "C:/Users/chelmann/OneDrive - Puget Sound Regional Council/coding"
 rtp_dashboard_url <- "C:/Users/chelmann/OneDrive - Puget Sound Regional Council/coding/rtp-dashboard/data"
 
+# Functions ---------------------------------------------------------------
+
+acs_data <- function(years=c(2024), acs_tbl="B08301", acs_variables="commute-modes") {
+  
+  # Always use ACS 5yr data since we need it for places, tracts and MPO comparisons as well as 2020 data
+  acs_type <- 'acs5'
+  
+  # Columns to keep from Tidy Census Pull
+  cols_to_keep <- c("name", "variable", "estimate", "moe", "census_geography", "year")
+  
+  # Variables for dashboard
+  variables <- read_csv(system.file('extdata', paste0(acs_variables,".csv"), package='psrcrtp'), show_col_types = FALSE)
+  
+  working_data <- NULL
+  for (y in years) {
+    print(str_glue("Working on {y}"))
+    
+    # County & Region data for PSRC region
+    # Download the Data
+    county_data <- get_acs_recs(geography = 'county', table.names = acs_tbl, years=y, acs.type = acs_type) 
+    # Variables of interest
+    county_data <- county_data |> filter(.data$variable %in% unique(variables$variable))
+    # Clean up columns
+    county_data <- county_data |> select(all_of(cols_to_keep))
+    # Add labels
+    county_data <- left_join(county_data, variables, by=c("variable"))
+    # Consolidate rows based on simple labels
+    county_data <- county_data |> 
+      group_by(.data$name, .data$census_geography, .data$year, .data$simple_label) |>
+      summarise(estimate = sum(.data$estimate), moe = moe_sum(moe=.data$moe, estimate=.data$estimate)) |>
+      as_tibble() |>
+      rename(label = "simple_label")
+    # Get totals
+    total <- county_data |>filter(.data$label == "Total") |> select("name", total="estimate")
+    # Get Shares
+    county_data <- left_join(county_data, total, by=c("name")) |> mutate(share=.data$estimate/.data$total) |> select(-"total")
+    rm(total)
+    
+    # Cities in the PSRC region
+    # Download the Data
+    city_data <- get_acs(state = "53", geography = 'place', table = acs_tbl, year=y, survey = acs_type) 
+    psrc_places <- get_psrc_places(y) |> st_drop_geometry()
+    place_FIPS <- unique(psrc_places$GEOID)
+    
+    city_data <- city_data |> filter(GEOID %in% place_FIPS) |>
+      filter(!(str_detect(NAME, "CDP"))) |>
+      mutate(NAME = str_remove_all(NAME, " city, Washington")) |>
+      mutate(NAME = str_remove_all(NAME, " town, Washington")) |>
+      rename(name = "NAME") |>
+      mutate(year = y, census_geography = "City")
+    
+    # Variables of interest
+    city_data <- city_data |> filter(.data$variable %in% unique(variables$variable))
+    # Clean up columns
+    city_data <- city_data |> select(all_of(cols_to_keep))
+    # Add labels
+    city_data <- left_join(city_data, variables, by=c("variable"))
+    # Consolidate rows based on simple labels
+    city_data <- city_data |> 
+      group_by(.data$name, .data$census_geography, .data$year, .data$simple_label) |>
+      summarise(estimate = sum(.data$estimate), moe = moe_sum(moe=.data$moe, estimate=.data$estimate)) |>
+      as_tibble() |>
+      rename(label = "simple_label")
+    # Get totals
+    total <- city_data |> filter(.data$label == "Total") |> select("name", total="estimate")
+    # Get Shares
+    city_data <- left_join(city_data, total, by=c("name")) |> mutate(share=.data$estimate/.data$total) |> select(-"total")
+    rm(total)
+    
+    # Metro Areas
+    mpo <- read_csv(system.file('extdata', 'regional-councils-counties.csv', package='psrcrtp'), show_col_types = FALSE) |> 
+      mutate(COUNTY_FIPS=stringr::str_pad(.data$COUNTY_FIPS, width=3, side=c("left"), pad="0")) |>
+      mutate(STATE_FIPS=stringr::str_pad(.data$STATE_FIPS, width=2, side=c("left"), pad="0")) |>
+      mutate(GEOID = paste0(.data$STATE_FIPS,.data$COUNTY_FIPS))
+    
+    states <- mpo |> select("STATE_FIPS") |> distinct() |> pull()
+    counties <- mpo |> select("GEOID") |> distinct() |>pull()
+    
+    mpo_data <- NULL
+    for (st in states) {
+      c <- mpo |> filter(.data$STATE_FIPS %in% st) |> select("COUNTY_FIPS") |> pull()
+      d <- get_acs(geography = "county", state=st, county=c, table = acs_tbl, year = y, survey = acs_type)
+      ifelse(is.null(mpo_data), mpo_data <- d, mpo_data <- bind_rows(mpo_data,d))
+      rm(c, d)
+    }
+    
+    # Variables of interest
+    mpo_data <- mpo_data |> filter(.data$variable %in% unique(variables$variable))
+    # Add labels
+    mpo_data <- left_join(mpo_data, variables, by=c("variable"))
+    # Add in MPO Information
+    mpo_county_data <- left_join(mpo, mpo_data, by="GEOID", multiple = "all")
+    # Consolidate rows based on simple labels
+    mpo_county_data <- mpo_county_data |> 
+      group_by(.data$MPO_AREA, .data$simple_label) |>
+      summarise(estimate = sum(.data$estimate), moe = moe_sum(moe=.data$moe, estimate=.data$estimate)) |>
+      as_tibble() |>
+      rename(label = "simple_label", name = "MPO_AREA") |>
+      mutate(year=y, census_geography="Metro Areas")
+    # Get totals
+    total <- mpo_county_data |> filter(.data$label == "Total") |> select("name", total="estimate")
+    # Get Shares
+    mpo_county_data <- left_join(mpo_county_data, total, by=c("name")) |> mutate(share=.data$estimate/.data$total) |> select(-"total")
+    mpo_data <- mpo_county_data
+    rm(total, mpo_county_data)
+    
+    d <- bind_rows(county_data, city_data, mpo_data)
+    
+    if(is.null(working_data)) {working_data <- d} else {working_data <- bind_rows(working_data, d)}
+    
+  }
+  
+  # Match column names to rtp-dashboard inputs
+  working_data <- working_data |> 
+    mutate(date=mdy(paste0("12-01-",.data$year)), grouping="All", metric=acs_variables) |>
+    mutate(year = as.character(year(.data$date))) |>
+    select("year", "date", geography="name", geography_type="census_geography", variable="label", "grouping", "metric", "estimate", "share", "moe")
+  
+  return(working_data)
+}
+
+process_acs_data <- function(data_years = c(2021)) {
+  
+  print("Working on Mode to Work")
+  mw <- acs_data(years=data_years, acs_tbl="B08301", acs_variables="commute-modes")
+  print("Working on Travel time to Work")
+  tw <- acs_data(years=data_years, acs_tbl="B08303", acs_variables="commute-times")
+  print("Working on Departure time to work")
+  dw <- acs_data(years=data_years, acs_tbl="B08011", acs_variables="departure-time")
+
+  processed <- bind_rows(mw, tw, dw)
+  
+  return(processed)
+  
+}
+
 # Vehicle Registrations ------------------------------------------------------------
 vehicle_data <- process_vehicle_registration_data(dol_registration_file=here(rtp_local_url, "Vehicle_Title_Transactions.csv"))
-vehicle_data <- vehicle_data |> filter(variable != "Non-Powered")|> filter(variable != "FCEV (Fuel Cell Electric Vehicle)")
+
+vehicle_data <- vehicle_data |> 
+  filter(variable != "Non-Powered") |> 
+  filter(variable != "FCEV (Fuel Cell Electric Vehicle)") |> 
+  filter(variable != "Not Applicable") |> 
+  drop_na() 
+
+region_type <- vehicle_data |>
+  filter(geography_type == "Region" & metric == "vehicle-registrations") |>
+  group_by(year, variable) |>
+  summarise(estimate = sum(estimate)) |>
+  as_tibble()
+
+region_total <- vehicle_data |>
+  filter(geography_type == "Region" & metric == "vehicle-registrations") |>
+  group_by(year) |>
+  summarise(total = sum(estimate)) |>
+  as_tibble()
+
+region_registrations <- left_join(region_type, region_total, by = c("year")) |>
+  mutate(share = estimate / total) |>
+  select(-"total") |>
+  mutate(date = mdy(paste0("12-01-",year)), geography = "Region", geography_type = "Region", grouping = "New & Used", metric = "title-transactions") 
+
+vehicle_data <- bind_rows(vehicle_data, region_registrations)
 saveRDS(vehicle_data, here(rtp_dashboard_url, "vehicle_data.rds"))
+rm(region_type, region_total, region_registrations)
 
 # Vehicle Registrations on Census Tracts for Mapping ----------------------
 tracts <- st_read("https://services6.arcgis.com/GWxg6t7KXELn1thE/arcgis/rest/services/Census_Tracts_2020/FeatureServer/0/query?where=0=0&outFields=*&f=pgeojson") |> select(geography="geoid20")
@@ -42,9 +210,46 @@ vkt_data <- vkt_data |> mutate(geography = factor(x=geography, levels=vkt_order)
 saveRDS(vkt_data, here(rtp_dashboard_url, "vkt.rds"))
 
 # Census Commute Data -----------------------------------------------------
-commute_data <- process_commute_data(data_years = c(2013, 2018, 2023))
-saveRDS(commute_data, here(rtp_dashboard_url, "commute_data.rds"))
+acs_commute_data <- process_acs_data(data_years = acs_data_yrs)
+pums_commute_data <- process_pums_data(pums_yr = pums_data_yrs)
+commute_data <- bind_rows(acs_commute_data, pums_commute_data)
 
+jurisdictions <- get_table(schema='Political', tbl_name='jurisdiction_dims')
+
+jurisdictions <- jurisdictions |>
+  mutate(juris_name = str_replace_all(juris_name, "Seatac", "SeaTac")) |>
+  mutate(juris_name = str_replace_all(juris_name, "Beau Arts Village","Beaux Arts Village")) |>
+  select("juris_name", "regional_geography") |>
+  distinct() |>
+  mutate(regional_geography=str_replace_all(regional_geography, "HCT", "High Capacity Transit Community")) |>
+  mutate(regional_geography=str_replace_all(regional_geography, "Metro", "Metropolitan Cities")) |>
+  mutate(regional_geography=str_replace_all(regional_geography, "Core", "Core Cities")) |>
+  mutate(regional_geography=str_replace_all(regional_geography, "CitiesTowns", "Cities & Towns")) |>
+  mutate(juris_name = str_replace_all(juris_name, "Uninc. King", "King County")) |>
+  mutate(juris_name = str_replace_all(juris_name, "Uninc. Kitsap", "Kitsap County")) |>
+  mutate(juris_name = str_replace_all(juris_name, "Uninc. Pierce", "Pierce County")) |>
+  mutate(juris_name = str_replace_all(juris_name, "Uninc. Snohomish", "Snohomish County")) |>
+  rename(Municipality = "juris_name", `Regional Geography` = "regional_geography")
+
+metro <- jurisdictions |> filter(`Regional Geography` == "Metropolitan Cities") |> select("Municipality") |>pull() |> unique()
+core <- jurisdictions |> filter(`Regional Geography` == "Core Cities") |> select("Municipality") |>pull() |> unique()
+hct <- jurisdictions |> filter(`Regional Geography` == "High Capacity Transit Community") |> select("Municipality") |>pull() |> unique()
+cities <- jurisdictions |> filter(`Regional Geography` == "Cities & Towns") |> select("Municipality") |>pull() |> unique()
+
+commute_data <- commute_data |>
+  mutate(plot_id = case_when(
+    geography_type %in% c("County", "Region") ~ "PSRC Region",
+    geography_type == "City" & geography %in% metro ~ "Metro City",
+    geography_type == "City" & geography %in% core ~ "Core City",
+    geography_type == "City" & geography %in% hct ~ "HCT City",
+    geography_type == "City" & geography %in% cities ~ "Cities & Towns",
+    geography_type == "Metro Areas" & geography == "Seattle" ~ "PSRC",
+    geography_type == "Metro Areas" & geography != "Seattle" ~ "Other MPO",
+    geography_type == "Race" ~ grouping)) |>
+  filter(!(is.na(geography)))
+
+saveRDS(commute_data, here(rtp_dashboard_url, "commute_data.rds"))
+rm(acs_commute_data, pums_commute_data, jurisdictions)
 
 # NTD Transit Data --------------------------------------------------------
 transit_data <- process_ntd_data()

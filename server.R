@@ -97,7 +97,7 @@ shinyServer(function(input, output) {
   output$climate_registrations_tract <- renderUI({HTML(page_information(tbl=page_text, page_name="Climate", page_section = "RegistrationsTract", page_info = "description"))})
   
   # Vehicle Registrations
-  value_box_registrations_server('REGIONregistrationvaluebox', df=region_registrations)
+  value_box_registrations_server('REGIONregistrationvaluebox', df=climate_data |> filter(metric == "title-transactions" & year == current_registration_year))
   
   line_chart_server('REGISTRATIONSlinechart', 
                     df = climate_data, 
@@ -205,7 +205,7 @@ shinyServer(function(input, output) {
   column_chart_server('WFHcounty',
                       df = commute_data,
                       v = "Work from Home",
-                      ch = c(2023, 2018, 2013),
+                      ch = acs_yrs,
                       s = "Source: ACS 5yr Data Table B08301 for King, Kitsap, Pierce and Snohomish counties",
                       me = "commute-modes",
                       gr = "All",
@@ -218,7 +218,7 @@ shinyServer(function(input, output) {
 
   mepeople_chart_server('WFHrace',
                       df = commute_data,
-                      ch = c(2023, 2018, 2013),
+                      ch = pums_yrs,
                       s = "Source: US Census Bureau 5-yr PUMS Variable JWTRNS for King, Kitsap, Pierce and Snohomish counties",
                       me = "Commute Mode",
                       v = "Worked from home",
@@ -232,14 +232,33 @@ shinyServer(function(input, output) {
   
   output$climate_wfh_metro <- renderUI({HTML(page_information(tbl=page_text, page_name="Climate", page_section = "WFHMetro", page_info = "description"))})
   
-  # bar_chart_server('WFHmetro',
-  #                  df = commute_data,
-  #                  x = "geography",
-  #                  y = "estimate",
-  #                  f = "plot_id",
-  #                  color = c("#8CC63E", "#F05A28", "#00A7A0","#999999", "#91268F"),
-  #                  h = "600px",
-  #                  s = "Source: Washington State Department of Transportation Highway Performance Monitoring System, SoundCast")
+  bar_chart_server('WFHmetro',
+                   df = commute_data |> filter(geography_type == "Metro Areas" & variable == "Work from Home"),
+                   x = "geography",
+                   y = "share",
+                   f = "plot_id",
+                   color = c("#8CC63E", "#91268F"),
+                   h = "600px",
+                   ch = acs_yrs,
+                   p = "yes",
+                   d = 0,
+                   s = "Source: ACS 5yr Data Table B08301")
+  
+  output$climate_wfh_city <- renderUI({HTML(page_information(tbl=page_text, page_name="Climate", page_section = "WFHCity", page_info = "description"))})
+  
+  bar_chart_server('WFHcity',
+                   df = commute_data |> filter(geography_type == "City" & variable == "Work from Home"),
+                   x = "geography",
+                   y = "share",
+                   f = "plot_id",
+                   color = c("#8CC63E", "#F05A28", "#91268F", "#00A7A0"),
+                   h = "1400px",
+                   ch = acs_yrs,
+                   p = "yes",
+                   d = 0,
+                   s = "Source: ACS 5yr Data Table B08301")
+  
+  
   
   
 })  
