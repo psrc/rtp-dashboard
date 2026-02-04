@@ -13,6 +13,7 @@ overview_server <- function(id) {
     
     # Text
     output$overview_text <- renderUI({HTML(page_information(tbl=page_text, page_name="Overview", page_section = "Overview", page_info = "description"))})
+    output$overview_cmp <- renderUI({HTML(page_information(tbl=page_text, page_name="Overview", page_section = "OverviewCMP", page_info = "description"))})
     output$foundations_text <- renderUI({HTML(page_information(tbl=page_text, page_name="Overview", page_section = "Overview-Foundations", page_info = "description"))})
     output$agency_text <- renderUI({HTML(page_information(tbl=page_text, page_name="Overview", page_section = "Overview-Agency", page_info = "description"))})
     
@@ -37,6 +38,8 @@ overview_server <- function(id) {
         
         htmlOutput(ns("overview_text")) |> withSpinner(color=load_clr),
         br(),
+        htmlOutput(ns("overview_cmp")),
+        br(),br(),
         
         card(
           layout_columns(

@@ -358,11 +358,20 @@ create_share_map<- function(lyr, title, efa_lyr, efa_title, colors="Blues", dec=
   
   working_map <- leaflet(data = lyr) |>
     
-    addProviderTiles(providers$CartoDB.Positron) |>
+    addTiles(group = "Open Street Map") |>
     
-    addLayersControl(baseGroups = c("Base Map"),
+    addProviderTiles(providers$CartoDB.Positron, group = "Positron (minimal)") |>
+    
+    addProviderTiles(providers$Esri.WorldImagery, group = "Satellite") |>
+    
+    
+    addLayersControl(baseGroups = c("Positron (minimal)", "Open Street Map","Satellite"),
                      overlayGroups = c(title,"Equity Focus Area"),
                      options = layersControlOptions(collapsed = TRUE)) |>
+    
+    addEasyButton(easyButton(
+      icon="fa-globe", title="Region",
+      onClick=JS("function(btn, map){map.setView([47.615,-122.257],7.5); }"))) |>
     
     addPolygons(fillColor = pal(lyr$share),
                 weight = 0.5,
@@ -396,7 +405,9 @@ create_share_map<- function(lyr, title, efa_lyr, efa_title, colors="Blues", dec=
               labels=c("Yes"),
               group = "Equity Focus Area",
               position = "bottomright",
-              title = efa_title)
+              title = efa_title) |>
+    
+    setView(lng = -122.257, lat = 47.615, zoom = 7.5)
   
   return(working_map)
   

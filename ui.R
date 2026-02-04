@@ -161,7 +161,7 @@ shinyUI(
       theme = psrc_theme,
       
       nav_panel("Overview", 
-                h1("RTP Performance Dashboard"),
+                h1("RTP Performance Dashboard and Congestion Management Process"),
                 overview_ui('OVERVIEW'),
                 h2("What is in this dashboard?"),
                 htmlOutput("howto_text")),
@@ -180,15 +180,19 @@ shinyUI(
                 
                 br(),
                 
-                htmlOutput("climate_registrations_region"),
-                
-                br(),br(),
-                
                 withSpinner(value_box_registrations_ui('REGIONregistrationvaluebox'), color=load_clr, size = 1.5, caption = "Please wait, updating data"),
                 hr(style = "border-top: 1px solid #000000;"),
                 
                 h2("New Vehicle Registrations in the PSRC Region"),
-                line_chart_ui('REGISTRATIONSlinechart'),
+                card(full_screen = FALSE,
+                     
+                     layout_columns(
+                       
+                       col_widths = c(3,9),
+                       htmlOutput("climate_registrations_region"),
+                       line_chart_ui('REGISTRATIONSlinechart')
+                     )),
+                
                 hr(style = "border-top: 1px solid #000000;"),
                 
                 h2("New Registrations by Census Tract"),
@@ -198,8 +202,8 @@ shinyUI(
                   layout_columns(
                   
                   col_widths = c(6,6),
-                  htmlOutput("climate_registrations_tract"),
-                  leafletOutput("ev_tract_map")
+                  leafletOutput("ev_tract_map"),
+                  htmlOutput("climate_registrations_tract")
                   
                 )),
 
@@ -211,26 +215,46 @@ shinyUI(
                 ),
                 
                 br(),
-                
-                htmlOutput("climate_vmt_region"),
-                
-                br(),br(),
-                
+
                 value_box_ui('VMTvaluebox'),
                 hr(style = "border-top: 1px solid #000000;"),
                 
                 h2("Daily Vehicle Miles Traveled in the PSRC Region"),
-                line_chart_ui('VMTlinechart'),
+                
+                card(full_screen = FALSE,
+                     
+                     layout_columns(
+                       
+                       col_widths = c(3,9),
+                       htmlOutput("climate_vmt_region"),
+                       line_chart_ui('VMTlinechart')
+                       
+                     )),
+                
                 hr(style = "border-top: 1px solid #000000;"),
                 
                 h2("Daily Vehicle Miles Traveled by County"),
-                htmlOutput("climate_vmt_county"),
-                column_chart_counties_ui('VMTcounty'),
+                
+                card(full_screen = FALSE,
+                     
+                     htmlOutput("climate_vmt_county"),
+                     column_chart_counties_ui('VMTcounty'),
+                     
+                     ),
+                
                 hr(style = "border-top: 1px solid #000000;"),
                 
                 h2("Vehicle Kilometers Traveled Comparison"),
-                htmlOutput("climate_vkt_compare"),
-                bar_chart_ui('VKTcompare'),
+                
+                card(full_screen = FALSE,
+                     
+                     layout_columns(
+                       
+                       col_widths = c(3,9),
+                       htmlOutput("climate_vkt_compare"),
+                       bar_chart_ui('VKTcompare')
+                       
+                     )),
                 
                 hr(style = "border-top: 1px solid #000000;"),
                 
@@ -241,30 +265,57 @@ shinyUI(
                 
                 br(),
                 
-                htmlOutput("climate_wfh_region"),
-                
-                br(),br(),
-                
                 value_box_ui('WFHvaluebox'),
                 hr(style = "border-top: 1px solid #000000;"),
                 
                 h2("Work from Home shares by County"),
-                column_chart_ui('WFHcounty'),
+                
+                card(full_screen = FALSE,
+                     
+                     layout_columns(
+                       
+                       col_widths = c(8,4),
+                       column_chart_ui('WFHcounty'),
+                       htmlOutput("climate_wfh_region")
+                       
+                     )),
+                
                 hr(style = "border-top: 1px solid #000000;"),
                 
                 h2("Work from Home shares by Race & Ethnicity"),
-                htmlOutput("climate_wfh_race"),
-                mepeople_chart_ui('WFHrace'),
+                
+                card(full_screen = FALSE,
+                     
+                     htmlOutput("climate_wfh_race"),
+                     mepeople_chart_ui('WFHrace'),
+                     
+                ),
+                
                 hr(style = "border-top: 1px solid #000000;"),
                 
                 h2("Work from Home shares by Metropolitan Region"),
-                htmlOutput("climate_wfh_metro"),
-                bar_chart_ui('WFHmetro'),
+                
+                card(full_screen = FALSE,
+                     
+                     layout_columns(
+                       
+                       col_widths = c(4,8),
+                       htmlOutput("climate_wfh_metro"),
+                       bar_chart_ui('WFHmetro')
+                       
+                     )),
+                
                 hr(style = "border-top: 1px solid #000000;"),
                 
                 h2("Work from Home shares by City"),
-                htmlOutput("climate_wfh_city"),
-                bar_chart_ui('WFHcity'),
+                
+                card(full_screen = FALSE,
+                     
+                     htmlOutput("climate_wfh_city"),
+                     bar_chart_ui('WFHcity')
+                     
+                ),
+
                 hr(style = "border-top: 1px solid #000000;")
               
       ),
