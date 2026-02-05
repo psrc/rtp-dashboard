@@ -87,10 +87,10 @@ value_box_server <- function(id, df, by, bv, vy, vv, cy, cv, hy, hv, gr, ge, me,
     output$horizon_title <- renderUI(paste0(hy, " ",ti))
     
     # Box Values
-    output$base_value <- renderText({paste0(round((df |> filter(year == by & grouping == gr & variable == bv & geography == ge & metric == me) |> select(all_of(val)) |> pull())*fac, dec), s)})
-    output$vision_value <- renderText({paste0(round((df |> filter(year == vy & grouping == gr & variable == vv & geography == ge & metric == me) |> select(all_of(val)) |> pull())*fac, dec), s)})
-    output$current_value <- renderText({paste0(round((df |> filter(year == cy & grouping == gr & variable == cv & geography == ge & metric == me) |> select(all_of(val)) |> pull())*fac, dec), s)})
-    output$horizon_value <- renderText({paste0(round((df |> filter(year == hy & grouping == gr & variable == hv & geography == ge & metric == me) |> select(all_of(val)) |> pull())*fac, dec), s)})
+    output$base_value <- renderText({paste0(round((df |> filter(year == by & grouping %in% gr & variable == bv & geography == ge & metric == me) |> select(all_of(val)) |> pull())*fac, dec), s)})
+    output$vision_value <- renderText({paste0(round((df |> filter(year == vy & grouping %in% gr & variable == vv & geography == ge & metric == me) |> select(all_of(val)) |> pull())*fac, dec), s)})
+    output$current_value <- renderText({paste0(round((df |> filter(year == cy & grouping %in% gr & variable == cv & geography == ge & metric == me) |> select(all_of(val)) |> pull())*fac, dec), s)})
+    output$horizon_value <- renderText({paste0(round((df |> filter(year == hy & grouping %in% gr & variable == hv & geography == ge & metric == me) |> select(all_of(val)) |> pull())*fac, dec), s)})
     
     # Tab layout
     output$summary_boxes <- renderUI({

@@ -8,7 +8,9 @@ library(here)
 
 wgs84 <- 4326
 current_year <- "2024"
+
 pre_covid <- 2019
+current_ntd_year <- "2025"
 
 acs_data_yrs <- c(2014, 2019, 2024)
 pums_data_yrs <- c(2014, 2019, 2023)
@@ -253,6 +255,7 @@ rm(acs_commute_data, pums_commute_data, jurisdictions)
 
 # NTD Transit Data --------------------------------------------------------
 transit_data <- process_ntd_data()
+
 forecast_data <- read_csv(here(rtp_network_url, "PSRC/rtp-transit-metrics.csv"), show_col_types = FALSE) |> mutate(date = lubridate::mdy(date)) |> mutate(year = as.character(year))
 
 mpo_transit_pre_covid <- transit_data |> 
@@ -261,7 +264,7 @@ mpo_transit_pre_covid <- transit_data |>
   select("geography", "metric", "previous")
 
 mpo_transit_current <- transit_data |> 
-  filter(geography_type=="Metro Areas" & variable=="All Transit Modes" & year==current_year & grouping=="YTD") |> 
+  filter(geography_type=="Metro Areas" & variable=="All Transit Modes" & year==current_ntd_year & grouping=="YTD") |> 
   rename(current=estimate) 
 
 mpo_transit <- left_join(mpo_transit_current, mpo_transit_pre_covid, by=c("geography", "metric")) |>
@@ -271,7 +274,13 @@ mpo_transit <- left_join(mpo_transit_current, mpo_transit_pre_covid, by=c("geogr
   mutate(grouping = "COVID Recovery") |>
   arrange(metric, estimate)
 
-transit_data <- bind_rows(transit_data, forecast_data, mpo_transit)
+transit_data <- bind_rows(transit_data, forecast_data, mpo_transit) |> 
+  mutate(year = as.numeric(year)) |>
+  mutate(plot_id = case_when(
+    geography_type == "Metro Areas" & geography == "Seattle" ~ "PSRC",
+    geography_type == "Metro Areas" & geography != "Seattle" ~ "Other MPO",
+    TRUE ~ "PSRC Region"))
+
 saveRDS(transit_data, here(rtp_dashboard_url, "transit_data.rds"))
 rm(forecast_data, mpo_transit_pre_covid, mpo_transit_current, mpo_transit)
   

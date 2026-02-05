@@ -1,86 +1,4 @@
-# # Define server logic
-# shinyServer(function(input, output) {
-#   
-#   
-#   # Growth Page
-#   banner_server('growthBanner', 
-#                 banner_title = "Planning for Growth", 
-#                 banner_subtitle = "VISION 2050",
-#                 banner_url = "https://www.psrc.org/planning-2050/vision-2050")
-#   
-#   left_panel_server('leftGrowth', page_nm = "Growth")
-#   growth_overview_server('growthOverview')
-#   growth_server('PopHsgJobgrowth')
-#   
-#   # Safety Page
-#   banner_server('safetyBanner', 
-#                 banner_title = "Addressing Safety: Safe System Approach", 
-#                 banner_subtitle = "Regional Transportation Plan",
-#                 banner_url = "https://www.psrc.org/planning-2050/regional-transportation-plan")
-#   
-#   left_panel_server('leftSafety', page_nm = "Safety")
-#   safety_overview_server('safetyOverview')
-#   safety_geography_server('Geographysafety')
-#   safety_demographics_server('Demographicsafety')
-#   safety_other_server('Othersafety')
-#   
-#   # Transit Page
-#   banner_server('transitBanner', 
-#                 banner_title = "Transit Performance", 
-#                 banner_subtitle = "Regional Transportation Plan",
-#                 banner_url = "https://www.psrc.org/planning-2050/regional-transportation-plan")
-#   
-#   left_panel_server('leftTransit', page_nm = "Transit")
-#   transit_overview_server('transitOverview')
-#   transit_metrics_server('Metricstransit')
-#   modeshare_server('Modetransit')
-#   
-#   # Modes Page
-#   banner_server('modeBanner', 
-#                 banner_title = "Alternative Modes of Transportation", 
-#                 banner_subtitle = "Regional Transportation Plan",
-#                 banner_url = "https://www.psrc.org/planning-2050/regional-transportation-plan")
-#   
-#   left_panel_server('leftMode', page_nm = "Modes")
-#   mode_overview_server('modeOverview')
-#   walk_server('Walkmode')
-#   bike_server('Bikemode')
-#   
-#   # Travel Time Page
-#   banner_server('timeBanner', 
-#                 banner_title = "Travel Time & Congestion", 
-#                 banner_subtitle = "Regional Transportation Plan",
-#                 banner_url = "https://www.psrc.org/planning-2050/regional-transportation-plan")
-#   
-#   left_panel_server('leftTime', page_nm = "Travel-Time")
-#   time_overview_server('timeOverview')
-#   tt_server('TTtime')
-#   dt_server('DTtime')
-#   congestion_server('Congestiontime')
-#   
-#   # Projects Page
-#   banner_server('projectsBanner', 
-#                 banner_title = "Funding", 
-#                 banner_subtitle = "Programs at PSRC",
-#                 banner_url = "https://www.psrc.org/our-work/funding")
-#   
-#   left_panel_server('leftProjects', page_nm = "Projects")
-#   projects_overview_server('projectsOverview')
-#   project_selection_server('Projectsselection')
-#   tip_server('Projectstip')
-#   
-#   # Data Sources
-#   source_server('dataSource')
-#   
-#   # Data Download
-#   output$downloadData <- downloadHandler(
-#     filename = "PSRC RTP Monitoring Data Download.xlsx",
-#     content = function(file) {saveWorkbook(create_public_spreadsheet(download_table_list), file = file)},
-#     contentType = "application/Excel"
-#   )
-#   
-# })    
-
+# Define server logic
 shinyServer(function(input, output) {
   
   footer_server('psrcfooter')
@@ -97,10 +15,10 @@ shinyServer(function(input, output) {
   output$climate_registrations_tract <- renderUI({HTML(page_information(tbl=page_text, page_name="Climate", page_section = "RegistrationsTract", page_info = "description"))})
   
   # Vehicle Registrations
-  value_box_registrations_server('REGIONregistrationvaluebox', df=climate_data |> filter(metric == "title-transactions" & year == current_registration_year))
+  value_box_registrations_server('REGIONregistrationvaluebox', df=vehicle_data |> filter(metric == "title-transactions" & year == current_registration_year))
   
   line_chart_server('REGISTRATIONSlinechart', 
-                    df = climate_data, 
+                    df = vehicle_data, 
                     m = c("vehicle-registrations"),
                     v = c("Battery Electric Vehicle", "Hybrid Electric Vehicle", "Internal Combustion Engine", "Plug-in Hybrid Electric Vehicle"), 
                     g = c("Region"), 
@@ -259,6 +177,143 @@ shinyServer(function(input, output) {
                    s = "Source: ACS 5yr Data Table B08301")
   
   
+  # Transit Page -----------------------------------------------------------
+  
+  output$transit_overview <- renderUI({HTML(page_information(tbl=page_text, page_name="Transit", page_section = "TRANSITOverview", page_info = "description"))})
+  
+  value_box_server('TRANSITMETRICvaluebox', 
+                   df = transit_data |> 
+                     filter(!(grouping == "Forecast" & year <= transit_current_year)) |>
+                     mutate(estimate = estimate / 1000000),
+                   by = transit_base_year,
+                   bv = "All Transit Modes",
+                   vy = transit_vision_year,
+                   vv = "All Transit Modes",
+                   cy = transit_current_year,
+                   cv = "All Transit Modes",
+                   hy = transit_horizon_year,
+                   hv = "All Transit Modes",
+                   gr = c("Annual", "Forecast"),
+                   ge = "Region",
+                   me = "Boardings",
+                   ti = "annual boardings",
+                   fac = 1,
+                   dec = 1,
+                   s = " million",
+                   val = "estimate")
+  
+  line_chart_metric_server('TRANSITlinechart', 
+                           df = transit_data, 
+                           v = c("All Transit Modes"), 
+                           g = c("Region"),
+                           gr = c("Annual", "Forecast"),
+                           color = c("#91268F", "#F05A28"), 
+                           d = "no",
+                           ch = c("Boardings", "Revenue-Hours", "Boardings-per-Hour"),
+                           s = "Source: USDOT Federal Transit Administration (FTA) National Transit Database",
+                           x = "year",
+                           y = "estimate",
+                           f = "grouping",
+                           p = "no",
+                           dp = 0)
+  
+  output$transit_metric_mode <- renderUI({HTML(page_information(tbl=page_text, page_name="Transit", page_section = "TRANSITMETRICMode", page_info = "description"))})
+  
+  column_chart_transit_modes_server('TRANSITMETRICmode',
+                                    df = transit_data |> filter(year >= pre_covid),
+                                    ch = c("Boardings", "Revenue-Hours", "Boardings-per-Hour"),
+                                    s = "Source: USDOT Federal Transit Administration (FTA) National Transit Database")
+  
+  output$transit_metric_metro <- renderUI({HTML(page_information(tbl=page_text, page_name="Transit", page_section = "TRANSITMETRICMetro", page_info = "description"))})
+  
+  bar_chart_metric_server('TRANSITMETRICmetro',
+                          df = transit_data |> filter(geography_type == "Metro Areas" & grouping == "COVID Recovery"),
+                          x = "geography",
+                          y = "estimate",
+                          f = "plot_id",
+                          color = c("#8CC63E", "#91268F"),
+                          h = "600px",
+                          ch = c("Boardings", "Revenue-Hours", "Boardings-per-Hour"),
+                          p = "yes",
+                          d = 0,
+                          s = "Source: USDOT Federal Transit Administration (FTA) National Transit Database")
+  
+  value_box_server('TRANSITMODEvaluebox', 
+                   df = commute_data,
+                   by = wfh_base_year,
+                   bv = "Transit",
+                   vy = wfh_vision_year,
+                   vv = "Transit",
+                   cy = wfh_vmt_year,
+                   cv = "Transit",
+                   hy = wfh_horizon_year,
+                   hv = "Transit",
+                   gr = "All",
+                   ge = "Region",
+                   me = "commute-modes",
+                   ti = "share of workers who used public transportation to get to work",
+                   fac = 100,
+                   dec = 0,
+                   s = "%",
+                   val = "share")
+  
+  output$transit_mode_region <- renderUI({HTML(page_information(tbl=page_text, page_name="Transit", page_section = "TRANSITRegion", page_info = "description"))})
+  
+  column_chart_server('TRANSITcounty',
+                      df = commute_data,
+                      v = "Transit",
+                      ch = acs_yrs,
+                      s = "Source: ACS 5yr Data Table B08301 for King, Kitsap, Pierce and Snohomish counties",
+                      me = "commute-modes",
+                      gr = "All",
+                      gt = "County",
+                      val = "share",
+                      p = "yes",
+                      dp = 1)
+  
+  output$transit_mode_race <- renderUI({HTML(page_information(tbl=page_text, page_name="Transit", page_section = "TRANSITRace", page_info = "description"))})
+  
+  mepeople_chart_server('TRANSITrace',
+                        df = commute_data,
+                        ch = pums_yrs,
+                        s = "Source: US Census Bureau 5-yr PUMS Variable JWTRNS for King, Kitsap, Pierce and Snohomish counties",
+                        me = "Commute Mode",
+                        v = "Transit",
+                        gt = "Race",
+                        val = "share",
+                        grp = "grouping",
+                        icon_pth = "www/bus-solid-full.svg",
+                        icon_clr = "#4C4C4C",
+                        data_max = 20,
+                        per_icons = 1)
+
+  output$transit_mode_metro <- renderUI({HTML(page_information(tbl=page_text, page_name="Transit", page_section = "TRANSITMetro", page_info = "description"))})
+  
+  bar_chart_server('TRANSITmetro',
+                   df = commute_data |> filter(geography_type == "Metro Areas" & variable == "Transit"),
+                   x = "geography",
+                   y = "share",
+                   f = "plot_id",
+                   color = c("#8CC63E", "#91268F"),
+                   h = "600px",
+                   ch = acs_yrs,
+                   p = "yes",
+                   d = 0,
+                   s = "Source: ACS 5yr Data Table B08301")
+
+  output$transit_mode_city <- renderUI({HTML(page_information(tbl=page_text, page_name="Transit", page_section = "TRANSITCity", page_info = "description"))})
+  
+  bar_chart_server('TRANSITcity',
+                   df = commute_data |> filter(geography_type == "City" & variable == "Transit"),
+                   x = "geography",
+                   y = "share",
+                   f = "plot_id",
+                   color = c("#8CC63E", "#F05A28", "#91268F", "#00A7A0"),
+                   h = "1400px",
+                   ch = acs_yrs,
+                   p = "yes",
+                   d = 0,
+                   s = "Source: ACS 5yr Data Table B08301")
   
   
 })  

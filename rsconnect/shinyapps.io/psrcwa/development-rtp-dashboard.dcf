@@ -1,10 +1,10 @@
 name: development-rtp-dashboard
-title: Development RTP Dashboard
+title: Development Version of RTP Dashboard
 username: psrcwa
 account: psrcwa
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 10248723
-bundleId: 9897272
+bundleId: 11538375
 url: https://psrcwa.shinyapps.io/development-rtp-dashboard/
 version: 1

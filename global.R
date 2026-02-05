@@ -66,6 +66,11 @@ wfh_vision_year <- 2019
 wfh_vmt_year <- 2024
 wfh_horizon_year <- 2050
 
+transit_base_year <- 2014
+transit_vision_year <- 2019
+transit_current_year <- 2024
+transit_horizon_year <- 2050
+
 wgs84 <- 4326
 
 yr_ord <- c("2024", "2023", "2022", "2021", "2020", "2019", "2018", "2017", "2016", "2015", "2014", "2013", "2012", "2011", "2010")
@@ -79,18 +84,19 @@ load_clr <- "#91268F"
 transit_modes <- c("Bus", "Commuter Rail", "Ferry", "Rail", "Vanpool")
 
 # Data via RDS files ------------------------------------------------------
-climate_data <- readRDS("data/vehicle_data.rds")
+vehicle_data <- readRDS("data/vehicle_data.rds")
 ev_by_tract <- readRDS("data/ev_registration_by_tract.rds")
 vmt_data <- readRDS("data/vmt.rds")
 vkt_data <- readRDS("data/vkt.rds") |> mutate(year = 2024)
 commute_data <- readRDS("data/commute_data.rds")
+transit_data <- readRDS("data/transit_data.rds")
 
 
 safety_data <- readRDS("data/collision_data.rds") |> mutate(data_year = as.character(lubridate::year(date)))
 
 pop_hsg_jobs <- readRDS("data/pop_hsg_jobs.rds")
 efa_income <- readRDS("data/efa_income.rds")
-transit_data <- readRDS("data/transit_data.rds")
+
 congestion_data <- readRDS("data/congestion_data.rds")
 congestion_map_data <- readRDS("data/congestion_map_data.rds")
 
@@ -100,7 +106,7 @@ summary_info <- read_csv("data/summary_information.csv", show_col_types = FALSE)
 
 # Data Download Table List ------------------------------------------------------
 download_table_list <- list("Sources" = source_info,
-                            "Climate-ZEV" = climate_data %>% filter(metric == "vehicle-registrations"),
+                            "Climate-ZEV" = vehicle_data %>% filter(metric == "vehicle-registrations"),
                             "Climate-VMT" = bind_rows(vmt_data, vkt_data),
                             "Climate-WFH" = commute_data %>% filter(variable %in% c("Work from Home", "Worked from home")),
                             "Safety-Geography" = safety_data %>% filter(geography_type %in% c("Region",

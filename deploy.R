@@ -4,7 +4,7 @@ library(rsconnect)
 
 deployApp(account = 'psrcwa',
           appName = 'development-rtp-dashboard',
-          appTitle = 'Development RTP Dashboard')
+          appTitle = 'Development Version of RTP Dashboard')
 
 # official version ----
 
