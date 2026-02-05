@@ -285,11 +285,9 @@ line_chart_metric_server <- function(id, df, v, g, gr, d, color, ch, s, x, y, f,
             radioButtons(ns("METRICtype"), label = NULL, choices = ch, inline = TRUE)
           ),
           
-          plotlyOutput(ns("region_line_chart"))
+          plotlyOutput(ns("region_line_chart")),
+          tags$div(class = "chart_source", s)
         ),
-        
-        tags$div(class = "chart_source", s),
-        
       )
     }) 
   })  # end moduleServer
@@ -327,11 +325,9 @@ bar_chart_metric_server <- function(id, df, x, y, f, color, s, h, ch, p, d) {
             radioButtons(ns("BARyear"), label = NULL, choices = ch, inline = TRUE)
           ),
           
-          plotlyOutput(ns("bar_chart"), height = h)
+          plotlyOutput(ns("bar_chart"), height = h),
+          tags$div(class = "chart_source", s)
         ),
-        
-        tags$div(class = "chart_source", s),
-        
       )
     }) 
   })  # end moduleServer
@@ -407,10 +403,8 @@ column_chart_transit_modes_server <- function(id, df, ch, s) {
             
           ),
           
+          tags$div(class = "chart_source", s)
         ),
-        
-        tags$div(class = "chart_source", s),
-        
       )
     }) 
   })  # end moduleServer

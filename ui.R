@@ -71,117 +71,27 @@ shinyUI(
       nav_panel("Transit", 
                 
                 tags$div(class="page_goals", "Plan Outcome: Triple transit trips by 2050"),
+                
                 htmlOutput("transit_overview"),
-                
-                hr(style = "border-top: 1px solid #000000;"),
+                br(), br(),
                 
                 card_body(
-                  h1("Public Transportation Performance Metrics"),
+                  selectizeInput(
+                    inputId = "transit_section",
+                    label = "Select a transit topic",
+                    choices = c(
+                      "Boardings & Hours" = "trnmet",
+                      "Commute to Work" = "trnmod"
+                    ),
+                    selected = "trnmet",
+                    options = list(dropdownParent = 'body')
+                  ),
                   class = "selection_panel"
                 ),
                 
                 br(),
                 
-                value_box_ui('TRANSITMETRICvaluebox'),
-                hr(style = "border-top: 1px solid #000000;"),
-              
-                h2("Public Transportation metrics in the PSRC Region"),
-                
-                card(full_screen = FALSE,
-                     
-                     layout_columns(
-                       
-                       col_widths = c(12),
-                       line_chart_metric_ui('TRANSITlinechart'),
-                       
-                     )),
-                
-                hr(style = "border-top: 1px solid #000000;"),
-                
-                h2("Public Transportation metrics by Transit Mode"),
-                
-                card(full_screen = FALSE,
-                     
-                     htmlOutput("transit_metric_mode"),
-                     column_chart_transit_modes_ui('TRANSITMETRICmode'),
-                     
-                ),
-                
-                hr(style = "border-top: 1px solid #000000;"),
-                
-                h2("Public Transportation metrics by Metropolitan Region"),
-                
-                card(full_screen = FALSE,
-                     
-                     layout_columns(
-                       
-                       col_widths = c(4,8),
-                       htmlOutput("transit_metric_metro"),
-                       bar_chart_metric_ui('TRANSITMETRICmetro')
-                       
-                     )),
-                
-                hr(style = "border-top: 1px solid #000000;"),
-                
-                card_body(
-                  h1("Public Transportation Mode Share"),
-                  class = "selection_panel"
-                ),
-                
-                br(),
-                
-                value_box_ui('TRANSITMODEvaluebox'),
-                hr(style = "border-top: 1px solid #000000;"),
-                
-                h2("Public Transportation shares by County"),
-                
-                card(full_screen = FALSE,
-                     
-                     layout_columns(
-                       
-                       col_widths = c(8,4),
-                       column_chart_ui('TRANSITcounty'),
-                       htmlOutput("transit_mode_region")
-                       
-                     )),
-                
-                hr(style = "border-top: 1px solid #000000;"),
-                
-                h2("Public Transportation shares by Race & Ethnicity"),
-                
-                card(full_screen = FALSE,
-                     
-                     htmlOutput("transit_mode_race"),
-                     mepeople_chart_ui('TRANSITrace'),
-                     
-                ),
-                
-                hr(style = "border-top: 1px solid #000000;"),
-                
-                h2("Public Transportation shares by Metropolitan Region"),
-                
-                card(full_screen = FALSE,
-                     
-                     layout_columns(
-                       
-                       col_widths = c(4,8),
-                       htmlOutput("transit_mode_metro"),
-                       bar_chart_ui('TRANSITmetro')
-                       
-                     )),
-                
-                hr(style = "border-top: 1px solid #000000;"),
-                
-                h2("Public Transportation shares by City"),
-                
-                card(full_screen = FALSE,
-                     
-                     htmlOutput("transit_mode_city"),
-                     bar_chart_ui('TRANSITcity')
-                     
-                ),
-                
-                hr(style = "border-top: 1px solid #000000;")
+                uiOutput("transit_section_ui")
                 
       ), # end of navpanel for Transit
       
