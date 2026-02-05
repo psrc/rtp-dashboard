@@ -31,11 +31,9 @@ bar_chart_server <- function(id, df, x, y, f, color, s, h, ch, p, d) {
             radioButtons(ns("BARyear"), label = NULL, choices = ch, inline = TRUE)
           ),
           
-          plotlyOutput(ns("bar_chart"), height = h)
-        ),
-
-        tags$div(class = "chart_source", s),
-        
+          plotlyOutput(ns("bar_chart"), height = h),
+          tags$div(class = "chart_source", s)
+        )
       )
     }) 
   })  # end moduleServer
@@ -75,11 +73,9 @@ line_chart_server <- function(id, df, m, v, g, d, color, ch, s, x, y, f, p, dp) 
             radioButtons(ns("REGISTRATIONtype"), label = NULL, choices = ch, inline = TRUE)
           ),
           
-          plotlyOutput(ns("region_line_chart"))
+          plotlyOutput(ns("region_line_chart")),
+          tags$div(class = "chart_source", s)
         ),
-        
-        tags$div(class = "chart_source", s),
-        
       )
     }) 
   })  # end moduleServer
@@ -142,10 +138,9 @@ column_chart_counties_server <- function(id, df, v, ch, s) {
             
           ),
           
-        ),
-        
-        tags$div(class = "chart_source", s),
-        
+          tags$div(class = "chart_source", s)
+          
+        )
       )
     }) 
   })  # end moduleServer
@@ -193,14 +188,11 @@ column_chart_server <- function(id, df, v, ch, s, me, gr, gt, val, p, dp) {
           layout_columns(
             
             col_widths = c(12),
-            plotlyOutput(ns("county_chart"))
-            
-          ),
+            plotlyOutput(ns("county_chart")),
           
+          ),
+          tags$div(class = "chart_source", s),
         ),
-        
-        tags$div(class = "chart_source", s),
-        
       )
     }) 
   })  # end moduleServer
@@ -252,10 +244,8 @@ mepeople_chart_server <- function(id, df, ch, s, me, v, gt, val, grp, icon_pth, 
             
           ),
           
+          tags$div(class = "chart_source", s)
         ),
-        
-        tags$div(class = "chart_source", s),
-        
       )
     }) 
   })  # end moduleServer

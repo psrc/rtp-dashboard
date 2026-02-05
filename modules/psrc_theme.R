@@ -26,6 +26,15 @@ psrc_theme <- bs_theme(bg = "white",
                        font-size: 1.15rem;
                        }
                        
+                       .climate-section-wrapper {
+                       opacity: 1;
+                       transition: opacity 250ms ease-in-out;
+                       }
+                       
+                       .climate-section-wrapper.fade-out {
+                       opacity: 0;
+                       }
+                       
                        /* General Text settings */
                        h1 {
                        font-size: 2rem;

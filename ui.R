@@ -1,4 +1,5 @@
-# New bslib version
+# bslib version
+
 shinyUI(
   
   tags$html(
@@ -8,6 +9,8 @@ shinyUI(
     tags$head(tags$title("PSRC Regional Transportation Plan Performance Dashboard")),
     
     page_navbar(
+      
+      id = "main_nav",
       
       # JavaScript to modify tabindex values to 0 so you can tab to them as well as using a mouse
       tags$script(HTML("
@@ -40,155 +43,29 @@ shinyUI(
       nav_panel("Climate", 
                 
                 tags$div(class="page_goals", "Goal: 80% below 1990 GHG Emissions by 2050"),
+                
                 htmlOutput("climate_overview"),
-      
-                hr(style = "border-top: 1px solid #000000;"),
+                br(), br(),
                 
                 card_body(
-                  h1("Zero Emission Vehicles"),
-                  class = "selection_panel"
+                  selectizeInput(
+                    inputId = "climate_section",
+                    label = "Select a climate topic",
+                    choices = c(
+                      "Zero Emission Vehicles" = "zev",
+                      "Vehicle Miles Traveled" = "vmt",
+                      "Work from Home" = "wfh"
+                    ),
+                    selected = "zev",
+                    options = list(dropdownParent = 'body')
                   ),
-                
-                br(),
-                
-                withSpinner(value_box_registrations_ui('REGIONregistrationvaluebox'), color=load_clr, size = 1.5, caption = "Please wait, updating data"),
-                hr(style = "border-top: 1px solid #000000;"),
-                
-                h2("New Vehicle Registrations in the PSRC Region"),
-                card(full_screen = FALSE,
-                     
-                     layout_columns(
-                       
-                       col_widths = c(3,9),
-                       htmlOutput("climate_registrations_region"),
-                       line_chart_ui('REGISTRATIONSlinechart')
-                     )),
-                
-                hr(style = "border-top: 1px solid #000000;"),
-                
-                h2("New Registrations by Census Tract"),
-                
-                card(full_screen = FALSE,
-                  
-                  layout_columns(
-                  
-                  col_widths = c(6,6),
-                  leafletOutput("ev_tract_map"),
-                  htmlOutput("climate_registrations_tract")
-                  
-                )),
-
-                hr(style = "border-top: 1px solid #000000;"),
-                
-                card_body(
-                  h1("Vehicle Miles Traveled"),
                   class = "selection_panel"
                 ),
-                
-                br(),
 
-                value_box_ui('VMTvaluebox'),
-                hr(style = "border-top: 1px solid #000000;"),
-                
-                h2("Daily Vehicle Miles Traveled in the PSRC Region"),
-                
-                card(full_screen = FALSE,
-                     
-                     layout_columns(
-                       
-                       col_widths = c(3,9),
-                       htmlOutput("climate_vmt_region"),
-                       line_chart_ui('VMTlinechart')
-                       
-                     )),
-                
-                hr(style = "border-top: 1px solid #000000;"),
-                
-                h2("Daily Vehicle Miles Traveled by County"),
-                
-                card(full_screen = FALSE,
-                     
-                     htmlOutput("climate_vmt_county"),
-                     column_chart_counties_ui('VMTcounty'),
-                     
-                     ),
-                
-                hr(style = "border-top: 1px solid #000000;"),
-                
-                h2("Vehicle Kilometers Traveled Comparison"),
-                
-                card(full_screen = FALSE,
-                     
-                     layout_columns(
-                       
-                       col_widths = c(3,9),
-                       htmlOutput("climate_vkt_compare"),
-                       bar_chart_ui('VKTcompare')
-                       
-                     )),
-                
-                hr(style = "border-top: 1px solid #000000;"),
-                
-                card_body(
-                  h1("Work from Home"),
-                  class = "selection_panel"
-                ),
-                
                 br(),
                 
-                value_box_ui('WFHvaluebox'),
-                hr(style = "border-top: 1px solid #000000;"),
-                
-                h2("Work from Home shares by County"),
-                
-                card(full_screen = FALSE,
-                     
-                     layout_columns(
-                       
-                       col_widths = c(8,4),
-                       column_chart_ui('WFHcounty'),
-                       htmlOutput("climate_wfh_region")
-                       
-                     )),
-                
-                hr(style = "border-top: 1px solid #000000;"),
-                
-                h2("Work from Home shares by Race & Ethnicity"),
-                
-                card(full_screen = FALSE,
-                     
-                     htmlOutput("climate_wfh_race"),
-                     mepeople_chart_ui('WFHrace'),
-                     
-                ),
-                
-                hr(style = "border-top: 1px solid #000000;"),
-                
-                h2("Work from Home shares by Metropolitan Region"),
-                
-                card(full_screen = FALSE,
-                     
-                     layout_columns(
-                       
-                       col_widths = c(4,8),
-                       htmlOutput("climate_wfh_metro"),
-                       bar_chart_ui('WFHmetro')
-                       
-                     )),
-                
-                hr(style = "border-top: 1px solid #000000;"),
-                
-                h2("Work from Home shares by City"),
-                
-                card(full_screen = FALSE,
-                     
-                     htmlOutput("climate_wfh_city"),
-                     bar_chart_ui('WFHcity')
-                     
-                ),
+                uiOutput("climate_section_ui")
 
-                hr(style = "border-top: 1px solid #000000;")
-              
       ), # end of navpanel for climate
       
       nav_panel("Transit", 
