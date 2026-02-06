@@ -8,7 +8,9 @@ shinyServer(function(input, output) {
     vmt = FALSE,
     wfh = FALSE,
     trnmet = FALSE,
-    trnmod = FALSE
+    trnmod = FALSE,
+    wlkmod = FALSE,
+    bikmod = FALSE
   )
 
   # Overview Page -----------------------------------------------------------
@@ -50,8 +52,6 @@ shinyServer(function(input, output) {
     }
   })
   
-
-  
   # Transit Page -----------------------------------------------------------
   output$transit_section_ui <- renderUI({
     switch(input$transit_section,
@@ -76,6 +76,34 @@ shinyServer(function(input, output) {
     if (input$transit_section == "trnmod" && !loaded$trnmod) {
       transit_mode_server("trnmod")
       loaded$trnmod <- TRUE
+    }
+    
+  })
+  
+  # Walk & Bike Page -----------------------------------------------------------
+  output$walk_bike_section_ui <- renderUI({
+    switch(input$walk_bike_section,
+           "wlkmod" = walk_mode_ui("wlkmod"),
+           "bikmod" = bike_mode_ui("bikmod")
+    )
+  })
+  
+  output$walk_bike_overview <- renderUI({
+    HTML(page_information(tbl=page_text, 
+                          page_name="WalkBike", 
+                          page_section = "WALKBIKEOverview", 
+                          page_info = "description"))
+  })
+  
+  observeEvent(input$walk_bike_section, {
+    if (input$walk_bike_section == "wlkmod" && !loaded$wlkmod) {
+      walk_mode_server("wlkmod")
+      loaded$wlkmod <- TRUE
+    }
+    
+    if (input$walk_bike_section == "bikmod" && !loaded$bikmod) {
+      bike_mode_server("bikmod")
+      loaded$bikmod <- TRUE
     }
     
   })

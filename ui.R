@@ -95,6 +95,33 @@ shinyUI(
                 
       ), # end of navpanel for Transit
       
+      nav_panel("Walk & Bike", 
+                
+                tags$div(class="page_goals", "Plan Outcome: 21% More Walking & Biking by 2050"),
+                
+                htmlOutput("walk_bike_overview"),
+                br(), br(),
+                
+                card_body(
+                  selectizeInput(
+                    inputId = "walk_bike_section",
+                    label = "Select walk or bike",
+                    choices = c(
+                      "Walking" = "wlkmod",
+                      "Biking" = "bikmod"
+                    ),
+                    selected = "wlkmod",
+                    options = list(dropdownParent = 'body')
+                  ),
+                  class = "selection_panel"
+                ),
+                
+                br(),
+                
+                uiOutput("walk_bike_section_ui")
+                
+      ), # end of navpanel for Walking & Biking
+      
       br(), br(),
       
       footer = (footer_ui('psrcfooter'))
