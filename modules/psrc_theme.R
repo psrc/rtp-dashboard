@@ -26,6 +26,14 @@ psrc_theme <- bs_theme(bg = "white",
                        font-size: 1.15rem;
                        }
                        
+                       .nav-group-header {
+                       font-weight: 600;
+                       margin-top: 12px;
+                       margin-bottom: 4px;
+                       color: #555;
+                       }
+                       
+                       
                        .climate-section-wrapper {
                        opacity: 1;
                        transition: opacity 250ms ease-in-out;
@@ -61,6 +69,15 @@ psrc_theme <- bs_theme(bg = "white",
                        margin-bottom: 1rem;
                        margin-top: 0;
                        line-height: 2.25rem;
+                       }
+                       
+                       .dashboard_title {
+                       font-size: 2rem;
+                       font-family: Poppins Semibold, sans-serif;
+                       font-weight: 600;
+                       margin-bottom: 1.0rem;
+                       margin-top: 1.0rem;
+                       line-height: 2.5rem;
                        }
                        
                        .chart_source {

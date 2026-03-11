@@ -23,16 +23,8 @@ overview_server <- function(id) {
     output$overview <- renderUI({
       tagList(
         
-        tags$head(
-          tags$script(HTML("
-        $(document).ready(function(){
-          $('#carouselExampleControls').carousel('cycle');
-        });
-      "))
-        ),
-        
         htmlOutput(ns("overview_text")),
-        br(),
+        br(),br(),
         htmlOutput(ns("overview_cmp")),
         br(),br(),
         
