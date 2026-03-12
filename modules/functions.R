@@ -652,7 +652,7 @@ create_summary_table <- function(d=summary_info) {
                                                "Population, Housing Units and Jobs",
                                                "Transit Service Hours",
                                                "Walking to Work",
-                                               "Commute Times"), "solid 2px"))
+                                               "NHS Congestion"), "solid 2px"))
   
   summary_tbl <- summary_tbl %>%
     formatStyle(0:ncol(t), valueColumns = "Data Point",

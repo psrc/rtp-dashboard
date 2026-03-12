@@ -23,22 +23,28 @@ overview_server <- function(id) {
     output$overview <- renderUI({
       tagList(
         
-        htmlOutput(ns("overview_text")),
-        br(),br(),
-        htmlOutput(ns("overview_cmp")),
-        br(),br(),
+        div(
+          class = "d-flex flex-column flex-lg-row align-items-start gap-4",
+          
+          tags$img(
+            src = "RTP-2026-System-Logo.jpg",
+            style = "width:260px; height:auto; flex-shrink:0;",
+            alt = "RTP Logo"
+          ),
+          
+          div(
+            style = "flex:1;",
+            
+            htmlOutput(ns("overview_text")),
+            div(class = "mt-3", htmlOutput(ns("overview_cmp")))
+          )
+        ),
         
-        card(
-          layout_columns(
-            
-            col_widths = c(4, 8),
-            card_body(br(), tags$img(src = "RTP-2026-System-Logo.jpg", class = "d-block w-100", alt = "RTP Logo")),
-            card_body(dataTableOutput(ns("summary_table"))),
-            
-            
-          ), # end of layout_columns
-        ), # end of card
-        
+        br(),
+        h2("Draft 2026-2050 RTP Performance Summary Results"),
+        dataTableOutput(ns("summary_table")),
+        br()
+
       )
     })
   })  # end moduleServer

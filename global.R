@@ -33,7 +33,7 @@ page_text <- read_csv("data/page_text.csv", show_col_types = FALSE)
 wgs84 <- 4326
 
 acs_yrs <- c(2024, 2019, 2014)
-pums_yrs <- c(2023, 2019, 2014)
+pums_yrs <- c(2024, 2019, 2014)
 
 wcag_palette <- readRDS("data/wcag_palette.rds")
 
