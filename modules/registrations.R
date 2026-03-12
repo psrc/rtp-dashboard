@@ -24,7 +24,7 @@ registrations_ui <- function(id) {
         width = 1,
         radioButtons(ns("RegistrationChoice"), label = NULL, choices = c("New", "Used"), inline = TRUE)
       ),
-      
+
       plotlyOutput(ns("REGISTRATIONSlinechart")),
       tags$div(class = "chart_source", "Source: Washington State Department of Licensing")
     ),

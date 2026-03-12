@@ -7,7 +7,7 @@ shinyUI(
     lang = "en",
     
     tags$head(tags$title("PSRC Regional Transportation Plan Performance Dashboard")),
-    
+
     page_sidebar(
       
       id = "main_nav",

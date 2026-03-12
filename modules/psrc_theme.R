@@ -33,7 +33,6 @@ psrc_theme <- bs_theme(bg = "white",
                        color: #555;
                        }
                        
-                       
                        .climate-section-wrapper {
                        opacity: 1;
                        transition: opacity 250ms ease-in-out;
