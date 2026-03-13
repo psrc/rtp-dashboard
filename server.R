@@ -1,105 +1,49 @@
 # Define server logic
 shinyServer(function(input, output) {
   
-  # Footer
   footer_server('psrcfooter')
+
+  output$main_content <- renderUI({
+
+    switch(input$section_selection,
+
+           "overview" = overview_ui("overview"),
+           "registrations" = registrations_ui("registrations"),
+           "vmt" = vmt_ui("vmt"),
+           "wfh" = wfh_ui("wfh"),
+           "safety_geo" = safety_geography_ui("safety_geo"),
+           "safety_dem" = safety_demographics_ui("safety_dem"),
+           "safety_oth" = safety_other_ui("safety_oth"),
+           "growth" = growth_ui("growth"),
+           "boardings" = boardings_ui("boardings"),
+           "transit" = transit_ui("transit"),
+           "walking" = walking_ui("walking"),
+           "biking" = biking_ui("biking"),
+           "commute" = commute_ui("commute"),
+           "departure" = departure_ui("departure"),
+           "congestion" = congestion_ui("congestion"),
+           "resources" = source_ui("resources")
+    )
+  })
   
-  # Main Overview Page
-  banner_server('overviewBanner', 
-                banner_title = "RTP Performance Dashboard", 
-                banner_subtitle = "Planning for 2050",
-                banner_url = "https://www.psrc.org/planning-2050")
+  overview_server('overview')
+  registrations_server('registrations')
+  vmt_server('vmt')
+  wfh_server('wfh')
+  safety_geography_server('safety_geo')
+  safety_demographics_server("safety_dem")
+  safety_other_server("safety_oth")
+  growth_server('growth')
+  boardings_server('boardings')
+  transit_server('transit')
+  walking_server('walking')
+  biking_server('biking')
+  commute_server("commute")
+  departure_server("departure")
+  congestion_server("congestion")
+  source_server("resources")
   
-  left_panel_server('leftOverview', page_nm = "Overview")
-  dashboard_overview_server('Mainoverview')
+})  
+
+
   
-  # Climate Page
-  banner_server('climateBanner', 
-                banner_title = "Addressing Climate Change", 
-                banner_subtitle = "Regional Transportation Plan",
-                banner_url = "https://www.psrc.org/planning-2050/regional-transportation-plan")
-  
-  left_panel_server('leftClimate', page_nm = "Climate")
-  climate_overview_server('climateOverview')
-  climate_zev_server('ZEVclimate')
-  climate_vmt_server('VMTclimate')
-  telework_server('WFHmode')
-  
-  # Growth Page
-  banner_server('growthBanner', 
-                banner_title = "Planning for Growth", 
-                banner_subtitle = "VISION 2050",
-                banner_url = "https://www.psrc.org/planning-2050/vision-2050")
-  
-  left_panel_server('leftGrowth', page_nm = "Growth")
-  growth_overview_server('growthOverview')
-  growth_server('PopHsgJobgrowth')
-  
-  # Safety Page
-  banner_server('safetyBanner', 
-                banner_title = "Addressing Safety: Safe System Approach", 
-                banner_subtitle = "Regional Transportation Plan",
-                banner_url = "https://www.psrc.org/planning-2050/regional-transportation-plan")
-  
-  left_panel_server('leftSafety', page_nm = "Safety")
-  safety_overview_server('safetyOverview')
-  safety_geography_server('Geographysafety')
-  safety_demographics_server('Demographicsafety')
-  safety_other_server('Othersafety')
-  
-  # Transit Page
-  banner_server('transitBanner', 
-                banner_title = "Transit Performance", 
-                banner_subtitle = "Regional Transportation Plan",
-                banner_url = "https://www.psrc.org/planning-2050/regional-transportation-plan")
-  
-  left_panel_server('leftTransit', page_nm = "Transit")
-  transit_overview_server('transitOverview')
-  transit_metrics_server('Metricstransit')
-  modeshare_server('Modetransit')
-  
-  # Modes Page
-  banner_server('modeBanner', 
-                banner_title = "Alternative Modes of Transportation", 
-                banner_subtitle = "Regional Transportation Plan",
-                banner_url = "https://www.psrc.org/planning-2050/regional-transportation-plan")
-  
-  left_panel_server('leftMode', page_nm = "Modes")
-  mode_overview_server('modeOverview')
-  walk_server('Walkmode')
-  bike_server('Bikemode')
-  
-  # Travel Time Page
-  banner_server('timeBanner', 
-                banner_title = "Travel Time & Congestion", 
-                banner_subtitle = "Regional Transportation Plan",
-                banner_url = "https://www.psrc.org/planning-2050/regional-transportation-plan")
-  
-  left_panel_server('leftTime', page_nm = "Travel-Time")
-  time_overview_server('timeOverview')
-  tt_server('TTtime')
-  dt_server('DTtime')
-  congestion_server('Congestiontime')
-  
-  # Projects Page
-  banner_server('projectsBanner', 
-                banner_title = "Funding", 
-                banner_subtitle = "Programs at PSRC",
-                banner_url = "https://www.psrc.org/our-work/funding")
-  
-  left_panel_server('leftProjects', page_nm = "Projects")
-  projects_overview_server('projectsOverview')
-  project_selection_server('Projectsselection')
-  tip_server('Projectstip')
-  
-  # Data Sources
-  source_server('dataSource')
-  
-  # Data Download
-  output$downloadData <- downloadHandler(
-    filename = "PSRC RTP Monitoring Data Download.xlsx",
-    content = function(file) {saveWorkbook(create_public_spreadsheet(download_table_list), file = file)},
-    contentType = "application/Excel"
-  )
-  
-})    
