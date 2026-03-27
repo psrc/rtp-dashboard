@@ -22,6 +22,7 @@ shinyServer(function(input, output) {
            "commute" = commute_ui("commute"),
            "departure" = departure_ui("departure"),
            "congestion" = congestion_ui("congestion"),
+           "federal" = federal_ui("federal"),
            "resources" = source_ui("resources")
     )
   })
@@ -41,6 +42,7 @@ shinyServer(function(input, output) {
   commute_server("commute")
   departure_server("departure")
   congestion_server("congestion")
+  federal_server("federal")
   source_server("resources")
   
 })  

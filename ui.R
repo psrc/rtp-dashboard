@@ -55,6 +55,7 @@ shinyUI(
               "Travel Time: Commute",
               "Travel Time: Departure",
               "Travel Time: Congestion",
+              "Federal TPM",
               "Resources"
             ),
             
@@ -74,6 +75,7 @@ shinyUI(
               "commute",
               "departure",
               "congestion",
+              "federal",
               "resources"
             ),
             

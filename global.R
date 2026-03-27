@@ -141,6 +141,19 @@ congestion_region_weekend <- readRDS("data/congestion_region_weekend_data.rds")
 congestion_am_map <- readRDS("data/congestion_am_map_data.rds")
 congestion_pm_map <- readRDS("data/congestion_pm_map_data.rds")
 
+# Federal Performance Measures --------------------------------------------
+phed_box_values <- readRDS("data/phed_box_values.rds")
+phed_region_data <- readRDS("data/phed_region_data.rds")
+
+interstate_box_values <- readRDS("data/interstate_box_values.rds")
+interstate_region_data <- readRDS("data/interstate_region_data.rds")
+
+non_interstate_box_values <- readRDS("data/non_interstate_box_values.rds")
+non_interstate_region_data <- readRDS("data/non_interstate_region_data.rds")
+
+truck_box_values <- readRDS("data/truck_box_values.rds")
+truck_region_data <- readRDS("data/truck_region_data.rds")
+
 # Source Information ------------------------------------------------------------
 source_info <- read_csv("data/source_information.csv", show_col_types = FALSE)
 summary_info <- read_csv("data/summary_information.csv", show_col_types = FALSE)
