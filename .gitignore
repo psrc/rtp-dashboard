@@ -42,3 +42,7 @@ vignettes/*.pdf
 # RSConnect files
 *.dcf
 rsconnect/
+
+# interim Output files 
+congestion/
+raw/
